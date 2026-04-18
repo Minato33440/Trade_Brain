@@ -1,6 +1,7 @@
 # CLAUDE.md — Trade_Brain
 # このファイルは ClaudeCode が Trade_Brain リポジトリで作業する際に自動で読み込まれる
 # Trade_System の CLAUDE.md とは別運用
+# 更新: 2026-04-18（データ移行完了・実ディレクトリ構造に合わせて命名規則を修正）
 
 ---
 
@@ -52,14 +53,77 @@ STEP 5: 作業開始
 
 ---
 
+## 実ディレクトリ構造（2026-04-18 データ移行完了版）
+
+```
+Trade_Brain/
+├── .CLAUDE.md
+├── CLAUDE.md
+├── README.md
+├── .gitignore
+├── .venv/
+│
+├── raw/                        # 生データ（Trade_System/logs/gm/ から移行済み）
+│   ├── daily/
+│   │   └── 2026/               # 2026年3月〜 日次ログ（2025は存在しない）
+│   │       ├── 2026-3-2.txt
+│   │       ├── ...
+│   │       └── 2026-4-17.txt
+│   ├── weekly/
+│   │   ├── 2025/               # 2025年 週次ポートフォリオ総括
+│   │   └── 2026/               # 2026年 週次ポートフォリオ総括
+│   │       ├── 2026-4-3_wk01/
+│   │       ├── 2026-4-10_wk02/
+│   │       └── 2026-4-17_wk03/
+│   └── boss's-weeken-Report/   # 週末レポート（既存命名維持）
+│
+├── distilled/                  # 蒸留済み戦略アーカイブ（移行済み）
+│   ├── 2025/
+│   └── 2026/
+│       ├── distilled-gm-2026-1.md
+│       ├── distilled-gm-2026-2.md
+│       ├── distilled-gm-2026-3.md
+│       └── distilled-gm-2026-4.md
+│
+├── Strategy_Wiki/              # Obsidian Vault 同期対象（wiki/trade_brain/ のミラー）
+│   ├── Regimes/
+│   ├── Signals/
+│   ├── Events/
+│   ├── Instruments/
+│   ├── Patterns/
+│   ├── Hypotheses/
+│   ├── Journal/
+│   └── index.md
+│
+├── nlm_sources/                # NLM 投入用パッケージ
+│   └── monthly/
+│       └── YYYY-MM_brain_pack.md
+│
+└── docs/
+    ├── STRATEGY_WIKI_GUIDE.md
+    └── distillation_schema.md
+```
+
+---
+
 ## ディレクトリの役割と変更ルール
 
 ### raw/ — 生データ
 
 ```
 原則: 読み取り専用。追記のみ可（daily ログ追加）。
-命名: raw/YYYY/daily/YYYY-M-D.txt または raw/YYYY/weekly/YYYY-M-D_wkNN/
+構造: raw/ 直下に daily / weekly / boss's-weeken-Report/ の 3 種類
 既存ファイルの内容書き換えは禁止。
+
+命名:
+  raw/daily/YYYY/YYYY-M-D.txt
+  raw/weekly/YYYY/YYYY-M-D_wkNN/
+  raw/boss's-weeken-Report/{任意ファイル名}
+
+注意:
+  - daily は 2026 年 3 月開始のため、2025 は存在しない（意図通り）
+  - weekly は 2025 / 2026 両方存在
+  - boss's-weeken-Report/ は既存命名維持（タイポだが git 履歴保護のため変更しない）
 ```
 
 ### distilled/ — 蒸留済みアーカイブ
@@ -113,8 +177,8 @@ STEP 5: 作業開始
 ## Ingest フロー（新規 daily ログ追加時）
 
 ```
-1. raw/YYYY/daily/YYYY-M-D.txt を配置（追記のみ）
-2. 該当週の raw/YYYY/weekly/ に週次総括を追加（金曜 or 週末）
+1. raw/daily/YYYY/YYYY-M-D.txt を配置（追記のみ）
+2. 該当週の raw/weekly/YYYY/YYYY-M-D_wkNN/ に週次総括を追加（金曜 or 週末）
 3. 月替わりまたは月末に distilled/YYYY/distilled-gm-YYYY-M.md を更新
    - regime / decision / evidence / implication / tags を埋める
    - 前週との差分（「← wk02 から転換」等）を明記
@@ -133,17 +197,18 @@ STEP 5: 作業開始
 
 ```
 raw:
-  raw/YYYY/daily/YYYY-M-D.txt           例: raw/2026/daily/2026-4-17.txt
-  raw/YYYY/weekly/YYYY-M-D_wkNN/        例: raw/2026/weekly/2026-4-17_wk03/
+  raw/daily/YYYY/YYYY-M-D.txt            例: raw/daily/2026/2026-4-17.txt
+  raw/weekly/YYYY/YYYY-M-D_wkNN/         例: raw/weekly/2026/2026-4-17_wk03/
+  raw/boss's-weeken-Report/{ファイル名}  （既存命名維持）
 
 distilled:
-  distilled/YYYY/distilled-gm-YYYY-M.md 例: distilled/2026/distilled-gm-2026-4.md
+  distilled/YYYY/distilled-gm-YYYY-M.md  例: distilled/2026/distilled-gm-2026-4.md
 
 wiki:
-  Strategy_Wiki/Signals/{signal_id}.md  例: Signals/VIX_add_risk_gate.md
-  Strategy_Wiki/Regimes/{regime_id}.md  例: Regimes/gold_bid.md
-  Strategy_Wiki/Events/{event_id}.md    例: Events/BOJ_4_28_meeting.md
-  Strategy_Wiki/Instruments/{symbol}.md 例: Instruments/US100.md
+  Strategy_Wiki/Signals/{signal_id}.md   例: Signals/VIX_add_risk_gate.md
+  Strategy_Wiki/Regimes/{regime_id}.md   例: Regimes/gold_bid.md
+  Strategy_Wiki/Events/{event_id}.md     例: Events/BOJ_4_28_meeting.md
+  Strategy_Wiki/Instruments/{symbol}.md  例: Instruments/US100.md
 
 nlm_sources:
   nlm_sources/monthly/YYYY-MM_brain_pack.md  例: nlm_sources/monthly/2026-04_brain_pack.md
@@ -181,13 +246,24 @@ Pack:      NLM パッケージ生成
 対応 NLM:       REX_Trade_Brain（新設）
 Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
 姉妹リポ:       Minato33440/Trade_System（参照のみ・編集禁止）
-データ移行元:   Trade_System/logs/gm/ → raw/
-                Trade_System/versions/distilled/ → distilled/
+データ移行元:   Trade_System/logs/gm/ → raw/（2026-04-18 移行完了）
+                Trade_System/versions/distilled/ → distilled/（2026-04-18 移行完了）
 ```
+
+---
+
+## データ移行履歴
+
+| 日付 | 内容 |
+|---|---|
+| 2026-04-18 | Trade_System/logs/gm/ を raw/ に移行（gm/ 階層は除去してフラット化） |
+| 2026-04-18 | Trade_System/versions/distilled/ を distilled/ に移行 |
+| 2026-04-18 | Trade_System 側の logs/gm/ および versions/distilled/ は削除済み |
 
 ---
 
 ## 発行
 
 作成: 2026-04-18（Advisor / Claude Opus 4.7 提言による）
+更新: 2026-04-18（データ移行完了・実構造に合わせて命名規則修正）
 管理: Minato（ボス）

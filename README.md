@@ -18,42 +18,46 @@ Trade_System  ←→  Trade_Brain
 | 目的 | ロジック最適化 | 意思決定支援 |
 | 成果物 | PF / 勝率 / MaxDD | 実トレード判断 |
 
-## リポジトリ構成
+## リポジトリ構成（2026-04-18 データ移行完了版）
 
 ```
 Trade_Brain/
-├── .CLAUDE.md                # ClaudeCode 自動読込（Brain 専用運用ルール）
-├── CLAUDE.md                 # 同上（Git 追跡用）
+├── .CLAUDE.md                  # ClaudeCode 自動読込（ミラー）
+├── CLAUDE.md                   # Brain 専用運用ルール
+├── README.md                   # 本ファイル
 ├── .gitignore
-├── .venv/                    # Python 仮想環境
-├── README.md                 # 本ファイル
+├── .venv/                      # Python 仮想環境
 │
-├── raw/                      # 生データ（Trade_System/logs/gm/ から移行予定）
-│   └── 2026/
-│       ├── daily/            # 日次ニュース・市況スナップショット
-│       └── weekly/           # 週次ポートフォリオ総括
+├── raw/                        # 生データ（Trade_System/logs/gm/ から移行済み）
+│   ├── daily/
+│   │   └── 2026/               # 2026年3月〜 日次ログ
+│   ├── weekly/
+│   │   ├── 2025/
+│   │   └── 2026/
+│   └── boss's-weeken-Report/   # 週末レポート
 │
-├── distilled/                # 蒸留済み戦略アーカイブ（Trade_System/versions/distilled/ から移行予定）
+├── distilled/                  # 蒸留済み戦略アーカイブ（移行済み）
+│   ├── 2025/
 │   └── 2026/
 │       └── distilled-gm-2026-M.md
 │
-├── Strategy_Wiki/            # Obsidian Vault 同期対象（wiki/trade_brain/ のミラー）
-│   ├── Regimes/              # レジーム辞書
-│   ├── Signals/              # シグナル辞書
-│   ├── Events/               # イベントカレンダー
-│   ├── Instruments/          # 銘柄ページ（US100/USDJPY/WTI/XAUUSD/VIX/US2Y/US10Y/BTC）
-│   ├── Patterns/             # 戦略パターン
-│   ├── Hypotheses/           # シナリオ A/B/C
-│   ├── Journal/              # 週次日記
+├── Strategy_Wiki/              # Obsidian Vault 同期対象（wiki/trade_brain/ のミラー）
+│   ├── Regimes/                # レジーム辞書
+│   ├── Signals/                # シグナル辞書
+│   ├── Events/                 # イベントカレンダー
+│   ├── Instruments/            # 銘柄ページ（US100/USDJPY/WTI/XAUUSD/VIX/US2Y/US10Y/BTC）
+│   ├── Patterns/               # 戦略パターン
+│   ├── Hypotheses/             # シナリオ A/B/C
+│   ├── Journal/                # 週次日記
 │   └── index.md
 │
-├── nlm_sources/              # NLM 投入用パッケージ
+├── nlm_sources/                # NLM 投入用パッケージ
 │   └── monthly/
 │       └── YYYY-MM_brain_pack.md
 │
 └── docs/
-    ├── STRATEGY_WIKI_GUIDE.md    # Wiki 構造ガイド
-    └── distillation_schema.md    # distilled の YAML/MD スキーマ仕様
+    ├── STRATEGY_WIKI_GUIDE.md  # Wiki 構造ガイド
+    └── distillation_schema.md  # distilled の YAML/MD スキーマ仕様
 ```
 
 ## 外部リソース参照先
@@ -69,14 +73,14 @@ Vault ルート: C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
 ```
 [Daily]
   market data / news / Grok output
-    → raw/YYYY/daily/YYYY-MM-DD.txt
+    → raw/daily/YYYY/YYYY-M-D.txt
                     ↓
 [Weekly wrap-up]
   週次ポートフォリオ総括
-    → raw/YYYY/weekly/YYYY-WW/
+    → raw/weekly/YYYY/YYYY-M-D_wkNN/
                     ↓
 [Monthly distillation]
-  Advisor が raw + weekly を蒸留
+  Advisor が raw を蒸留
     → distilled/YYYY/distilled-gm-YYYY-M.md
                     ↓
 [Wiki Ingest]
@@ -103,6 +107,13 @@ REX_Trade_Brain にクエリ: 「現在のレジームは？」
 Gold Bid / Neutral → 実行
 Equities Down      → 見送り or ロット縮小
 ```
+
+## データ移行履歴
+
+| 日付 | 内容 |
+|---|---|
+| 2026-04-18 | Trade_System から raw/ および distilled/ を移行 |
+| 2026-04-18 | gm/ 階層を除去してフラット化（raw 配下は daily / weekly / boss's-weeken-Report） |
 
 ## 管理
 

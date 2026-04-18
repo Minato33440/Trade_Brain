@@ -1,7 +1,8 @@
 # distillation_schema.md
 # distilled/YYYY/distilled-gm-YYYY-M.md のスキーマ仕様
 # 発行: 2026-04-18 / Advisor（Opus 4.7）
-# Source: 既存 Trade_System/versions/distilled/2026/distilled-gm-2026-4.md の構造を正式仕様化
+# 更新: 2026-04-18（データ移行完了）
+# Source: 既存 distilled-gm-2026-4.md の構造を正式仕様化
 
 ---
 
@@ -215,18 +216,40 @@ distilled 更新時に以下を確認:
 
 ---
 
-## 5. 既存ファイルの扱い
+## 5. データ移行履歴（2026-04-18 完了）
 
 ```
-既存:  Trade_System/versions/distilled/2025/*.md
-       Trade_System/versions/distilled/2026/*.md
+移行元:  Trade_System/versions/distilled/2025/*.md
+        Trade_System/versions/distilled/2026/*.md（distilled-gm-2026-1 〜 4）
 
-移行: git mv で Trade_Brain/distilled/ 配下に移動
-      → 既存スキーマは本仕様の原型であるため内容変更不要
-      → パス変更のみ
+移行先:  Trade_Brain/distilled/2025/*.md
+        Trade_Brain/distilled/2026/*.md
+
+状態:   ✅ 移行完了（2026-04-18）
+        既存スキーマは本仕様の原型であるため内容変更なし
+        以降の distilled 更新は本仕様に準拠
 ```
 
 ---
 
+## 6. 関連ファイルの命名規則（参考）
+
+```
+raw データ:
+  raw/daily/YYYY/YYYY-M-D.txt            （例: raw/daily/2026/2026-4-17.txt）
+  raw/weekly/YYYY/YYYY-M-D_wkNN/         （例: raw/weekly/2026/2026-4-17_wk03/）
+
+distilled:
+  distilled/YYYY/distilled-gm-YYYY-M.md  （例: distilled/2026/distilled-gm-2026-4.md）
+
+NLM 投入パッケージ:
+  nlm_sources/monthly/YYYY-MM_brain_pack.md  （例: nlm_sources/monthly/2026-04_brain_pack.md）
+```
+
+詳細な運用ルールは CLAUDE.md を参照。
+
+---
+
 *発行: 2026-04-18 / Advisor (Claude Opus 4.7)*
+*更新: 2026-04-18（データ移行完了・関連命名規則追記）*
 *次の改訂: スキーマ拡張が必要な場合は本ファイルを更新し、更新日を明記*

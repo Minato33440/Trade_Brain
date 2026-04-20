@@ -78,9 +78,9 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 | 抽出物 | 保存場所（元） | 週次フォルダでの利用先 |
 |--------|----------------|------------------------|
-| **8ペア30日プロット** | `logs/png_data/multi_pairs_plot_8.png` | `charts/Portforio-YYYY-MM-DD.png` にコピー保存 |
+| **8ペア30日プロット** | `png_data/multi_pairs_plot_8.png` | `charts/Portforio-YYYY-MM-DD.png` にコピー保存 |
 | **8ペア変動率テキスト** | ターミナル出力（取得期間・各ペア最新値・30日変化%） | `charts/YYYY-MM-DD 〜 YYYY-MM-DD.txt` として保存（日付は取得期間）|
-| **レジームスナップショット** | `logs/png_data/YYYY_MM_DD_snapshot.yaml` | `charts/YYYY_MM_DD_snapshot.yaml` にコピー保存 |
+| **レジームスナップショット** | `png_data/YYYY_MM_DD_snapshot.yaml` | `charts/YYYY_MM_DD_snapshot.yaml` にコピー保存 |
 
 取得期間のファイル名例: `2026-02-19 〜 2026-03-21.txt`（取得期間をそのままファイル名に使う）
 
@@ -127,8 +127,8 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 | 種別 | 元ファイル（例） | 週次での名前（例） |
 |------|------------------|---------------------|
-| 8ペアプロット | `logs/png_data/multi_pairs_plot_8.png` | `Portforio-2026-03-21.png` |
-| レジームYAML | `logs/png_data/2026_03_21_snapshot.yaml` | `2026_03_21_snapshot.yaml` |
+| 8ペアプロット | `png_data/multi_pairs_plot_8.png` | `Portforio-2026-03-21.png` |
+| レジームYAML | `png_data/2026_03_21_snapshot.yaml` | `2026_03_21_snapshot.yaml` |
 | 30日データテキスト | `python main.py --trade` のターミナル出力 | `2026-02-19 〜 2026-03-21.txt` |
 | 市況・ニューステキスト | Minato市況 + `python main.py --news` の出力 | `Market conditions -2026-3-21~.txt` |
 | GM戦略テキスト | review/note/meta/30日データを統合して作成 | `GM Strategy-2026-3-21.txt` |
@@ -154,8 +154,8 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 - [ ] **2. `python main.py --trade --news` でデータ取得**（⚠️ main.py から実行）
   - ターミナル出力（8ペア変動率・レジーム）を `charts/YYYY-MM-DD 〜 YYYY-MM-DD.txt` に保存
-  - `logs/png_data/multi_pairs_plot_8.png` を `charts/Portforio-YYYY-MM-DD.png` にコピー
-  - `logs/png_data/YYYY_MM_DD_snapshot.yaml` を `charts/` にコピー
+  - `png_data/multi_pairs_plot_8.png` を `charts/Portforio-YYYY-MM-DD.png` にコピー
+  - `png_data/YYYY_MM_DD_snapshot.yaml` を `charts/` にコピー
   - `--news` の出力を Minato 市況テキストと合わせて `charts/Market conditions -YYYY-M-D~.txt` に保存
 
 - [ ] **3. 当週トレードの Markdown 生成**
@@ -222,8 +222,8 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 | 週次ルート | `Trade_Brain/logs/weekly/2026/` |
 | 当週フォルダ例 | `2026-3-20_wk04/` |
 | **8ペアデータ取得（確定）** | **`python main.py --trade --news`** |
-| プロット（元） | `logs/png_data/multi_pairs_plot_8.png` |
-| スナップショット（元） | `logs/png_data/YYYY_MM_DD_snapshot.yaml` |
+| プロット（元） | `png_data/multi_pairs_plot_8.png` |
+| スナップショット（元） | `png_data/YYYY_MM_DD_snapshot.yaml` |
 | トレードCSV | `data/private_trades.csv` |
 | トレード追記 | `python src/track_trades.py add --opened-at ... --closed-at ... --symbol ... --direction long/short --size ... --entry ... --exit ... [--tag ...] [--notes ...]` |
 | 週次サマリ出力 | `python src/track_trades.py summary --start YYYY-MM-DD --end YYYY-MM-DD` |

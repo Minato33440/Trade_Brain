@@ -11,12 +11,12 @@
 
 ## How to Navigate (3-layer map)
 - Current location: Trade_Record/STATUS.md
-- Weekly index (yearly): Trade_Record/logs/gm/weekly/YYYY/_index.md
-- Weekly folder (yearly): Trade_Record/logs/gm/weekly/YYYY/YYYY-MM-DD_wkNN/
+- Weekly index (yearly): logs/weekly/YYYY/_index.md
+- Weekly folder (yearly): logs/weekly/YYYY/YYYY-MM-DD_wkNN/
   - note.md: background / narrative (long OK)
   - meta.yaml: tags / events (machine-readable)
   - review.md: Weekly Review (result + next plan)
-- distilled: Trade_Record/versions/distilled/YYYY/
+- distilled: distilled/YYYY/
 
 ## Workflow (weekly loop)
 - Week start / midweek:
@@ -24,7 +24,7 @@
 - Week end (Fri close):
   - Write "Weekly Review" into weekly folder (review.md)
   - Add 1-line link to yearly _index.md
-  - (Optional) extract distilled items for versions/distilled/
+  - (Optional) extract distilled items for distilled/
 
 ## Monday AM（12/22）ラベル付け（※行動トリガー禁止）
 - 月曜朝は薄商いで“狩り”混入率が高いので、**A/B/Cの寄り推定**だけ行う（売買判断はしない）。
@@ -99,13 +99,13 @@ updated: 2026-01-03 (JST)
 
 ## How to Navigate (3-layer map)
 - Current location: Trade_Record/STATUS.md
-- Weekly index (yearly): Trade_Record/logs/gm/weekly/YYYY/_index.md
-- Weekly folder: Trade_Record/logs/gm/weekly/YYYY/<week_id>/
+- Weekly index (yearly): logs/weekly/YYYY/_index.md
+- Weekly folder: logs/weekly/YYYY/<week_id>/
   - note.md: rolling note（facts-first）
   - meta.yaml: tags / regime / levels（machine-readable）
   - review.md: week summary + next plan
   - charts.md + charts/: chart snapshots + level-change reasons
-- distilled (monthly): Trade_Record/versions/distilled/YYYY/distilled-gm-YYYY-M.md
+- distilled (monthly): distilled/YYYY/distilled-gm-YYYY-M.md
 
 ## Workflow (weekly loop)
 - Week start: note.md に macro/regime をドラフト（Monday AM label を冒頭に）
@@ -190,10 +190,10 @@ updated: 2026-01-03 (JST)
   - [charts](./2026-2-13_wk02/charts/charts.md)
 
 ## Distilled Logs (monthly)
-- 2026-01: Trade_Record/versions/distilled/2026/distilled-gm-2026-1.md
-- 2026-02: Trade_Record/versions/distilled/2026/distilled-gm-2026-2.md
-- 2026-03: Trade_Record/versions/distilled/2026/distilled-gm-2026-3.md
-- 2026-04: Trade_Record/versions/distilled/2026/distilled-gm-2026-4.md
+- 2026-01: distilled/2026/distilled-gm-2026-1.md
+- 2026-02: distilled/2026/distilled-gm-2026-2.md
+- 2026-03: distilled/2026/distilled-gm-2026-3.md
+- 2026-04: distilled/2026/distilled-gm-2026-4.md
 
 ## 3-scenario response（週の骨格）
 A) Risk-on confirmation（上抜け“本物”）
@@ -219,10 +219,10 @@ C) Risk-off re-ignition（失速）
   - Add risk: US100 24643維持＋24700回復＆VIX<25（深押し限定／追撃禁止）
   - Reduce risk: US100 daily close <23913 OR VIX>30定着 OR WTI>100 OR Gold<4900
 - Links:
-  - [note](./logs/gm/weekly/2026/2026-3-7_wk01/note.md)
-  - [meta](./logs/gm/weekly/2026/2026-3-7_wk01/meta.yaml)
-  - [review](./logs/gm/weekly/2026/2026-3-7_wk01/review.md)
-  - [charts](./logs/gm/weekly/2026/2026-3-7_wk01/charts/charts.md)
+  - [note](./logs/weekly/2026/2026-3-7_wk02/note.md)
+  - [meta](./logs/weekly/2026/2026-3-7_wk02/meta.yaml)
+  - [review](./logs/weekly/2026/2026-3-7_wk02/review.md)
+  - [charts](./logs/weekly/2026/2026-3-7_wk02/charts/charts.md)
 
 ### 2026-3-20_wk04（2026-03-16 → 2026-03-20）
 - Regime: Geopolitical Risk-Off + Energy Shock（FOMC_hold_hawkish + US_China_postponed + IEA_oil_6months + WTI_extreme_volatile + USDJPY_v_recovery + JP225_below_fib236）
@@ -231,10 +231,10 @@ C) Risk-off re-ignition（失速）
   - Add risk: 米中首脳会談再設定確認後 US100 22,200$維持かつ反発確認（追撃禁止）
   - Reduce risk: US100 daily close <22,200 OR VIX>30定着 OR WTI再高騰（ホルムズ再封鎖）
 - Links:
-  - [note](./logs/gm/weekly/2026/2026-3-20_wk04/note.md)
-  - [meta](./logs/gm/weekly/2026/2026-3-20_wk04/meta.yaml)
-  - [review](./logs/gm/weekly/2026/2026-3-20_wk04/review.md)
-  - [charts](./logs/gm/weekly/2026/2026-3-20_wk04/charts.md)
+  - [note](./logs/weekly/2026/2026-3-20_wk04/note.md)
+  - [meta](./logs/weekly/2026/2026-3-20_wk04/meta.yaml)
+  - [review](./logs/weekly/2026/2026-3-20_wk04/review.md)
+  - [charts](./logs/weekly/2026/2026-3-20_wk04/charts.md)
 
 ### 2026-3-27_wk05（2026-03-23 → 2026-03-27）
 - Regime: Geopolitical Risk-Off + Energy Shock（VIX_30_breach + US100_fib382_approaching + USDJPY_toward_161 + WTI_near_100 + stagflation_week_ahead + iran_4_6_deadline）
@@ -243,10 +243,10 @@ C) Risk-off re-ignition（失速）
   - Add risk: US100 22,000〜22,222底打ち確認＋VIX鎮静（<27）＋イラン緊張緩和（追撃禁止）
   - Reduce risk: US100 daily close <22,000 OR VIX>35定着 OR WTI急騰（120$）OR イラン本格軍事衝突
 - Links:
-  - [note](./logs/gm/weekly/2026/2026-3-27_wk05/note.md)
-  - [meta](./logs/gm/weekly/2026/2026-3-27_wk05/meta.yaml)
-  - [review](./logs/gm/weekly/2026/2026-3-27_wk05/review.md)
-  - [charts](./logs/gm/weekly/2026/2026-3-27_wk05/charts.md)
+  - [note](./logs/weekly/2026/2026-3-27_wk05/note.md)
+  - [meta](./logs/weekly/2026/2026-3-27_wk05/meta.yaml)
+  - [review](./logs/weekly/2026/2026-3-27_wk05/review.md)
+  - [charts](./logs/weekly/2026/2026-3-27_wk05/charts.md)
 
 ### 2026-4-10_wk02（2026-04-07 → 2026-04-11）
 - Regime: Neutral（equities=up / volatility=normal / oil=range / gold=off / crypto=range / yields=rising）← Equities Down/Oil Surge から転換
@@ -255,10 +255,10 @@ C) Risk-off re-ignition（失速）
   - Add risk: 4/11協議結果確認（合意 or 前向き）+ VIX<20維持 + US100 25,000維持（追撃禁止・分割限定）
   - Reduce risk: US100 D1 close <24,300 OR VIX>25再到達 OR 協議決裂報道
 - Links:
-  - [note](./logs/gm/weekly/2026/2026-4-10_wk02/note.md)
-  - [meta](./logs/gm/weekly/2026/2026-4-10_wk02/meta.yaml)
-  - [review](./logs/gm/weekly/2026/2026-4-10_wk02/review.md)
-  - [charts](./logs/gm/weekly/2026/2026-4-10_wk02/charts.md)
+  - [note](./logs/weekly/2026/2026-4-10_wk02/note.md)
+  - [meta](./logs/weekly/2026/2026-4-10_wk02/meta.yaml)
+  - [review](./logs/weekly/2026/2026-4-10_wk02/review.md)
+  - [charts](./logs/weekly/2026/2026-4-10_wk02/charts.md)
 
 
 ## Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
@@ -307,7 +307,7 @@ created: 2026-04-05 (JST)
 
 ## Previous (archived briefs)
 - Weekly Brief | 2026-3-27_wk05（2026-03-23 → 2026-03-27）
-  - see: logs/gm/weekly/2026/2026-3-27_wk05/
+  - see: logs/weekly/2026/2026-3-27_wk05/
 
 ## Weekly Brief | 2026-3-27_wk05（2026-03-23 → 2026-03-27）
 created: 2026-03-29 (JST)
@@ -354,7 +354,7 @@ created: 2026-03-29 (JST)
 
 ## Previous (archived briefs)
 - Weekly Brief | 2026-3-20_wk04（2026-03-16 → 2026-03-20）
-  - see: logs/gm/weekly/2026/2026-3-20_wk04/
+  - see: logs/weekly/2026/2026-3-20_wk04/
 
 
 ## Weekly Brief | 2026-3-20_wk04（2026-03-16 → 2026-03-20）
@@ -404,7 +404,7 @@ created: 2026-03-21 (JST)
 
 ## Previous (archived briefs)
 - Weekly Brief | 2026-3-13_wk03（2026-03-09 → 2026-03-13）
-  - see: logs/gm/weekly/2026/2026-3-13_wk03/
+  - see: logs/weekly/2026/2026-3-13_wk03/
 
 
 ## Weekly Brief | 2026-4-17_wk03（2026-04-14 → 2026-04-18）
@@ -492,4 +492,4 @@ created: 2026-04-12 (JST)
 
 ## Previous (archived briefs)
 - Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
-  - see: logs/gm/weekly/2026/2026-4-3_wk01/
+  - see: logs/weekly/2026/2026-4-3_wk01/

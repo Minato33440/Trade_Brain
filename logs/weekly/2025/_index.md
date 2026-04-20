@@ -20,4 +20,4 @@ GM Weekly Index
 
 ## Distilled (Monthly)
 - 2025:
-  - [distilled-gm-2025-12](../../../../versions/distilled/2025/distilled-gm-2025-12.md)
+  - [distilled-gm-2025-12](../../../../distilled/2025/distilled-gm-2025-12.md)

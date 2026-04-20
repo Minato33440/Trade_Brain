@@ -97,7 +97,7 @@ GM_TITLE_KEYWORDS: Tuple[str, ...] = (
 
 # ── ログ出力先（ROOT_DIR 基準で統一） ─────────────────
 LOGS_DIR: Path = ROOT_DIR / "logs"
-PNG_DATA_DIR: Path = LOGS_DIR / "png_data"
+PNG_DATA_DIR: Path = ROOT_DIR / "png_data"
 TEXT_LOG_DIR: Path = LOGS_DIR / "text_log"
 
 # ── parquet データ保存先（data_fetch.fetch_multi_tf が使用） ───

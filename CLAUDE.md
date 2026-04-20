@@ -93,7 +93,7 @@ STEP 8: 作業開始
 
 ---
 
-## 実ディレクトリ構造（2026-04-18 週次運用ファイル統合版）
+## 実ディレクトリ構造（2026-04-20 raw/ → logs/ リネーム反映版）
 
 ```
 Trade_Brain/
@@ -103,7 +103,7 @@ Trade_Brain/
 ├── .gitignore
 ├── .venv/
 │
-├── raw/                        # 生データ（Trade_System/logs/gm/ から移行済み）
+├── logs/                        # 生データ（Trade_System/logs/gm/ から移行済み・2026-04-20 raw/ からリネーム）
 │   ├── daily/
 │   │   └── 2026/               # 2026年3月〜 日次ログ（2025は存在しない）
 │   │       ├── 2026-3-2.txt
@@ -180,22 +180,23 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
 
 ## ディレクトリの役割と変更ルール
 
-### raw/ — 生データ
+### logs/ — 生データ
 
 ```
 原則: 読み取り専用。追記のみ可（daily ログ追加）。
-構造: raw/ 直下に daily / weekly / boss's-weeken-Report/ の 3 種類
+構造: logs/ 直下に daily / weekly / boss's-weeken-Report/ の 3 種類
 既存ファイルの内容書き換えは禁止。
 
 命名:
-  raw/daily/YYYY/YYYY-M-D.txt
-  raw/weekly/YYYY/YYYY-M-D_wkNN/
-  raw/boss's-weeken-Report/{任意ファイル名}
+  logs/daily/YYYY/YYYY-M-D.txt
+  logs/weekly/YYYY/YYYY-M-D_wkNN/
+  logs/boss's-weeken-Report/{任意ファイル名}
 
 注意:
   - daily は 2026 年 3 月開始のため、2025 は存在しない（意図通り）
   - weekly は 2025 / 2026 両方存在
   - boss's-weeken-Report/ は既存命名維持（タイポだが git 履歴保護のため変更しない）
+  - 2026-04-20: 旧名は raw/ だったが、データ性質に合わせ logs/ にリネーム
 ```
 
 ### distilled/ — 蒸留済みアーカイブ
@@ -312,8 +313,8 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
 ### A. Daily Ingest（単純な daily ログ追加）
 
 ```
-1. raw/daily/YYYY/YYYY-M-D.txt を配置（追記のみ）
-2. rtk git add raw/daily/YYYY/YYYY-M-D.txt
+1. logs/daily/YYYY/YYYY-M-D.txt を配置（追記のみ）
+2. rtk git add logs/daily/YYYY/YYYY-M-D.txt
 3. rtk git commit -m "Ingest: daily YYYY-M-D"
 4. rtk git push
 ```
@@ -333,20 +334,20 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
   1. 提供データ確認（市況 + main.py --trade --news 出力 + トレード結果）
   2. python main.py --trade --news 実行
   3. track_trades.py summary で当週トレード Markdown 生成
-  4. 週次フォルダ raw/weekly/YYYY/YYYY-M-D_wkNN/ 作成
+  4. 週次フォルダ logs/weekly/YYYY/YYYY-M-D_wkNN/ 作成
   5. charts/ へのファイル配置
   6. meta.yaml / review.md / note.md / charts.md / trade_results.md 作成
   7. インデックス更新:
-     - raw/weekly/YYYY/_index.md
+     - logs/weekly/YYYY/_index.md
      - docs/STATUS.md 末尾に Weekly Brief 追記
      - docs/Trade-Main.md の Weekly Index 追加
      - distilled/YYYY/distilled-gm-YYYY-M.md 追記（月内同一ファイル）
   8. Git 更新（RTK 必須）:
-     rtk git add logs/gm/weekly/YYYY/YYYY-M-D_wkNN/ \
-                 logs/gm/weekly/YYYY/_index.md \
+     rtk git add logs/weekly/YYYY/YYYY-M-D_wkNN/ \
+                 logs/weekly/YYYY/_index.md \
                  docs/STATUS.md \
                  docs/Trade-Main.md \
-                 versions/distilled/YYYY/ \
+                 distilled/YYYY/ \
                  data/private_trades.csv
      rtk git commit -m "weekly: YYYY-M-D_wkNN review + trade_results + charts"
      rtk git push origin main
@@ -355,7 +356,7 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
 ### C. Monthly Distillation（月末集約）
 
 ```
-1. 当月の週次 raw を distilled/YYYY/distilled-gm-YYYY-M.md に蒸留
+1. 当月の週次 logs を distilled/YYYY/distilled-gm-YYYY-M.md に蒸留
    - regime / decision / evidence / implication / tags
 2. Strategy_Wiki/ の以下を更新:
    - Regimes/ ← regime 転換があれば追記
@@ -371,10 +372,10 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
 ## 命名規則
 
 ```
-raw:
-  raw/daily/YYYY/YYYY-M-D.txt            例: raw/daily/2026/2026-4-17.txt
-  raw/weekly/YYYY/YYYY-M-D_wkNN/         例: raw/weekly/2026/2026-4-17_wk03/
-  raw/boss's-weeken-Report/{ファイル名}  （既存命名維持）
+logs:
+  logs/daily/YYYY/YYYY-M-D.txt            例: logs/daily/2026/2026-4-17.txt
+  logs/weekly/YYYY/YYYY-M-D_wkNN/         例: logs/weekly/2026/2026-4-17_wk03/
+  logs/boss's-weeken-Report/{ファイル名}  （既存命名維持）
 
 distilled:
   distilled/YYYY/distilled-gm-YYYY-M.md  例: distilled/2026/distilled-gm-2026-4.md
@@ -407,14 +408,14 @@ rtk git pull --rebase
 
 # 作業タイプ別のステージング
 # A. Daily Ingest
-rtk git add raw/daily/YYYY/
+rtk git add logs/daily/YYYY/
 
 # B. Weekly Update
-rtk git add logs/gm/weekly/YYYY/YYYY-M-D_wkNN/ \
-            logs/gm/weekly/YYYY/_index.md \
+rtk git add logs/weekly/YYYY/YYYY-M-D_wkNN/ \
+            logs/weekly/YYYY/_index.md \
             docs/STATUS.md \
             docs/Trade-Main.md \
-            versions/distilled/YYYY/ \
+            distilled/YYYY/ \
             data/private_trades.csv
 
 # C. Docs Update
@@ -459,7 +460,7 @@ Pack:      NLM パッケージ生成
 
 Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
 姉妹リポ:       Minato33440/Trade_System（参照のみ・編集禁止）
-データ移行元:   Trade_System/logs/gm/ → raw/（2026-04-18 移行完了）
+データ移行元:   Trade_System/logs/gm/ → raw/ → logs/（2026-04-18 移行・2026-04-20 リネーム完了）
                 Trade_System/versions/distilled/ → distilled/（2026-04-18 移行完了）
 ```
 
@@ -475,6 +476,9 @@ Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
 | 2026-04-18 | NLM 全面再構築: 旧 REX_Trade_Brain を MCP 切り離し、新規 2 件作成 |
 | 2026-04-18 | Trade_System から週次運用ファイル 3 件を移設: |
 |            | docs/STATUS.md / docs/Trade-Main.md / docs/WEEKLY_UPDATE_WORKFLOW.md |
+| 2026-04-20 | raw/ を logs/ にリネーム（データ性質に合わせた命名変更） |
+| 2026-04-20 | src/ 内スクリプトのパス参照を logs/ 構造に整合（daily_report_parser / data_fetch / settings 等） |
+| 2026-04-20 | WEEKLY_UPDATE_WORKFLOW.md / CLAUDE.md / README.md の全パス表記を実構造に整合 |
 
 ---
 
@@ -485,5 +489,6 @@ Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
   - 2026-04-18 朝: 初版
   - 2026-04-18 夜: データ移行完了・実構造に合わせて命名規則修正
   - 2026-04-18 夜（再）: 週次運用ファイル 3 件統合・RTK ルール反映・NLM ID 正式記載
+  - 2026-04-20: raw/ → logs/ リネーム反映・全パス整合・WEEKLY_UPDATE_WORKFLOW 同期
 
 管理: Minato（ボス）

@@ -1,7 +1,7 @@
 # CLAUDE.md — Trade_Brain
 # このファイルは ClaudeCode が Trade_Brain リポジトリで作業する際に自動で読み込まれる
 # Trade_System の CLAUDE.md とは別運用
-# 更新: 2026-04-18（週次運用ファイル 3 件統合版・RTK ルール反映）
+# 更新: 2026-04-20（raw/ → logs/ リネーム反映・週次パス整合版）
 
 ---
 
@@ -54,7 +54,7 @@ git push
 
 # ✅ 正しい
 rtk git status
-rtk git add logs/gm/weekly/...
+rtk git add logs/weekly/...
 rtk git commit -m "msg"
 rtk git push origin main
 ```

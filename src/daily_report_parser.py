@@ -1,4 +1,4 @@
-202022"""日次GMレポートからキーワード・数値・トレンドブロックをパースする（半自動スクリプト）。
+"""日次GMレポートからキーワード・数値・トレンドブロックをパースする（半自動スクリプト）。
 
 週末更新時に review.md / meta.yaml / distilled 編集用の構造化データを出力する。
 入力: 基準日（例: 2026-3-14）または週ID
@@ -25,8 +25,9 @@ if str(_repo_root) not in __import__("sys").path:
 
 from configs.settings import LOGS_DIR  # noqa: E402
 
-# 日次レポート配置（logs/gm/daily/YYYY/gm_report/）
-DAILY_REPORT_BASE = LOGS_DIR / "gm" / "daily"
+# 日次レポート配置（logs/daily/YYYY/）
+# 2026-04-20: Trade_Brain リポ構造に合わせ gm/ 階層および gm_report/ サブディレクトリを除去
+DAILY_REPORT_BASE = LOGS_DIR / "daily"
 
 # GMキーワード（地政学・イベント検出用）
 GM_KEYWORDS = (
@@ -112,7 +113,8 @@ def _week_range(ref_date: date) -> Tuple[date, date]:
 
 def _list_daily_files_for_week(year: int, mon: date, fri: date) -> List[Path]:
     """対象週の日次レポートファイル一覧を取得。"""
-    base = DAILY_REPORT_BASE / str(year) / "gm_report"
+    # 2026-04-20: Trade_Brain 構造は logs/daily/YYYY/ 直下フラット配置
+    base = DAILY_REPORT_BASE / str(year)
     if not base.exists():
         return []
     candidates: List[Tuple[date, Path]] = []

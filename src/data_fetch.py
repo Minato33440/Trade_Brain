@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import os
+import sys
 import time
 from datetime import date, datetime, timedelta
 from typing import Optional
@@ -14,11 +15,14 @@ import pandas as pd
 import yfinance as yf
 from dotenv import load_dotenv
 
-load_dotenv()
+# リポジトリルートを path に追加（configs.settings を import するため）
+_repo_root = Path(__file__).resolve().parents[1]
+if str(_repo_root) not in sys.path:
+    sys.path.insert(0, str(_repo_root))
 
-# プロジェクトルート
-ROOT_DIR = Path(__file__).resolve().parent.parent
-RAW_DATA_DIR = ROOT_DIR / "data" / "raw"
+from configs.settings import RAW_DATA_DIR  # noqa: E402
+
+load_dotenv()
 
 # APIキー読み込み
 POLYGON_API_KEY: Optional[str] = (

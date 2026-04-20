@@ -41,7 +41,7 @@ if not (usd_jpy.empty or xau_usd.empty or vix.empty or wti.empty):
         for _ in range(forecast_days)
     ]
     forecast_wti = [df["WTI"].iloc[-1]] + [
-        df["WTI"].ilさｋさｋoc[-1] * (1 + np.random.normal(0, vol_wti))
+        df["WTI"].iloc[-1] * (1 + np.random.normal(0, vol_wti))
         for _ in range(forecast_days)
     ]
 

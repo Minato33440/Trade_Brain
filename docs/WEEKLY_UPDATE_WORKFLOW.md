@@ -2,6 +2,11 @@
 
 週末に「来週向け」の週次フォルダ `Y-M-D_wk--` を更新する際の手順を整理。Rex 自身が後から見返して実行できるよう、入力元・出力先・チェック項目を明示する。
 
+> **重要 (2026-04-20 更新)**: 本リポ Trade_Brain の実構造に合わせてパス表記を全並フラット化した：
+> - `logs/gm/weekly/` → `logs/weekly/`（`gm/` 階層除去）
+> - `logs/gm/daily/` → `logs/daily/`（同上）
+> - `versions/distilled/` → `distilled/`（`versions/` 除去）
+
 ---
 
 ## 🦀 RTK（Rust Token Killer）使用ルール（ClaudeCode 必読・全工程共通）
@@ -18,7 +23,7 @@ python main.py --trade --news
 
 # ✅ 正しい
 rtk git status
-rtk git add logs/gm/weekly/...
+rtk git add logs/weekly/...
 rtk git commit -m "msg"
 rtk git push origin main
 python main.py --trade --news   # ← python は rtk 対象外（パススルー）
@@ -104,7 +109,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 ## 3. 先週フォーマットに基づく「Y-M-D_wk--」用ファイル新規作成
 
-対象フォルダ: `logs/gm/weekly/2026/YYYY-M-D_wkNN/`（例: `2026-3-20_wk04`）。
+対象フォルダ: `logs/weekly/2026/YYYY-M-D_wkNN/`（例: `2026-3-20_wk04`）。
 
 「先週」の同フォルダをテンプレートにし、以下を新規作成 or 更新する。
 
@@ -160,7 +165,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
   - 同じ出力から「Trades of the Week」用の要約を抜き出し
 
 - [ ] **4. 週次フォルダの確認・作成**
-  - `logs/gm/weekly/2026/YYYY-M-D_wkNN/` を新規作成（Minato がフォルダ作成）
+  - `logs/weekly/2026/YYYY-M-D_wkNN/` を新規作成（Minato がフォルダ作成）
   - `charts/` サブフォルダを確認
 
 - [ ] **5. charts/ へのファイル配置**（手順2で既に実施済みなら確認のみ）
@@ -178,10 +183,10 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
   - trade_results.md: 手順 3 の Markdown をそのまま保存
 
 - [ ] **7. インデックス・ステータス・distilled の更新**（ClaudeCode が担当）
-  - `logs/gm/weekly/2026/_index.md`: 当週エントリを末尾に追加（Regime / 1行 / Key gates / Links）
+  - `logs/weekly/2026/_index.md`: 当週エントリを末尾に追加（Regime / 1行 / Key gates / Links）
   - `docs/STATUS.md`: 最新 "Weekly Brief | YYYY-M-D_wkNN" セクションを末尾に追加
   - `docs/Trade-Main.md`: ① "2026 Weekly Index" に当週エントリを追加 ② "Distilled Logs" リンクを更新 ③ 末尾に "Weekly Brief" セクションを追加
-  - `versions/distilled/2026/distilled-gm-2026-N.md`: 当週の distilled エントリを追記 or 新規作成
+  - `distilled/2026/distilled-gm-2026-N.md`: 当週の distilled エントリを追記 or 新規作成
     - **命名ルール（重要）**: N は月番号。**同月内は必ず同じファイルに追記する。新月になった時点で新規ファイルを作成する。**
       - 例: 3月第1〜5週はすべて `distilled-gm-2026-3.md` に追記
       - 例: 4月第1週から `distilled-gm-2026-4.md` を新規作成
@@ -191,22 +196,22 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 - [ ] **8. Git 更新**
   - 以下を一括ステージ（`charts/` 内 PNG は .gitignore で自動除外、テキスト・YAML のみ追跡される）
     ```
-    git add logs/gm/weekly/2026/YYYY-M-D_wkNN/ \
-            logs/gm/weekly/2026/_index.md \
-            docs/STATUS.md \
-            docs/Trade-Main.md \
-            versions/distilled/2026/ \
-            data/private_trades.csv
+    rtk git add logs/weekly/2026/YYYY-M-D_wkNN/ \
+                logs/weekly/2026/_index.md \
+                docs/STATUS.md \
+                docs/Trade-Main.md \
+                distilled/2026/ \
+                data/private_trades.csv
     ```
   - コミット＆プッシュ
     ```
-    git commit -m "weekly: YYYY-M-D_wkNN review + trade_results + charts"
-    git push origin main
+    rtk git commit -m "weekly: YYYY-M-D_wkNN review + trade_results + charts"
+    rtk git push origin main
     ```
   - **charts/ の Git 追跡ルール（2026-03-21〜）**
     - `*.txt` / `*.yaml` / `*.md` → **追跡対象**（上記 `git add` で自動包含）
     - `*.png` → **ローカル専用**（`.gitignore` で除外済み）
-    - 新ファイルを charts/ に追加した場合も `git add YYYY-M-D_wkNN/` で一括追加できる
+    - 新ファイルを charts/ に追加した場合も `rtk git add YYYY-M-D_wkNN/` で一括追加できる
 
 ---
 
@@ -214,7 +219,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 | 用途 | パス or コマンド |
 |------|------------------|
-| 週次ルート | `REX_Trade_System/logs/gm/weekly/2026/` |
+| 週次ルート | `Trade_Brain/logs/weekly/2026/` |
 | 当週フォルダ例 | `2026-3-20_wk04/` |
 | **8ペアデータ取得（確定）** | **`python main.py --trade --news`** |
 | プロット（元） | `logs/png_data/multi_pairs_plot_8.png` |

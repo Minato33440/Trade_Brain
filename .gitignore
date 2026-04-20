@@ -1,1 +1,34 @@
+# .gitignore
+.mypy_cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 .env
+configs/*.yaml
+data/private_*.csv
+*.log
+env/
+*.swp
+tests/output/
+
+# 生成物・手動コピー元（API-bot が今後も出力する可能性あり）
+png_data/
+logs/png_data/
+
+# 週次 charts/ の PNG のみ除外（バイナリ/容量）。テキスト・YAML は追跡する
+logs/gm/weekly/*/*/charts/*.png
+# Node パッケージ
+node_modules/
+
+# 会話ログ（テキスト履歴）
+logs/text_log/
+
+# バックテスト生成チャート（PNG）
+logs/plots/
+
+# logs/gm/ 以外の全サブディレクトリの .png を除外（将来の新ディレクトリも追加すること）
+logs/1h_windows/
+logs/base_scan/**/*.png
+logs/debug/
+logs/structure_plots/

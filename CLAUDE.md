@@ -1,7 +1,8 @@
 # CLAUDE.md — Trade_Brain
 # このファイルは ClaudeCode が Trade_Brain リポジトリで作業する際に自動で読み込まれる
 # Trade_System の CLAUDE.md とは別運用
-# 更新: 2026-04-20（raw/ → logs/ リネーム反映・週次パス整合版）
+# 更新: 2026-04-25（役割別編集経路の追加 + 過去事故事例の参照）
+# Claude.ai セッション（Advisor 等）も最初に手動で読むこと
 
 ---
 
@@ -74,15 +75,24 @@ rtk git push origin main
 - `~/.claude/CLAUDE.md` の指示経由で ClaudeCode が手動で `rtk` を付ける方式が唯一の動作モード
 - 詳細: `docs/WEEKLY_UPDATE_WORKFLOW.md` §0（RTK 使用ルール）
 
+### RTK の適用範囲（重要 / 2026-04-25 明記）
+
+- **RTK は ClaudeCode（ローカル端末）専用ルール**
+- **Claude.ai セッション（Advisor 等）が GitHub MCP を使う場合は RTK 不要**
+  → ローカル `git` コマンドを通さないため、RTK プレフィックスは適用されない
+- 詳細は本ファイルの §役割別の編集経路 を参照
+
 ---
 
 ## セッション開始手順
 
 ```
-STEP 1: このファイル（CLAUDE.md）を読む ← 自動
+STEP 1: このファイル（CLAUDE.md）を読む
+        ← ClaudeCode は自動読込
+        ← Claude.ai セッション（Advisor）は手動で必読
 STEP 2: docs/STATUS.md の末尾 Weekly Brief を読む（現在の市況・regime・gates を把握）
 STEP 3: docs/Trade-Main.md の Weekly Index 末尾を確認（今週の運用方針）
-STEP 4: docs/WEEKLY_UPDATE_WORKFLOW.md を確認（週末更新タスクの場合は必読）
+STEP 4: docs/WEEKLY_UPDATE_WORKFLOW.md を確認(週末更新タスクの場合は必読)
 STEP 5: docs/distillation_schema.md を確認（スキーマが最新か）
 STEP 6: docs/STRATEGY_WIKI_GUIDE.md を確認（Wiki 運用時のみ）
 STEP 7: 直近の distilled/YYYY/distilled-gm-YYYY-M.md を確認（蒸留データ最新状態）
@@ -302,8 +312,9 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
 5. Strategy_Wiki/ の更新は Vault 側を Source of Truth とする（リポはミラー）
 6. Trade_System のファイルをこのリポから参照・編集しない（分離原則）
 7. エラーが出たら自分で「想像で」修正しない。ボスに報告して停止
-8. すべての git コマンドは rtk プレフィックスを必須とする（RTK ルール）
+8. すべての git コマンドは rtk プレフィックスを必須とする（RTK ルール / ClaudeCode 向け）
 9. 週末 Git 更新は必ず docs/WEEKLY_UPDATE_WORKFLOW.md のチェックリストに従う
+10. Claude.ai セッションは GitHub MCP のみ使用（filesystem write 系禁止 / 詳細は §役割別の編集経路）
 ```
 
 ---
@@ -400,7 +411,7 @@ charts（週次フォルダ内）:
 
 ---
 
-## Git コミット手順（RTK 必須）
+## Git コミット手順（ClaudeCode のローカル作業向け・RTK 必須）
 
 ```bash
 # ⚠️ 必ず最初に実行
@@ -447,6 +458,68 @@ Pack:      NLM パッケージ生成
 
 ---
 
+## 役割別の編集経路（重要・事故防止 / 2026-04-25 追加）
+
+### 編集経路の分離
+
+| 役割 | 編集ツール | コミット経路 |
+|---|---|---|
+| ClaudeCode（ローカル端末起動） | filesystem 直接 | `rtk git pull --rebase` → `rtk git commit` → `rtk git push`（RTK 必須） |
+| Claude.ai Advisor | **GitHub MCP のみ使用** | `get_file_contents` で SHA → `create_or_update_file`（content 全文渡し / RTK 不要） |
+
+### 運用前提（ボス 2026-04-25 確認）
+
+- 全リポ（Trade_System / Trade_Brain / REX_Brain_Vault / Setona_HP / Second_Brain_Lab）が
+  Git リポ化 + Claude MCP 接続済み → 全書き込みは GitHub MCP 経由で完結する
+- ボスは Claude.ai セッション中に ClaudeCode を動かさない（二系統 push の同時発生なし）
+- Claude.ai セッション開始時は `nothing to commit, working tree clean` をボスが事前確認
+- フローは「Claude.ai が GitHub MCP で push → ボスがローカルで pull」の単方向で完結
+
+### Claude.ai セッションの絶対ルール
+
+GitHub MCP 接続リポ配下のファイルを **filesystem MCP の `write_file` / `edit_file`
+で書き換えてはいけない**。
+
+許容される filesystem MCP 操作（read 系のみ）:
+- `read_text_file` / `read_multiple_files` / `read_file`
+- `list_directory` / `get_file_info` / `read_media_file`
+
+禁止される filesystem MCP 操作:
+- `write_file` / `edit_file`（GitHub 接続リポでは事故の温床）
+
+理由:
+1. ボスが pull するタイミングを Claude.ai 側が制御できない（diverge リスク）
+2. `edit_file` は日本語 MD ファイルで連鎖失敗のリスク（過去事例参照）
+3. GitHub MCP `create_or_update_file` の全文渡しなら文字化けバイト混入なく
+   ファイル整合性が一括保証される
+
+### RTK プレフィックスの適用範囲（重要）
+
+- **ClaudeCode（ローカル）**: すべての `git` コマンドに `rtk` 必須
+- **Claude.ai Advisor（GitHub MCP）**: ローカル `git` コマンドを通さないため **RTK 不要**
+  → `create_or_update_file` / `get_file_contents` などの MCP コマンドを直接使う
+
+### 編集失敗時の停止ルール
+
+**1 回失敗したら即停止してボスに報告**。連鎖試行で被害が雪だるま式に拡大する。
+2 回目を試すならアプローチを変える（例: edit_file → 全文渡し push に切替）。
+それでも失敗するならボスに報告して停止。
+
+### 過去事故事例（姉妹リポ Trade_System で発生）
+
+詳細は `Minato33440/Trade_System/CLAUDE.md` の §役割別の編集経路 を参照。要約:
+
+- **2026-04-23**: 第六代 Evaluator が `filesystem:edit_file` の連鎖失敗で
+  `MTF_INTEGRITY_QA.md` 末尾の区切り線・見出しを破損。原因は文字化けバイトが
+  oldText マッチを通らなかったこと
+- **2026-04-25**: Advisor が `filesystem:edit_file` でローカルのみ編集 →
+  リモート未反映 → ボスが `git checkout` で破棄して GitHub MCP push し直し
+
+両事故とも本セクションのルール（GitHub MCP only / 1 回失敗で即停止）で
+予防可能だった。Trade_Brain でも同種のリスクは存在するため、本ルールは厳守する。
+
+---
+
 ## 外部リソース参照先
 
 ```
@@ -490,5 +563,6 @@ Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
   - 2026-04-18 夜: データ移行完了・実構造に合わせて命名規則修正
   - 2026-04-18 夜（再）: 週次運用ファイル 3 件統合・RTK ルール反映・NLM ID 正式記載
   - 2026-04-20: raw/ → logs/ リネーム反映・全パス整合・WEEKLY_UPDATE_WORKFLOW 同期
+  - 2026-04-25: 役割別編集経路セクション追加・過去事故事例の参照・RTK 適用範囲の明記
 
 管理: Minato（ボス）

@@ -1,3 +1,24 @@
+wk04（2026-4-24）週末 Git 更新 — 完了サマリ
+
+作成ファイル（週次フォルダ）
+
+meta.yaml — スナップショット・シグナル・ゲート
+review.md — 週次レビュー（結論〜6セクション）
+note.md — マクロ/レジーム詳細メモ
+charts.md — チャートファイル一覧
+trade_results.md — 0トレード記録
+[charts/2026-03-26 〜 2026-04-25.txt](logs/weekly/2026/2026-4-24_wk04/charts/2026-03-26 〜 2026-04-25.txt) — 8ペア30日データ
+charts/2026_04_25_snapshot.yaml
+[charts/Market conditions -2026-4-24~.txt](logs/weekly/2026/2026-4-24_wk04/charts/Market conditions -2026-4-24~.txt) — ボス市況テキスト
+[charts/GM Strategy-2026-4-24.txt](logs/weekly/2026/2026-4-24_wk04/charts/GM Strategy-2026-4-24.txt) — ①〜⑨統合戦略テキスト
+インデックス更新
+
+logs/weekly/2026/_index.md — wk04エントリ追加
+docs/STATUS.md — Weekly Brief | 2026-4-24_wk04 末尾追記
+docs/Trade-Main.md — 2026 Weekly Index に wk03/wk04 追加 + Weekly Brief追記
+distilled/2026/distilled-gm-2026-4.md — wk04 distilled エントリ追記
+
+
 ================================================================
 GM Strategy | 2026-4-24_wk04（2026-04-21 → 2026-04-25）
 作成: ClaudeCode / 参照: Boss市況 + 実データ（2026-04-25 snapshot）

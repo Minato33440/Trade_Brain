@@ -122,3 +122,43 @@
   - Gold：5,060〜5,070ドル目標。買いシグナル継続。
   - 長期ポートフォリオは売り不要。積立加速継続。
 - tags: [gm, monthly_distilled, 2026-04, 2026-4-17_wk03, signal:hormuz_full_opening, signal:US100_blue2_breakout, signal:regime_gold_bid, signal:WTI_hormuz_decline, signal:BOJ_4_28_no_hike, signal:gold_bid_5060_target, signal:TSMC_60pct_beat, signal:BTC_strong, event:ceasefire_4_22_deadline, event:BOJ_4_28_meeting, event:GW_intervention_risk_4_29, risk:US100_27000_resistance, risk:WTI_90_negation_signal, risk:GW_yen_intervention]
+
+---
+
+## 2026-4-24_wk04（2026-04-21 → 2026-04-25）
+- regime: Gold Bid（equities=up / volatility=normal / oil=range / gold=bid / crypto=strong / yields=falling）← wk03から継続。WTI 90$gate超過・VIX 18.71と微超過も構造は維持。
+- decision:
+  - TINA_thesis_confirmed=on（米国が世界No.1の産油国（日量2,191万バレル=サウジ・ロシア計の約2倍）という事実が再評価。中東情勢悪化でも物価が再加速するまでは株高継続の見立てが機能中。年初〜3/31調整の終了を確認）
+  - US100_target_achieved=on（27,303$。wk03比+2.4%。wk03ターゲット27,000〜27,250を達成。ボス「上は追わない、押し目を待つ」。26,400（赤丸）→26,840フロー。上値28,000。）
+  - BOJ_4_28_no_hike_final=on（日経新聞4/21報道で利上げなしが確定。植田総裁会見15:30のトーン（6/16利上げ示唆有無）が最大焦点。4/24日本CPI+1.5%（世界最低水準）で利上げ見送り正当化）
+  - WTI_90gate_crossed=on（wk03 83.85$→94.40$（+12.6%）。90$gate超過。ボスは「下落相場ベース」として評価変更なし。93.55$割れで88.74$フロー、98.45$超えで103$フロー。TINA論（米国産油No.1）が90$超過でも株高を支持）
+  - gold_pullback_untradeable=on（wk03 4,857$→4,722$（-2.8%）。ボス「キングゴールドはトレードできない状況」。Gold Bidレジーム継続も短期調整中。Silver代替（71.50→75.08 / 78.78→82.34）に移行）
+  - VIX_gate_crossover=on（wk03 17.48→18.71（+1.23）。wk03 Add risk gate（<18）を超過。ただし20未満で構造的リスクオフではない。BOE副総裁警告が一因）
+  - SBG_AI_revolution=on（ChatGPT 5.5リリース（Claude・Gemini 3を抜いてNo.1）。Arm半導体自製化（TSMC/ASML依存から脱却）でSBG+68%急騰（10日間）。25日MA乖離+40%超で短期過熱→5,197→5,665押し目ゾーン待ち）
+  - glass_core_rotation=on（AI相場循環最終局面：ガラスコア部材（フォトマスク・ガラス基板）への資金シフト。日本電気硝子・AGC・凸版・ユニチカ（3103）。ユニチカ：天井-42%調整済み・営業利益+62.4%（5/14決算前）→3,200円近辺自律反発期待）
+  - GW_intervention_risk_critical=on（USDJPY 159.333で160円接近。片山金融相「断固たる措置・投機的な値動きは許さない」明言。160超えで1時間2円動くバイイングクライマックス→介入→150台戻り。介入後3-5円円高でも再び円安回帰の見立て）
+  - private_credit_ust_risk=watch（プライベートクレジットが資金繰りで米国債売却リスク継続。US10Y 4.310上昇圧力。ポールソン氏「財政赤字下の米国債売却→金融危機」リスク。ノンバンク主役の流動性投げ売りリスク）
+  - BOE_bridgen_warning=watch（英BOE副総裁ブリデン（4/24）「現在の株価は世界経済のリスクを反映していない」として下落予想。逆張り的な見方として注目）
+  - tail_risks_5_stocks=watch（①プラクレUST売却+CDS破綻、②Claude Mythosショック（金融システム機能不全）、③物価高加速（IMF警告）、④台湾海峡封鎖（半導体供給9割停止・319兆円規模）、⑤バヒディ総司令官暗殺（イラン再エスカレーション））
+  - BOJ_ueda_hawkish_risk=watch（植田総裁会見15:30で6/16利上げ示唆→円高急落（155-157台）・株安。GW介入はこの局面では発動しない（円高圧力のため）。シナリオB（30%）として警戒）
+- evidence (close / 2026-04-25 snapshot):
+  - US100: 27,303.670（+15.76% / 30d）← wk03（26,672）比+2.4%。ターゲット27,000〜27,250達成
+  - USDJPY: 159.333（-0.03% / 30d）← wk03（158.584）比+0.47%。GW介入リスク水域接近
+  - WTI: 94.400（-0.08% / 30d）← wk03（83.85$）比+12.6%。90$ゲート超過
+  - XAUUSD: 4,722.300（+7.93% / 30d）← wk03（4,857$）比-2.8%。短期調整・「トレード困難」
+  - US2Y: 3.920（-4.27% / 30d）← wk03（3.838）比+0.082上昇。4%接近
+  - VIX: 18.710（-31.81% / 30d）← wk03（17.48）比+1.23。<18 Add risk gate超過
+  - US10Y: 4.310（-2.40% / 30d）← wk03（4.246）比+0.064上昇。金利上昇再開
+  - BTC/USD: 77,455.312（+12.59% / 30d）← wk03（77,127$）比+0.4%。横ばい
+  - Regime (system): Gold Bid
+- implication:
+  - 上値追い禁止。「下がったら買う」TINA戦略継続。4/28植田会見確認後に整理検討（追撃禁止）。
+  - 4/28日銀会合後：ハト派→NASDAQ 26,400押し目+USDJPY 159.02エリア確認してから限定エントリー。
+  - 4/28日銀会合後：タカ派（6/16示唆）→急落は押し目機会として終値確認後のみ行動。
+  - 4/29 GW：USDJPY 160円接近は触らない（GW介入リスク最大）。160超えでバイイングクライマックス→介入→150台。
+  - WTI：93.55$割れで88.74$フロー移行確認。下落基調の検証。98.45$超えは103$方向（上振れシナリオ）。
+  - ユニチカ（3103）：5/14決算前の3,200円近辺押し目ゾーンを注視。
+  - SBG：5,197→5,665円押し目ゾーン到達後のみエントリー検討。過熱後の自律反落待ち。
+  - Silver：71.50→75.08フロー利用（Gold代替ヘッジ）。
+  - 長期ポートフォリオは売り不要。積立継続。
+- tags: [gm, monthly_distilled, 2026-04, 2026-4-24_wk04, signal:TINA_thesis, signal:US100_target_achieved_27303, signal:WTI_90gate_crossed, signal:gold_pullback_untradeable, signal:VIX_gate_crossover, signal:BOJ_4_28_no_hike_final, signal:SBG_chatgpt55_arm, signal:glass_core_rotation_unitika, signal:GW_intervention_critical, event:BOJ_4_28_meeting, event:GW_4_29, event:unitika_3103_5_14_earnings, risk:BOJ_ueda_hawkish_6_16, risk:private_credit_UST_sell, risk:claude_mythos_systemic, risk:taiwan_strait_escalation, risk:iran_vahidi_assassination]

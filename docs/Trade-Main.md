@@ -260,6 +260,30 @@ C) Risk-off re-ignition（失速）
   - [review](./logs/weekly/2026/2026-4-10_wk02/review.md)
   - [charts](./logs/weekly/2026/2026-4-10_wk02/charts.md)
 
+### 2026-4-17_wk03（2026-04-14 → 2026-04-18）
+- Regime: Gold Bid（equities=up / volatility=normal / oil=range / gold=bid / crypto=strong / yields=falling）← Neutral から転換
+- 1行：ホルムズ海峡全面開放報道（4/17深夜）でリスクオンが加速。US100 25,116→26,672（+6.2%）と「青丸2」レジスタンス突破。WTI 95.63→83.85（-12.4%）エスカレーションプレミアム完全剥落。VIX 17.48でAdd risk環境が深化。Regime「Neutral」→「Gold Bid」へ（株+金同時上昇の特殊局面）。4/22停戦期限・4/28日銀（利上げなし確認）・4/29 GW介入リスクが次週の三大焦点。
+- Key gates:
+  - Add risk: VIX<18維持 + WTI<90$確認 + US100 26,000維持（追撃禁止・分割限定）
+  - Reduce risk: US100 D1 close <25,800 OR VIX>22再到達 OR WTI>90$急騰 OR 停戦破綻報道
+- Links:
+  - [note](./logs/weekly/2026/2026-4-17_wk03/note.md)
+  - [meta](./logs/weekly/2026/2026-4-17_wk03/meta.yaml)
+  - [review](./logs/weekly/2026/2026-4-17_wk03/review.md)
+  - [charts](./logs/weekly/2026/2026-4-17_wk03/charts.md)
+
+### 2026-4-24_wk04（2026-04-21 → 2026-04-25）
+- Regime: Gold Bid（equities=up / volatility=normal / oil=range / gold=bid / crypto=strong / yields=falling）← 継続。WTI 90$gate超過・VIX 18.71と微超過。
+- 1行：US100 27,303（wk03比+2.4%）でターゲット達成。TINA相場（米国産油No.1）継続も「上は追わない、押し目を待つ」フェーズへ移行。WTI 94.4$（90$gate超過）・Gold 4,722$（「トレード困難」）・VIX 18.71と3指標が微超過。4/28日銀ハト派確認・4/29 GW介入リスクが最大焦点。ユニチカ（3103）・SBG押し目・Silver代替が次週テーマ。
+- Key gates:
+  - Add risk: BOJ植田ハト派確認後 + VIX<20維持 + US100 26,000維持（追撃禁止・押し目限定）
+  - Reduce risk: US100 D1 close <25,800 OR VIX>22 OR WTI>98.45$急騰 OR 植田タカ派（6/16示唆）
+- Links:
+  - [note](./logs/weekly/2026/2026-4-24_wk04/note.md)
+  - [meta](./logs/weekly/2026/2026-4-24_wk04/meta.yaml)
+  - [review](./logs/weekly/2026/2026-4-24_wk04/review.md)
+  - [charts](./logs/weekly/2026/2026-4-24_wk04/charts.md)
+
 
 ## Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
 created: 2026-04-05 (JST)
@@ -493,3 +517,53 @@ created: 2026-04-12 (JST)
 ## Previous (archived briefs)
 - Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
   - see: logs/weekly/2026/2026-4-3_wk01/
+
+
+## Weekly Brief | 2026-4-24_wk04（2026-04-21 → 2026-04-25）
+created: 2026-04-25 (JST)
+
+### Macro / Regime
+- Regime: Gold Bid（equities=up / volatility=normal / oil=range / gold=bid / crypto=strong / yields=falling）← wk03から継続。WTI 90$gate超過・VIX 18.71と微超過も「TINA相場」構造は継続。
+- US100 27,303$（wk03比+2.4%）。wk03ターゲット27,000〜27,250を達成。ボス「上は追わない、押し目を待つ」。26,400（赤丸）→26,840フロー。上値28,000。
+- WTI 94.4$（wk03 83.85比+12.6%・90$gate超過）。ボス「下落相場ベース」。93.55$割れで88.74$フロー。
+- Gold 4,722$（wk03 4,857比-2.8%）。ボス「キングゴールドはトレードできない状況」。Silver代替（71.50→75.08）。
+- 4/21日経新聞：4/28日銀利上げなし確定報道。4/24日本CPI+1.5%（世界最低水準）。利上げ見送り正当化。
+- ChatGPT 5.5リリース（Claude・Gemini 3を抜いてNo.1）。Arm半導体自製化でSBG+68%急騰（過熱→5,197押し目待ち）。
+- AI相場循環最終局面：ガラスコア部材（日本電気硝子・AGC・ユニチカ3103）に資金シフト。
+
+### Position / Orders
+- Core：Gold（4,722$・短期調整中）/ Silver代替（71.50→75.08）/ 防衛継続保有。
+- Mode：上値追い禁止。「下がったら買う」TINA戦略。4/28植田会見確認後に整理。追撃禁止。
+- WTI: 93.55$割れ確認後にポジション調整検討（下落相場基調）。
+- USDJPY: 159.02-159.40フロー利用。160円接近は触らない（GW介入リスク）。
+
+### Key Levels (close-based)
+- US100: 27,303 / R=28,000 / フロー=26,400→26,840 / S=26,000→25,800
+- JP225: 目標61,370円 / 押し目50,867円 / 上値59,100円
+- USDJPY: 159.333 / フロー=159.02→159.40 / 介入警戒=160.00 / 介入後=150台
+- WTI: 94.400 / 98.45超えで103$フロー / 93.55割れで88.74$フロー
+- XAUUSD: 4,722.300 / Gold「トレード困難」/ Silver=71.50→75.08
+- VIX: 18.710 / US10Y: 4.310 / US2Y: 3.920
+
+### Gates（最重要：終値で判定）
+- Add risk ONLY if: BOJ植田ハト派確認後 + VIX<20維持 + US100 26,000維持（追撃禁止・押し目限定）
+- Reduce / pause if: US100 D1 close <25,800 OR VIX>22 OR WTI>98.45$急騰 OR 植田タカ派（6/16利上げ示唆）
+- Hedge gate: Silver（71.50→75.08）/ Gold保有継続（トレード停止）/ 防衛継続
+
+### This Week Focus（行動: 4/27-）
+- **4/28（月）日銀会合**: 利上げなし確定。植田総裁会見15:30のトーン（6/16利上げ示唆有無）が最大焦点。
+- **4/29（火）昭和の日GW**: USDJPY 160円接近時の政府為替介入リスク（片山金融相「断固たる措置」）。
+- **NASDAQ 26,400→26,840フロー**: 押し目の有無と深さを確認。「上は追わない」。
+- **WTI 93.55$割れ**: 88.74$フロー移行の確認。下落相場基調の検証。
+- **ユニチカ（3103）**: 5/14決算前の動向（天井-42%・営業利益+62.4%）。3,200円近辺押し目注視。
+
+### Signals (weekly, fixed keys)
+- us10y_accel: rising_pressure（4.310。プライベートクレジット米国債売却リスクで上昇圧力）
+- hy_oas_widening: watch（BOE副総裁警告・プラクレ継続監視）
+- vix_spike: gate_crossover（18.71。<18 gate超過。ただし20未満で構造的リスクオフ非該当）
+- wti_shock: above_gate（94.4$。90$gate超過もボス「下落相場ベース」）
+- eps_revision_chain: glass_core（AI相場最終局面・ガラスコア部材・ユニチカ3103注目）
+
+## Previous (archived briefs)
+- Weekly Brief | 2026-4-17_wk03（2026-04-14 → 2026-04-18）
+  - see: logs/weekly/2026/2026-4-17_wk03/

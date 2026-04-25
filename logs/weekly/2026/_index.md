@@ -193,3 +193,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-4-17_wk03/meta.yaml)
   - [review](./2026-4-17_wk03/review.md)
   - [charts](./2026-4-17_wk03/charts.md)
+
+### 2026-4-24_wk04（2026-04-21 → 2026-04-25）
+- Regime: Gold Bid（equities=up / volatility=normal / oil=range / gold=bid / crypto=strong / yields=falling）← 継続。WTI 90$gate超過・VIX 18.71と微超過。
+- 1行：US100 27,303（wk03比+2.4%）でターゲット達成。TINA相場（米国産油No.1）継続も「上は追わない、押し目を待つ」フェーズへ。WTI 94.4$で90$gate超過・Gold 4,722$短期調整（ボス「トレード困難」）・VIX 18.71と3指標が微超過。4/28日銀ハト派確認・4/29 GW介入リスクが最大焦点。ユニチカ（3103）・SBG押し目・Silver代替が次週の個別テーマ。
+- Key gates:
+  - Add risk: BOJ植田ハト派確認後 + VIX<20維持 + US100 26,000維持（追撃禁止・押し目限定）
+  - Reduce risk: US100 D1 close <25,800 OR VIX>22 OR WTI>98.45$急騰 OR 植田タカ派（6/16示唆）
+- Links:
+  - [note](./2026-4-24_wk04/note.md)
+  - [meta](./2026-4-24_wk04/meta.yaml)
+  - [review](./2026-4-24_wk04/review.md)
+  - [charts](./2026-4-24_wk04/charts.md)

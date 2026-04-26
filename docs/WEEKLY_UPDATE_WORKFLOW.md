@@ -193,6 +193,19 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
     - **週をまたいで新ファイルを作ってはいけない**（月内で -4, -5 のように分割しない）
     - 書式: regime / decision（判断変更点のみ） / evidence (close) / implication / tags
 
+- [ ] **7.5. GM Strategy 品質確認（Git push 前・必須）**
+
+  ### GM Strategy 品質基準
+  作成後、以下2点をミナトが確認してからNLM投入候補とする：
+  ① ミナト1次テキストとの方向性矛盾がないこと
+  ② --trade/--newsの実測値にない情報が追加されていないこと
+
+  **⚠️ 矛盾・エラー検出時の対応（ClaudeCode 必読）**：
+  - 上記①②いずれかに該当する場合、`rtk git commit` を保留すること
+  - 矛盾箇所を具体的に明示してミナトに確認を取る
+  - ミナトの承認・修正指示を受けてから手順8へ進む
+  - 承認なしに push しない
+
 - [ ] **8. Git 更新**
   - 以下を一括ステージ（`charts/` 内 PNG は .gitignore で自動除外、テキスト・YAML のみ追跡される）
     ```

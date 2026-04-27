@@ -1,3 +1,6 @@
 {
-    "terminal.integrated.localEchoEnabled": "on"
+    "terminal.integrated.localEchoEnabled": "on",
+    "chat.agentsControl.enabled": "compact",
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.preferredDarkColorTheme": "Default High Contrast"
 }

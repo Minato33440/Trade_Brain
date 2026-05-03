@@ -205,3 +205,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-4-24_wk04/meta.yaml)
   - [review](./2026-4-24_wk04/review.md)
   - [charts](./2026-4-24_wk04/charts.md)
+
+### 2026-5-1_wk01（2026-04-27 → 2026-05-01）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk04「Gold Bid」から転換。4/30介入5.4兆円・VIX 16.99でAdd risk gate達成・Gold range転換。
+- 1行：4/28 BOJハト派確認（VIX→16.99・Add risk gate <18達成）の直後、4/30に5.4兆円介入（160.50→155.55→156.57）が発動。S&P500 4月単月2020年以来最大上昇・Nasdaq総合25,000台史上初で5週陽線過熱圏。次の大本命は6/16日銀利上げ（148.67ターゲット）。5/4〜5/6第2弾介入での154.00〜154.50 USDJPY押し目が5月最優先アクション。
+- Key gates:
+  - Add risk: VIX<18維持 + 介入底（154.00〜154.50）確認後 + US100 26,000維持（追撃禁止・分割限定）
+  - Reduce risk: US100 D1 close <26,000 OR VIX>22 OR WTI>110$再急騰 OR 第2弾介入後も底なし下落
+- Links:
+  - [note](./2026-5-1_wk01/note.md)
+  - [meta](./2026-5-1_wk01/meta.yaml)
+  - [review](./2026-5-1_wk01/review.md)
+  - [charts](./2026-5-1_wk01/charts.md)

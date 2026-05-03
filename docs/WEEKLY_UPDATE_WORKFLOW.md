@@ -154,8 +154,16 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 - [ ] **2. `python main.py --trade --news` でデータ取得**（⚠️ main.py から実行）
   - ターミナル出力（8ペア変動率・レジーム）を `charts/YYYY-MM-DD 〜 YYYY-MM-DD.txt` に保存
-  - `png_data/multi_pairs_plot_8.png` を `charts/Portforio-YYYY-MM-DD.png` にコピー
-  - `png_data/YYYY_MM_DD_snapshot.yaml` を `charts/` にコピー
+  - **`png_data/multi_pairs_plot_8.png` を `charts/Portforio-YYYY-MM-DD.png` にコピー**（ClaudeCode が実行）
+    ```powershell
+    Copy-Item "png_data\multi_pairs_plot_8.png" "logs\weekly\2026\YYYY-M-D_wkNN\charts\Portforio-YYYY-MM-DD.png"
+    ```
+    - `YYYY-MM-DD` は `python main.py --trade` 実行日（スナップショットの `date.end` と同じ日付）
+    - PNG は .gitignore で除外されているためローカル専用（git add 不要）
+  - **`png_data/YYYY_MM_DD_snapshot.yaml` を `charts/` にコピー**（ClaudeCode が実行）
+    ```powershell
+    Copy-Item "png_data\YYYY_MM_DD_snapshot.yaml" "logs\weekly\2026\YYYY-M-D_wkNN\charts\YYYY_MM_DD_snapshot.yaml"
+    ```
   - `--news` の出力を Minato 市況テキストと合わせて `charts/Market conditions -YYYY-M-D~.txt` に保存
 
 - [ ] **3. 当週トレードの Markdown 生成**
@@ -168,12 +176,12 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
   - `logs/weekly/2026/YYYY-M-D_wkNN/` を新規作成（Minato がフォルダ作成）
   - `charts/` サブフォルダを確認
 
-- [ ] **5. charts/ へのファイル配置**（手順2で既に実施済みなら確認のみ）
-  - `Portforio-YYYY-MM-DD.png` ✓
-  - `YYYY_MM_DD_snapshot.yaml` ✓
-  - `YYYY-MM-DD 〜 YYYY-MM-DD.txt` ✓
-  - `Market conditions -YYYY-M-D~.txt` ✓
-  - `GM Strategy-YYYY-M-D.txt` ← ClaudeCode が作成
+- [ ] **5. charts/ へのファイル配置確認**（ClaudeCode が手順2と同時に実施）
+  - `Portforio-YYYY-MM-DD.png` ← `png_data/multi_pairs_plot_8.png` を Copy-Item でコピー（ローカル専用）
+  - `YYYY_MM_DD_snapshot.yaml` ← `png_data/YYYY_MM_DD_snapshot.yaml` を Copy-Item でコピー
+  - `YYYY-MM-DD 〜 YYYY-MM-DD.txt` ← スナップショット `date.start〜date.end` を参照して命名
+  - `Market conditions -YYYY-M-D~.txt` ← Minato 1次テキスト（boss's-weeken-Report/）＋ --news 出力
+  - `GM Strategy-YYYY-M-D.txt` ← ClaudeCode が作成（①〜⑨構成）
 
 - [ ] **6. 各 .md / .yaml の作成・更新**（ClaudeCode が担当）
   - meta.yaml: week, date_range, created, updated, snapshot, signals, portfolio_snapshot

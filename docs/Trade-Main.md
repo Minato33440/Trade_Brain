@@ -284,6 +284,18 @@ C) Risk-off re-ignition（失速）
   - [review](./logs/weekly/2026/2026-4-24_wk04/review.md)
   - [charts](./logs/weekly/2026/2026-4-24_wk04/charts.md)
 
+### 2026-5-1_wk01（2026-04-27 → 2026-05-01）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk04「Gold Bid」から転換。4/30介入5.4兆円・VIX 16.99でAdd risk gate達成・Gold range転換。
+- 1行：4/28 BOJハト派確認（VIX→16.99・Add risk gate <18達成）直後、4/30に5.4兆円介入（160.50→155.55→156.57）が発動。S&P500 4月単月2020年以来最大上昇・Nasdaq総合25,000台史上初で5週陽線過熱圏。次の大本命は6/16日銀利上げ（148.67ターゲット）。5/4〜5/6第2弾介入での154.00〜154.50 USDJPY押し目が5月最優先アクション。
+- Key gates:
+  - Add risk: VIX<18維持 + 介入底（154.00〜154.50）確認後 + US100 26,000維持（追撃禁止・分割限定）
+  - Reduce risk: US100 D1 close <26,000 OR VIX>22 OR WTI>110$再急騰 OR 第2弾介入後も底なし下落
+- Links:
+  - [note](./logs/weekly/2026/2026-5-1_wk01/note.md)
+  - [meta](./logs/weekly/2026/2026-5-1_wk01/meta.yaml)
+  - [review](./logs/weekly/2026/2026-5-1_wk01/review.md)
+  - [charts](./logs/weekly/2026/2026-5-1_wk01/charts.md)
+
 
 ## Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
 created: 2026-04-05 (JST)
@@ -565,5 +577,49 @@ created: 2026-04-25 (JST)
 - eps_revision_chain: glass_core（AI相場最終局面・ガラスコア部材・ユニチカ3103注目）
 
 ## Previous (archived briefs)
+- Weekly Brief | 2026-4-24_wk04（2026-04-21 → 2026-04-25）
+  - see: logs/weekly/2026/2026-4-24_wk04/
 - Weekly Brief | 2026-4-17_wk03（2026-04-14 → 2026-04-18）
   - see: logs/weekly/2026/2026-4-17_wk03/
+
+
+## Weekly Brief | 2026-5-1_wk01（2026-04-27 → 2026-05-01）
+created: 2026-05-03 (JST)
+
+### Macro / Regime
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk04「Gold Bid」から転換。4/30介入5.4兆円・Gold range転換が主因。
+- **4/28 BOJ 利上げなし + 植田ハト派確認**（6/16利上げ示唆なし）。VIX 16.99（wk04比-1.72）→ Add risk gate（<18）達成。
+- **4/30 政府介入 5.4兆円（1年9ヶ月ぶり）**: 160.50→155.55→156.57。IMFルール上5/4〜5/6に第2弾介入の可能性大。NOBU氏：153.95が下値限界。
+- **4月米国株月間**: S&P500 +10% / Nasdaq総合25,000台史上初（2020年以来最大）。5週陽線で過熱圏入り。
+- **次の大本命は6/16日銀利上げ**: NOBU氏148.67ターゲット。5月は仕込み・準備フェーズ。
+
+### Position / Orders
+- Core: Gold（4,630・range転換・保有継続）/ 防衛継続保有。
+- Mode: 押し目待ち（追撃禁止）。GW中154.00〜154.50 USDJPY押し目ロングが最優先アクション。
+- 6/16利上げ前準備: 5月後半からドル円ショート想定エントリー水域設定開始（152円割れ→148.67）。
+
+### Key Levels (close-based)
+- US100: 27,710 / R=28,000 / S=26,400（押し目ゾーン）→26,000
+- JP225: 59,513（5/1）/ R=60,000→60,051（前最高値）/ S=58,500
+- USDJPY: 157.033 / 押し目=154.00〜154.50 / 下値限界=153.95 / 6/16後=148.67
+- WTI: 101.94 / R=105〜110 / S=98〜100（押し目買い）→95
+- XAUUSD: 4,630 / S=4,500 / 打診買い=4,450〜4,500
+- VIX: 16.990 / US10Y: 4.378 / US2Y: 4.021 / BTC: 78,179
+
+### Gates（最重要：終値で判定）
+- Add risk ONLY if: VIX<18維持 + 介入底（154.00〜154.50）確認後 + US100 26,000維持（追撃禁止・分割限定）
+- Reduce / pause if: US100 D1 close <26,000 OR VIX>22 OR WTI>110$再急騰 OR 第2弾介入後も底なし下落
+- Hedge gate: Gold（4,450〜4,500打診買い）/ 防衛継続 / 6/16ドル円ショート準備
+
+### This Week Focus（行動: 5/4-）
+- **5/4〜5/6（GW中）**: 第2弾介入の有無。153.95が下値限界→154.00〜154.50押し目ロング。
+- **5/7（水）GW明け**: JP225 60,000上抜けor58,500割れ / US100方向確認。
+- **5/14（木）ユニチカ（3103）決算**: 営業利益+62.4%。3,200円近辺注視。
+- **6/16日銀利上げ準備**: 5月後半からドル円ショート想定エントリー水域設定。
+
+### Signals (weekly, fixed keys)
+- us10y_accel: rising（4.378。プラクレ売却+インフレ懸念。4.50%接近で債券買い）
+- hy_oas_widening: watch（介入後安定も地政学継続監視）
+- vix_spike: add_risk_gate_open（16.99。<18達成。5週陽線過熱で追撃禁止）
+- wti_shock: range_high（101.94。ホルムズ継続。イラン提案で金曜▲2%）
+- eps_revision_chain: ai_overheating（Apple/CoreWeave牽引・Roblox▲17%・過熱圏）

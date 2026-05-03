@@ -1,0 +1,38 @@
+取得期間: 2026-04-03 〜 2026-05-03
+
+8ペア 30日変動率（python main.py --trade 実行: 2026-05-03）
+
+ペア          直近値            30日変化率
+----------    ---------------   ----------
+USD/JPY       157.033           -1.54%
+US100         27,710.359        +14.54%
+XAU/USD       4,629.900         -0.58%
+WTI           101.940           -9.31%
+US2Y          4.021             +1.00%
+VIX           16.990            -29.71%
+US10Y         4.378             +0.99%
+BTC/USD       78,179.000        +16.81%
+
+Regime（system）: Neutral
+  equities: up
+  volatility: normal
+  oil: range
+  gold: range  ← wk04「bid」から転換
+  crypto: strong
+  yields: rising
+
+Panel構成:
+  Risk:      [US100, BTC/USD]
+  Fear:      [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates:     [US2Y, US10Y]
+
+前週（wk04）比較:
+  US100:  27,303 → 27,710  (+1.5%)
+  USDJPY: 159.333 → 157.033 (-2.3円 ※4/30介入効果)
+  Gold:   4,722 → 4,630     (-1.9%)
+  WTI:    94.4 → 101.9      (+7.9%)
+  VIX:    18.71 → 16.99     (-1.72 → Add risk gate <18 OPEN)
+  US10Y:  4.310 → 4.378     (+0.07)
+  US2Y:   3.920 → 4.021     (+0.10)
+  BTC:    77,455 → 78,179   (+0.9%)

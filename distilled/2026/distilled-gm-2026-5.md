@@ -43,3 +43,44 @@
   - 6/16日銀利上げ：ドル円148.67・米株2024年8月型リスクオフ・米10Y低下の同時シナリオへ備える。
   - 長期ポートフォリオは売り不要。積立継続。6月前に一部利確を意識（NOBU氏）。
 - tags: [gm, monthly_distilled, 2026-05, 2026-5-1_wk01, signal:BOJ_4_28_dovish, signal:intervention_5_4T_4_30, signal:VIX_add_risk_gate_open, signal:regime_gold_bid_to_neutral, signal:nasdaq_25000_sp500_record, signal:BOJ_6_16_main_event, signal:WTI_range_high_101, signal:gold_range_4630, signal:JP225_60000_approach, event:GW_intervention_second_wave, event:unitika_3103_5_14_earnings, event:BOJ_6_16_rate_hike, pattern:intervention_bottom_154_00, risk:oil_115_inflation_reburn, risk:6_16_yen_carry_unwind_btc, risk:us_stock_2024_aug_replay]
+
+---
+
+## 2026-5-8_wk02（2026-05-04 → 2026-05-08）
+- regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk01から継続。WTI 101→95ドル低下・JP225史上最大+5.58%・BTC 80,000突破が主な変化点。
+- decision:
+  - bessent_japan_visit_5_11=on（5/11 ベッセント米財務長官来日・日銀総裁異例会談。BOJ利上げ0.5%加速→円高→ドル安→米国債買戻し誘導の三位一体構図。USDJPY「戻り売り優位のボーナスステージ」突入。）
+  - intervention_shift_to_boj=on（GW中5月計約4.68兆円の第2弾介入実施（合計10兆円規模）でも効果は3円程度。三村財務官が円安抑制の主軸を「介入」→「日銀利上げ加速」へ明示的にバトンチェンジ。ブルームバーグ：「日銀は中立金利まで距離あり、対応遅れれば大幅利上げ」→0.5%利上げ観測浮上。）
+  - boj_0_5pct_hike_expected=on（wk01時点の6/16利上げ見込みから「0.5%利上げ加速」へシフト。日経新聞「円安抑制バトンは為替→利上げにシフト」と報道。）
+  - jp225_historic_rise_5_7=on（5/7（GW明け）JP225 +5.58%（史上最大の上昇幅）。GW中のUS100+5.5%急騰が一気に反映。「記憶者」（AI・半導体関連大型株、時価総額20兆円規模）がストップ高+19%。隠れ半導体関連（味の元、凸版印刷、大日本印刷、ダイキン、HOYA、日立、コマツ）への資金シフト発生。過熱感から追いかけ買い禁物。日銀利上げ警戒での大きめ調整が「絶好の買い場」候補に。）
+  - btc_80000_break=on（BTC 80,000突破（80,391ドル週中・80,186 snapshot）。wk01から待ち望んでいた80,000台乗せ実現。メタプラネット前日+16%。強気バイアス継続。81,496ターゲット。ただし6/16利上げ後の円キャリー巻き戻しはBTCにもネガ材料。）
+  - wti_range_corrected=on（WTI 101.94（wk01）→95.42（wk02）で-6.4%。ホルムズ緊張継続も地政学プレミアム一部剥落。93〜96圏が押し目買いゾーンとして形成。「終わると見せかけて終わらない」前提でロングバイアス継続。93ドル→96.60→101.54の上昇余地。）
+  - gold_uptrend_4720=on（4,630（wk01）→4,720（wk02）+2.0%。明確な上昇相場継続。4,719→4,754方向。日銀利上げ加速＋ドル安シナリオがサポート要因。押し目買い一択。ショート禁止。）
+  - usdjpy_sell_zone_157_25=on（157.25周辺が強い売り圧力ゾーン（5/1から継続）。156.80以下が「チャンスでしかない」表現。ベッセント来日→BOJ利上げ加速→大幅円高（10円規模）を想定。戻り売り優位のボーナスステージ突入。）
+  - us10y_4_4_inflection=on（US10Y 4.364。4.4%が分水嶺：超えると地政学ポジティブニュース（株調整シグナル）/ 割ると悪いニュース（リスク資産フォロー）。ベッセント構図（日銀利上げ→ドル安→米債買戻し）と連動する重要水準。）
+  - us100_overheat_pullback=watch（29,234（wk01 27,710比+5.5%）。5.5%急騰後の調整局面。金曜-0.13%で陰り。VIX 17.19でAdd risk gate（<18）継続も「追撃より調整待ち」。金曜下落→月曜反発パターンとの指摘あり。）
+  - unitika_3103_5_14_watch=watch（5/14決算（+62.4%）。3,200円近辺押し目ゾーン継続。）
+  - jp225_pullback_buy_opportunity=watch（日銀利上げ警戒での大きめ調整→58,500〜60,051圏が絶好の買い場候補。「絶好の買い場になり得るが、まず下を見る姿勢」。）
+- evidence (close / 2026-05-09 snapshot):
+  - US100: 29,234.990（+16.56% / 30d）← wk01（27,710）比+5.5%。過熱圏
+  - USDJPY: 156.621（-1.27% / 30d）← wk01（157.033）比-0.4円（週中157.25強い売り圧）
+  - WTI: 95.420（-2.50% / 30d）← wk01（101.94）比-6.4%
+  - XAUUSD: 4,720.400（-1.50% / 30d）← wk01（4,630）比+2.0%
+  - US2Y: 4.013（+2.50% / 30d）← wk01（4.021）比ほぼ横ばい
+  - VIX: 17.190（-11.80% / 30d）← wk01（16.99）比+0.2。Add risk gate継続
+  - US10Y: 4.364（+1.65% / 30d）← wk01（4.378）比-0.01。4.4%が分水嶺
+  - BTC/USD: 80,186.766（+11.73% / 30d）← wk01（78,179）比+2.6%。80,000突破
+  - JP225: ≈61,400〜62,174（5/8 boss report）← wk01（59,513）。5/7史上最大+5.58%
+  - Regime (system): Neutral
+- implication:
+  - USDJPY：157.25からの戻り売りが「ボーナスステージ」。156.80以下が「チャンス」。突っ込み売り禁止。成行禁止。
+  - 5/11ベッセント会談後に戻り売りエントリー判断。下値目安152〜148.67（6/16本番前後）。
+  - JP225：過熱から追いかけ買い禁物。日銀利上げ警戒で58,500〜60,051圏の押し目が「絶好の買い場」候補。
+  - Gold：4,719以下の押し目でエントリー検討。押し目買い一択。ショート禁止。
+  - BTC：80,000サポート確認での押し目買い。ターゲット81,496。
+  - WTI：93〜95圏押し目買い継続（ストップ88.74・ターゲット101.54）。イランヘッドライン監視。
+  - US100：28,000〜27,000圏の調整を待つ。VIX<18継続前提。追撃禁止。
+  - 5月後半からUSDJPYショート段階的構築開始（152円割れ→148.67ターゲット）。
+  - 6/16日銀利上げ：0.5%加速観測強まる。BOJ利上げ→JP225崩れ→米株2024年8月型リスクオフの連鎖リスクに備える。
+  - 長期ポートフォリオは売り不要。積立継続。6月前に一部利確を意識。
+- tags: [gm, monthly_distilled, 2026-05, 2026-5-8_wk02, signal:bessent_japan_visit_5_11, signal:intervention_shift_to_boj, signal:boj_0_5pct_hike_expected, signal:jp225_historic_rise_5_7, signal:btc_80000_break, signal:wti_range_corrected, signal:gold_uptrend_4720, signal:usdjpy_sell_zone_157_25, signal:us10y_4_4_inflection, event:unitika_3103_5_14_earnings, event:BOJ_6_16_rate_hike, pattern:return_sell_bonus_stage, risk:boj_hike_2024_aug_replay, risk:us10y_4_4_stock_correction]

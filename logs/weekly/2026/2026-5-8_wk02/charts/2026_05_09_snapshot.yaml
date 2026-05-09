@@ -1,0 +1,46 @@
+# 2026_05_09_snapshot.yaml
+
+date:
+  start: 2026-04-09
+  end: 2026-05-09
+
+panel:
+  Risk: [US100, BTC/USD]
+  Fear: [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates: [US2Y, US10Y]
+
+regime:
+  label: "Neutral"
+  equities: up
+  volatility: normal
+  oil: range
+  gold: range
+  crypto: strong
+  yields: rising
+
+snapshot_30d:
+  "USD/JPY":
+    latest: 156.621
+    change_pct: -1.27
+  "US100":
+    latest: 29234.990
+    change_pct: 16.56
+  "XAU/USD":
+    latest: 4720.400
+    change_pct: -1.50
+  "WTI":
+    latest: 95.420
+    change_pct: -2.50
+  "US2Y":
+    latest: 4.013
+    change_pct: 2.50
+  "VIX":
+    latest: 17.190
+    change_pct: -11.80
+  "US10Y":
+    latest: 4.364
+    change_pct: 1.65
+  "BTC/USD":
+    latest: 80186.766
+    change_pct: 11.73

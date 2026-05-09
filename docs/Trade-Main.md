@@ -194,6 +194,7 @@ updated: 2026-01-03 (JST)
 - 2026-02: distilled/2026/distilled-gm-2026-2.md
 - 2026-03: distilled/2026/distilled-gm-2026-3.md
 - 2026-04: distilled/2026/distilled-gm-2026-4.md
+- 2026-05: distilled/2026/distilled-gm-2026-5.md
 
 ## 3-scenario response（週の骨格）
 A) Risk-on confirmation（上抜け“本物”）
@@ -295,6 +296,18 @@ C) Risk-off re-ignition（失速）
   - [meta](./logs/weekly/2026/2026-5-1_wk01/meta.yaml)
   - [review](./logs/weekly/2026/2026-5-1_wk01/review.md)
   - [charts](./logs/weekly/2026/2026-5-1_wk01/charts.md)
+
+### 2026-5-8_wk02（2026-05-04 → 2026-05-08）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk01継続。WTI 101→95ドル低下・JP225史上最大+5.58%・BTC 80,000突破が主な変化点。
+- 1行：GW中の第2弾介入（5月計約4.68兆円）は効果3円に留まり円安抑制の主軸が「介入」→「日銀利上げ加速」へシフト。5/7 JP225 史上最大+5.58%（US100+5.5%のGW明けキャッチアップ）で過熱感。BTC 80,000突破。5/11ベッセント来日・日銀異例会談が最大焦点。USDJPY 157.25からの戻り売りが「ボーナスステージ」。
+- Key gates:
+  - Add risk: VIX<18維持 + JP225押し目（58,500〜60,051圏）確認後 + US100過熱解消後（追撃禁止）
+  - Reduce risk: US100 D1 close <27,500 OR VIX>22 OR BOJ利上げ加速で日本株崩れ連鎖 OR US10Y>4.4%定着
+- Links:
+  - [note](./logs/weekly/2026/2026-5-8_wk02/note.md)
+  - [meta](./logs/weekly/2026/2026-5-8_wk02/meta.yaml)
+  - [review](./logs/weekly/2026/2026-5-8_wk02/review.md)
+  - [charts](./logs/weekly/2026/2026-5-8_wk02/charts.md)
 
 
 ## Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
@@ -623,3 +636,45 @@ created: 2026-05-03 (JST)
 - vix_spike: add_risk_gate_open（16.99。<18達成。5週陽線過熱で追撃禁止）
 - wti_shock: range_high（101.94。ホルムズ継続。イラン提案で金曜▲2%）
 - eps_revision_chain: ai_overheating（Apple/CoreWeave牽引・Roblox▲17%・過熱圏）
+
+## Weekly Brief | 2026-5-8_wk02（2026-05-04 → 2026-05-08）
+created: 2026-05-09 (JST)
+
+### Macro / Regime
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk01から継続。WTI 101→95ドル低下・JP225史上最大+5.58%・BTC 80,000突破が主な変化点。
+- **GW第2弾介入（5月計約4.68兆円）**: 合計10兆円規模でも効果は約3円。三村財務官が「介入」→「日銀利上げ加速」へ明示的なバトンチェンジを宣言。0.5%利上げ観測浮上。
+- **5/11 ベッセント来日・日銀総裁異例会談（最大イベント）**: 日銀利上げ加速→円高→ドル安→米国債買戻し誘導の三位一体構図。USDJPY「戻り売り優位のボーナスステージ」へ。
+- **5/7 JP225 史上最大+5.58%**: GW中のUS100+5.5%が一気に反映。記憶者ストップ高+19%。過熱感から追いかけ買い禁物。
+- **BTC 80,000突破**: 80,391ドル（週中）/ 80,186（snapshot）。強気バイアス継続。
+
+### Position / Orders
+- Core: Gold（4,720・上昇トレンド継続）/ 防衛継続保有。
+- Mode: 追撃禁止。USDJPY戻り売り優位（157.25売り場・156.80以下「チャンス」）。
+- 5/11会談後：USDJPY戻り売りエントリー判断。JP225押し目化を期待。
+
+### Key Levels (close-based)
+- US100: 29,234 / 過熱（+5.5%wk比）/ S=28,000→27,710→27,000
+- JP225: ≈61,400〜62,174（5/8）/ 5/7史上最大+5.58% / S=60,051→58,500
+- USDJPY: 156.621（snapshot）/ 売り圧=157.25（5/1から継続）/ 「チャンス」=156.80以下
+- WTI: 95.420 / 押し目=93〜95 / R=96.60→101.54
+- XAUUSD: 4,720.400 / R=4,754→4,857 / 押し目買い一択
+- VIX: 17.190 / US10Y: 4.364（4.4%分水嶺）/ US2Y: 4.013 / BTC: 80,186
+
+### Gates（最重要：終値で判定）
+- Add risk ONLY if: VIX<18維持 + JP225押し目（58,500〜60,051圏）確認後 + US100過熱解消後（追撃禁止）
+- Reduce / pause if: US100 D1 close <27,500 OR VIX>22 OR BOJ利上げ加速で日本株崩れ連鎖 OR US10Y>4.4%定着
+- Hedge gate: Gold（上昇継続）/ 防衛継続 / 6/16前のUSDJPYショート段階的準備
+
+### This Week Focus（行動: 5/11-）
+- **5/11（月）ベッセント来日・日銀会談**: BOJ利上げ0.5%加速コンセンサス固まるか→最重要
+- **USDJPY 157.25**: 戻り売り優位。突っ込み売り禁止。156.80以下「チャンス」。
+- **JP225調整**: 日銀利上げ警戒での大きめ調整→58,500〜60,051圏が絶好の買い場候補。
+- **5/14（木）ユニチカ（3103）決算**: 営業利益+62.4%。3,200円近辺注視。
+- **6/16日銀利上げ前準備**: 5月後半からUSDJPYショート段階的構築開始（152円割れ→148.67）。
+
+### Signals (weekly, fixed keys)
+- us10y_accel: inflection_4_4（4.364。4.4%が分水嶺。ベッセント構図と連動）
+- hy_oas_widening: watch（BOJ利上げ加速観測で市場構造変化を監視）
+- vix_spike: add_risk_gate_open（17.19。<18継続。過熱感で追撃禁止）
+- wti_shock: range_corrected（95.42。101→95に-6.4%。93〜96圏の押し目買いゾーン形成）
+- eps_revision_chain: hidden_semi_rotation（記憶者ストップ高→隠れ半導体（ダイキン・HOYA等）へ資金シフト）

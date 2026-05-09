@@ -217,3 +217,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-5-1_wk01/meta.yaml)
   - [review](./2026-5-1_wk01/review.md)
   - [charts](./2026-5-1_wk01/charts.md)
+
+### 2026-5-8_wk02（2026-05-04 → 2026-05-08）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=strong / yields=rising）← wk01継続。WTI 101→95ドル低下・JP225史上最大+5.58%・BTC 80,000突破が主な変化点。
+- 1行：GW中の第2弾介入（5月計約4.68兆円）は効果3円に留まり円安抑制の主軸が「介入」→「日銀利上げ加速」へシフト。5/7 JP225 史上最大+5.58%（US100+5.5%のGW明けキャッチアップ）で過熱感。BTC 80,000突破。5/11ベッセント来日・日銀異例会談が最大焦点。USDJPY 157.25からの戻り売りが「ボーナスステージ」。
+- Key gates:
+  - Add risk: VIX<18維持 + JP225押し目（58,500〜60,051圏）確認後 + US100過熱解消後（追撃禁止）
+  - Reduce risk: US100 D1 close <27,500 OR VIX>22 OR BOJ利上げ加速で日本株崩れ連鎖 OR US10Y>4.4%定着
+- Links:
+  - [note](./2026-5-8_wk02/note.md)
+  - [meta](./2026-5-8_wk02/meta.yaml)
+  - [review](./2026-5-8_wk02/review.md)
+  - [charts](./2026-5-8_wk02/charts.md)

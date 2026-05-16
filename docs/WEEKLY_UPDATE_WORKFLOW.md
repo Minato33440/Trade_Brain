@@ -159,7 +159,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
     Copy-Item "png_data\multi_pairs_plot_8.png" "logs\weekly\2026\YYYY-M-D_wkNN\charts\Portforio-YYYY-MM-DD.png"
     ```
     - `YYYY-MM-DD` は `python main.py --trade` 実行日（スナップショットの `date.end` と同じ日付）
-    - PNG は .gitignore で除外されているためローカル専用（git add 不要）
+    - PNG も追跡対象（1次プロット資料として版管理。git add に含める / 2026-05-16〜変更）
   - **`png_data/YYYY_MM_DD_snapshot.yaml` を `charts/` にコピー**（ClaudeCode が実行）
     ```powershell
     Copy-Item "png_data\YYYY_MM_DD_snapshot.yaml" "logs\weekly\2026\YYYY-M-D_wkNN\charts\YYYY_MM_DD_snapshot.yaml"
@@ -177,7 +177,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
   - `charts/` サブフォルダを確認
 
 - [ ] **5. charts/ へのファイル配置確認**（ClaudeCode が手順2と同時に実施）
-  - `Portforio-YYYY-MM-DD.png` ← `png_data/multi_pairs_plot_8.png` を Copy-Item でコピー（ローカル専用）
+  - `Portforio-YYYY-MM-DD.png` ← `png_data/multi_pairs_plot_8.png` を Copy-Item でコピー（追跡対象）
   - `YYYY_MM_DD_snapshot.yaml` ← `png_data/YYYY_MM_DD_snapshot.yaml` を Copy-Item でコピー
   - `YYYY-MM-DD 〜 YYYY-MM-DD.txt` ← スナップショット `date.start〜date.end` を参照して命名
   - `Market conditions -YYYY-M-D~.txt` ← Minato 1次テキスト（boss's-weeken-Report/）＋ --news 出力
@@ -219,7 +219,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
   - 承認なしに push しない
 
 - [ ] **8. Git 更新**
-  - 以下を一括ステージ（`charts/` 内 PNG は .gitignore で自動除外、テキスト・YAML のみ追跡される）
+  - 以下を一括ステージ（`charts/` 内の PNG / テキスト / YAML すべて追跡対象。`git add YYYY-M-D_wkNN/` で一括包含）
     ```
     rtk git add logs/weekly/2026/YYYY-M-D_wkNN/ \
                 logs/weekly/2026/_index.md \
@@ -235,7 +235,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
     ```
   - **charts/ の Git 追跡ルール（2026-03-21〜）**
     - `*.txt` / `*.yaml` / `*.md` → **追跡対象**（上記 `git add` で自動包含）
-    - `*.png` → **ローカル専用**（`.gitignore` で除外済み）
+    - `*.png` → **追跡対象**（1次プロット資料として版管理 / 2026-05-16〜変更）
     - 新ファイルを charts/ に追加した場合も `rtk git add YYYY-M-D_wkNN/` で一括追加できる
 
 ---

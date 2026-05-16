@@ -31,13 +31,17 @@ from src.utils import ensure_dir_exists  # noqa: E402
 def main() -> int:
     load_dotenv(ROOT_DIR / ".env")
 
+    # Windows コンソール(cp932)で日本語/em-dash の stdout 出力が
+    # UnicodeEncodeError で落ちないよう UTF-8 を固定する。
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
+    # XAI_API_KEY は対話/プロンプト応答(Grok呼び出し)時のみ必須。
+    # --trade / --news はデータ取得のみで XAI を使わないため、ここでは return しない。
     api_key = os.getenv("XAI_API_KEY")
-    if not api_key:
-        print(
-            "ERROR: XAI_API_KEY が見つかりません。.env か環境変数に設定してください。",
-            file=sys.stderr,
-        )
-        return 2
 
     model = os.getenv("XAI_MODEL", "grok-4")
 
@@ -139,6 +143,12 @@ def main() -> int:
 
     arg_prompt = " ".join(args.prompt).strip()
     if arg_prompt:
+        if not api_key:
+            print(
+                "ERROR: XAI_API_KEY が必要です（プロンプト応答/対話モード）。.env に設定してください。",
+                file=sys.stderr,
+            )
+            return 2
         messages.append({"role": "user", "content": arg_prompt})
         try:
             text = call_grok_chat_completions(
@@ -153,6 +163,10 @@ def main() -> int:
         except Exception:
             pass
         print(str(text).strip())
+        return 0
+
+    if not api_key:
+        # --trade / --news のデータ出力は完了済み。対話モードは XAI 必須のため正常終了。
         return 0
 
     print(f"Grok Assistant ready (model={model}). 空行で終了します。")

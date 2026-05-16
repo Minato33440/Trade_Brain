@@ -309,6 +309,18 @@ C) Risk-off re-ignition（失速）
   - [review](./logs/weekly/2026/2026-5-8_wk02/review.md)
   - [charts](./logs/weekly/2026/2026-5-8_wk02/charts.md)
 
+### 2026-5-15_wk03（2026-05-11 → 2026-05-15）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=off / crypto=strong / yields=rising）← wk02継続も内部はリスクオフ前傾（gold range→off・VIX<18→>18 Add risk gate閉・US10Y 4.4%突破）。
+- 1行：週末にかけ世界的債券パニック→リスクオフ進行（US10Y 4.568%・JP10Y 2.7%・日本トリプル安）。VIX 18.43でAdd risk gate閉、US10Y 4.595で4.4%分水嶺突破（wk02 Reduce risk条件成立）。Gold 4,720→4,544急落（gold=off）。米中首脳会談成功（H200中国10社解禁・ボーイング200機・大豆・LNG）で5/21 NVDA決算まで「下げたら買い」上目線。月曜ブラックマンデー→火曜下押し→水曜反発のリズム想定で押し目買い（株）×戻り売り（ドル円158後半→156）の二刀流。
+- Key gates:
+  - Add risk: 閉（VIX 18.43>18）。再開＝VIX<18回帰 + 月曜深押しの押し目確認 + US10Y 4.4%回帰
+  - Reduce risk: US10Y>4.4%定着（成立中）OR JP10Y>2.9% OR US100 D1 close<27,989 OR VIX>22
+- Links:
+  - [note](./logs/weekly/2026/2026-5-15_wk03/note.md)
+  - [meta](./logs/weekly/2026/2026-5-15_wk03/meta.yaml)
+  - [review](./logs/weekly/2026/2026-5-15_wk03/review.md)
+  - [charts](./logs/weekly/2026/2026-5-15_wk03/charts.md)
+
 
 ## Weekly Brief | 2026-4-3_wk01（2026-03-30 → 2026-04-03）
 created: 2026-04-05 (JST)
@@ -678,3 +690,45 @@ created: 2026-05-09 (JST)
 - vix_spike: add_risk_gate_open（17.19。<18継続。過熱感で追撃禁止）
 - wti_shock: range_corrected（95.42。101→95に-6.4%。93〜96圏の押し目買いゾーン形成）
 - eps_revision_chain: hidden_semi_rotation（記憶者ストップ高→隠れ半導体（ダイキン・HOYA等）へ資金シフト）
+
+## Weekly Brief | 2026-5-15_wk03（2026-05-11 → 2026-05-15）
+created: 2026-05-16 (JST)
+
+### Macro / Regime
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=off / crypto=strong / yields=rising）← wk02継続も内部はリスクオフ前傾。gold range→off・VIX<18→>18（Add risk gate閉）・US10Y 4.4%突破。
+- **世界的債券パニック→リスクオフ**: US10Y 4.568%（snapshot 4.595）パニック売り。JP10Y 2.7%・30年4%・プライム平均5.3%。日本トリプル安。
+- **米中首脳会談 成功**: NVIDIA H200 中国10社向け解禁・ボーイング200機・大豆・LNG。5/21 NVDA決算まで「下げたら買い」上目線。
+- **FRB**: シュミッド総裁「インフレ最大リスク」→年内利上げ確率2割→3割。
+- **Gold 急落**: 4,720→4,544（-3.7%）gold=off。boss $3,150〜3,200を中期押し目買い場。
+
+### Position / Orders
+- Core: Gold（4,544・保有継続・新規は$3,150〜3,200深押し待ち）/ 防衛継続保有。
+- Mode: 追撃禁止強化（VIX>18・US10Y>4.4%定着）。月曜深押し→反発を拾う準備。
+- 5/21 NVDA決算まで押し目買い（株）×戻り売り（ドル円158後半→156）の二刀流。
+
+### Key Levels (close-based)
+- US100: 29,125 / 27,989赤丸反発→28,874レンジ / 29,662超で3万pt（追わない）
+- JP225: ≈60,000周辺反発狙い / 63,150超で本格上昇 / 月曜ブラックマンデー想定
+- USDJPY: 158.731 / 売り=158後半 / 買い戻し=156付近 / 下押し目安=157.60
+- WTI: 101.160 ※boss view 60〜65ドルと乖離・要確認
+- XAUUSD: 4,543.600（gold=off）/ 中期押し目買い=$3,150〜3,200
+- VIX: 18.430（>18 gate閉）/ US10Y: 4.595（4.4%突破・上限4.6〜4.7%）/ US2Y: 4.258 / BTC: 81,051
+
+### Gates（最重要：終値で判定）
+- Add risk ONLY if: VIX<18回帰 + 月曜深押しの押し目確認 + US10Y 4.4%回帰（現在gate閉）
+- Reduce / pause if: US10Y>4.4%定着（成立中）OR JP10Y>2.9% OR US100 D1 close<27,989 OR VIX>22
+- Hedge gate: Gold（保有継続・深押し$3,150〜3,200待ち）/ 防衛継続 / 6/16前USDJPYショート準備
+
+### This Week Focus（行動: 5/18-）
+- **5/18（月）想定ブラックマンデー**: 債券パニック・トリプル安の波及度。深押しは押し目買い準備
+- **5/21（木）NVDA決算**: 最大の通過点。通過後（5/22〜）調整警戒
+- **JP10Y 2.9%**: 超えたら株式エクスポージャー一段落とし（最重要トリガー）
+- **火曜後場（15:15以降）**: 日本株個別の本命仕込み（キオクシア285A・ユニチカ3103 等）
+- **6/16日銀利上げ準備**: 0.75→1.00%ほぼ確実。USDJPYショート想定水域の段階的構築継続
+
+### Signals (weekly, fixed keys)
+- us10y_accel: panic_breakout_4_6（4.595。4.4%分水嶺突破。上限メド4.6〜4.7%）
+- hy_oas_widening: watch（世界的債券パニック・JP10Y 2.7%異常水準・補正予算観測）
+- vix_spike: add_risk_gate_closed（18.43。<18→>18でgate閉。20未満で構造的リスクオフ非該当）
+- wti_shock: range_vs_boss_gap（実測101.160 / boss view 60〜65ドル・乖離要確認）
+- eps_revision_chain: us_china_h200_unlock（米中会談成功・H200中国10社解禁。5/21決算まで上目線）

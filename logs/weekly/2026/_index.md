@@ -229,3 +229,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-5-8_wk02/meta.yaml)
   - [review](./2026-5-8_wk02/review.md)
   - [charts](./2026-5-8_wk02/charts.md)
+
+### 2026-5-15_wk03（2026-05-11 → 2026-05-15）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=off / crypto=strong / yields=rising）← wk02継続も内部はリスクオフ前傾（gold range→off・VIX<18→>18 Add risk gate閉・US10Y 4.4%突破）。
+- 1行：週末にかけ世界的債券パニック→リスクオフ進行（US10Y 4.568%・JP10Y 2.7%・日本トリプル安）。VIX 18.43でAdd risk gate閉、US10Y 4.595で4.4%分水嶺突破（wk02 Reduce risk条件成立）。Gold 4,720→4,544急落（gold=off）。一方、米中首脳会談成功（H200中国10社解禁・ボーイング200機）で5/21 NVDA決算まで「下げたら買い」上目線。月曜ブラックマンデー→火曜下押し→水曜反発のリズム想定。押し目買い（株）×戻り売り（ドル円158後半→156）の二刀流。CFD：ゴールド保有継続のみ（新規約定なし）。
+- Key gates:
+  - Add risk: **閉**（VIX 18.43>18）。再開＝VIX<18回帰 + 月曜深押しの押し目確認 + US10Y 4.4%回帰
+  - Reduce risk: US10Y>4.4%定着で**成立中**。さらに JP10Y>2.9% OR US100 D1 close<27,989 OR VIX>22 で株式エクスポージャー一段落とし
+- Links:
+  - [note](./2026-5-15_wk03/note.md)
+  - [meta](./2026-5-15_wk03/meta.yaml)
+  - [review](./2026-5-15_wk03/review.md)
+  - [charts](./2026-5-15_wk03/charts.md)

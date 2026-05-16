@@ -84,3 +84,40 @@
   - 6/16日銀利上げ：0.5%加速観測強まる。BOJ利上げ→JP225崩れ→米株2024年8月型リスクオフの連鎖リスクに備える。
   - 長期ポートフォリオは売り不要。積立継続。6月前に一部利確を意識。
 - tags: [gm, monthly_distilled, 2026-05, 2026-5-8_wk02, signal:bessent_japan_visit_5_11, signal:intervention_shift_to_boj, signal:boj_0_5pct_hike_expected, signal:jp225_historic_rise_5_7, signal:btc_80000_break, signal:wti_range_corrected, signal:gold_uptrend_4720, signal:usdjpy_sell_zone_157_25, signal:us10y_4_4_inflection, event:unitika_3103_5_14_earnings, event:BOJ_6_16_rate_hike, pattern:return_sell_bonus_stage, risk:boj_hike_2024_aug_replay, risk:us10y_4_4_stock_correction]
+
+---
+
+## 2026-5-15_wk03（2026-05-11 → 2026-05-15）
+- regime: Neutral（equities=up / volatility=normal / oil=range / gold=off / crypto=strong / yields=rising）← wk02「Neutral」から継続。ただし gold range→off（金急落）・VIX<18→>18（Add risk gate閉）・US10Y 4.4%分水嶺突破で、Neutral内部が「リスクオフ前傾」へ質的シフト。
+- decision:
+  - us_china_summit_success=on（米中首脳会談成功。NVIDIA H200の中国10社向け販売解禁、ボーイング200機・大豆・LNG成約。5/21 NVDA決算までは「下げたら買い」の上目線を支える最大材料。ニュース上は台湾・イラン巡り温度差も成約優位。）
+  - bond_panic_risk_off=on（世界的に債券パニック売り→リスクオフ進行。US10Y 4.568%（snapshot 4.595）「ギーッ」パニック売り。JP10Y 2.7%・30年4%・プライム平均利回り5.3%の異常水準。補正予算編成観測で日本売り加速。日本は株・債券・円のトリプル安。）
+  - us10y_4_4_breakout=on（US10Y 4.595で4.4%分水嶺を明確突破。wk02 Reduce riskゲート条件「US10Y>4.4%定着」が成立。シュミッド総裁「インフレ最大リスク」発言でFRB年内利上げ確率2割→3割。4.6〜4.7%が当面の上限メド、5/21 NVDA決算通過後にピークアウト想定。）
+  - vix_add_risk_gate_closed=on（VIX 18.43。wk01以降初めて<18→>18でAdd risk gateが閉じた。20未満で構造的リスクオフには非該当だが追撃禁止を強化。）
+  - gold_off_sharp_drop=on（XAUUSD 4,543.6（wk02 4,720.4比-3.7%）。snapshot regime gold=off。実質金利上昇で金もプラチナも下押し（「金やられた」）。構造（日本売り・米財政懸念）は不変、boss は$3,150〜3,200を中期押し目買い場と評価。短期は様子見・深押し待ち。）
+  - boj_6_16_hike_near_certain=on（6/16日銀利上げ0.75→1.00%ほぼ確実。介入後わずか2円戻し止まり。待てない財務省の直近介入/レートチェック公算大。1/23ベッセント・レートチェック時5円円高の再現想定。USDJPY 158後半→157.60→156レンジ往復・戻り売り優位。）
+  - nvda_earnings_5_21=watch（5/21 NVDA決算が最大の通過点。通過後5/22〜は調整警戒（FRB利上げ確率3割と併せ）。中国製ミュトス級AI登場リスク顕在化までロング維持。）
+  - us100_dip_buy_until_nvda=watch（US100 29,125（wk02 29,234比-0.4%）。27,989赤丸反発→28,874レンジ→29,662超で3万pt（上は追わない）。月曜ギャップダウンは押し目買い好機。）
+  - jp_blackmonday_then_rebound=watch（月曜ブラックマンデー→火曜下押し→水曜以降反発のリズム想定。火曜後場15:15以降が日本株個別の本命仕込み。JP225 60,000周辺反発→63,150超で本格上昇。）
+  - wti_measured_vs_boss_gap=watch（実測 WTI 101.160（30日+6.83% / wk02 95.42比+6.0%）に対し boss は「60〜65ドルのレンジ押し目買い」目線。ソース内に併存する乖離。創作で一方に寄せず両論記載・ミナト確認事項。）
+- evidence (close / 2026-05-16 snapshot):
+  - US100: 29,125.199（+10.60% / 30d）← wk02（29,234.99）比-0.4%。高値圏横ばい
+  - USDJPY: 158.731（-0.05% / 30d）← wk02（156.621）比+2.1円（円安戻し）
+  - WTI: 101.160（+6.83% / 30d）← wk02（95.42）比+6.0%（※boss view 60〜65ドルと乖離）
+  - XAUUSD: 4,543.600（-5.05% / 30d）← wk02（4,720.40）比-3.7%（急落・gold off）
+  - US2Y: 4.258（+8.82% / 30d）← wk02（4.013）比+0.245
+  - VIX: 18.430（+2.73% / 30d）← wk02（17.19）比+1.24。>18でAdd risk gate閉
+  - US10Y: 4.595（+6.64% / 30d）← wk02（4.364）比+0.231。4.4%分水嶺突破
+  - BTC/USD: 81,051.250（+7.85% / 30d）← wk02（80,186.77）比+1.1%。80,000台維持
+  - JP225: ≈60,000円周辺（boss report・赤丸反発狙い / 63,150超で本格上昇）
+  - Regime (system): Neutral
+- implication:
+  - 月曜は様子見＋深押しを拾う準備。火曜後場（15:15以降）が日本株個別の本命仕込み。突っ込み買い禁止・分割原則。
+  - 5/21 NVDA決算まで「押し目買い（株）・戻り売り（ドル円158後半→156）」の二刀流。
+  - US100：27,989赤丸反発→28,874レンジ。29,662超は追わない。月曜ギャップダウンは押し目買い好機。
+  - Gold：短期様子見。$3,150〜3,200の深押しで中期買い場検討。保有継続（CFD新規約定なし）。ショート禁止。
+  - BTC：80,000サポート維持確認で押し目買い。割れなら95,000まで調整想定で押し目に徹する。
+  - リスク管理：JP10Y>2.9%で株式エクスポージャー一段落とし。US10Y 4.6〜4.7%突破定着で米株調整加速。VIX>22で構造的リスクオフ警戒。
+  - 6/16日銀利上げ（0.75→1.00%ほぼ確実）に向けUSDJPYショート想定水域の段階的構築継続。
+  - 長期ポートフォリオは売り不要・積立継続（国内合算 評価益+640,903円）。
+- tags: [gm, monthly_distilled, 2026-05, 2026-5-15_wk03, signal:us_china_summit_success, signal:bond_panic_risk_off, signal:us10y_4_4_breakout, signal:vix_add_risk_gate_closed, signal:gold_off_sharp_drop, signal:boj_6_16_hike_near_certain, signal:us100_dip_buy_until_nvda, event:nvda_earnings_5_21, event:BOJ_6_16_rate_hike, pattern:blackmonday_then_rebound, pattern:usdjpy_range_156_158_return_sell, risk:jp10y_2_9_equity_cut, risk:us10y_4_6_4_7_stock_correction, risk:nvda_post_earnings_adjust, hypothesis:china_mythos_ai_risk]

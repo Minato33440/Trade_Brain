@@ -131,6 +131,8 @@ python main.py --trade --news < /dev/null
 | **note.md** | 市況・マクロ、Key takeaways、Key gates、ポートフォリオ口座、Portfolio action | Macro/Regime・takeaways・gates・本日追記・Portfolio action・口座サマリ |
 | **charts.md** | 先週の charts.md 構造 | 今週のチャート画像・データリンク（charts/ 内の .png, .yaml, .txt）を列挙 |
 | **trade_results.md** | `track_trades.py summary --start YYYY-MM-DD --end YYYY-MM-DD` の出力 | 当週のトレード一覧＋概要（件数・勝率・合計PnL）。詳細検証用 |
+| **CFD戦略-YYYY-M-D.md**（行動週の月曜日付） | 当週 review/meta/snapshot/boss市況 | 人間ビュー①: Obsidian索引ハブ。frontmatter(week/regime/gate/tags) ＋ 概念wikilink ＋ Mermaid(pie/timeline) ＋ 全リンク表（HTML詳細/distilled/前後週ハブ）。**Rex正本は distilled / 本書は人間用**（2026-05-16〜標準化）|
+| **CFD_Strategy-YYYY-M-D.html** | 同上 | 人間ビュー②: 自己完結HTML（Chart.js）。8ペアグラフ・銘柄別アクション・タイムライン・トリガー・ポートフォリオ網羅。ハブMDの「📊詳細版」リンク先 |
 
 ### 3.2 charts/ サブフォルダに置くもの
 
@@ -227,6 +229,13 @@ python main.py --trade --news < /dev/null
   - 矛盾箇所を具体的に明示してミナトに確認を取る
   - ミナトの承認・修正指示を受けてから手順8へ進む
   - 承認なしに push しない
+
+- [ ] **7.6. 人間ビュー3レイヤー生成（関所7.5承認後・必須 / 2026-05-16〜）**
+  - `CFD戦略-YYYY-M-D.md`（ハブ）: frontmatter(week/regime/add_risk_gate/reduce_risk_gate/tags) ＋ 概念 wikilink ＋ Mermaid(pie/timeline) ＋ リンク表（HTML詳細・[[distilled-gm-YYYY-M]]・review・meta・note・前後週ハブ）＋ 要点3行＋トリガー要点
+  - `CFD_Strategy-YYYY-M-D.html`（詳細）: 8ペアグラフ・レジーム/ゲート・シナリオ・銘柄別アクション・タイムライン・トリガー・ポートフォリオ
+  - 概念 wikilink canonical 表記（表記揺れ禁止）: `リスクオン/リスクオフ/FOMC/日銀政策金利/日銀利上げ/ブラックマンデー/為替介入/レートチェック/債券パニック/Add risk gate/Reduce risk gate/レジーム/押し目買い/戻り売り/NVDA決算/米中首脳会談/ベッセント来日/GW介入` ＋銘柄 `US100/USDJPY/BTC/Gold/WTI/US10Y/VIX`
+  - **distilled が Rex 戦略データ正本。本2点は人間用ビュー**（NLM投入対象外）。データは確定値に忠実・創作禁止・関所7.5判断を反映
+  - 生成物は週次フォルダ直下に置き、手順8の `git add YYYY-M-D_wkNN/` 一括で追跡
 
 - [ ] **8. Git 更新**
   - 以下を一括ステージ（`charts/` 内の PNG / テキスト / YAML すべて追跡対象。`git add YYYY-M-D_wkNN/` で一括包含）

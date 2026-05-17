@@ -234,8 +234,9 @@ python main.py --trade --news < /dev/null
   - `CFD戦略-YYYY-M-D.md`（ハブ）: frontmatter(week/regime/add_risk_gate/reduce_risk_gate/tags) ＋ 概念 wikilink ＋ Mermaid(pie/timeline) ＋ リンク表（HTML詳細・[[distilled-gm-YYYY-M]]・review・meta・note・前後週ハブ）＋ 要点3行＋トリガー要点
   - `CFD_Strategy-YYYY-M-D.html`（詳細）: 8ペアグラフ・レジーム/ゲート・シナリオ・銘柄別アクション・タイムライン・トリガー・ポートフォリオ
   - 概念 wikilink canonical 表記（表記揺れ禁止）: `リスクオン/リスクオフ/FOMC/日銀政策金利/日銀利上げ/ブラックマンデー/為替介入/レートチェック/債券パニック/Add risk gate/Reduce risk gate/レジーム/押し目買い/戻り売り/NVDA決算/米中首脳会談/ベッセント来日/GW介入` ＋銘柄 `US100/USDJPY/BTC/Gold/WTI/US10Y/VIX`
-  - **distilled が Rex 戦略データ正本。本2点は人間用ビュー**（NLM投入対象外）。データは確定値に忠実・創作禁止・関所7.5判断を反映
-  - 生成物は週次フォルダ直下に置き、手順8の `git add YYYY-M-D_wkNN/` 一括で追跡
+  - 概念MOC: `MOC/<concept>.md`（Dataview自動集計型）が既存。既存conceptはwikilinkを打つだけで自動成長。**canonical新概念**が出たら `MOC/<新concept>.md` をDataview型雛形で新規作成し `MOC/_index.md` に追記
+  - **distilled が Rex 戦略データ正本。本2点＋MOCは人間用ビュー**（NLM投入対象外）。データは確定値に忠実・創作禁止・関所7.5判断を反映
+  - 生成物は週次フォルダ直下に置き、手順8の `git add YYYY-M-D_wkNN/` 一括で追跡（MOC更新時は `git add MOC/` も）
 
 - [ ] **8. Git 更新**
   - 以下を一括ステージ（`charts/` 内の PNG / テキスト / YAML すべて追跡対象。`git add YYYY-M-D_wkNN/` で一括包含）

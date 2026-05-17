@@ -28,7 +28,7 @@ tags:
 ## 全CFD戦略ハブ（時系列・自動）
 
 ```dataview
-TABLE week AS "週", regime AS "Regime", add_risk_gate AS "Add", reduce_risk_gate AS "Reduce"
+TABLE week AS "週", regime AS "Regime", add_risk_gate AS "Add状態", reduce_risk_gate AS "Reduce状態"
 FROM #cfd_strategy
 SORT week ASC
 ```

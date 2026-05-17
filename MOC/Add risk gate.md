@@ -13,7 +13,7 @@ tags:
 ## 該当週（自動集計）
 
 ```dataview
-TABLE week AS "週", regime AS "Regime", add_risk_gate AS "Add状態", reduce_risk_gate AS "Reduce"
+TABLE week AS "週", regime AS "Regime", add_risk_gate AS "Add状態", reduce_risk_gate AS "Reduce状態"
 FROM #cfd_strategy
 WHERE contains(file.outlinks, [[Add risk gate]])
 SORT week ASC
@@ -22,7 +22,7 @@ SORT week ASC
 ## ゲート閉のみ抽出（要警戒週）
 
 ```dataview
-TABLE week AS "週", regime AS "Regime", reduce_risk_gate AS "Reduce"
+TABLE week AS "週", regime AS "Regime", reduce_risk_gate AS "Reduce状態"
 FROM #cfd_strategy
 WHERE add_risk_gate = "closed"
 SORT week ASC

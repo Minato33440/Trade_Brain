@@ -1,0 +1,46 @@
+# 2026_05_23_snapshot.yaml
+
+date:
+  start: 2026-05-23
+  end: 2026-05-23
+
+panel:
+  Risk: [US100, BTC/USD]
+  Fear: [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates: [US2Y, US10Y]
+
+regime:
+  label: "Neutral"
+  equities: up
+  volatility: normal
+  oil: range
+  gold: range
+  crypto: up
+  yields: rising
+
+snapshot_30d:
+  "USD/JPY":
+    latest: 159.155
+    change_pct: 0.3
+  "US100":
+    latest: 29481.641
+    change_pct: 1.2
+  "XAU/USD":
+    latest: 4523.200
+    change_pct: -5.8
+  "WTI":
+    latest: 96.600
+    change_pct: -4.6
+  "US2Y":
+    latest: "(TBD)"
+    change_pct: "(TBD)"
+  "VIX":
+    latest: 16.700
+    change_pct: -9.3
+  "US10Y":
+    latest: 4.558
+    change_pct: 0.0
+  "BTC/USD":
+    latest: 76673.367
+    change_pct: -5.4

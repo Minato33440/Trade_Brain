@@ -1,0 +1,28 @@
+8ペア30日変動率データ（python main.py --trade / snapshot 2026_05_23）
+取得期間: 2026-05-18 〜 2026-05-23
+
+USD/JPY:  最新 159.155   (30日変化: +0.3%)
+US100:    最新 29481.641 (30日変化: +1.2%)
+XAU/USD:  最新 4523.200  (30日変化: -5.8%)
+WTI:      最新 96.600    (30日変化: -4.6%)
+US2Y:     最新 (TBD)     (30日変化: (TBD))
+VIX:      最新 16.700    (30日変化: -9.3%)
+US10Y:    最新 4.558     (30日変化: +0.0%)
+BTC/USD:  最新 76673.367 (30日変化: -5.4%)
+
+[regime] Neutral (label=Neutral, equities=up, volatility=normal, oil=range, gold=range, crypto=up, yields=rising)
+
+panel:
+  Risk:      [US100, BTC/USD]
+  Fear:      [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates:     [US2Y, US10Y]
+
+前週(wk03 2026-05-16 snapshot)比:
+  US100   29,125.199 → 29,481.641  (+1.2%・堅調推移)
+  USDJPY  158.731  → 159.155      (+0.424・158.40～159.40レンジ)
+  WTI     101.160  → 96.600       (-4.56・-4.5%イラン観測で抑圧)
+  XAUUSD  4,543.600 → 4,523.200    (-20.4・レンジ確定)
+  VIX     18.430   → 16.700       (-1.73・Add risk gate再開)
+  US10Y   4.595    → 4.558        (-0.037・4.4%分水嶺定着化)
+  BTC/USD 81,051.250 → 76,673.367  (-4,377.88・-5.4%)

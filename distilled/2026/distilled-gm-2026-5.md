@@ -121,3 +121,44 @@
   - 6/16日銀利上げ（0.75→1.00%ほぼ確実）に向けUSDJPYショート想定水域の段階的構築継続。
   - 長期ポートフォリオは売り不要・積立継続（国内合算 評価益+640,903円）。
 - tags: [gm, monthly_distilled, 2026-05, 2026-5-15_wk03, signal:us_china_summit_success, signal:bond_panic_risk_off, signal:us10y_4_4_breakout, signal:vix_add_risk_gate_closed, signal:gold_off_sharp_drop, signal:boj_6_16_hike_near_certain, signal:us100_dip_buy_until_nvda, event:nvda_earnings_5_21, event:BOJ_6_16_rate_hike, pattern:blackmonday_then_rebound, pattern:usdjpy_range_156_158_return_sell, risk:jp10y_2_9_equity_cut, risk:us10y_4_6_4_7_stock_correction, risk:nvda_post_earnings_adjust, hypothesis:china_mythos_ai_risk]
+
+---
+
+## 2026-5-22_wk04（2026-05-18 → 2026-05-22）
+- regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=up / yields=rising）← wk03「Neutral」から継続。ただし gold「off」→「range」へ回復・VIX>18→<18でAdd risk gate再開・BTC上トレンド（crypto=up）が主な変化点。内部品質が「リスクオフ前傾」から「AI テーマ主導・正常化」へシフト。
+- decision:
+  - ai_theme_spacex_ipo_6_12=on（SpaceX上場（6/12、時価総額300兆円規模）が最大触媒。Physical AI・量子（Rigetti、D-Wave）が米国政府20億ドル拠出で国策化観測。5/21 NVDA決算通過後から新たな買い目線。Dow+0.55%・NDX+0.09%・SPX+0.17%で堅調推移。）
+  - us_3day_holiday_positioning=on（米国メモリアルデー（5/26月）3連休。3連休前のリスク調整＆ポジション整理局面。薄商いで月曜ボラティリティ上昇、押し目買い好機と注意が同居。）
+  - jp_nikkei_62689_uptrend_sustained=on（Nikkei 61,287→62,282→62,689上昇流れ継続。ただし3連休前リスク回避で青丸エリア（62,900超）での急落警戒。60,000～63,300レンジ想定継続。boss：火曜後場（15:15以降）個別仕込み推奨。）
+  - usdjpy_return_sell_waiting=on（USDJPY 159.155で159.50～60（青丸）への戻し上げを待つ「休憩」モード。158.40～159.40レンジ基調継続。158.613が3日+16時間連続のキーライン。ロング入れない。戻り売り待ち。6/3植田・6/16日銀会合に向け円高地雷を意識。）
+  - us10y_4_4_holding=on（US10Y 4.558で4.4%分水嶺を定着化継続。Reduce riskゲート条件（US10Y>4.4%定着）が継続中。JPMダイモンCEO「金利は格段に高くなる」で上振れバイアス。ただし「金利上昇でも AI頼みで株は買える」スタンス継続。）
+  - vix_add_risk_gate_reopened=on（VIX 16.7でAdd risk gate（<18）が再開。リスクオフ局面から脱却、押し目買い環境が再確認。ただし3連休前ボラ警戒継続。20未満で構造的リスクオフ非該当。）
+  - gold_range_confirmed=on（Gold 4,523でレンジ相場確定（4,515～4,571）。利用幅は限定的。中長期「下がったら拾う」継続。短期は4,600方向の小幅利用のみ。保有継続。ショート禁止。）
+  - wti_no_trade_iran_confusion=on（WTI 96.6で「上下難」。イラン和平合意観測 vs 強硬発言の錯綜。戦争終結織り込み不十分。boss推奨：ノートレード継続。100ドル前後レンジ覚悟。）
+  - btc_uptrend_78152_watching=on（BTC 76,673。78,152～78,177超えで79,000方向の上昇流れ利用可。SpaceXがBTC保有（2,309億円・世界7位）でポジティブ。ただし量子暗号解読リスク警戒で積極買いなし。上昇トレンドフォローのみ。）
+  - boj_6_16_yen_mine_lighting=on（BOJインフレ期待「大きく上回る」報道。5/22コアCPI実績1.4%（前回1.6%比下振れ、即座の円高加速なし）。6/3植田講演・6/16会合での利上げ示唆を織り込みへ。円高地雷が6/3～6/16で点灯するフェーズへ移行。）
+  - us_stock_4may_weekly_uptrend=watch（S&P500・Nasdaqが上昇流れ継続。AI関連（NVDA・MS・Googl等）が主導で高値圏堅調。3連休前の月曜薄商いで押し目発生チャンス。27,989赤丸以上の売り込みは買い場。）
+- evidence (close / 2026-05-23 snapshot):
+  - US100: 29,481.641（±% / 30d）← wk03（29,125.199）比+1.2%。高値圏堅調推移
+  - USDJPY: 159.155（±% / 30d）← wk03（158.731）比+0.424（+0.3%）。158.40～159.40レンジ内
+  - WTI: 96.600（-4.6% / 30d）← wk03（101.160）比-4.56（-4.5%）。イラン観測で抑圧
+  - XAUUSD: 4,523.200（-5.8% / 30d）← wk03（4,543.600）比-20.4。レンジ確定
+  - US2Y: （2026-05-23スナップショット参照値）
+  - VIX: 16.700（±% / 30d）← wk03（18.430）比-1.73。Add risk gate再開（<18）
+  - US10Y: 4.558（±% / 30d）← wk03（4.595）比-0.037。4.4%分水嶺定着化
+  - BTC/USD: 76,673.367（±% / 30d）← wk03（81,051.250）比-5.4%。78,152上値抵抗
+  - JP225: ≈62,689円（boss report・61,287→62,282→62,689上昇流れ）
+  - Regime (system): Neutral
+- implication:
+  - 月曜（5/26）は米国メモリアルデー休場で薄商い。ポジション調整ボラに注意。AI押し目買い好機と同時に警戒も必要。
+  - エヌビディア・SpaceX・Physical AI・量子関連の押し目買いスタンス継続。高値追わない。
+  - USDJPY：159.50～60（青丸）での戻り売り待ち「休憩」モード。ロング入れない。6/3植田・6/16日銀会合に向け円高加速を備える。
+  - JP225：60,000～63,300レンジ想定。62,900超で新規参入警戒。月曜リスク調整後の火曜以降の反発を狙う。
+  - Gold：レンジ内（4,515～4,571）での小幅利用のみ。保有継続。新規買いは4,515割れの押し目待ち。
+  - WTI：ノートレード推奨継続（上下難）。100ドル前後レンジ覚悟。
+  - BTC：78,152超え→79,000追随。量子リスク警戒で積極買いなし。
+  - 6/3植田講演・6/12 SpaceX上場・6/16日銀利上げに向けた準備フェーズ。円高加速の起点を探る展開を想定。
+  - リスク管理：JP10Y>2.9%で株式エクスポージャー一段落とし。月曜薄商い＆ボラ警戒。イラン情勢悪化で原油上値リスク。
+  - 6/16日銀利上げ（0.75→1.00%ほぼ確実）に向けUSDJPYショート想定水域（157～156）の段階的構築継続。
+  - 長期ポートフォリオは売り不要・積立継続。特定評価益+225,350円 / NISA評価益+415,553円（前週比）。
+- tags: [gm, monthly_distilled, 2026-05, 2026-5-22_wk04, signal:ai_theme_spacex_ipo_6_12, signal:us_3day_holiday_positioning, signal:jp_nikkei_62689_uptrend_sustained, signal:usdjpy_return_sell_waiting, signal:us10y_4_4_holding, signal:vix_add_risk_gate_reopened, signal:gold_range_confirmed, signal:wti_no_trade_iran, signal:btc_78152_trend_follow, signal:boj_6_16_yen_mine_lighting, event:us_memorial_day_5_26, event:ueda_speech_6_3, event:spacex_ipo_6_12, event:boj_meeting_6_16, pattern:us_3day_holiday_risk_off, pattern:return_sell_159_50_60_waiting, risk:jp10y_2_9_equity_cut, risk:us100_27989_selloff, risk:iran_oil_spike, risk:boj_hike_yen_carry_unwind]

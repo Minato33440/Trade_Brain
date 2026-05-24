@@ -241,3 +241,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-5-15_wk03/meta.yaml)
   - [review](./2026-5-15_wk03/review.md)
   - [charts](./2026-5-15_wk03/charts.md)
+
+### 2026-5-22_wk04（2026-05-18 → 2026-05-22）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=up / yields=rising）← wk03継続も内部は正常化（gold off→range・VIX>18→<18 Add risk gate再開・BTC上トレンド）。
+- 1行：AI テーマ（SpaceX 6/12 上場 300 兆円・Physical AI・量子国策化）が相場主導。VIX 16.7 で Add risk gate 再開、Gold 4,523 でレンジ確定（4,515～4,571）。米国 3 連休（5/23～26）前のリスク調整＆ポジション整理局面で月曜薄商い。USDJPY 159.155 で 159.50～60 戻し売り待ち「休憩」モード。6/3 植田・6/16 日銀会合に向け円高地雷を意識。3 連休前ボラ警戒しながら AI 押し目買い機待ち。CFD：ゴールド保有継続・新規は 4,515 割れ押し目待ち。原油ノートレード推奨継続（イラン和平 vs 強硬発言錯綜で上下難）。
+- Key gates:
+  - Add risk: **再開**（VIX 16.7<18）。ただし 3 連休前ボラ警戒継続。月曜薄商い＆押し目買い環境と同時に注意も必要
+  - Reduce risk: US100 D1 close<27,989 OR VIX>18再上昇 OR US10Y>4.6% OR イラン情勢悪化で原油急騰
+- Links:
+  - [note](./2026-5-22_wk04/note.md)
+  - [meta](./2026-5-22_wk04/meta.yaml)
+  - [review](./2026-5-22_wk04/review.md)
+  - [charts](./2026-5-22_wk04/charts.md)

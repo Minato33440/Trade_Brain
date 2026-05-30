@@ -162,3 +162,41 @@
   - 6/16日銀利上げ（0.75→1.00%ほぼ確実）に向けUSDJPYショート想定水域（157～156）の段階的構築継続。
   - 長期ポートフォリオは売り不要・積立継続。特定評価益+225,350円 / NISA評価益+415,553円（前週比）。
 - tags: [gm, monthly_distilled, 2026-05, 2026-5-22_wk04, signal:ai_theme_spacex_ipo_6_12, signal:us_3day_holiday_positioning, signal:jp_nikkei_62689_uptrend_sustained, signal:usdjpy_return_sell_waiting, signal:us10y_4_4_holding, signal:vix_add_risk_gate_reopened, signal:gold_range_confirmed, signal:wti_no_trade_iran, signal:btc_78152_trend_follow, signal:boj_6_16_yen_mine_lighting, event:us_memorial_day_5_26, event:ueda_speech_6_3, event:spacex_ipo_6_12, event:boj_meeting_6_16, pattern:us_3day_holiday_risk_off, pattern:return_sell_159_50_60_waiting, risk:jp10y_2_9_equity_cut, risk:us100_27989_selloff, risk:iran_oil_spike, risk:boj_hike_yen_carry_unwind]
+
+---
+
+## 2026-5-29_wk05（2026-05-25 → 2026-05-29）
+- regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=range / yields=rising）← wk04「Neutral」から継続。内部品質は「AI・量子テーマ主導 × BTC戻り売り転換」へ質的シフト。
+- decision:
+  - spacex_anthropic_openai_ipo_6_12=on（SpaceX/OpenAI/Anthropic上場期待（6/12）で株高継続。Anthropic企業価値154兆円がOpenAIを上回る。AI テーマの最大触媒。Space X時価総額300兆円規模。）
+  - quantum_computer_theme_arrival=on（IBMが量子コンピューターに約1.5兆円投資。「AIの次は量子」テーマが浮上。量子関連銘柄（村田製作所など）に買い目線シフト。米国政府国策化観測。）
+  - ceasefire_uncertainty_ongoing=on（イラン米国60日間暫定停戦合意報道（ただしトランプ署名待ち・イラン側は否定）。停戦報道は過去6回否定されており、本質的に戦争終わっていない見立て。原油88ドル台の高止まりがその根拠。）
+  - pce_in_line_limited_market_impact=on（PCEデフレーター3.8% / コアPCE3.3%は予想と一致。市場インパクト限定的。インフレ警戒は脇に。AI投機継続。）
+  - us10y_4453_uptrend_continue=on（US10Y 4.453%で上昇トレンド継続。JPMダイモン「金利は格段に高くなる」で上振れバイアス。ただし「金利上昇でも AI頼みで株は買える」スタンス維持。）
+  - btc_sell_on_rallies_pivot=on（5月末から「上がったら売る」相場へ転換。量子コンピューターの発達でブロックチェーン暗号解読リスク意識。71,347ドル方向の下落流れを利用推奨。BTC関連銘柄も下落方向。）
+  - usdjpy_160_wall_defense=on（ドル円159.27で160円が心理的天井・米国防衛ライン。当面160円超えは抑えられる見立て。「遠回りが近道」シナリオ：一時的な円高『ズドン』が来るが、おかわり介入後は170-180円方向へ。）
+  - gold_4560_momentum_adjustment_watch=on（XAUUSD 4,560.50。4,425ドル周辺からの反発で4,500ドル方向への上昇期待。直近は上がりすぎで騙し的下落しやすい。高値超え後の下落を利用する方がパフォーマンス向上。）
+  - wti_ceasefire_down_pressure=on（停戦合意で下落圧力。ただし戦争本質的に終わっていない見方から上昇余地も残す。92.48超えから上昇利用可。「分からないところはトレードしない」スタンス推奨。）
+  - vix_15_32_low_vol_add_risk_gate_open=on（VIX 15.32で低ボラ環境継続。Add risk gate（<18）が開放。ただし地政学リスク（イラン情勢突発報道）に注意。）
+- evidence (close / 2026-05-30 snapshot):
+  - US100: 30,333.180（+10.49% / 30d）← wk04（29,481）比+2.9%。上昇トレンド継続
+  - USDJPY: 159.270（-0.57% / 30d）← wk04（159.155）比+0.115。160円が壁
+  - WTI: 87.360（-16.86% / 30d）← wk04（96.6）比-9.24（-9.6%）。停戦観測で下落
+  - XAUUSD: 4,560.500（-1.17% / 30d）← wk04（4,523.2）比+37.3。反発期待
+  - US2Y: 4.149（+3.13% / 30d）← wk04値（参照）
+  - VIX: 15.320（-9.30% / 30d）← wk04（16.7）比-1.38。低ボラ継続
+  - US10Y: 4.453（+1.44% / 30d）← wk04（4.558）比-0.105。上昇トレンド
+  - BTC/USD: 73,536.555（-3.63% / 30d）← wk04（76,673）比-3.1%。戻り売り局面
+  - JP225: ≈66,351円（上昇トレンド継続、67,500円視野）
+  - Regime (system): Neutral
+- implication:
+  - AI・量子テーマ：SpaceX/Anthropic上場（6/12）までロング目線継続。押し目買い推奨（高値追わない）。
+  - BTC：『上がったら売る』へ転換。71,347ドル方向の下落利用。量子ニュース厳重警戒。
+  - ドル円：160円超えなければ円安バイアス継続。159.50～60での戻り売り待ち。ただし最終的には6/3植田・6/16日銀利上げで円高地雷点灯。
+  - Gold：4,500ドル方向の上昇を利用。保有継続。騙し的下落で一旦調整の可能性。
+  - 日経平均：66,351円方向の上昇利用。67,500円までの上値追いも。量子関連（村田など）への買いシフト。
+  - 6月の大型触媒：6/3植田講演・6/12上場・6/16日銀会合。円高地雷が6/3～6/16で点灯するフェーズへ移行を意識。
+  - リスク管理：イラン情勢の突発報道最重要。停戦否定で原油反発も、株式へのインパクト限定的か。
+  - 長期ポートフォリオ：売り不要。積立継続。6月SpaceX上場・量子テーマで AI関連上昇期待継続。
+- tags: [gm, monthly_distilled, 2026-05, 2026-5-29_wk05, signal:spacex_anthropic_openai_ipo_6_12, signal:quantum_computer_theme, signal:ceasefire_uncertainty, signal:pce_in_line, signal:us10y_uptrend, signal:btc_sell_on_rally, signal:usdjpy_160_wall, signal:vix_low_vol, event:spacex_ipo_6_12, event:anthropic_ipo_6_12, event:BOJ_6_3_6_16, pattern:ai_quantum_theme_shift, pattern:btc_momentum_shift, risk:ceasefire_denial_oil_rebound, risk:6_16_yen_mine_lighting, risk:quantum_risk_btc]
+

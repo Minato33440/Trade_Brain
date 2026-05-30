@@ -1,11 +1,47 @@
 # 週末 Git データ更新工程（REX 参照用）
 
-週末に「来週向け」の週次フォルダ `Y-M-D_wk--` を更新する際の手順を整理。Rex 自身が後から見返して実行できるよう、入力元・出力先・チェック項目を明示する。
+**毎週金曜日終値時点（実質土曜）で市況を更新する定期ルーチンワーク。**
+
+## ルーチン概要
+
+| タイミング | 入力 | コマンド | フォルダ | 例 |
+|-----------|------|---------|---------|-----|
+| **毎週金曜夜～土曜朝** | Boss 市況（金曜終値時点） | `/gm-weekly YYYY-M-DD_wkNN` | logs/weekly/2026/YYYY-M-D_wkNN/ | `/gm-weekly 2026-5-22_wk04` |
+
+### 週フォルダ命名ルール
+
+- **YYYY-M-DD**: その週の **金曜日の日付** （営業週の最終営業日）
+- **wkNN**: その **月の第 N 週目**
+  - 5月第3週: `2026-5-15_wk03` （5月15日金曜日）
+  - 5月第4週: `2026-5-22_wk04` （5月22日金曜日） ← **現在実行中**
+  - 5月第5週: `2026-5-29_wk05` （5月29日金曜日）
+
+### Boss からの市況入力タイミング
+
+金曜日終値後（実質土曜）、以下を提供：
+1. **#1 市況テキスト**: `logs/boss's-weeken-Report/2026/wr-YYYY-M-DD.md`
+2. **#4 ポートフォリオ口座**: `png_data/portfolio_snapshot_YYYY-MM-DD.*`
+3. **#5 当週トレード結果**: あれば `private_trades.csv` に記録、なければ明示
+
+その後、Claude Code が以下を実行：
+```
+/gm-weekly 2026-5-22_wk04
+```
+
+---
+
+週末に「来週向け」の週次フォルダを更新する際の手順を整理。Rex 自身が後から見返して実行できるよう、入力元・出力先・チェック項目を明示する。
 
 > **重要 (2026-04-20 更新)**: 本リポ Trade_Brain の実構造に合わせてパス表記を全並フラット化した：
 > - `logs/gm/weekly/` → `logs/weekly/`（`gm/` 階層除去）
 > - `logs/gm/daily/` → `logs/daily/`（同上）
 > - `versions/distilled/` → `distilled/`（`versions/` 除去）
+
+> **重要 (2026-05-24 更新)**: Hermes CLI 直叩き運用を開始。OAuth フロー の理解：
+> - Hermes が保存・管理する OAuth トークン（`C:\Users\Setona\AppData\Local\hermes`）を、Desktop MCP bridge と Claude Code 直叩きが共有再利用
+> - つまり「異なる認証」ではなく「同じセッションの異なるインターフェース」
+> - SuperGrok の日次制限は共有される
+> - 参考: `HERMES_INTEGRATION_GUIDE.md` の「OAuth フロー」セクション
 
 ---
 
@@ -40,9 +76,41 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
 
 ---
 
-## ⚠️ 作業開始前の最初の一言（ClaudeCode 必読）
+## 📋 実行前の準備チェック（`/gm-weekly` コマンド実行前に確認）
 
-週末Git更新の依頼を受けたら、**ClaudeCode 自身が最初に**以下を実行する（2026-05-16〜・Mianto 依頼は不要）。
+- [ ] **#1 週末市況**: `logs/boss's-weeken-Report/2026/wr-YYYY-M-DD.md` に Boss が保存
+  - 形式: Markdown（wr-2026-5-24.md を参考）
+  - 内容: Overview / Key Bullish / Key Cautious / Regime / Bottom Line / Watch
+  - 例: `wr-2026-5-24.md`
+
+- [ ] **#4 GMポートフォリオ口座**: `png_data/` に配置（以下の形式で Boss から提供）
+  - ファイル形式: PNG or YAML（スナップショット）
+  - 内容: 資産残高・評価損益・内訳（国内株/米国株/預り金等）
+  - パス例: `png_data/portfolio_snapshot_2026-05-24.png` または `.yaml`
+
+- [ ] **#5 当週トレード結果**: 
+  - あれば: `private_trades.csv` に記録済み（追加エントリ）
+  - なければ: Boss が「保有継続のみ」等を明示
+
+- [ ] **カレントディレクトリ**: `C:\Python\REX_AI\Trade_Brain` 確認
+- [ ] **環境**: Python `.venv` 有効、Hermes PATH 設定済み
+
+**すべて確認後、Boss が以下を実行**:
+```
+/gm-weekly 2026-5-22_wk04
+```
+
+**命名ルール確認**:
+- `2026-5-22`: 金曜日の日付（営業週の最終営業日）
+- `wk04`: 5月の第4週目（5月1-7日=wk01, 8-14日=wk02, 15-21日=wk03, 22-28日=wk04, 29-31日=wk05）
+
+---
+
+## ⚠️ 作業開始前のデータ取得フェーズ（ClaudeCode 必読・2026-05-24〜）
+
+週末Git更新の依頼を受けたら、**ClaudeCode 自身が以下を順序で実行**する。
+
+### Step 1a: 8ペア市場データ + GMニュース取得（既存）
 
 ```bash
 python main.py --trade --news < /dev/null
@@ -55,7 +123,35 @@ python main.py --trade --news < /dev/null
 
 **理由**: 実測値（8ペア最新値・30日変化率・レジームラベル・GMニュース）なしにファイルを作成すると、推定値で作成後に実データで全再更新する二度手間が発生する。実測データを先に確定させてからファイル作成に入る。
 
-**ボスが提供する1次資料は #1 市況 / #4 GMポートフォリオ口座 / #5 当週トレード結果 の3点のみ**（#2 --trade / #3 --news は ClaudeCode が自動取得）。
+### Step 1b: X (Twitter) 市況ヘッドライン取得（新規・2026-05-24〜）
+
+**目的**: 注目度の高い X ポストから、市況センチメント・重要なマクロイベント・相場を動かす政治経済ニュースを **3件** 抽出・要約。
+
+```powershell
+# PowerShell の場合（Windows）
+$env:HERMES_HOME = "C:\Users\Setona\AppData\Local\hermes"
+$env:Path += ";$env:HERMES_HOME\hermes-agent\venv\Scripts"
+
+# X 検索クエリ: 最新マクロ経済・為替・株価の注目ポスト
+$query = "market sentiment macroeconomic data FX JPY gold S&P500 financial news from last 7 days high engagement"
+
+hermes -z $query -t x_search,vision | Out-File -Encoding UTF8 "logs/weekly/x_headlines_raw.txt"
+
+Write-Host "✅ X headlines fetched → logs/weekly/x_headlines_raw.txt"
+```
+
+**処理フロー**（後述 Step 2で実施）:
+1. `x_headlines_raw.txt` をパース → トップ3ツイート抽出
+2. 各ツイートを 2-3 行に日本語要約（Grok vision or Python regex）
+3. `Market conditions -YYYY-M-D~.txt` に統合
+
+**失敗時**: 
+- X キーボード制限 / OAuth 再認証エラー → HERMES_HOME ログを確認し Boss に報告
+- ネットワークタイムアウト → hermes コマンド再実行（`--accept-hooks < /dev/null` で自動 continue）
+
+---
+
+**ボスが提供する1次資料は #1 市況 / #4 GMポートフォリオ口座 / #5 当週トレード結果 の3点のみ**（#2 --trade / #3 --news / #3.5 X headlines は ClaudeCode が自動取得）。
 
 ---
 
@@ -153,18 +249,75 @@ python main.py --trade --news < /dev/null
 
 ---
 
+## 🚀 クイックスタート（毎週金曜夜～土曜朝）
+
+**Boss が市況 + ポートフォリオを提供したら、Claude Code で以下を実行**：
+
+```
+/gm-weekly YYYY-M-DD_wkNN
+```
+
+### コマンド形式の説明
+
+- **YYYY-M-DD**: その週の **金曜日の日付** （例: 2026-5-22）
+- **wkNN**: その月の **第 N 週目** （例: wk04 = 5月第4週）
+
+### 実行例
+
+```
+/gm-weekly 2026-5-22_wk04    ← 現在実行中（5月22日金曜 = 5月第4週）
+/gm-weekly 2026-5-29_wk05    ← 来週（5月29日金曜 = 5月第5週）
+/gm-weekly 2026-6-5_wk01     ← 再来週（6月5日金曜 = 6月第1週）
+```
+
+### 自動実行内容
+
+このコマンドで、以下が自動実行されます：
+- ✅ Step 1a: `python main.py --trade --news` （8ペア市場データ + GM ニュース）
+- ✅ Step 1b: `hermes -z -t x_search` で X ヘッドライン TOP3 取得
+- ✅ Step 2: Boss 市況 + X ヘッドライン + GMニュース を統合
+- ✅ Step 3: 当週トレード Markdown 生成（private_trades.csv から）
+- ✅ Step 4-7: review.md / note.md / meta.yaml / charts.md 自動生成 + Git 更新（Boss 確認後）
+
+---
+
 ## 4. 実行順（チェックリスト）
 
 週末に、以下を上から順に実施する。
 
-- [ ] **1. ClaudeCode が `python main.py --trade --news < /dev/null` を自走**（最初に実行・依頼不要 / 2026-05-16〜）
-  - 失敗（exit≠0・データ欠落）時は不変ルール7に従い停止・報告
+### フェーズ A: データ取得（自動化・2026-05-24〜）
+
+- [ ] **1. 統合データ取得スクリプト実行**（ClaudeCode）
+
+  **推奨: PowerShell スクリプト一括実行**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File scripts/weekly_data_fetch.ps1
+  ```
+
+  **または手動実行** (Step 1a + Step 1b):
+  ```bash
+  # Step 1a: 8ペア市場データ + GMニュース
+  python main.py --trade --news < /dev/null
+
+  # Step 1b: X 市況ヘッドライン（新規）
+  $env:HERMES_HOME = "C:\Users\Setona\AppData\Local\hermes"
+  & C:\Users\Setona\AppData\Local\hermes\hermes-agent `
+    -z "latest market sentiment macroeconomic headlines FX JPY gold from last 7 days" `
+    -t x_search,vision --accept-hooks < $null > logs/weekly/x_headlines_raw.txt
+  ```
+
+  **失敗時**（exit≠0・データ欠落）:
+  - Step 1a: 不変ルール7に従い停止・報告（実測値なしでは進められない）
+  - Step 1b: 警告のみ。X取得失敗でもプロセスは続行（マイナーデータ）
+
 - [ ] **1b. ボス提供の1次資料を確認（#1/#4/#5 の3点のみ）**
-  - #1 市況サマリ（チャットで貼ってもらう）
+  - #1 市況サマリ → `logs/boss's-weeken-Report/2026/wr-YYYY-M-DD.md` に保存
+    - 形式: Markdown（前週の wr-2026-5-15.md を参考に）
+    - 内容: Overview / Key Bullish Points / Key Cautious Points / Regime / Bottom Line / Watch List
   - #4 GMポートフォリオ口座（残高・評価損益・内訳。更新なし時は明示）
   - #5 当週トレード結果（なし＝「保有継続のみ」等を明示。未記録分は private_trades.csv に反映）
 
-- [ ] **2. 手順1の出力をファイル化・配置**（ClaudeCode）
+- [ ] **2. 手順1の出力をファイル化・配置＋ X ヘッドライン統合**（ClaudeCode）
   - ターミナル出力（8ペア変動率・レジーム）を `charts/YYYY-MM-DD 〜 YYYY-MM-DD.txt` に保存
   - **`png_data/multi_pairs_plot_8.png` を `charts/Portforio-YYYY-MM-DD.png` にコピー**（ClaudeCode が実行）
     ```powershell
@@ -176,7 +329,37 @@ python main.py --trade --news < /dev/null
     ```powershell
     Copy-Item "png_data\YYYY_MM_DD_snapshot.yaml" "logs\weekly\2026\YYYY-M-D_wkNN\charts\YYYY_MM_DD_snapshot.yaml"
     ```
-  - `--news` の出力を Minato 市況テキストと合わせて `charts/Market conditions -YYYY-M-D~.txt` に保存
+  - **統合テキスト作成（新規・2026-05-24〜）**: `charts/Market conditions -YYYY-M-D~.txt`
+    - **内容構成**:
+      1. **Minato 市況テキスト** (Boss が提供)
+      2. **`python main.py --news` の出力** (Step 1a より)
+      3. **X ヘッドライン要約（新規）** (Step 1b より)
+         - `logs/weekly/x_headlines_raw*.txt` から トップ3ツイート 抽出
+         - 各ツイートを 2-3 行で日本語要約
+         - engagement 指標（likes/retweets）で注目度判定
+
+    - **実行方法** (`src/integration/merge_weekly_sources.py` を使用):
+      ```powershell
+      # 最新の x_headlines ファイルを自動検出
+      $X_HEADLINES = Get-ChildItem logs/weekly/x_headlines_raw*.txt -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1 -ExpandProperty FullName
+
+      # 統合実行（Boss市況ファイルを指定）
+      # 例: 2026-5-22_wk04 の場合
+      $WeekFolder = "2026-5-22_wk04"
+      
+      python src/integration/merge_weekly_sources.py `
+        --boss-file "logs/boss's-weeken-Report/2026/wr-2026-5-22.md" `
+        --news-output "logs/weekly/news_output.txt" `
+        --x-headlines $X_HEADLINES `
+        --output "logs/weekly/2026/$WeekFolder/charts/Market conditions -2026-5-22~.txt"
+      ```
+
+    - **スクリプト仕様** (`src/integration/merge_weekly_sources.py`):
+      - ✅ JSON / Markdown / 混合形式の x_search 出力を自動判定パース
+      - ✅ engagement スコア（likes+retweets）で TOP3 ソート
+      - ✅ 各ツイート（著者/本文/engagement）を markdown で整形
+      - ✅ Boss市況 + --news + X ヘッドライン を markdown フォーマットで統合
+      - ✅ 出力ファイルは UTF-8 エンコーディング固定
 
 - [ ] **3. 当週トレードの Markdown 生成**
   - 当週の月曜〜日曜の日付を決める（例: 2026-03-16〜2026-03-21）

@@ -1,0 +1,23 @@
+=== Path Verification ===
+HERMES_HOME: C:\Users\Setona\AppData\Local\hermes
+hermes.exe path: C:\Users\Setona\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe
+Path exists: True
+
+=== Environment Check ===
+HERMES_HOME set: True
+venv Scripts dir exists: True
+hermes binary exists: True
+
+=== Execution Test ===
+✓ hermes command executed successfully
+Output type: String
+Output line count: 1
+
+--- Command Output (first 500 chars) ---
+4
+
+--- Full Output ---
+4
+=== System PATH (hermes-related entries) ===
+hermes-related paths in system PATH:
+  C:\Users\Setona\AppData\Local\hermes\hermes-agent\venv\Scripts

@@ -766,3 +766,48 @@ market_theme: SpaceX/Anthropic/Quantum IPO catalyst × Ceasefire uncertainty × 
 - **長期ポートフォリオ**: 売り不要・積立継続。6月SpaceX上場・量子テーマで AI関連上昇期待。ただし7月以降の調整も並行意識。
 - **判定基準**: イラン停戦/否定・ドル円160円突破・JPY10Y 2.9%超え・US100 29,900割れ などの確認を最優先。
 
+---
+
+## Weekly Brief | 2026-6-5_wk01（2026-06-01 → 2026-06-05）
+created: 2026-06-07 (JST)
+market_theme: NFP 172K surprise → risk-off whipsaw × Yen carry unwind amplifier × 6/16-17 double central bank kingpin
+
+### Macro / Regime
+- Regime: Neutral（equities=**flat** / volatility=normal / oil=range / gold=**off** / crypto=**weak** / yields=rising）← wk05「AI・量子テーマ主導」から **NFPサプライズ起点のリスクオフ・whipsaw** へ内部転換（equities up→flat・gold range→off・crypto range→weak）。
+- **NFP 172Kショックで相関転換**: 予想85K＋前2ヶ月+93K上方修正。原油安でも利回り上昇＝フォーカスが原油からFed/雇用へ。年内利上げ確率50.5%→72.7%、US10Y4.5%超・30年5%超。
+- **半導体distribution主導の株安**: Nasdaq総合-4.18%（2025年4月以来最悪）・9週連騰ストップ。Broadcom-12%。CAPE 1.9σ割高×US10Y4.5%超のデュレーション直撃。「AI代替説が強いほど金利上昇に脆い」が顕在化。
+- **円キャリー巻き戻しが全資産の増幅器**: ドル円160介入水準。BOJ 6/15-16利上げ観測80%。円ショート満タン-114.7K・MS推計$500B+で部分巻き戻し中。BTC・日本株・半導体・金が連鎖。
+- **VIX急騰**: 21.51で6/5単日+39-40%（3月停戦期以来最大）。Add risk gate閉・Reduce risk〔VIX>18〕成立。
+
+### Position / Orders
+- Core: Gold CFD残ポジは**4390で全撤退済**（防衛的）→ $4,250-4,300のソブリン買いゾーンで分割買い場待ち。
+- Mode: 6/16-17ダブル中銀まで**観測優位・ポジション軽く**。米株/日本株/BTCは戻り売り・ヘッジ優位。エッジのない場所で挟まれない。
+- USDJPY: 160売りは介入取りの高勝率だが介入なしだと踏まれる両刃。ノーポジ推奨ゾーン。サイズ管理が生命線。
+
+### Key Levels (close-based / 2026-06-07 snapshot)
+- US100: 28,957（wk05 30,333比-4.5%）/ 戻り売り / S=27,989赤丸（最終防衛）/ R=29,900
+- JP225: 金曜終値の実測なし（snapshot8ペアに含まず・5/7 ATH 62,833言及のみ）・最も脆い / 6/16利上げ1.0%＋タカ派で8-12%調整シナリオ
+- USDJPY: 160.293（キングピン）/ R=160.5-162 / S=159.50割れで巻き戻し→156→155
+- WTI: 90.540 / $88-95レンジ / 在庫6週連続減でフィジカルタイト
+- XAUUSD: 4,365.30（2026年安値・gold=off）/ S=4,336→4,300/4,250（ソブリン買いゾーン）/ R=4,450→4,508
+- VIX: 21.510（>18 Add risk gate閉）/ US10Y: 4.536（5%窺う）/ US2Y: 4.280 / BTC: 60,922（19ヶ月安値）
+
+### Gates（最重要：終値で判定）
+- Add risk: **閉**（VIX 21.51>18）。再開＝VIX<18回帰 + 6/16-17ダブル中銀通過 + US100 27,989維持確認
+- Reduce / pause if: **VIX>18（成立中）** OR US100 D1 close<27,989 OR US10Y>4.6% OR ドル円160実弾介入/円高カスケード OR JP10Y>2.9%
+- Hedge gate: Gold撤退済→$4,250-4,300分割買い場待ち（初動の現金化売り→ソブリン＋ドル安で反転を待つ）/ 長期ポートは一部利確・現金比率引き上げ意識
+
+### This Week Focus（行動: 6/8-、6/16-17に向けて）
+- **6/10（水）米CPI**: 上振れでUS10Y 4.7-4.8%トライ・利上げ織り込み加速
+- **6/15-16 BOJ会合**: 25bp（以上）利上げ織り込み80%。1.0%＋タカ派で円高カスケード起点。見送りなら一旦円急落
+- **6/16-17 FOMC（新議長Kevin Warsh初FOMC）**: ドット上方修正・利上げ語法リスク。タカ派でドル高・株安起点
+- **ドル円160介入ゾーン**: 実弾介入orレートチェックで急激な円高フラッシュ（2024年8月は3週で円+10%）
+- **半導体distribution伝播**: 他メガキャップへの波及度。6/10 Oracle決算が試金石
+
+### Signals (weekly, fixed keys)
+- us10y_accel: rising_eyeing_5pct（4.536。30年5%超。NFP＋Warshタカ派で利下げ織り込み消滅・5%窺う）
+- hy_oas_widening: carry_unwind_amplifier（円キャリー巻き戻しが全資産の増幅器。MS推計$500B+部分巻き戻し中）
+- vix_spike: add_risk_gate_closed_reduce_triggered（21.51。6/5単日+39-40%。>18でgate閉・Reduce成立。≥30%スパイクの6-12ヶ月先S&Pプラス傾向の指摘も）
+- wti_shock: physical_paper_range_88_95（90.54。在庫6週連続減でフィジカルタイト。レンジ端逆張りの場所）
+- eps_revision_chain: semi_distribution_great_rotation（Broadcom-12%・9週連騰ストップ。Russell2000+1.45%でグロース売り→バリュー買いローテーション）
+

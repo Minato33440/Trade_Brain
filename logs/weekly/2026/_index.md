@@ -253,3 +253,27 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-5-22_wk04/meta.yaml)
   - [review](./2026-5-22_wk04/review.md)
   - [charts](./2026-5-22_wk04/charts.md)
+
+### 2026-5-29_wk05（2026-05-25 → 2026-05-29）
+- Regime: Neutral（equities=up / volatility=normal / oil=range / gold=range / crypto=range / yields=rising）← wk04継続も内部品質は「AI・量子テーマ主導 × BTC戻り売り転換」へ質的シフト。VIX 15.32で低ボラ環境。
+- 1行：SpaceX/OpenAI/Anthropic上場期待（6/12）と量子テーマが相場主導。US100 30,333（wk04比+2.9%）・日経66,351円方向。VIX 15.32でAdd risk gate開放、停戦合意観測でリスクオン継続。BTCは『上がったら売る』へ転換（量子暗号解読リスク）。ドル円159.27で160円が壁。6月大型触媒（6/3植田・6/12上場・6/16日銀）に向けた準備フェーズ。CFD：ゴールド3トレード全勝・残1/3ロット週越し。
+- Key gates:
+  - Add risk: **開放**（VIX 15.32<18）。イラン情勢の突発報道で再度閉じるリスク
+  - Reduce risk: US10Y>4.4%定着 OR JP10Y>2.9% OR US100 D1 close<29,900 OR VIX>22 で株式エクスポージャー一段落とし
+- Links:
+  - [note](./2026-5-29_wk05/note.md)
+  - [meta](./2026-5-29_wk05/meta.yaml)
+  - [review](./2026-5-29_wk05/review.md)
+  - [charts](./2026-5-29_wk05/charts.md)
+
+### 2026-6-5_wk01（2026-06-01 → 2026-06-05）
+- Regime: Neutral（equities=flat / volatility=normal / oil=range / gold=off / crypto=weak / yields=rising）← wk05から内部転換。NFP 172Kサプライズ起点で「AI主導」→「リスクオフ・whipsaw」へ質的シフト（equities up→flat・gold range→off・crypto range→weak）。
+- 1行：NFP 172K（予想85K）＋上方修正の "good news is bad news" で楽観相場が一気にリスクオフへ。Nasdaq総合-4.18%（半導体distribution主導）、VIX 21.51で6/5単日+39-40%急騰（Add risk gate閉・Reduce risk〔VIX>18〕成立）。ドル円160突破（160.293）が今週のキングピン。金$4,365で2026年安値（gold=off）、BTC$60,000割れ19ヶ月安値。全資産が「ドル円160×満タン円ショート×6/16-17ダブル中銀」の一枚岩。6/16-17まで観測優位・戻り売り/ヘッジ優位。CFD：Gold残ポジを4390で全撤退（防衛的）。
+- Key gates:
+  - Add risk: **閉**（VIX 21.51>18）。再開＝VIX<18回帰 + 6/16-17ダブル中銀通過 + US100 27,989維持確認
+  - Reduce risk: **成立中**（VIX>18）。さらに US100 D1 close<27,989 OR US10Y>4.6% OR ドル円160実弾介入/円高カスケード OR JP10Y>2.9% で株式エクスポージャー一段落とし
+- Links:
+  - [note](./2026-6-5_wk01/note.md)
+  - [meta](./2026-6-5_wk01/meta.yaml)
+  - [review](./2026-6-5_wk01/review.md)
+  - [charts](./2026-6-5_wk01/charts.md)

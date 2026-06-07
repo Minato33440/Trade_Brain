@@ -1,0 +1,12 @@
+取得期間: 2026-05-08 〜 2026-06-07 (JST基準)
+
+USD/JPY: 最新 160.293 (30日変化: +2.21%)
+US100: 最新 28957.600 (30日変化: -0.95%)
+XAU/USD: 最新 4365.300 (30日変化: -7.52%)
+WTI: 最新 90.540 (30日変化: -5.11%)
+US2Y: 最新 4.280 (30日変化: +6.65%)
+VIX: 最新 21.510 (30日変化: +25.13%)
+US10Y: 最新 4.536 (30日変化: +3.94%)
+BTC/USD: 最新 60922.668 (30日変化: -24.02%)
+
+[regime] Neutral (label=Neutral, equities=flat, volatility=normal, oil=range, gold=off, crypto=weak, yields=rising)

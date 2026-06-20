@@ -53,7 +53,7 @@
   - hormuz_reopen_risk_on_tug_of_war=on（米イラン停戦（暫定合意延長）＋ホルムズ海峡再開期待で株高・ドル高・リスクオン。一方で介入警戒が日本株・クロス円の上値を抑える綱引き。WTIは-20.56%急落＝地政学プレミアム剥落（oil=slump）。6/19米イラン協議は延期＝停戦継続も再燃の火種残る。）
   - nikkei_70000_breakout_blue_circle=on（日経平均6/18東証終値71,053.49円で初の7万円超え（4/27の6万到達から2か月足らず／--news #5）。boss：上値危険ゾーン、夏天井72,800円＝バブル期暴落幅の2倍ルール（青丸エリア）。73,000トライとその直上からの下落の両方を使う想定。識者は「株高の恩恵は一部」と指摘。）
   - vix_gate_reopened=on（VIX 16.4で18割れ＝Add risk gate再開（wk01は21.51で閉）。リスクオン回帰の確認。ただしドル円介入警戒の突発スパイク余地で18超再上昇に注意。）
-  - gold_neckline_4120_4060_rebound_buy=on（金$4,173でgold=off継続も、boss戦略は4120-4060週足ネック到達からの反発上昇（→4,230）。4,020→4,120の反発も利用可。フィボ0.618で勢い「結構強い」、リスクオン地合いが追い風。CFDはゴールド半値持ち越し（ロング・越週オープン／エントリー詳細は1次資料に明示なし）。）
+  - gold_neckline_4120_4060_rebound_buy=on（金$4,173でgold=off継続も、boss戦略は4120-4060週足ネック到達からの反発上昇（→4,230）。4,020→4,120の反発も利用可。フィボ0.618で勢い「結構強い」、リスクオン地合いが追い風。CFD実績：6/12 建値4097ロング→同日4197半値利確(+2.44%)→6/18 4300更に半値利確(+4.95%)、残1/4ロットを建値4097で週持ち越し。2勝0敗・合計+7.40%。撤退→ネック反発再エントリー→段階利確の規律執行。）
   - us_jp_rate_divergence_yen_pressure=on（米10年は下降ライン・4.6%が重く戻り売り基調（4.487）、日10年は上昇トレンド継続で押し目買い（約2.646%）。日米金利差縮小＝円高圧力＝ドル円介入警戒（円安水準）と方向一致。4.6%上抜け or JP10Y 2.65%上抜けがドル円上値・円高反転のヒント。）
   - btc_downtrend_sell_rally=on（BTC $62,896で小反発も30日-18.88%・下落相場。boss：66,200割れ→60,700、64,200戻りからの反転下落の戻り売り目線。独立妙味なし・監視中心。）
   - nas100_cup_handle_range_30900_short=watch（US100 30,406でwk01比+5.0%のリスクオン回帰。boss：カップ・ウィズ・ハンドルで本来上方向も上は火傷ゾーン＝レンジ。30,900周辺で一旦の下落を利用する逆張り短期。本来の上昇の1/3〜半分しか取れていないレンジ相場の見方も。MLCC→PCB資金シフト・スペースX天井-23%調整。）
@@ -81,7 +81,7 @@
   - リスク管理：Add risk gate再開も、ドル円161.80超で実弾介入/円高フラッシュ OR JP225 72,800-73,000青丸拒否 OR US100 30,900拒否/D1 close<29,900 OR US10Y>4.6%上抜け OR VIX>18再上昇 で株式エクスポージャー一段落とし。
   - 長期ポートフォリオ：リスクオン回帰で保有継続・積立も、日経過熱・ドル円介入リスクで一部利確・現金比率の点検は継続。識者「株高の恩恵は一部」も留意。
   - トリガー監視：ドル円161.80介入有無 / 日経72,800青丸 / NAS100 30,900 / US10Y 4.6%・JP10Y 2.65%上抜け / 米イラン協議再燃（6/19延期）。
-  - 記録規律：ゴールド半値持ち越し（越週オープン）のエントリー/利確の1次データが揃った時点で確定記録（推測補完しない＝不変ルール7）。
+  - トレード実績：Gold CFD 2勝0敗・合計+7.40%（6/12建値4097→同日4197→6/18 4300の段階半値利確）。残1/4ロットを建値4097で越週＝実質ノーリスクで上値取り。撤退（wk01 4390）→局面転換確認→ネック反発再エントリーの規律的往復。
 - tags: [gm, monthly_distilled, 2026-06, 2026-6-19_wk03, signal:usdjpy_intervention_watch_kingpin, signal:hormuz_reopen_risk_on_tug_of_war, signal:double_central_bank_6_16_17_passed, signal:nikkei_70000_breakout_blue_circle, signal:vix_gate_reopened, signal:gold_neckline_4120_4060_rebound, signal:us_jp_rate_divergence_yen_pressure, signal:btc_downtrend_sell_rally, signal:nas100_cup_handle_range_30900_short, signal:wti_ceasefire_slump_conditional, event:fomc_hold_hawkish_6_17, event:us_iran_talks_postponed_6_19, event:hormuz_reopen, event:nikkei_70000_break_6_18, event:us_market_closed_6_19, pattern:double_cb_pass_risk_on_relief, pattern:intervention_watch_2024_apr_replay, pattern:geopolitical_premium_collapse_oil, pattern:blue_circle_2x_rule_top, risk:yen_intervention_flash_cascade, risk:nikkei_blue_circle_crash, risk:us_iran_re_escalation, risk:thin_liquidity_monday_whipsaw]
 
 ---

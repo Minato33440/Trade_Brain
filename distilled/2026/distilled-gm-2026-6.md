@@ -43,3 +43,45 @@
 - tags: [gm, monthly_distilled, 2026-06, 2026-6-5_wk01, signal:nfp_172k_good_news_bad_news, signal:yen_carry_unwind_amplifier, signal:double_central_bank_6_16_17, signal:usdjpy_160_kingpin, signal:vix_spike_add_risk_gate_closed, signal:gold_2026_low_real_yield_off, signal:semi_distribution_ai_fragility, signal:btc_60000_break_19m_low, signal:great_rotation_smallcap_value, signal:wti_physical_paper_range, event:us_cpi_6_10, event:boj_meeting_6_15_16, event:fomc_warsh_6_16_17, event:oracle_earnings_6_10, pattern:good_news_bad_news_repricing, pattern:yen_carry_unwind_2024_aug_replay, pattern:gold_liquidation_v_recovery, pattern:great_rotation_growth_to_value, risk:yen_intervention_cascade, risk:us10y_5pct_stock_correction, risk:semi_distribution_contagion, risk:jp225_8_12pct_correction]
 
 ---
+
+## 2026-6-19_wk03（2026-06-15 → 2026-06-19）
+> 注: wk02（2026-6-12）はスルー。比較基準は前々週 wk01（ボス指示 2026-06-20）。
+- regime: Neutral（equities=up / volatility=normal / oil=slump / gold=off / crypto=weak / yields=falling）← wk01「NFPサプライズ起点のリスクオフ・whipsaw（equities=flat / yields=rising）」から **6/16-17ダブル中銀通過＋米イラン停戦/ホルムズ再開でリスクオン回帰**へ。VIX 21.51→16.4でAdd risk gate再開、oilは停戦で range→slump。
+- decision:
+  - double_central_bank_6_16_17_passed=on（wk01キングピンの6/16-17ダブル中銀を通過。FOMCは政策金利3.50-3.75%を4会合連続据え置き＋「利上げ予想に転換」のタカ派シフト（--news #3）。VIX急低下・yields=fallingでリスクオン回帰。BOJ結果は1次資料に明示なし＝創作回避。）
+  - usdjpy_intervention_watch_new_kingpin=on（今週の新キングピン＝ドル円介入警戒。早朝161.68-161.83（約161.80）ピークは2024年4月29日の介入直前とほぼ同水準。円安止まらず「いつ介入が入ってもおかしくない」ゾーン。上値での売りの流れ意識・162一段上げからの急落（ズドン）リスク・買い上がりはバイングクライマックス警戒。月曜は米休場明けで薄商いの振り回し。日本株・クロス円の上値を抑える中心テーマ。）
+  - hormuz_reopen_risk_on_tug_of_war=on（米イラン停戦（暫定合意延長）＋ホルムズ海峡再開期待で株高・ドル高・リスクオン。一方で介入警戒が日本株・クロス円の上値を抑える綱引き。WTIは-20.56%急落＝地政学プレミアム剥落（oil=slump）。6/19米イラン協議は延期＝停戦継続も再燃の火種残る。）
+  - nikkei_70000_breakout_blue_circle=on（日経平均6/18東証終値71,053.49円で初の7万円超え（4/27の6万到達から2か月足らず／--news #5）。boss：上値危険ゾーン、夏天井72,800円＝バブル期暴落幅の2倍ルール（青丸エリア）。73,000トライとその直上からの下落の両方を使う想定。識者は「株高の恩恵は一部」と指摘。）
+  - vix_gate_reopened=on（VIX 16.4で18割れ＝Add risk gate再開（wk01は21.51で閉）。リスクオン回帰の確認。ただしドル円介入警戒の突発スパイク余地で18超再上昇に注意。）
+  - gold_neckline_4120_4060_rebound_buy=on（金$4,173でgold=off継続も、boss戦略は4120-4060週足ネック到達からの反発上昇（→4,230）。4,020→4,120の反発も利用可。フィボ0.618で勢い「結構強い」、リスクオン地合いが追い風。CFDはゴールド半値持ち越し（ロング・越週オープン／エントリー詳細は1次資料に明示なし）。）
+  - us_jp_rate_divergence_yen_pressure=on（米10年は下降ライン・4.6%が重く戻り売り基調（4.487）、日10年は上昇トレンド継続で押し目買い（約2.646%）。日米金利差縮小＝円高圧力＝ドル円介入警戒（円安水準）と方向一致。4.6%上抜け or JP10Y 2.65%上抜けがドル円上値・円高反転のヒント。）
+  - btc_downtrend_sell_rally=on（BTC $62,896で小反発も30日-18.88%・下落相場。boss：66,200割れ→60,700、64,200戻りからの反転下落の戻り売り目線。独立妙味なし・監視中心。）
+  - nas100_cup_handle_range_30900_short=watch（US100 30,406でwk01比+5.0%のリスクオン回帰。boss：カップ・ウィズ・ハンドルで本来上方向も上は火傷ゾーン＝レンジ。30,900周辺で一旦の下落を利用する逆張り短期。本来の上昇の1/3〜半分しか取れていないレンジ相場の見方も。MLCC→PCB資金シフト・スペースX天井-23%調整。）
+  - wti_ceasefire_slump_conditional=watch（WTI 76.54で-20.56%急落（oil=slump）。78.83が自律反発ラインだが76.2超えからの条件付き。地政学はニュースよりテクニカル要因として捉えるスタンス。）
+- evidence (close / 2026-06-20 snapshot):
+  - US100: 30,406.189（+3.57% / 30d）← wk01（28,957.600）比+5.0%。リスクオン回帰・distribution巻き戻し
+  - USDJPY: 161.289（+1.51% / 30d。早朝ピーク約161.80）← wk01（160.293）比+0.996。介入警戒キングピン
+  - XAUUSD: 4,172.900（-8.08% / 30d）← wk01（4,365.300）比-192.4。gold=off・4120-4060週足ネック接近
+  - WTI: 76.540（-20.56% / 30d）← wk01（90.540）比-14.0。停戦/ホルムズ再開で地政学プレミアム剥落・oil=slump
+  - US2Y: 4.213（-1.03% / 30d）← wk01（4.280）比-0.067。利上げ織り込み一服
+  - VIX: 16.400（-2.15% / 30d）← wk01（21.510）比-5.11。Add risk gate（<18）再開
+  - US10Y: 4.487（-2.16% / 30d。boss現値約4.455%）← 下降ライン・4.6%が重く戻り売り基調
+  - BTC/USD: 62,896.473（-18.88% / 30d）← wk01（60,922.668）比+1,974の小反発も下落相場
+  - JP225: 6/18東証終値71,053.49円（--news #5＝正規ソース。snapshot8ペアには含まれない）・初の7万円超え・上値青丸72,800
+  - Regime (system): Neutral
+- implication:
+  - 6/16-17ダブル中銀を通過しリスクオン回帰（VIX 16.4・Add risk gate再開）。しかし最大リスクはドル円161.80介入警戒（2024年安値圏）。上値追い厳禁・介入フラッシュに備えサイズ管理。
+  - 綱引き：ホルムズ再開の株高ドル高 vs 介入警戒の日本株・クロス円上値重し。月曜は米休場明けの薄商いで振り回し注意。
+  - US100：リスクオン回帰も上は火傷ゾーン＝レンジ。30,900周辺で一旦の下落を利用する逆張り短期。高値追い厳禁。
+  - JP225：7万円超の過熱。上値青丸72,800危険ゾーン（2倍ルール）。73,000トライとその直上からの下落の両方を使う。介入警戒が重し。
+  - USDJPY：162一段上げからの急落＝上値での売りの流れ。買い上がりはバイングクライマックス警戒。実弾介入/レートチェックで円高フラッシュ（2024年8月は3週で円+10%）。159.5割れで巻き戻し→156→155。サイズ管理が生命線。
+  - Gold：boss戦略の4120-4060週足ネック反発買い（→4,230）。CFDゴールド半値持ち越し。4,020→4,120の反発も利用可。フィボ0.618で勢い強い。
+  - BTC：下落相場で戻り売り目線。66,200割れ→60,700、64,200戻りからの反転下落。独立妙味なし・監視のみ。
+  - WTI：停戦で-20.56%急落（slump）。78.83自律反発は76.2超えからの条件付き。地政学はテクニカル要因として対応。
+  - リスク管理：Add risk gate再開も、ドル円161.80超で実弾介入/円高フラッシュ OR JP225 72,800-73,000青丸拒否 OR US100 30,900拒否/D1 close<29,900 OR US10Y>4.6%上抜け OR VIX>18再上昇 で株式エクスポージャー一段落とし。
+  - 長期ポートフォリオ：リスクオン回帰で保有継続・積立も、日経過熱・ドル円介入リスクで一部利確・現金比率の点検は継続。識者「株高の恩恵は一部」も留意。
+  - トリガー監視：ドル円161.80介入有無 / 日経72,800青丸 / NAS100 30,900 / US10Y 4.6%・JP10Y 2.65%上抜け / 米イラン協議再燃（6/19延期）。
+  - 記録規律：ゴールド半値持ち越し（越週オープン）のエントリー/利確の1次データが揃った時点で確定記録（推測補完しない＝不変ルール7）。
+- tags: [gm, monthly_distilled, 2026-06, 2026-6-19_wk03, signal:usdjpy_intervention_watch_kingpin, signal:hormuz_reopen_risk_on_tug_of_war, signal:double_central_bank_6_16_17_passed, signal:nikkei_70000_breakout_blue_circle, signal:vix_gate_reopened, signal:gold_neckline_4120_4060_rebound, signal:us_jp_rate_divergence_yen_pressure, signal:btc_downtrend_sell_rally, signal:nas100_cup_handle_range_30900_short, signal:wti_ceasefire_slump_conditional, event:fomc_hold_hawkish_6_17, event:us_iran_talks_postponed_6_19, event:hormuz_reopen, event:nikkei_70000_break_6_18, event:us_market_closed_6_19, pattern:double_cb_pass_risk_on_relief, pattern:intervention_watch_2024_apr_replay, pattern:geopolitical_premium_collapse_oil, pattern:blue_circle_2x_rule_top, risk:yen_intervention_flash_cascade, risk:nikkei_blue_circle_crash, risk:us_iran_re_escalation, risk:thin_liquidity_monday_whipsaw]
+
+---

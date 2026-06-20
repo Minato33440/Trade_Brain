@@ -1,34 +1,88 @@
-Latest market sentiment (last 7 days, ~May 31–June 7 2026) is sharply risk-off after the strong May NFP print. High-engagement X discussion centers on a classic “good news is bad news” repricing.
+I can help, but I need to be transparent: this session does not expose a web-search tool, so I cannot verify “latest / last 7 days” headlines live. I won’t fabricate current headlines.
 
-**NFP Jobs Report (June 5 release)**
-- +172k vs ~85k consensus — clear beat.
-- Immediate reaction: Nasdaq -4.2% (worst day since April 2025), S&P -2.64%, Dow -1.35%. Tech/semiconductors led the selloff (Marvell -17%, Micron -13%, broad chip names down 7-11%).
-- VIX spiked ~34-40% intraday. 10y yield rose ~6bp.
-- Narrative split:
-  - Headline-driven view: stronger jobs + sticky inflation = fewer/no Fed cuts, possible hike risks.
-  - Contrarian thread (high likes): ~70k leisure/hospitality (World Cup bartenders) + 55k local gov made the number look hotter than trend. Core cyclical sectors still cooling. AHE cooled to 3.4% YoY. Many expect revisions later.
+If your goal is “high-engagement macro market sentiment content” around these themes, the strongest angle is:
 
-**Fed Rate Path**
-- Markets rapidly repriced toward “higher for longer.” Focus now on June FOMC (new Chair Kevin Warsh, dot plot revisions). Some posts flag potential rate-hike language if inflation stays firm. Trump preference for lower rates noted but secondary to data.
+Main narrative:
+“FX intervention fear + BOJ/FOMC policy divergence + Middle East oil-risk premium are colliding with risk-on equity fever. USDJPY is near politically sensitive levels, gold is bid as a hedge, oil watches Iran/Hormuz, while Nikkei bulls are already talking extreme upside scenarios.”
 
-**BOJ / JPY 160**
-- USD/JPY back at the 160 level that previously triggered intervention.
-- BOJ widely expected to hike 25bp (possibly larger) at the June 15-16 meeting. Inflation data (CPI 2.8%+, PPI 4.9%) cited as justification.
-- Dominant theme: yen carry-trade unwind. Years of cheap JPY funding for US stocks/tech/crypto/EM now reversing, amplifying the broad risk-off move across assets. BOJ decision viewed as one of the highest-impact events for global markets in the near term.
+High-engagement headline hooks you can use:
 
-**Gold Sell-off**
-- Gold dropped ~3.2–4.5% around the NFP release to ~$4,331/oz (2026 low). Silver fell harder (7-9%).
-- Drivers: stronger USD/yields + reduced appeal of non-yielding assets. Technical breakdown of 200-day MA and key supports.
-- Sentiment: mostly treated as a leveraged correction after a long bull run rather than the end of the structural case (central bank buying still cited). Near-term support watched at 4300–4280.
+1. USDJPY / Yen intervention
+“USDJPY is back in the danger zone. If yen weakness accelerates, the market will start pricing intervention risk before officials act.”
 
-**VIX Spike**
-- Single-day surge of ~39–40% on June 5, highest since March ceasefire period.
-- Coincided with equity flush and some Middle East geopolitical references.
-- High-engagement takes: historical instances of ≥30% VIX spikes have generally been followed by positive 6–12 month S&P returns (small sample). Some view it as necessary vol expansion after extreme complacency. VIX:VXV ratio also spiked sharply.
+2. 2024 lows / yen weakness
+“The yen’s 2024 lows are becoming the line in the sand. A break below that psychological zone could trigger verbal intervention first, real intervention second.”
 
-**Overall Macro Sentiment**
-- Risk-off whipsaw dominated. Strong NFP acted as catalyst to unwind crowded AI/tech positions and force repricing of rate expectations.
-- Tone on X leans toward “violent but potentially healthy flush/positioning reset” rather than 2022-style regime change, though caution remains elevated into upcoming CPI, PPI, and dual FOMC/BOJ meetings.
-- Carry-trade mechanics and VIX mechanics threads saw particularly high engagement.
+3. BOJ vs FOMC
+“The real driver is still BOJ-FOMC divergence. If the Fed stays higher-for-longer while the BOJ normalizes too slowly, USDJPY pressure remains upside-biased.”
 
-Key near-term catalysts: June 10 CPI, FOMC (June 16-17), BOJ policy decision (June 15-16). Sentiment remains data-dependent and volatile.
+4. Gold
+“Gold doesn’t need panic to rise. It only needs sticky inflation, policy uncertainty, and geopolitical hedging demand. That mix is still alive.”
+
+5. Oil / Iran / Hormuz
+“Oil is trading the probability of escalation, not just supply-demand. Any credible threat to Hormuz instantly reprices the inflation outlook.”
+
+6. Iran ceasefire
+“A ceasefire headline can crush oil-risk premium quickly, but unless the Hormuz tail-risk disappears, the market may keep buying dips in crude and gold.”
+
+7. Nikkei 70,000
+“Nikkei 70,000 sounds absurd until you frame it as weak yen + corporate reform + global liquidity + foreign inflows. The risk is not the target — it’s the path.”
+
+8. Cross-asset sentiment
+“Current macro sentiment is not pure risk-on or risk-off. It is ‘risk-on with hedges’: equities stay bid, while gold and oil retain geopolitical premium.”
+
+Suggested X post, high-engagement style:
+
+USDJPY is the macro pressure point again.
+
+If yen weakness pushes back toward the 2024 danger zone, markets will start front-running intervention risk.
+
+But the bigger story is still:
+
+BOJ too slow
+Fed not dovish enough
+Gold bid as hedge
+Oil watching Iran/Hormuz
+Nikkei bulls chasing extreme upside
+
+This is not clean risk-on.
+
+It’s risk-on with crash insurance.
+
+Shorter version:
+
+USDJPY near intervention zone.
+Gold bid.
+Oil watching Hormuz.
+Nikkei bulls whispering 70,000.
+
+This market is not risk-on.
+It’s risk-on with geopolitical hedges.
+
+Best search queries to verify live headlines:
+
+- USDJPY yen intervention 2024 low last 7 days
+- Japan officials yen intervention warning USDJPY
+- BOJ FOMC policy divergence yen latest
+- gold price Middle East Iran ceasefire last 7 days
+- oil Iran ceasefire Strait of Hormuz risk premium
+- Nikkei 70000 forecast weak yen foreign investors
+- market sentiment BOJ FOMC gold oil yen last week
+
+Best sources to check:
+- Reuters
+- Bloomberg
+- Nikkei Asia
+- CNBC
+- MarketWatch
+- Investing.com
+- DailyFX
+- Forexlive
+- FXStreet
+- OilPrice.com
+
+If you paste the actual last-7-days headlines or articles, I can turn them into:
+1. market sentiment summary
+2. USDJPY / gold / oil / Nikkei trade bias
+3. X high-engagement post thread
+4. weekly GM portfolio note for Trade_Brain.

@@ -139,6 +139,7 @@ def fetch_trade_data(
             df_all[name] = data
             pair_snapshots[name] = {
                 "latest": latest,
+                "first": first,        # 30日前の始値（2s10sカーブのΔ算出に使用）
                 "change_30d": change_30d,
             }
         else:

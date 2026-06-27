@@ -41,7 +41,7 @@ def save_normalized_plot(df: pd.DataFrame, filename: str = "multi_pairs_plot_8.p
     plt.figure(figsize=(14, 8))
     for col in df_norm.columns:
         plt.plot(df_norm[col], label=col)
-    plt.title("8ペア正規化比較 (30日)")
+    plt.title(f"{len(df_norm.columns)}-pair normalized comparison (30d)")
     plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.grid(True)
     plt.tight_layout()

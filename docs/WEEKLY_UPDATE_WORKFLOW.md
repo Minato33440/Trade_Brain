@@ -119,9 +119,19 @@ python main.py --trade --news < /dev/null
 - コード修正済（configs/rex_chat.py / 2026-05-16）: XAI_API_KEY なしでも `--trade --news` は動作、stdout は UTF-8 固定、データ出力後 exit 0。`< /dev/null` で非対話・クリーン終了。
 - 出力（8ペア30日値・regime・GMニュース）を `charts/` 配下に自動配置、`png_data/` の plot/snapshot を週次フォルダへコピー。
 - **news はライブ取得**: 週次更新開始時に1回実行し、その出力を確定採用する（最新情報を採る方針 / ボス 2026-05-16）。
-- **失敗時（不変ルール7）**: exit≠0 / 8ペア欠落 / news欠落 等が出たら**自分で想像補完せず停止しボスに報告**。
+- **失敗時（不変ルール7）**: exit≠0 / ペア欠落 / news欠落 等が出たら**自分で想像補完せず停止しボスに報告**。
 
-**理由**: 実測値（8ペア最新値・30日変化率・レジームラベル・GMニュース）なしにファイルを作成すると、推定値で作成後に実データで全再更新する二度手間が発生する。実測データを先に確定させてからファイル作成に入る。
+**理由**: 実測値（各ペア最新値・30日変化率・レジームラベル・GMニュース）なしにファイルを作成すると、推定値で作成後に実データで全再更新する二度手間が発生する。実測データを先に確定させてからファイル作成に入る。
+
+#### スナップショットの構造改善（2026-06-27〜 / boss 3項目）
+
+`png_data/YYYY_MM_DD_snapshot.yaml` と `[regime]` 出力に以下が**機械側で自動付与**される。Evidence/レジーム判定で必ず参照すること（プロンプトでの手当てではなく知識アーキテクチャ側で保持）。
+
+1. **JP225 を実測パネルに追加**（`TRADE_PAIRS` に `^N225`）。従来「snapshot8ペアにJP225含まれない」という注記は**不要**になった（9ペアに拡張）。boss市況の主役（日本株）の金曜終値が機械実測で取れる。`snapshot_30d."JP225"` と `panel.Risk` に出る。
+2. **`curve_2s10s` セクション**（金利カーブの形状）: `spread_bp`（US10Y−US2Y）/ `change_bp`（30日窓のΔ）/ `shape`（bear_flattening 等）/ `inverted`。**`yields` ラベルは2Y/10Y平均符号の丸めで、ベアフラット（短期↑/長期↓）を見落とす**ため、その補正指標。`shape=bear_flattening` は「利上げ→景気悪化」を債券が織り込み始めたサイン＝株のロングデュレーション逆風として読む。※`US2Y=^FVX`は5年債proxyのため実質5s10s（yamlに注記あり）。
+3. **`intervention_watch` セクション**（ドル円 介入監視）: `zone`（watch/calm・閾値161.5）/ `upper_alert`（162.2）/ `imf_ammo_remaining` / `last_meeting` / `coordinated`（単独/協調＝**unconfirmed足場**・NY連銀rate checkで手動確定）/ `down_target` / `asymmetry` / `history`。**残弾・会談・介入実施は市場価格から自動検知できない**ため、`configs/settings.py` の `INTERVENTION_WATCH` を**手動更新**する運用（介入や会談が起きた週はここを更新してからStep 1aを回す）。
+
+→ これらは review/meta/note/distilled の Evidence・gates・Implication に反映し、人間ビュー（hub/HTML）の「レジーム/ゲート」「監視トリガー」にも織り込む。
 
 ### Step 1b: X (Twitter) 市況ヘッドライン取得（新規・2026-05-24〜）
 

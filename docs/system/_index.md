@@ -16,5 +16,6 @@
 ## 年輪一覧
 
 - [2026-06-27 — Rexの金利直感が3点立体カーブで反証され、belly_elevated として恒久化された日](./2026-06-27_belly-elevated_rex-curve-error.md)
-  — 5s10s 2層に潰して「フラット化＝逆イールド近い」と早鳴り → 3点(3M/5Y/10Y)で belly(5Y) の"再利上げ織り込みの瘤"と判明。`recession_3m10s` を主ゲージに、`curve_2s10s`3点立体・`relative_strength`・介入`coord_stage`4段を恒久化。
+  — 5s10s 2層に潰して「フラット化＝逆イールド近い」と早鳴り → 3点(3M/5Y/10Y)で belly(5Y) の"再利上げ織り込みの瘤"と判明。根本原因は2024-25逆イールド常態の記憶を2026順イールドに当てはめたレジーム記憶ミスマッチ。`recession_3m10s` を主ゲージに、`curve_2s10s`3点立体・`relative_strength`・介入`coord_stage`4段を恒久化。
+  - 🧠 頭脳側ミラー（Desktop Rex 記録）: `REX_Brain_Vault/REX/workspace/trade_brain/2026-06-27_belly_elevated.md`（コード側=本年輪 / 頭脳側=Vault で相互参照）。
 </content>

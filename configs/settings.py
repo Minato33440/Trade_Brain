@@ -63,6 +63,11 @@ INTERVENTION_WATCH: Dict[str, object] = {
     "coordinated_history": "2026-01 協調rate check=10営業日で2,100pips急落",
     "asymmetry": "最後の協調弾が出たら155方向へ深く長い／出る前は161-162で踏まれる",
     "judgment_note": "単独/協調はNY連銀rate check確認で判定（毎朝チェック）。介入は経験則上24:30以降に入ったことがなく円安は深夜帯",
+    # 協調介入の進行段階（手動更新）: 予兆→秒読み→着弾の4段梯子。
+    # 価格から自動検知できないため、会談・rate check・実弾が確認された週にここを上げる。
+    "coord_ladder": ["unconfirmed", "meeting_held", "rate_check_detected", "executed"],
+    "coord_stage": "meeting_held",   # 現在地（6/23 片山-ベッセント会談済＝予兆フェーズ）
+    "coord_stage_note": "予兆(meeting_held)→秒読み(rate_check_detected=NY連銀rate check確認)→着弾(executed=実弾)。rate_check_detectedで戦略軸が『162待ち伏せ売り』→『155-156底打ち確認』へ切替",
 }
 
 # ── GMニュースフィルタ用キーワード ────────────────────

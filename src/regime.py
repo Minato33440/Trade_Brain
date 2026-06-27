@@ -145,17 +145,70 @@ def build_regime_snapshot(
         watch_zone = float(cfg.get("watch_zone", 161.5))
         upper_alert = float(cfg.get("upper_alert", 162.2))
         zone = "watch" if latest_usdjpy >= watch_zone else "calm"
+        ladder = cfg.get("coord_ladder") or [
+            "unconfirmed", "meeting_held", "rate_check_detected", "executed",
+        ]
+        stage = cfg.get("coord_stage", "unconfirmed")
+        stage_idx = ladder.index(stage) if stage in ladder else 0
         return {
             "level": round(latest_usdjpy, 3),
             "zone": zone,
             "upper_alert": latest_usdjpy >= upper_alert,
             "imf_ammo_remaining": cfg.get("imf_ammo_remaining"),
             "last_meeting": cfg.get("last_meeting"),
-            "coordinated": "unconfirmed",
+            "coord_stage": stage,                       # 4段梯子の現在地（手動更新）
+            "coord_stage_idx": stage_idx,               # 0=unconfirmed .. 3=executed
+            "coord_ladder": ladder,
+            "coord_stage_note": cfg.get("coord_stage_note"),
             "down_target": cfg.get("down_target"),
             "asymmetry": cfg.get("asymmetry"),
             "history": cfg.get("coordinated_history"),
             "judgment_note": cfg.get("judgment_note"),
+        }
+
+    def _relative_strength() -> Optional[Dict[str, object]]:
+        """JP225 vs US100 の相対強度を共通通貨（USD換算）で分解。
+
+        円建てJP225の上昇が「構造（割安リレーティング）」か「通貨（円安の嵩上げ）」かを分離。
+        為替・日米金利のボラが高い環境では相対は共通通貨で読むべき、という運用要請に対応。
+        """
+        if (
+            latest_jp225 is None or ch_jp225 is None
+            or latest_usdjpy is None or ch_us100 is None
+        ):
+            return None
+        first_jp225 = _get_first("JP225")
+        first_usdjpy = _get_first("USD/JPY")
+        jp_usd_30d: Optional[float] = None
+        if first_jp225 not in (None, 0) and first_usdjpy not in (None, 0):
+            jp_usd_now = latest_jp225 / latest_usdjpy
+            jp_usd_first = first_jp225 / first_usdjpy
+            if jp_usd_first:
+                jp_usd_30d = (jp_usd_now / jp_usd_first - 1.0) * 100.0
+        if jp_usd_30d is None:
+            return None
+        currency_effect = ch_jp225 - jp_usd_30d
+        nominal_spread = ch_jp225 - ch_us100
+        fx_adj_spread = jp_usd_30d - ch_us100
+        # verdict: FX調整後もアウトパフォームがどれだけ残るか
+        if abs(nominal_spread) < 1e-6:
+            verdict = "neutral"
+        else:
+            retention = fx_adj_spread / nominal_spread
+            if nominal_spread > 0 and retention >= 0.7:
+                verdict = "structure_led"
+            elif nominal_spread > 0 and retention <= 0.3:
+                verdict = "currency_led"
+            else:
+                verdict = "mixed"
+        return {
+            "jp225_jpy_30d": round(ch_jp225, 2),
+            "jp225_usd_30d": round(jp_usd_30d, 2),
+            "currency_effect_pt": round(currency_effect, 2),
+            "us100_30d": round(ch_us100, 2),
+            "jp_vs_us_nominal_pt": round(nominal_spread, 2),
+            "jp_vs_us_fx_adj_pt": round(fx_adj_spread, 2),
+            "verdict": verdict,
         }
 
     equities = _equities_regime()
@@ -166,6 +219,7 @@ def build_regime_snapshot(
     yields_regime = _yields_regime()
     curve = _curve_2s10s()
     intervention = _intervention_flag()
+    relative = _relative_strength()
 
     if vol == "spike" and oil == "surge":
         label = "Geopolitical Risk-Off + Energy Shock"
@@ -195,7 +249,12 @@ def build_regime_snapshot(
     if intervention is not None:
         summary += (
             f", intervention={intervention['zone']}"
-            f"(imf_ammo={intervention['imf_ammo_remaining']},coord={intervention['coordinated']})"
+            f"(imf_ammo={intervention['imf_ammo_remaining']},stage={intervention['coord_stage']})"
+        )
+    if relative is not None:
+        summary += (
+            f", jp_rs={relative['verdict']}"
+            f"(fx_adj{relative['jp_vs_us_fx_adj_pt']:+.1f}pt)"
         )
 
     # YAMLスナップショット文字列を構築
@@ -244,8 +303,10 @@ def build_regime_snapshot(
         lines.append(f"  shape: {curve['shape']}")
         lines.append(f"  inverted: {str(curve['inverted']).lower()}")
         lines.append(
-            '  note: "US2Y=^FVX(5y proxy)。2s10s=US10Y-US2Y。'
-            'bear_flattening=短期↑/長期↓＝利上げ→景気悪化の織り込み。yields ラベルの補正指標"'
+            '  note: "US2Y=^FVX(5y proxy)のため実質5s10s。5年はカーブ中腹で政策金利直結度が2年より低く、'
+            '真の2s10sはこれより寝ている可能性大＝bear_flatteningが出たら警戒方向に一段割り引いて読む（逆イールド寸前の恐れ）。'
+            'bear_flattening=短期↑/長期↓＝利上げ→景気悪化の織り込み。yields ラベルの補正指標。'
+            '将来 ^IRX(3M) で 3m10s（Fed重視の景気後退カーブ）に差し替え/併記候補"'
         )
         lines.append("")
 
@@ -266,11 +327,27 @@ def build_regime_snapshot(
         lines.append(f"  upper_alert: {str(intervention['upper_alert']).lower()}")
         lines.append(f"  imf_ammo_remaining: {_yv(intervention['imf_ammo_remaining'])}")
         lines.append(f"  last_meeting: {_yv(intervention['last_meeting'])}")
-        lines.append(f"  coordinated: {_yv(intervention['coordinated'])}   # 単独/協調はNY連銀rate checkで確認")
+        _ladder = intervention.get("coord_ladder") or []
+        lines.append(f"  coord_stage: {intervention['coord_stage']}   # 予兆→秒読み→着弾の4段（手動更新）")
+        lines.append(f"  coord_stage_idx: {intervention['coord_stage_idx']}            # 0=unconfirmed..3=executed")
+        lines.append(f"  coord_ladder: [{', '.join(str(s) for s in _ladder)}]")
+        lines.append(f"  coord_stage_note: {_yv(intervention['coord_stage_note'])}")
         lines.append(f"  down_target: {_yv(intervention['down_target'])}")
         lines.append(f"  asymmetry: {_yv(intervention['asymmetry'])}")
         lines.append(f"  history: {_yv(intervention['history'])}")
         lines.append(f"  judgment_note: {_yv(intervention['judgment_note'])}")
+        lines.append("")
+
+    # ── 相対強度（JP225 vs US100 を共通通貨で分解：構造 vs 通貨）──
+    if relative is not None:
+        lines.append("relative_strength:")
+        lines.append(f"  jp225_jpy_30d: {relative['jp225_jpy_30d']}")
+        lines.append(f"  jp225_usd_30d: {relative['jp225_usd_30d']}        # JP225/USDJPY のΔ（通貨効果を除去）")
+        lines.append(f"  currency_effect_pt: {relative['currency_effect_pt']}   # 円安が嵩上げした分")
+        lines.append(f"  us100_30d: {relative['us100_30d']}")
+        lines.append(f"  jp_vs_us_nominal_pt: {relative['jp_vs_us_nominal_pt']}")
+        lines.append(f"  jp_vs_us_fx_adj_pt: {relative['jp_vs_us_fx_adj_pt']}   # 本物の相対強度（FX調整後）")
+        lines.append(f"  verdict: {relative['verdict']}   # structure_led=割安リレーティング主導 / currency_led=円安主導 / mixed")
         lines.append("")
 
     lines.append("snapshot_30d:")

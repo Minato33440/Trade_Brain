@@ -44,7 +44,8 @@ TRADE_PAIRS: Dict[str, str] = {
     "JP225": "^N225",
     "XAU/USD": "GC=F",
     "WTI": "CL=F",
-    "US2Y": "^FVX",   # 実体は5年債（^FVX）。2年債の直接取得は困難なため代用。2s10s算出も実質5s10s
+    "US3M": "^IRX",   # 13週Tビル＝政策金利の近接（front）。3m10s（Fed重視の景気後退カーブ）算出用（2026-06-27追加）
+    "US2Y": "^FVX",   # 実体は5年債（^FVX）。2年債の直接取得は困難なため代用。belly。5s10s/3m5s算出に使用
     "VIX": "^VIX",
     "US10Y": "^TNX",
     "BTC/USD": "BTC-USD",

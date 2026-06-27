@@ -40,6 +40,7 @@ def build_regime_snapshot(
     latest_wti, ch_wti = _get_pair("WTI")
     latest_vix, ch_vix = _get_pair("VIX")
     latest_xau, ch_xau = _get_pair("XAU/USD")
+    latest_us3m, ch_us3m = _get_pair("US3M")
     latest_us2y, ch_us2y = _get_pair("US2Y")
     latest_us10y, ch_us10y = _get_pair("US10Y")
     latest_usdjpy, ch_usdjpy = _get_pair("USD/JPY")
@@ -100,38 +101,87 @@ def build_regime_snapshot(
             return "rising"
         return "flat"
 
-    def _curve_2s10s() -> Optional[Dict[str, object]]:
-        """2s10s スプレッドとフラット化/スティープ化の形状を判定。
+    def _classify_shape(delta_bp: Optional[float], short_up: bool) -> str:
+        """スプレッドのΔと短期側の方向からフラット/スティープの質を判定。"""
+        if delta_bp is None:
+            return "unknown"
+        if delta_bp <= -2.0:
+            return "bear_flattening" if short_up else "bull_flattening"
+        if delta_bp >= 2.0:
+            return "bull_steepening" if not short_up else "bear_steepening"
+        return "stable"
 
-        注: US2Y は ^FVX（5年債）proxy のため、実質は 5s10s。
-        snapshot regime の yields ラベル（2Y/10Y平均の符号で rising/falling に丸める）が
-        ベアフラットニング（短期↑/長期↓）を見落とすのを補正する指標。
+    def _curve_2s10s() -> Optional[Dict[str, object]]:
+        """3点（3M/5Y/10Y）でイールドカーブの形状を立体的に判定。
+
+        - 5s10s（US2Y=^FVX=5y proxy − US10Y）: 既存指標。後方互換で spread_bp/shape に残す。
+        - 3m10s（US3M=^IRX − US10Y）: Fed重視の景気後退カーブ。逆イールド接近の主ゲージ。
+        - belly_premium: 3M→10Y 直線を5Y満期で補間し実5Yとの差＝belly(5Y)の突出度。
+          front=政策(3M)・belly=5Y突出・long=growth(10Y) の構造を可視化。
+        yields ラベル（2Y/10Y平均符号で rising/falling に丸める）の補正指標。
         """
         if latest_us2y is None or latest_us10y is None:
             return None
-        spread_now_bp = (latest_us10y - latest_us2y) * 100.0
-        first_us2y = _get_first("US2Y")
         first_us10y = _get_first("US10Y")
-        delta_bp: Optional[float] = None
-        if first_us2y not in (None, 0) and first_us10y not in (None, 0):
-            spread_prev_bp = (first_us10y - first_us2y) * 100.0
-            delta_bp = spread_now_bp - spread_prev_bp
 
+        # ── 5s10s（既存・US2Y=^FVX=5y proxy）──
+        spread_5s10s = (latest_us10y - latest_us2y) * 100.0
+        first_us2y = _get_first("US2Y")
+        d_5s10s: Optional[float] = None
+        if first_us2y not in (None, 0) and first_us10y not in (None, 0):
+            d_5s10s = spread_5s10s - (first_us10y - first_us2y) * 100.0
         short_up = (ch_us2y is not None and ch_us2y > 0)
-        if delta_bp is None:
-            shape = "unknown"
-        elif delta_bp <= -2.0:
-            shape = "bear_flattening" if short_up else "bull_flattening"
-        elif delta_bp >= 2.0:
-            shape = "bull_steepening" if not short_up else "bear_steepening"
-        else:
-            shape = "stable"
-        return {
-            "spread_bp": round(spread_now_bp, 1),
-            "change_bp": (round(delta_bp, 1) if delta_bp is not None else None),
-            "shape": shape,
-            "inverted": spread_now_bp < 0,
+
+        out: Dict[str, object] = {
+            "spread_bp": round(spread_5s10s, 1),                 # 後方互換: 5s10s
+            "change_bp": (round(d_5s10s, 1) if d_5s10s is not None else None),
+            "shape": _classify_shape(d_5s10s, short_up),
+            "inverted": spread_5s10s < 0,
         }
+
+        # ── 3m10s（US3M=^IRX front。Fed重視の景気後退カーブ）＋ 3点構造 ──
+        if latest_us3m is not None:
+            spread_3m10s = (latest_us10y - latest_us3m) * 100.0
+            spread_3m5s = (latest_us2y - latest_us3m) * 100.0
+            first_us3m = _get_first("US3M")
+            d_3m10s: Optional[float] = None
+            if first_us3m not in (None, 0) and first_us10y not in (None, 0):
+                d_3m10s = spread_3m10s - (first_us10y - first_us3m) * 100.0
+            short3_up = (ch_us3m is not None and ch_us3m > 0)
+
+            # belly premium: 満期(年) 3M=0.25 / 5Y=5 / 10Y=10 の直線補間と実5Yの差
+            interp_5y = latest_us3m + (latest_us10y - latest_us3m) * ((5.0 - 0.25) / (10.0 - 0.25))
+            belly_premium = (latest_us2y - interp_5y) * 100.0
+            if belly_premium >= 8.0:
+                structure = "belly_elevated"     # 5Y突出＝政策ターミナル織り込みの瘤（hump）
+            elif belly_premium <= -8.0:
+                structure = "belly_depressed"
+            else:
+                structure = "linear"
+
+            # 景気後退の主ゲージは 3m10s
+            if spread_3m10s < 0:
+                recession = "inverted"
+            elif spread_3m10s < 25.0:
+                recession = "near_inversion"
+            else:
+                recession = "positive"
+
+            out.update({
+                "spread_3m10s_bp": round(spread_3m10s, 1),
+                "change_3m10s_bp": (round(d_3m10s, 1) if d_3m10s is not None else None),
+                "shape_3m10s": _classify_shape(d_3m10s, short3_up),
+                "spread_3m5s_bp": round(spread_3m5s, 1),
+                "belly_premium_bp": round(belly_premium, 1),
+                "structure": structure,
+                "recession_3m10s": recession,
+                "points_pct": {
+                    "m3": round(latest_us3m, 3),
+                    "y5": round(latest_us2y, 3),
+                    "y10": round(latest_us10y, 3),
+                },
+            })
+        return out
 
     def _intervention_flag() -> Optional[Dict[str, object]]:
         """ドル円水準と設定（IMF残弾・会談実績）から介入監視フラグを生成。
@@ -245,7 +295,13 @@ def build_regime_snapshot(
     if curve is not None:
         _chg = curve["change_bp"]
         _chg_str = (f"Δ{_chg:+.1f}bp" if _chg is not None else "Δn/a")
-        summary += f", curve={curve['shape']}(2s10s={curve['spread_bp']:+.1f}bp,{_chg_str})"
+        summary += f", curve={curve['shape']}(5s10s={curve['spread_bp']:+.1f}bp,{_chg_str}"
+        if "spread_3m10s_bp" in curve:
+            summary += (
+                f"; 3m10s={curve['spread_3m10s_bp']:+.1f}bp/{curve['recession_3m10s']}"
+                f"; {curve['structure']}"
+            )
+        summary += ")"
     if intervention is not None:
         summary += (
             f", intervention={intervention['zone']}"
@@ -260,13 +316,13 @@ def build_regime_snapshot(
     # YAMLスナップショット文字列を構築
     order = [
         "USD/JPY", "US100", "JP225", "XAU/USD", "WTI",
-        "US2Y", "VIX", "US10Y", "BTC/USD",
+        "US3M", "US2Y", "VIX", "US10Y", "BTC/USD",
     ]
     panel = {
         "risk": ["US100", "JP225", "BTC/USD"],
         "fear": ["VIX"],
         "inflation": ["WTI", "XAU/USD"],
-        "rates": ["US2Y", "US10Y"],
+        "rates": ["US3M", "US2Y", "US10Y"],
         "liquidity": [],
         "credit": [],
     }
@@ -294,19 +350,30 @@ def build_regime_snapshot(
     lines.append(f"  yields: {yields_regime}")
     lines.append("")
 
-    # ── 金利カーブ（2s10s）: yields ラベルの丸めを補正する形状指標 ──
+    # ── 金利カーブ（3点 3M/5Y/10Y）: yields ラベルの丸めを補正する立体形状指標 ──
     if curve is not None:
         lines.append("curve_2s10s:")
-        lines.append(f"  spread_bp: {curve['spread_bp']}")
-        if curve["change_bp"] is not None:
+        lines.append(f"  spread_bp: {curve['spread_bp']}            # 5s10s（US2Y=^FVX=5y proxy − US10Y）")
+        if curve.get("change_bp") is not None:
             lines.append(f"  change_bp: {curve['change_bp']}")
-        lines.append(f"  shape: {curve['shape']}")
+        lines.append(f"  shape: {curve['shape']}            # 5s10s の質")
         lines.append(f"  inverted: {str(curve['inverted']).lower()}")
+        if "spread_3m10s_bp" in curve:
+            pts = curve.get("points_pct") or {}
+            lines.append(f"  spread_3m10s_bp: {curve['spread_3m10s_bp']}      # 3m10s（^IRX − US10Y）=Fed重視の景気後退カーブ・逆イールド主ゲージ")
+            if curve.get("change_3m10s_bp") is not None:
+                lines.append(f"  change_3m10s_bp: {curve['change_3m10s_bp']}")
+            lines.append(f"  shape_3m10s: {curve['shape_3m10s']}")
+            lines.append(f"  spread_3m5s_bp: {curve['spread_3m5s_bp']}")
+            lines.append(f"  belly_premium_bp: {curve['belly_premium_bp']}      # 5Yの直線補間からの突出度（+=belly elevated/hump）")
+            lines.append(f"  structure: {curve['structure']}      # front=政策(3M)/belly=5Y/long=growth(10Y) の形")
+            lines.append(f"  recession_3m10s: {curve['recession_3m10s']}      # positive/near_inversion(<25bp)/inverted")
+            lines.append(f"  points_pct: {{m3: {pts.get('m3')}, y5: {pts.get('y5')}, y10: {pts.get('y10')}}}")
         lines.append(
-            '  note: "US2Y=^FVX(5y proxy)のため実質5s10s。5年はカーブ中腹で政策金利直結度が2年より低く、'
-            '真の2s10sはこれより寝ている可能性大＝bear_flatteningが出たら警戒方向に一段割り引いて読む（逆イールド寸前の恐れ）。'
-            'bear_flattening=短期↑/長期↓＝利上げ→景気悪化の織り込み。yields ラベルの補正指標。'
-            '将来 ^IRX(3M) で 3m10s（Fed重視の景気後退カーブ）に差し替え/併記候補"'
+            '  note: "5s10s（US2Y=^FVX=5y proxy）は5年がカーブ中腹のため、front=政策(3M)が belly(5Y) より低い順イールド環境では'
+            '最もフラットな区間＝5s10sのbear_flatteningは逆イールド接近を過大評価しうる。景気後退の主ゲージは 3m10s（spread_3m10s_bp）で読む。'
+            'structure=belly_elevated は政策ターミナル織り込みの瘤＝front低・belly突出・long growth。shape*は短期↑/長期↓のフラット化の質、'
+            'recession_3m10s が near_inversion/inverted に入ったら本格警戒。"'
         )
         lines.append("")
 

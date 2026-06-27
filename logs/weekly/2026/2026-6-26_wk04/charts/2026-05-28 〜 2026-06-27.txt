@@ -1,0 +1,32 @@
+取得期間: 2026-05-28 〜 2026-06-27 (JST基準)
+snapshot: 2026_06_27_snapshot.yaml
+source: python main.py --trade --news（2026-06-27 実行）
+
+== 8ペア30日データ（最新値 / 30日変化率） ==
+USD/JPY: 最新 161.805 (30日変化: +1.40%)
+US100:   最新 29118.240 (30日変化: -3.66%)
+XAU/USD: 最新 4078.700 (30日変化: -9.35%)
+WTI:     最新 69.230 (30日変化: -22.13%)
+US2Y:    最新 4.225 (30日変化: +1.56%)
+VIX:     最新 18.410 (30日変化: +16.96%)
+US10Y:   最新 4.451 (30日変化: -0.09%)
+BTC/USD: 最新 59721.676 (30日変化: -18.79%)
+
+[regime] Equities Down (label=Equities Down, equities=down, volatility=normal, oil=slump, gold=off, crypto=weak, yields=rising)
+
+== wk03（2026-06-20 snapshot）→ wk04（2026-06-27 snapshot）比較 ==
+USD/JPY: 161.289 → 161.805 （+0.516／円安続伸・162レンジ上限・介入警戒継続）
+US100:   30406.189 → 29118.240 （-1287.9／-4.2%・Mag7メモリ価格転嫁懸念で株安・equities up→down）
+XAU/USD: 4172.900 → 4078.700 （-94.2／gold=off継続・大底圏接近、boss CFDは3,930-4,000で押し目買い）
+WTI:     76.540 → 69.230 （-7.31／-22.13%・oil=slump継続も、イラン再エスカで反発局面入り）
+US2Y:    4.213 → 4.225 （+0.012／利上げ警戒で小幅上昇）
+VIX:     16.400 → 18.410 （+2.01／18超え再上昇＝Add risk gate再閉鎖）
+US10Y:   4.451 → 4.451 （wk03 4.487→4.451で-0.036／4.6%下降ライン上限が重い、ただしyields=rising判定）
+BTC/USD: 62896.473 → 59721.676 （-3174.8／下落相場継続・boss 56,869割れ→56,000戻り売り）
+
+注:
+- JP225はsnapshot8ペアに含まれない。boss市況は日経=米株より明確に強い（PER 21→18倍・カップウィズハンドル・72,600超えからの上昇期待）と評価も、金曜終値の実測値はboss提供になし（創作回避）。
+- 機械regimeは「Equities Down（equities=down / yields=rising）」＝wk03「Neutral（equities=up / yields=falling）」から株安・金利上昇方向へ反転。boss前方視点は「レンジ相場・戻り売り中心、ただし日本株の半導体/メモリ関連と金は押し目買い、BTCは戻り売り」＝両論併記。
+- VIX 18.41で18をわずかに上抜け＝Add risk gate再閉鎖（wk03 16.4で再開→wk04で再び閉）。
+</content>
+</invoke>

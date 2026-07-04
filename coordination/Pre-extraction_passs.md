@@ -98,3 +98,13 @@
 - X市況: 今回は取得失敗のまま「欠」で確定（再取得せず）。
 - Step7.6（人間ビュー3レイヤー CFD戦略ハブMD/HTML/MOC）: 今回スルー。
 - → Step8 git commit へ進む。
+
+## 2026-07-04 [5] X市況 再取得成功（grok gateway 接続後）
+
+> [4]で「欠」確定としたX市況を、ボスがprofiles/grok Gatewayを接続後に再取得成功（hermes -p grok x_search、11.3KB）。commit後の追加更新。
+
+- **取得内容**: 期間06-27〜07-04の高エンゲージメントX集約。全体「Gold強気・AI半導体強気・JPY弱気。USDJPY介入と円キャリー巻き戻しが最大の地雷」。
+- **独立した価値ある発見**: **Anthropic×SamsungのAIチップに、boss市況（弱気=競合懸念で急落主因）とX市況（強気=AI infra需要の巨大さ）で解釈が割れる**。同一ニュースへの弱気/強気は時間軸の差（短期急落 vs 中期AI需要拡大）で矛盾せず＝両論併記の好例。distilledに新signal `x_sentiment_gold_ai_bull_jpy_bear` ＋ pattern `same_news_bear_bull_timeframe_split` として恒久化。
+- **反映ファイル**: Market conditions テキスト③・charts.md・review.md末尾・distilled wk01（decision＋tags）。
+- 方向一致確認: USDJPY 162介入警戒・Gold強気・円キャリー巻き戻しリスクはboss/--newsと一致（ソース外混入でなく補強）＝関所7.5 PASS維持。
+- 再commit要（2度目のpush）。

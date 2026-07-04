@@ -901,3 +901,42 @@ market_theme: Risk-on reversal → Equities Down × PCE 4.1% sticky + Goolsbee h
 - wti_shock: geopolitical_rebound_vs_supply_recovery（69.23。-22.13%・slump継続。米イラン交戦で反発も勢い弱い1/3戻し vs 供給回復が重し＝UAE輸出85%回復・waiver発効・タンカー再稼働。68.89割れ→$66.235最終サポート、割れはCushing在庫タイト次第の綱引き）
 - eps_revision_chain: mag7_memory_cost_passthrough（Apple値上げ＝メモリ供給不足の転嫁／--news #4。マグ7全面安 vs メモリ株逆行高の二極化。日本株半導体/メモリは押し目買いの主役）
 
+---
+
+## Weekly Brief | 2026-7-3_wk01
+created: 2026-07-04 JST（7/3米独立記念日で米市場は早期クローズ/休場＝薄商い）
+
+### Macro / Regime
+- 機械regime **Equities Down** 継続だが内部品質転換。株安主因が wk04「PCE利上げ警戒＋Mag7メモリ転嫁」→ wk01「**韓国発の半導体AI個別材料**」へ入れ替わり。Anthropic×SamsungのAIチップ提携・競合報道＋韓国アルゴ取引規制（流動性低下・コスピVIX相当高止まり）。半導体以外は底堅く非半導体へシフト。
+- 木曜雇用統計+5.7万（大幅未達）・失業率4.2%で利上げ観測やや後退も、株安主因はこれでない。**VIX 18.41→16.15で18割れ＝Add risk gate再開**。週次はUS100+0.7%・BTC+3.0%の小反発。
+- boss前方視点：『深く下がったら買い』の押し目スタンス、半導体AIは戻り売り・非半導体シフト。7/3米独立記念日の薄商いで覆面介入（サプライズ円買い）リスク増幅。
+
+### Key Levels
+- US100: 29,329（wk04+0.7%・トライアングルレンジ）/ **29,089=両義の節目**（割れで下落加速 vs 押し目買い好機）
+- JP225: 69,744（今週初の機械実測・強トレンド・structure_led FX調整後+6.0pt）/ boss想定65,840支持→67,179目標（※実測は想定より上＝ボス確認事項）
+- USDJPY: 161.337（本流円安の戻り高値売り）/ **R=162.268上抜けでトレンド転換シグナル** / 薄商いで覆面介入リスク
+- Gold: 4,187.3（gold=off継続もboss中期上昇維持）/ 目先4129下落フロー・4193上抜けで戻り / CFD 6/29 $4,041で1Lot利確(+1.28%)・Total 1Lot週持越し
+- WTI: 68.78（-26.07%・slump）/ 68.80上抜け確認待ち→70.16 / 6/30高値売り圧・fib0.236戻し止まり
+- BTC: 61,485（+3.0%・crypto=range）/ 60,300方向調整・AIチップ暗号解読リスク思惑で反発ロング見送り
+- 金利: US10Y 4.372（boss 4.487%・順イールド+0.35%維持）/ **2s10s bull_flattening(5s10s +24.2bp)**＝長期低下主導 / 3m10s +70.9bp/positive・belly_elevated継続
+- VIX: 16.150（18割れ・Add risk gate再開）
+
+### Gates（最重要：終値で判定）
+- Add risk: **再開**（VIX 16.15<18）。wk04 18.41で再閉鎖→wk01で18割れ再開。株安が半導体個別要因＋雇用未達で利上げ観測後退がボラ低下に寄与。薄商い明け・介入警戒でスパイク余地
+- Reduce / caution: VIX 18再上抜け定着 / ドル円162.268上抜け後の急反落（覆面介入・サプライズ円買い） / US100 29,089割れの下落加速（両義の節目） / 韓国発半導体AI competition懸念の他資産波及
+- Hedge gate: 金は戻り売り基本（4129フロー）だが中期押し目買い維持。CFDゴールド 6/29 $4,041で1Lot利確(+1.28%)＋残0.5Lot（建値$4,097）＋7/1 $3,990で0.5Lot追加のTotal 1Lot週持越し。**今週から日足環境足・4Hトレード足スウィング運用＝4Hダウ崩れ・15m実体確定で決済**。日本株は強トレンドで相対優位。BTCは反発見送り
+
+### This Week Focus & Catalysts（行動: 7/6-）
+- **US100 29,089**: 両義の節目。割れで下落加速 vs 押し目買い好機。月曜寄り〜前場で割れなら分割押し目買い準備。半導体AIは深追いせず
+- **ドル円162.268**: 上抜けでトレンド転換シグナル。薄商いで覆面介入（サプライズ円買い）フラッシュ警戒。ロング慎重・サイズ管理
+- **韓国発半導体AI続報**: Anthropic×Samsung AIチップ提携・競合の続報。半導体AI distribution 波及＋BTC暗号解読リスク思惑の火種
+- **米独立記念日明けの薄商い**: 出来高減でテクニカル機能しにくい・週明けボラ
+- **17時ラガルドECB総裁発言**: EURUSD急変動リスク
+
+### Signals (weekly, fixed keys)
+- us10y_accel: bull_flattening_5s10s_24.2bp（4.372。wk04 bear_flattening(5s10s)から bull_flattening(5s10s)へ＝長期低下主導。3m10s +70.9bp/positiveで逆イールド遠く・belly_premium +12.2bp/belly_elevated継続。boss：順イールド+0.35%維持、株安は金利要因でなく半導体個別要因）
+- hy_oas_widening: risk_off_tilt_eased_vix_gate_reopen（機械Equities Down継続だが週次小反発＋VIX 18割れでAdd risk gate再開。株安が半導体個別要因でマクロ全面リスクオフでない。boss＝押し目買いスタンス）
+- vix_spike: add_risk_gate_reopened（16.15。wk04 18.41で再閉鎖→wk01で18割れ再開。薄商い明け・介入警戒でスパイク余地）
+- wti_shock: bottoming_reversal_68_80_watch（68.78。-26.07%・slump継続も底打ち切り返し。68.80上抜けで70.16方向、6/30高値売り圧・fib0.236戻し止まり可能性）
+- eps_revision_chain: korea_semi_ai_competition_selloff（Anthropic×SamsungのAIチップ提携・競合報道＝株安主因（雇用でなく）。半導体AIは戻り売り、非半導体へ資金シフト。韓国アルゴ取引規制で流動性低下）
+

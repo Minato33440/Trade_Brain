@@ -1,0 +1,30 @@
+# 8ペア30日データ（取得期間: 2026-06-04 〜 2026-07-04 / JST基準）
+# source: python main.py --trade（2026-07-04 実行）
+
+USD/JPY: 最新 161.337 (30日変化: +0.87%)
+US100:   最新 29329.211 (30日変化: -3.55%)
+JP225:   最新 69744.070 (30日変化: +3.37%)
+XAU/USD: 最新 4187.300 (30日変化: -6.45%)
+WTI:     最新 68.780 (30日変化: -26.07%)
+US3M:    最新 3.663 (30日変化: +1.19%)
+US2Y:    最新 4.130 (30日変化: -1.38%)
+VIX:     最新 16.150 (30日変化: +4.87%)
+US10Y:   最新 4.372 (30日変化: -2.35%)
+BTC/USD: 最新 61485.301 (30日変化: -3.63%)
+
+# regime (machine)
+Equities Down (label=Equities Down, equities=down, volatility=normal, oil=slump, gold=off, crypto=range, yields=falling,
+  curve=bull_flattening(5s10s=+24.2bp,Δ-4.7bp; 3m10s=+70.9bp/positive; belly_elevated),
+  intervention=calm(imf_ammo=1,stage=meeting_held), jp_rs=structure_led(fx_adj+6.0pt))
+
+# 前週(wk04 2026-6-26)比較
+US100:   29118.240 → 29329.211 (+211.0 / +0.7%)
+USDJPY:  161.805 → 161.337 (-0.468 円高)
+JP225:   （wk04実測なし） → 69744.070（今週初の機械実測）
+XAUUSD:  4078.700 → 4187.300 (+108.6)
+WTI:     69.230 → 68.780 (-0.45)
+US2Y:    4.225 → 4.130 (-0.095)
+VIX:     18.410 → 16.150 (-2.26 ＝18割れ・Add risk gate再開)
+US10Y:   4.451 → 4.372 (-0.079)
+BTC/USD: 59721.676 → 61485.301 (+1763.6)
+2s10s(5s10s): +22.6bp(wk04) → +24.2bp(bull_flattening)

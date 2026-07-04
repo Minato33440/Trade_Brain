@@ -302,3 +302,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-6-26_wk04/meta.yaml)
   - [review](./2026-6-26_wk04/review.md)
   - [charts](./2026-6-26_wk04/charts.md)
+
+### 2026-7-3_wk01（2026-06-29 → 2026-07-03）
+- Regime: **Equities Down**（equities=down / volatility=normal / oil=slump / gold=off / crypto=range / yields=falling）← wk04から機械ラベル継続だが内部品質転換（株安主因が「PCE利上げ警戒＋Mag7メモリ」→「韓国発の半導体AI個別材料」へ入れ替わり、VIX 18.41→16.15で18割れ＝Add risk gate再開、curve bear→bull_flattening(5s10s)、週次はUS100+0.7%・BTC+3.0%の小反発）。
+- 1行：7/3米独立記念日の薄商い。株安主因は雇用（+5.7万未達）でなく**韓国発の半導体AI材料**（Anthropic×SamsungのAIチップ提携・競合報道＋韓国アルゴ取引規制→流動性低下）。半導体以外は底堅く非半導体へシフト。boss＝『深く下がったら買い』の押し目スタンス、半導体AIは戻り売り。VIX 18割れでAdd risk gate再開。日経は今週初の機械実測69,744（強トレンド・structure_led）。金利カーブbull_flattening(5s10s)＝長期低下主導・3m10s+70.9bp/positiveで逆イールド遠く。ドル円は本流円安の戻り高値売り・162.268上抜け監視・薄商いで覆面介入リスク。CFDゴールド6/29 $4,041で1Lot利確(+1.28%)＋Total 1Lot週持越し、今週から日足環境足・4Hトレード足スウィング運用へ切替。
+- Key gates:
+  - Add risk: **再開**（VIX 16.15<18）。wk04 18.41で再閉鎖→wk01で18割れ再開。株安が半導体個別要因＋雇用未達で利上げ観測後退がボラ低下に寄与。薄商い明け・介入警戒でスパイク余地
+  - Reduce / caution: VIX 18再上抜け定着 OR ドル円162.268上抜け後の急反落（覆面介入・サプライズ円買い） OR US100 29,089割れの下落加速（両義の節目） OR 韓国発半導体AI competition懸念の他資産波及
+- Links:
+  - [note](./2026-7-3_wk01/note.md)
+  - [meta](./2026-7-3_wk01/meta.yaml)
+  - [review](./2026-7-3_wk01/review.md)
+  - [charts](./2026-7-3_wk01/charts.md)

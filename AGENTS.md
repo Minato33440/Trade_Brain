@@ -1,7 +1,7 @@
 # AGENTS.md — Trade_Brain
 # このファイルは Codex が Trade_Brain リポジトリで作業する際に自動で読み込まれる
 # Trade_System の AGENTS.md とは別運用
-# 更新: 2026-04-25（役割別編集経路の追加 + 過去事故事例の参照）
+# 更新: 2026-07-04（両利きレーン例外の追加 / 2026-04-25 役割別編集経路の追加 + 過去事故事例の参照）
 # Codex.ai セッション（Advisor 等）も最初に手動で読むこと
 
 ---
@@ -135,6 +135,9 @@ Trade_Brain/
 │       ├── distilled-gm-2026-3.md
 │       └── distilled-gm-2026-4.md
 │
+├── coordination/               # 両利きレーン: executor→Broker の append-only handoff（1エントリ=1ファイル）
+├── scratch/                    # 両利きレーン: engine別・使い捨て作業域（claude/ codex/ grok/）
+│
 ├── Strategy_Wiki/              # Obsidian Vault 同期対象（wiki/trade_brain/ のミラー）
 │   ├── Regimes/
 │   ├── Signals/
@@ -207,6 +210,7 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
   - weekly は 2025 / 2026 両方存在
   - boss's-weeken-Report/ は既存命名維持（タイポだが git 履歴保護のため変更しない）
   - 2026-04-20: 旧名は raw/ だったが、データ性質に合わせ logs/ にリネーム
+  - 2026-07-04: scratch/ を logs/ 配下から切り出しトップレベル化（logs/ は生データのみに純化）
 ```
 
 ### distilled/ — 蒸留済みアーカイブ
@@ -221,6 +225,27 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
   - 当月内は追記・修正可
   - 週をまたいで新ファイルを作ってはいけない
     （例: 3月第1〜5週はすべて distilled-gm-2026-3.md に追記）
+```
+
+### coordination/ ・ scratch/ — 両利きレーン（2026-07-04 追加）
+
+```
+位置づけ: canon（distilled/）の手前の実務レーン。Codex / Claude 双方が扱える（両利き）。
+          canon 生産（distill）・index 昇格とは別層で、可逆・append-only。
+
+coordination/:
+  - executor→Broker の handoff 記録。append-only。
+  - 1エントリ=1ファイル: <engine>_<YYYY-MM-DD-hhmm>_<topic>.md
+  - 単一ファイルへの共有追記はしない（両engine同時書き込みの last-write-wins 回避）。
+
+scratch/:
+  - engine別・使い捨て作業域。scratch/<engine>/（claude/ codex/ grok/）。
+  - 生素材抽出・index feed 再編・逆引き通し等の中間生成物を置く。
+
+共通:
+  - filesystem write 可。ただし新規作成と append のみ。既存への edit_file は禁止。
+  - 生成物の frontmatter に engine スタンプ必須（engine: codex-5.5 / engine: claude 等）。
+  - canon（distilled/ 本文・index 昇格）はこのレーンに含まない（単一所有のまま）。
 ```
 
 ### docs/STATUS.md — 週次ブリーフ時系列スタック
@@ -314,7 +339,14 @@ Wiki 構造:              STRATEGY_WIKI_GUIDE.md = 唯一の SSoT
 7. エラーが出たら自分で「想像で」修正しない。ボスに報告して停止
 8. すべての git コマンドは rtk プレフィックスを必須とする（RTK ルール / Codex 向け）
 9. 週末 Git 更新は必ず docs/WEEKLY_UPDATE_WORKFLOW.md のチェックリストに従う
-10. Codex.ai セッションは GitHub MCP のみ使用（filesystem write 系禁止 / 詳細は §役割別の編集経路）
+10. GitHub MCP 接続リポの canon 層（distilled/ / docs/ / Strategy_Wiki/ / ルート governance）は
+    filesystem write 系（write_file / edit_file）で書き換えない。canon 編集は
+    §役割別の編集経路（GitHub MCP only・全文渡し）に従う。
+    ── 例外: scratch/ と coordination/ は両利きレーン（Codex / Claude 双方可）とし
+       filesystem write を許可する。ただし新規作成と append のみ・edit_file 禁止
+       （過去2件の連鎖失敗事故の再発経路を塞ぐため）。coordination/ は
+       1エントリ=1ファイル（<engine>_<YYYY-MM-DD-hhmm>_<topic>.md）とし単一ファイルへの
+       共有追記をしない（両engine同時書き込みの last-write-wins 回避）。
 ```
 
 ---
@@ -399,6 +431,10 @@ distilled:
   distilled/YYYY/distilled-gm-YYYY-M.md  例: distilled/2026/distilled-gm-2026-4.md
   （重要: 同月内は必ず同じファイルに追記。新月になった時点で新規作成）
 
+coordination / scratch（2026-07-04 追加）:
+  coordination/<engine>_<YYYY-MM-DD-hhmm>_<topic>.md   例: coordination/codex_2026-07-04-1830_distill.md
+  scratch/<engine>/{任意}.md                            例: scratch/claude/2026-7-3_wk01_prediction_seed.md
+
 wiki:
   Strategy_Wiki/Signals/{signal_id}.md   例: Signals/VIX_add_risk_gate.md
   Strategy_Wiki/Regimes/{regime_id}.md   例: Regimes/gold_bid.md
@@ -474,6 +510,10 @@ Pack:      NLM パッケージ生成
 | Codex（ローカル端末起動） | filesystem 直接 | `rtk git pull --rebase` → `rtk git commit` → `rtk git push`（RTK 必須） |
 | Codex.ai Advisor | **GitHub MCP のみ使用** | `get_file_contents` で SHA → `create_or_update_file`（content 全文渡し / RTK 不要） |
 
+**両利きレーン例外（scratch/ ・ coordination/ / 2026-07-04 追加）**: canon ではないため上記に依らず
+filesystem write 可。ただし新規作成・append のみ（edit_file 禁止）。coordination/ は
+1エントリ=1ファイル（<engine>_<YYYY-MM-DD-hhmm>_<topic>.md）。Codex / Claude 双方に等しく適用。
+
 ### 運用前提（ボス 2026-04-25 確認）
 
 - 全リポ（Trade_System / Trade_Brain / REX_Brain_Vault / Setona_HP / Second_Brain_Lab）が
@@ -484,15 +524,20 @@ Pack:      NLM パッケージ生成
 
 ### Codex.ai セッションの絶対ルール
 
-GitHub MCP 接続リポ配下のファイルを **filesystem MCP の `write_file` / `edit_file`
-で書き換えてはいけない**。
+GitHub MCP 接続リポの **canon 層（distilled/ / docs/ / Strategy_Wiki/ / ルート governance）** の
+ファイルを **filesystem MCP の `write_file` / `edit_file` で書き換えてはいけない**。
 
-許容される filesystem MCP 操作（read 系のみ）:
+許容される filesystem MCP 操作（canon 層は read 系のみ）:
 - `read_text_file` / `read_multiple_files` / `read_file`
 - `list_directory` / `get_file_info` / `read_media_file`
 
-禁止される filesystem MCP 操作:
-- `write_file` / `edit_file`（GitHub 接続リポでは事故の温床）
+禁止される filesystem MCP 操作（canon 層）:
+- `write_file` / `edit_file`（GitHub 接続リポの canon では事故の温床）
+
+例外 — 両利きレーン（scratch/ ・ coordination/ / 2026-07-04 追加）:
+- `write_file`（新規作成）・append は可。`edit_file` は canon 同様に不可。
+- coordination/ は 1エントリ=1ファイル（<engine>_<YYYY-MM-DD-hhmm>_<topic>.md）。
+- Codex / Claude 双方に等しく適用（engine別の特例を作らない）。
 
 理由:
 1. ボスが pull するタイミングを Codex.ai 側が制御できない（diverge リスク）
@@ -559,6 +604,7 @@ Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
 | 2026-04-20 | raw/ を logs/ にリネーム（データ性質に合わせた命名変更） |
 | 2026-04-20 | src/ 内スクリプトのパス参照を logs/ 構造に整合（daily_report_parser / data_fetch / settings 等） |
 | 2026-04-20 | WEEKLY_UPDATE_WORKFLOW.md / AGENTS.md / README.md の全パス表記を実構造に整合 |
+| 2026-07-04 | scratch/ をトップレベル化・coordination/ 新設（両利きレーン）。logs/ を生データのみに純化 |
 
 ---
 
@@ -571,5 +617,6 @@ Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
   - 2026-04-18 夜（再）: 週次運用ファイル 3 件統合・RTK ルール反映・NLM ID 正式記載
   - 2026-04-20: raw/ → logs/ リネーム反映・全パス整合・WEEKLY_UPDATE_WORKFLOW 同期
   - 2026-04-25: 役割別編集経路セクション追加・過去事故事例の参照・RTK 適用範囲の明記
+  - 2026-07-04: 両利きレーン例外（scratch/・coordination/）を不変ルール10・役割別編集経路に反映（Codex/Claude 両利き化）・実構造に coordination//scratch/ を追記
 
 管理: Minato（ボス）

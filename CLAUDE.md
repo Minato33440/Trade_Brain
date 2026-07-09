@@ -1,7 +1,7 @@
 # CLAUDE.md — Trade_Brain
 # このファイルは ClaudeCode が Trade_Brain リポジトリで作業する際に自動で読み込まれる
 # Trade_System の CLAUDE.md とは別運用
-# 更新: 2026-04-25（役割別編集経路の追加 + 過去事故事例の参照）
+# 更新: 2026-07-09（外部リソースに Rex 記憶層ポインタ追加）/ 2026-04-25（役割別編集経路の追加 + 過去事故事例の参照）
 # Claude.ai セッション（Advisor 等）も最初に手動で読むこと
 
 ---
@@ -539,6 +539,8 @@ GitHub MCP 接続リポ配下のファイルを **filesystem MCP の `write_file
                 ※ このリポからは参照しない
 
 Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
+Rex 記憶層:     C:\Python\REX_AI\REX_Brain_Vault\REX\
+                データと検証は本リポへ。判断の驚き・プロジェクトを跨ぐパターンはそちらへ（義務ではない）
 姉妹リポ:       Minato33440/Trade_System（参照のみ・編集禁止）
 データ移行元:   Trade_System/logs/gm/ → raw/ → logs/（2026-04-18 移行・2026-04-20 リネーム完了）
                 Trade_System/versions/distilled/ → distilled/（2026-04-18 移行完了）
@@ -571,5 +573,6 @@ Vault ルート:   C:\Python\REX_AI\REX_Brain_Vault\wiki\trade_brain\
   - 2026-04-18 夜（再）: 週次運用ファイル 3 件統合・RTK ルール反映・NLM ID 正式記載
   - 2026-04-20: raw/ → logs/ リネーム反映・全パス整合・WEEKLY_UPDATE_WORKFLOW 同期
   - 2026-04-25: 役割別編集経路セクション追加・過去事故事例の参照・RTK 適用範囲の明記
+  - 2026-07-09: 外部リソース参照先に Rex 記憶層（REX_Brain_Vault\REX\）ポインタを追加
 
 管理: Minato（ボス）

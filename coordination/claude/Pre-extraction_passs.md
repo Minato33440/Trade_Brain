@@ -108,3 +108,22 @@
 - **反映ファイル**: Market conditions テキスト③・charts.md・review.md末尾・distilled wk01（decision＋tags）。
 - 方向一致確認: USDJPY 162介入警戒・Gold強気・円キャリー巻き戻しリスクはboss/--newsと一致（ソース外混入でなく補強）＝関所7.5 PASS維持。
 - 再commit要（2度目のpush）。
+
+
+---
+
+## 2026-07-04 [6] scratch\ 移設（logs\純化・ボス承認B案）
+
+> ボス決定(B案)により logs\ を生データのみに純化。scratch\ を logs\ 配下からトップレベルへ移動。
+> 実行=Broker(Claude)、Windows filesystem move。append モードで本追記（[訂正メモ]の再発防止＝write_file全体上書きを使わない）。
+
+- **移動**: `Trade_Brain\logs\scratch\` → `Trade_Brain\scratch\`（claude/codex/grok 3レーンとも移動、内容不変）
+- **新レイアウト（B案・平置き）**:
+  - `logs\` = 生データのみ（boss reports / daily / text_log / weekly）
+  - `distilled\` = canon
+  - `coordination\` = append-only handoff（本ファイル）
+  - `scratch\` = engine別・使い捨て作業域（旧 logs\scratch\）
+- **全engineへの経路変更**: 旧 `logs/scratch/<engine>/` 参照は全て `scratch/<engine>/` へ。
+  - [1]で記録した出力2本の現在地: `scratch/claude/2026-7-3_wk01_prediction_seed.md` / `scratch/claude/index_feed_raw.md`（[1]記載の logs\ パスは移設前の旧値）
+- **未反映の別件**: docs/system の事前抽出指示書は出力先を coordination\ と記載（Sonnetは logs\scratch\ を使用）。次版で scratch\claude\ 出力＋coordination\ログの分離に更新予定（Broker帽子・別途）。
+- coordination の 1エントリ=1ファイル構造化は今回スコープ外（ボス判断待ち）。

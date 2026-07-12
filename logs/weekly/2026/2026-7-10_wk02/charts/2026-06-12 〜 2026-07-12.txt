@@ -1,0 +1,26 @@
+取得期間: 2026-06-12 〜 2026-07-12 (JST基準)
+
+USD/JPY: 最新 161.672 (30日変化: +0.96%)
+US100: 最新 29825.109 (30日変化: +0.64%)
+JP225: 最新 68557.727 (30日変化: +3.84%)
+XAU/USD: 最新 4104.100 (30日変化: -2.63%)
+WTI: 最新 71.410 (30日変化: -15.87%)
+US3M: 最新 3.695 (30日変化: +2.13%)
+US2Y: 最新 4.308 (30日変化: +2.25%)
+VIX: 最新 15.030 (30日変化: -14.99%)
+US10Y: 最新 4.569 (30日変化: +1.83%)
+BTC/USD: 最新 64127.141 (30日変化: +0.92%)
+
+[regime] Neutral (label=Neutral, equities=flat, volatility=normal, oil=range, gold=off, crypto=range, yields=rising, curve=stable(5s10s=+26.1bp,Δ-1.3bp; 3m10s=+87.4bp/positive; belly_elevated), intervention=watch(imf_ammo=1,stage=meeting_held), jp_rs=mixed(fx_adj+2.2pt))
+
+wk01比較 (2026-07-04 snapshot):
+- US100: 29329.211 → 29825.109 (+495.9 / +1.69%)
+- JP225: 69744.070 → 68557.727 (-1186.3 / -1.70%)
+- USDJPY: 161.337 → 161.672 (+0.335)
+- XAUUSD: 4187.300 → 4104.100 (-83.2)
+- WTI: 68.780 → 71.410 (+2.63)
+- US10Y: 4.372 → 4.569 (+0.197)
+- US2Y: 4.130 → 4.308 (+0.178)
+- VIX: 16.150 → 15.030 (-1.12)
+- BTC: 61485.301 → 64127.141 (+2641.8 / +4.3%)
+- Regime: Equities Down → Neutral

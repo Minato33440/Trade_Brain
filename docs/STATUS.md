@@ -940,3 +940,41 @@ created: 2026-07-04 JST（7/3米独立記念日で米市場は早期クローズ
 - wti_shock: bottoming_reversal_68_80_watch（68.78。-26.07%・slump継続も底打ち切り返し。68.80上抜けで70.16方向、6/30高値売り圧・fib0.236戻し止まり可能性）
 - eps_revision_chain: korea_semi_ai_competition_selloff（Anthropic×SamsungのAIチップ提携・競合報道＝株安主因（雇用でなく）。半導体AIは戻り売り、非半導体へ資金シフト。韓国アルゴ取引規制で流動性低下）
 
+---
+
+## Weekly Brief | 2026-7-10_wk02
+created: 2026-07-12 JST（snapshot end=2026-07-12 / Boss wr-2026-7-10.md）
+
+### Macro / Regime
+- 機械regime **Equities Down → Neutral**（equities=flat / yields=rising / oil=range / gold=off / crypto=range）。VIX 15.03で Add risk gate 継続開放。
+- boss主筋：**寄り天→一旦調整／為替レンジ**。メモリ・半導体買い戻し、ウィリアムズ系インフレ警戒、**7/14米大手銀行決算**が最大イベント。
+- --news(7/12)：米軍イラン空爆再開・ホルムズ海峡閉鎖宣言（Boss金曜「リスク後退」との時間差）。
+
+### Key Levels
+- US100: 29,825（wk01+1.7%）/ 三角・寄り天→戻り売り
+- JP225: 68,558（wk01-1.7%・30d+3.8%）/ 押し目~67,358
+- USDJPY: 161.672 / intervention=watch / 不意打ち介入警戒
+- Gold: 4,104 / 4138→4175・4080 / CFD Total **1.5pips @4104.5** 週持越し
+- WTI: 71.41 / 72.17・71.23 両サイド
+- BTC: 64,127（+4.3%）/ 61477割れのみ
+- 金利: US10Y 4.569 / US2Y 4.308 / 3m10s +87.4bp positive / VIX 15.03
+
+### Gates（最重要：終値で判定）
+- Add risk: **開放継続**（VIX15）。寄り天シナリオで高値追わず
+- Reduce / caution: VIX18再上抜け / ドル円介入フラッシュ / ホルムズ継続 / 銀行決算失望 / US100三角下抜け
+- Hedge gate: 金 Total1.5pips を4Hダウ崩れ・15m実体確定で管理。原油は両サイド
+
+### This Week Focus & Catalysts（行動: 7/13-）
+- **7/14 米大手銀行決算**（JPM/BofA/WFC/GS/C）
+- **CPI / PPI**
+- **USDJPY 不意打ち介入**
+- **イラン・ホルムズ続報**
+- **Gold 4138/4080 と CFD スウィング決済ルール**
+
+### Signals (weekly, fixed keys)
+- us10y_accel: yields_rising_williams（US10Y 4.569 / US2Y 4.308。curve stable 5s10s+26.1bp、3m10s+87.4bp/positive、belly_elevated）
+- hy_oas_widening: neutral_tilt_open_high_adjust（regime Neutral＋寄り天調整シナリオ。全面リスクオフではない）
+- vix_spike: add_risk_gate_open_15（15.03。18割れ継続）
+- wti_shock: geo_two_way_post_friday（71.41。boss両サイド＋--news再エスカ）
+- eps_revision_chain: memory_semi_buyback_bank_earnings（メモリ買い戻し＋7/14銀行決算）
+

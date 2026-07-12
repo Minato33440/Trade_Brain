@@ -1,0 +1,92 @@
+# 2026_07_12_snapshot.yaml
+
+date:
+  start: 2026-06-12
+  end: 2026-07-12
+
+panel:
+  Risk: [US100, JP225, BTC/USD]
+  Fear: [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates: [US3M, US2Y, US10Y]
+
+regime:
+  label: "Neutral"
+  equities: flat
+  volatility: normal
+  oil: range
+  gold: off
+  crypto: range
+  yields: rising
+
+curve_2s10s:
+  spread_bp: 26.1            # 5s10s（US2Y=^FVX=5y proxy − US10Y）
+  change_bp: -1.3
+  shape: stable            # 5s10s の質
+  inverted: false
+  spread_3m10s_bp: 87.4      # 3m10s（^IRX − US10Y）=Fed重視の景気後退カーブ・逆イールド主ゲージ
+  change_3m10s_bp: 0.5
+  shape_3m10s: stable
+  spread_3m5s_bp: 61.3
+  belly_premium_bp: 18.7      # 5Yの直線補間からの突出度（+=belly elevated/hump）
+  structure: belly_elevated      # front=政策(3M)/belly=5Y/long=growth(10Y) の形
+  recession_3m10s: positive      # positive/near_inversion(<25bp)/inverted
+  points_pct: {m3: 3.695, y5: 4.308, y10: 4.569}
+  note: "5s10s（US2Y=^FVX=5y proxy）は5年がカーブ中腹のため、front=政策(3M)が belly(5Y) より低い順イールド環境では最もフラットな区間＝5s10sのbear_flatteningは逆イールド接近を過大評価しうる。景気後退の主ゲージは 3m10s（spread_3m10s_bp）で読む。structure=belly_elevated は政策ターミナル織り込みの瘤＝front低・belly突出・long growth。shape*は短期↑/長期↓のフラット化の質、recession_3m10s が near_inversion/inverted に入ったら本格警戒。"
+
+intervention_watch:
+  pair: USD/JPY
+  level: 161.672
+  zone: watch            # >=watch_zone(161.5) で watch
+  upper_alert: false
+  imf_ammo_remaining: 1
+  last_meeting: "2026-06-23 片山-ベッセント会談（協調レートチェックの布石）"
+  coord_stage: meeting_held   # 予兆→秒読み→着弾の4段（手動更新）
+  coord_stage_idx: 1            # 0=unconfirmed..3=executed
+  coord_ladder: [unconfirmed, meeting_held, rate_check_detected, executed]
+  coord_stage_note: "予兆(meeting_held)→秒読み(rate_check_detected=NY連銀rate check確認)→着弾(executed=実弾)。rate_check_detectedで戦略軸が『162待ち伏せ売り』→『155-156底打ち確認』へ切替"
+  down_target: 155.0
+  asymmetry: "最後の協調弾が出たら155方向へ深く長い／出る前は161-162で踏まれる"
+  history: "2026-01 協調rate check=10営業日で2,100pips急落"
+  judgment_note: "単独/協調はNY連銀rate check確認で判定（毎朝チェック）。介入は経験則上24:30以降に入ったことがなく円安は深夜帯"
+
+relative_strength:
+  jp225_jpy_30d: 3.84
+  jp225_usd_30d: 2.85        # JP225/USDJPY のΔ（通貨効果を除去）
+  currency_effect_pt: 0.99   # 円安が嵩上げした分
+  us100_30d: 0.64
+  jp_vs_us_nominal_pt: 3.21
+  jp_vs_us_fx_adj_pt: 2.22   # 本物の相対強度（FX調整後）
+  verdict: mixed   # structure_led=割安リレーティング主導 / currency_led=円安主導 / mixed
+
+snapshot_30d:
+  "USD/JPY":
+    latest: 161.672
+    change_pct: 0.96
+  "US100":
+    latest: 29825.109
+    change_pct: 0.64
+  "JP225":
+    latest: 68557.727
+    change_pct: 3.84
+  "XAU/USD":
+    latest: 4104.100
+    change_pct: -2.63
+  "WTI":
+    latest: 71.410
+    change_pct: -15.87
+  "US3M":
+    latest: 3.695
+    change_pct: 2.13
+  "US2Y":
+    latest: 4.308
+    change_pct: 2.25
+  "VIX":
+    latest: 15.030
+    change_pct: -14.99
+  "US10Y":
+    latest: 4.569
+    change_pct: 1.83
+  "BTC/USD":
+    latest: 64127.141
+    change_pct: 0.92

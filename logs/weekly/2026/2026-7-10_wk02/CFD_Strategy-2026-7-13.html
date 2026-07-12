@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFD戦略 | 7/13週 (2026-7-10_wk02)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --mut:#8b949e;
+    --up:#3fb950; --down:#f85149; --warn:#d29922; --info:#58a6ff; --accent:#bc8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.65;padding:24px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:1.7rem;margin-bottom:4px}
+  h2{font-size:1.2rem;margin:30px 0 12px;border-left:4px solid var(--accent);padding-left:10px}
+  .sub{color:var(--mut);font-size:.9rem;margin-bottom:18px}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .banner{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:linear-gradient(90deg,#1f2937,#161b22);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0 8px}
+  .pill{padding:3px 11px;border-radius:999px;font-size:.8rem;font-weight:700}
+  .pill.neutral{background:#1f3d2b;color:#8dffb0}
+  .pill.open{background:#1a3a2a;color:#7ee787}
+  .pill.trig{background:#5c4410;color:#ffd479}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--mut);font-weight:600}
+  .up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}.info{color:var(--info)}.mut{color:var(--mut)}
+  .tag{display:inline-block;font-size:.72rem;padding:1px 7px;border-radius:5px;background:#21262d;color:var(--mut);margin-right:5px}
+  .inst{border-left:3px solid var(--info)}
+  .inst.sell{border-color:var(--down)}.inst.buy{border-color:var(--up)}.inst.wait{border-color:var(--warn)}
+  .inst h3{font-size:1rem;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .inst .lv{font-size:.83rem;color:var(--mut);margin-top:6px}
+  .tl{position:relative;padding-left:22px}
+  .tl li{list-style:none;margin-bottom:14px;position:relative}
+  .tl li::before{content:"";position:absolute;left:-22px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .tl li::after{content:"";position:absolute;left:-17px;top:15px;bottom:-14px;width:1px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .day{font-weight:700;color:var(--accent)}
+  .note{font-size:.8rem;color:var(--mut);border-top:1px dashed var(--line);margin-top:26px;padding-top:12px}
+  canvas{max-height:300px}
+  img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;padding:3px 0;border-bottom:1px solid #21262d}
+  .big{font-size:1.4rem;font-weight:800}
+  .lv{font-size:.83rem;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>📉 CFD戦略ブリーフ — 7/13週</h1>
+  <div class="sub">対象週: 2026-7-10_wk02（データ期間 2026-07-06→07-10 / snapshot 2026-07-12） ｜ ソース: review・meta・snapshot・boss市況(wr-2026-7-10)・--trade --news</div>
+
+  <div class="banner">
+    <span class="pill neutral">Regime: Neutral（Equities Down→転換）</span>
+    <span class="pill open">Add risk gate: 開放継続（VIX 15.03&lt;18）</span>
+    <span class="pill trig">Reduce: caution（VIX18/介入/ホルムズ/銀行決算/三角）</span>
+    <span class="mut" style="font-size:.82rem">boss主筋=寄り天→調整／為替レンジ ｜ 最大イベント=7/14銀行決算 ｜ 金CFD Total 1.5pips @4104.5</span>
+  </div>
+
+  <h2>1. パネル 30日スナップショット</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="barChg"></canvas></div>
+    <div class="card">
+      <table>
+        <thead><tr><th>銘柄</th><th>最新</th><th>30日%</th><th>wk01→wk02</th></tr></thead>
+        <tbody>
+          <tr><td>US100</td><td>29,825.1</td><td class="up">+0.64%</td><td class="up">+1.7%（Neutral化）</td></tr>
+          <tr><td>JP225</td><td>68,557.7</td><td class="up">+3.84%</td><td class="down">-1.7%（押し目局面）</td></tr>
+          <tr><td>USD/JPY</td><td>161.672</td><td class="warn">+0.96%</td><td class="warn">+0.335（watch帯）</td></tr>
+          <tr><td>5Y(^FVX)※真の2年債はboss実測4.21%</td><td>4.308</td><td class="warn">+2.25%</td><td class="warn">+0.178（利上げ警戒）</td></tr>
+          <tr><td>US10Y</td><td>4.569</td><td class="warn">+1.83%</td><td class="warn">+0.197（yields=rising）</td></tr>
+          <tr><td>XAU/USD</td><td>4,104.1</td><td class="down">-2.63%</td><td class="down">-83（CFD entry近傍）</td></tr>
+          <tr><td>BTC/USD</td><td>64,127.1</td><td class="up">+0.92%</td><td class="up">+4.3%</td></tr>
+          <tr><td>WTI</td><td>71.410</td><td class="down">-15.87%</td><td class="up">+2.63（oil=range）</td></tr>
+          <tr><td>VIX</td><td>15.030</td><td class="up">-14.99%</td><td class="up">-1.12（gate開放）</td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">curve: 5s10s <b>+26.1bp stable</b> ／ 3m10s <b class="up">+87.4bp positive</b> ／ belly_elevated ／ intervention=<b class="warn">watch</b> ／ jp_rs=<b>mixed</b>（fx_adj +2.2pt）</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <strong>8ペア30日 正規化プロット</strong>
+    <img src="charts/Portforio-2026-07-12.png" alt="8ペア30日プロット">
+  </div>
+
+  <h2>2. レジーム & ゲート状況</h2>
+  <div class="grid g3">
+    <div class="card"><div class="mut">機械レジーム</div><div class="big up">Neutral</div><div class="lv">equities=<b>flat</b> / vol=normal / oil=<b>range</b> / gold=off / crypto=range / yields=<b class="warn">rising</b><br>wk01 Equities Down から転換</div></div>
+    <div class="card"><div class="mut">Add risk ゲート</div><div class="big up">開放継続</div><div class="lv">VIX 15.03 &lt; 18。低ボラ継続だが銀行決算・地政学でスパイク余地</div></div>
+    <div class="card"><div class="mut">Reduce risk ゲート</div><div class="big warn">caution</div><div class="lv">VIX18再上抜け / ドル円介入フラッシュ / ホルムズ継続 / 銀行決算失望 / US100三角下抜けで発火</div></div>
+  </div>
+
+  <h2>3. シナリオ（3分岐）</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="scn"></canvas></div>
+    <div class="card">
+      <div class="kv"><span><b class="warn">A. 寄り天→調整 + 銀行決算上振れ（boss主筋）</b></span><span>午前天井→戻り売り。7/14が上振れ変数</span></div>
+      <div class="kv"><span><b class="down">B. 利上げ警戒 × 金利上昇継続</b></span><span>Williams系 + CPI/PPI強 → 株・金の上値抑制</span></div>
+      <div class="kv"><span><b class="info">C. 地政学再点火</b></span><span>--news: 空爆再開・ホルムズ閉鎖 → 原油上振れ/株フラッシュ</span></div>
+      <p class="lv" style="margin-top:10px">金曜Bossは「イランリスク後退」。土日--newsは再エスカ。時間差を混同せず、来週は別レイヤーで監視。高値追いは抑制。</p>
+    </div>
+  </div>
+
+  <h2>4. CFD 銘柄別アクションプラン</h2>
+  <div class="grid g2">
+    <div class="card inst sell">
+      <h3>US100 (NAS100) <span class="tag warn">寄り天→戻り売り</span></h3>
+      金曜は半導体主導で上昇（NDX+1.3%）も、boss主筋は寄り付き〜午前を天井とした戻り売り。日足三角持ち合い形成中。「下落相場になりそう」とやや弱気。月曜以降は上に走らずレンジなら上抜け注意、素直に上げれば戻り売り。最大変数は7/14銀行決算。
+      <div class="lv">最新=29,825 ／ wk01比 +1.7% ／ 高値追い抑制 ／ 旧29,089帯は深押し時の参考</div>
+    </div>
+    <div class="card inst buy">
+      <h3>JP225 (日経) <span class="tag">押し目拾い</span></h3>
+      下がっても上がる強さ。月曜は午前上昇→午前天井視野。67,000台後半からの下落フロー利用＋押し目約67,358。設備投資（ファナック/安川/ディスコ/デクセリアルズ等）とテック優位。実測68,558は週次-1.7%でも30日+3.8%。
+      <div class="lv">最新=68,558 ／ 押し目≈67,358 ／ RS=mixed（fx_adj+2.2pt） ／ 実測優先・boss押し目はシナリオ参考</div>
+    </div>
+    <div class="card inst wait">
+      <h3>USD/JPY <span class="tag warn">watch帯・不意打ち介入</span></h3>
+      約20pips狭いレンジでの反発上昇の流れ。最大テーマは不意打ち円買い介入。円安材料出尽くし＋介入で数円の円高が近い注意。CPI/PPI弱→円高、そうでなければ円安加速。実務は水平線手前の早め利確・分散エントリー。
+      <div class="lv">最新=161.672 ／ zone=<b class="warn">watch</b>（≥161.5） ／ ammo=1 ／ stage=meeting_held ／ upper_alert=false</div>
+    </div>
+    <div class="card inst buy">
+      <h3>Gold (XAU) <span class="tag">押し目買い・CFD 1.5pips</span></h3>
+      日足下落トレンド内で4H底堅さ＝上昇バイアス。4138超でカップ・ウィズ・ハンドル→4175、押し目4080。順張り・押し目買い。<b>CFD：7/11 0:15 1H上昇波Fibo38.2下髭実体収納後の1m3波 $4104.5 で +0.5pips → Total 1.5pips 週持越し</b>。日足環境・4Hトレード足スウィング継続。
+      <div class="lv">最新=4,104.1 ／ 上=4,138→4,175 ／ 押し目=4,080 ／ 決済=4Hダウ崩れ→15m実体確定 ／ 当週確定クローズ0</div>
+    </div>
+    <div class="card inst wait">
+      <h3>WTI <span class="tag">両サイド・地政学</span></h3>
+      Boss金曜：イランリスク後退で72前半反落も未収束→再上昇余地。72.17超→73.63 / 71.23割→69.78。--news(7/12)は空爆再開・ホルムズ閉鎖で上振れプランを厚めに監視。
+      <div class="lv">最新=71.41 ／ oil=range ／ ヘッドライン次第の両建て発想</div>
+    </div>
+    <div class="card inst sell">
+      <h3>BTC/USD <span class="tag warn">慎重・戻り売り寄り</span></h3>
+      レンジで上は分からない/下落相場の慎重見立て。61477割れで60000下落フローのみ。上方向はシグナル待ち。週次は+4.3%反発したが方針は様子見寄り維持。
+      <div class="lv">最新=64,127 ／ 下=61,477→60,000 ／ 上追い禁止</div>
+    </div>
+  </div>
+
+  <h2>5. 週内タイムライン（行動: 7/13-）</h2>
+  <div class="card">
+    <ul class="tl">
+      <li><span class="day">7/13(月)</span> 寄り天警戒。午前天井確認後の戻り売り。ドル円 watch / 介入警戒を最優先。</li>
+      <li><span class="day">7/14(火)</span> <b class="warn">米大手銀行決算</b>（JPM/BofA/WFC/GS/C）。金融株上振れ期待 vs 失望。サイズ抑制可。</li>
+      <li><span class="day">週中</span> CPI/PPI。弱→利回り低下（株・金・円高）、強→金利上昇継続。</li>
+      <li><span class="day">週内随時</span> 金CFD 1.5pipsを4Hダウ崩れで管理。ホルムズ/空爆続報で原油両サイド。BTC上追いせず。</li>
+    </ul>
+  </div>
+
+  <h2>6. 監視トリガー（毎朝チェック）</h2>
+  <div class="card grid g2" style="gap:6px">
+    <div class="kv"><span>7/14 銀行決算</span><span class="warn">→ 金融株経由の指数上振れ/失望</span></div>
+    <div class="kv"><span>CPI / PPI</span><span class="warn">→ 金利方向・ドル円・金に波及</span></div>
+    <div class="kv"><span>USDJPY 不意打ち介入（watch≥161.5）</span><span class="down">→ 数円の円高フラッシュ</span></div>
+    <div class="kv"><span>VIX 18再上抜け定着</span><span class="down">→ Add risk 閉鎖・Reduce発火</span></div>
+    <div class="kv"><span>US100 三角 上抜け/下抜け</span><span class="warn">→ 高値追い抑制・方向確認</span></div>
+    <div class="kv"><span>Gold 4138 / 4080 / 4Hダウ崩れ</span><span class="info">→ 乗せ or CFD決済</span></div>
+    <div class="kv"><span>ホルムズ/空爆続報</span><span class="down">→ WTI 72.17/71.23・株フラッシュ</span></div>
+    <div class="kv"><span>BTC 61,477割れ</span><span class="down">→ 60,000 下落フローのみ</span></div>
+  </div>
+
+  <h2>7. GMポートフォリオ（参考・2026-07-12）</h2>
+  <div class="grid g2">
+    <div class="card"><strong>国内株スナップショット（東証株）</strong><img src="charts/Portfolio-JP-Stocks-2026-07-12.png" alt="国内株ポートフォリオ"></div>
+    <div class="card"><strong>米国株スナップショット</strong><img src="charts/Portfolio-US-Stocks-2026-07-12.png" alt="米国株ポートフォリオ"></div>
+  </div>
+  <p class="lv" style="margin-top:8px">※Portfolio-Total 画像は本週未提供。残高・評価損益の詳細は上記画像参照。スタンス: 長期コア保有継続。米株は寄り天警戒で高値追いせず、日本株は押し目、金はスウィング保有。</p>
+
+  <div class="note">
+    ⚠️ 本資料は 2026-7-10_wk02 の確定データ（snapshot 2026-07-12 / review / meta / boss市況 wr-2026-7-10 / --trade --news）に基づく整理であり、創作・ソース外情報は含まない。<br>
+    機械レジーム=Neutral と boss「寄り天→調整」は「低ボラだが高値追わない」で整合。イランは金曜Bossと7/12 newsの時間差を両論併記。X headlinesは空出力。関所7.5承認済。<br>
+    投資助言ではなく GM運用の作戦整理。最終判断はミナト。 生成: Hermes Grok / gm-weekly-update / 2026-07-12。
+  </div>
+
+</div>
+
+<script>
+const C={up:'#3fb950',down:'#f85149',warn:'#d29922',info:'#58a6ff',mut:'#8b949e',grid:'#30363d',txt:'#e6edf3'};
+Chart.defaults.color=C.txt;Chart.defaults.borderColor=C.grid;Chart.defaults.font.family='Segoe UI';
+
+new Chart(document.getElementById('barChg'),{
+  type:'bar',
+  data:{labels:['JP225','BTC','US100','USDJPY','5Y(^FVX)','US10Y','XAU','WTI','VIX'],
+    datasets:[{label:'30日変化率 (%)',
+      data:[3.84,0.92,0.64,0.96,2.25,1.83,-2.63,-15.87,-14.99],
+      backgroundColor:['#3fb950','#3fb950','#3fb950','#d29922','#d29922','#d29922','#f85149','#f85149','#3fb950']}]},
+  options:{plugins:{legend:{display:false},title:{display:true,text:'パネル 30日変化率（2026-06-12→07-12）'}},
+    scales:{y:{grid:{color:C.grid},title:{display:true,text:'%'}},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('scn'),{
+  type:'doughnut',
+  data:{labels:['A 寄り天→調整 + 銀行決算上振れ','B 利上げ警戒×金利上昇継続','C 地政学再点火（空爆/ホルムズ）'],
+    datasets:[{data:[45,30,25],backgroundColor:[C.warn,C.down,C.info],borderColor:'#161b22',borderWidth:2}]},
+  options:{plugins:{legend:{position:'bottom'},title:{display:true,text:'シナリオ比重（boss市況ベースの目安）'}}}
+});
+</script>
+</body>
+</html>

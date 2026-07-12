@@ -196,6 +196,7 @@ updated: 2026-01-03 (JST)
 - 2026-04: distilled/2026/distilled-gm-2026-4.md
 - 2026-05: distilled/2026/distilled-gm-2026-5.md
 - 2026-06: distilled/2026/distilled-gm-2026-6.md
+- 2026-07: distilled/2026/distilled-gm-2026-7.md
 
 ## 3-scenario response（週の骨格）
 A) Risk-on confirmation（上抜け“本物”）
@@ -946,4 +947,38 @@ updated: 2026-07-04 JST
 - **韓国発半導体AI続報**: Anthropic×Samsung AIチップ提携・競合の続報。半導体AI distribution波及＋BTC暗号解読リスク思惑の火種
 - **米独立記念日明けの薄商い**: 出来高減でテクニカル機能しにくい・週明けボラ
 - **17時ラガルドECB総裁発言**: EURUSD急変動リスク
+
+---
+
+# Trade-Main.md | GM Playbook (Week Start)
+updated: 2026-07-12 JST
+
+## Weekly Brief | 2026-7-10_wk02（2026-07-06 → 2026-07-10）
+> distilled: [distilled-gm-2026-7.md](../distilled/2026/distilled-gm-2026-7.md) / Boss: wr-2026-7-10.md
+
+### Macro / Regime
+- 機械regime **Equities Down → Neutral**。equities=flat / yields=rising / oil=range / VIX 15.03で Add risk 継続開放。
+- boss主筋：**寄り天(午前天井)→一旦調整／為替レンジ**。メモリ・半導体買い戻し＋金曜時点イランリスク後退。最大イベント **7/14 米大手銀行決算**。
+- --news(7/12)：米軍イラン空爆再開・ホルムズ閉鎖＝Boss金曜との**時間差**を監視。
+
+### Key Levels & Positions
+- US100: 29,825（wk01+1.7%）/ 三角持ち合い・寄り天→戻り売り
+- JP225: 68,558（wk01-1.7%・30d+3.8%）/ 押し目~67,358 / mixed RS
+- USDJPY: 161.672 / **intervention=watch** / 不意打ち介入警戒
+- Gold: 4,104 / 4138→4175・押し目4080 / **CFD Total 1.5pips @4104.5 週持越し**
+- WTI: 71.41 / 72.17・71.23 両サイド
+- BTC: 64,127（+4.3%）/ 61477割れのみ下落利用
+- 金利: US10Y 4.569 / US2Y 4.308 / 3m10s +87.4bp positive / VIX 15.03
+
+### Gates
+- Add risk: **開放継続**（VIX15）。寄り天優先で高値追わず
+- Reduce: VIX18再上抜け / 介入フラッシュ / ホルムズ継続 / 銀行決算失望 / 三角下抜け
+- Hedge: 金1.5pipsを4Hダウ崩れ管理。原油は両サイド
+
+### This Week Focus（行動: 7/13-）
+- **7/14 米大手銀行決算**
+- **CPI / PPI**
+- **USDJPY 介入 watch**
+- **イラン・ホルムズ続報**
+- **Gold 4138 / 4080 / CFD 4H決済ルール**
 

@@ -314,3 +314,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-7-3_wk01/meta.yaml)
   - [review](./2026-7-3_wk01/review.md)
   - [charts](./2026-7-3_wk01/charts.md)
+
+### 2026-7-10_wk02（2026-07-06 → 2026-07-10）
+- Regime: **Neutral**（equities=flat / volatility=normal / oil=range / gold=off / crypto=range / yields=rising）← wk01「Equities Down」から転換。VIX 16.15→15.03でAdd risk gate継続開放。金利は falling→rising。
+- 1行：機械 Neutral 化。US100 29,825（wk01比+1.7%）・BTC 64,127（+4.3%）・VIX15。boss＝**寄り天(午前天井)→一旦調整／為替レンジ**。背景はメモリ・半導体買い戻し＋金曜時点のイランリスク後退、ウィリアムズ系インフレ警戒。最大イベント**7/14米大手銀行決算**。USDJPY 161.672で intervention=watch（不意打ち介入警戒）。金$4104、CFD 7/11 0:15 $4104.5で0.5pips追加→**Total1.5pips週持越し**（スウィング継続）。--news(7/12)は空爆再開・ホルムズ閉鎖＝Boss金曜との時間差を監視。
+- Key gates:
+  - Add risk: **開放継続**（VIX 15.03<18）。寄り天シナリオ優先で高値追わず
+  - Reduce / caution: VIX18再上抜け OR ドル円介入フラッシュ OR ホルムズ/空爆継続の株安波及 OR 銀行決算失望 OR US100三角下抜け
+- Links:
+  - [note](./2026-7-10_wk02/note.md)
+  - [meta](./2026-7-10_wk02/meta.yaml)
+  - [review](./2026-7-10_wk02/review.md)
+  - [charts](./2026-7-10_wk02/charts.md)

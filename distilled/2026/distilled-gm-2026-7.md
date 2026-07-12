@@ -48,3 +48,45 @@
 - tags: [gm, monthly_distilled, 2026-07, 2026-7-3_wk01, signal:korea_semi_ai_selloff_not_jobs, signal:us_holiday_thin_liquidity_covert_intervention_risk, signal:vix_gate_reopened_below_18, signal:us100_triangle_range_29089_pivot, signal:jp225_strong_trend_shallow_pullback, signal:curve_bull_flattening_5s10s_positive, signal:gold_sell_flow_4129_vs_midterm_uptrend, signal:gold_cfd_swing_shift, signal:wti_bottoming_68_80_break_watch, signal:btc_correction_60300_rebound_skipped, signal:x_sentiment_gold_ai_bull_jpy_bear, event:us_independence_day_holiday_7_3, event:nfp_57k_miss_7_3, event:anthropic_samsung_ai_chip_partnership, event:korea_algo_trading_regulation, event:lagarde_ecb_speech, pattern:selloff_driver_swap_jobs_to_semi, pattern:vix_gate_reopen_below_18, pattern:bull_flattening_long_end_led, pattern:triangle_range_29089_dual_pivot, pattern:cfd_execution_frame_shift_to_swing, pattern:same_news_bear_bull_timeframe_split, risk:covert_intervention_thin_liquidity_flash, risk:semi_ai_competition_contagion, risk:btc_quantum_decrypt_fear, risk:usdjpy_162268_breakout_trend_shift, risk:yen_carry_unwind_riskoff_trigger]
 
 ---
+
+## 2026-7-10_wk02（2026-07-06 → 2026-07-10）
+> 注: 前週 wk01（2026-7-3）比較。snapshot end=2026-07-12。Boss=wr-2026-7-10.md。確定クローズ0／CFD Total1.5pips@$4104.5週持越し。X headlines空出力。
+- regime: **Neutral**（equities=flat / volatility=normal / oil=range / gold=off / crypto=range / yields=rising）← wk01 Equities Down から転換。VIX 16.15→15.03でAdd risk継続開放。金利 falling→rising。
+- decision:
+  - open_high_adjust_main=on（boss メインシナリオ：株は寄り天(午前天井)→一旦調整、為替はレンジ。金曜NYは半導体主導で上昇（DJIA+0.27%/NDX+1.3%/SPX+0.81%）だが、7/2起点の売り圧力が約1週間継続との見立てで、来週は保守的に寄り付き〜午前を天井とした戻り売りを想定。上抜けず反落なら下落の流れ、素直に上げれば戻り売り目線が機能。最大変数は7/14銀行決算。）
+  - memory_semi_buyback=on（半導体/メモリ買い戻しが金曜上昇の背景：Micron 2500億ドル超投資・SK hynix ADR上場・SanDisk×Meta契約判明。金曜NDX+1.3%の半導体主導と整合。ただしbossは「半導体AIは戻り売り・来週は午前天井→調整」で、買い戻しは一時的との見立て。）
+  - bank_earnings_7_14=on（7/14(火)米大手銀行決算集中（JPM/BofA/WFC/GS/C）。トレーディング収入が過去2番目の高水準との観測から金融株上振れ期待＝来週最大の注目イベント。金融株の爆上げが全体を支える可能性 vs 失望リスクの両サイド。）
+  - williams_inflation_hike_watch=on（NY連銀ウィリアムズ総裁「インフレリスクは依然高すぎる/AIによる押し上げ需要を重視」発言で利上げ警戒がくすぶる。金曜は金利上昇=債券安（boss実測 US2Y 4.21%+0.048/US10Y 4.561%+0.022）で整合。CPI/PPIが弱ければ利回り低下、強ければ上昇継続。）
+  - intervention_watch_zone=on（USDJPY 161.672でintervention_watch=watch（>=161.5）、imf_ammo=1、coord_stage=meeting_held（片山-ベッセント会談=協調レートチェックの布石）。boss最大テーマ「不意打ち円買い介入」警戒＝市場は次の介入を円買いと予想。円安材料出尽くし＋介入リスクで数円の円高が近い注意。基本は約20pips狭レンジの反発上昇も上値不透明。GS観測「155接近ならドル買い・1年後165」は強気ドル論として併記。rate_check_detectedに上がれば戦略軸が「162待ち伏せ売り」→「155-156底打ち確認」へ切替。）
+  - gold_cfd_add_4104_5=on（CFDゴールド：7/11 0:15 1H上昇波Fibo38.2の下髭実体収納後、1分足3波で$4104.5を0.5pips追加、既存分と合わせTotal1.5pips週持越し。確定クローズ0件。日足環境足・4Hトレード足のスウィング運用継続（wk01で15m/5m短期から引き上げた枠組みを維持）、残ポジは4Hダウ崩れ・15m実体確定で決済予定。実測4104.1はエントリー近傍。）
+  - iran_time_split_boss_vs_news=on（Boss金曜(wr-7-10)：米イラン情勢のリスク後退で原油72前半に反落→株高、との認識。だが--news(7/12取得・実出力)：ニュース1「米軍 新たなイラン空爆開始」（11日、ホルムズでのコンテナ船攻撃を理由）＋ニュース2「IRGC海軍 ホルムズ海峡閉鎖を宣言」（12日未明）＝boss金曜認識より後の再エスカ材料。両者は矛盾でなく時間差（金曜=後退／土日=再点火）。金曜認識と混同せず別レイヤーで監視。WTIは72.17超で73.63・71.23割れで69.78の両建て。）
+  - curve_stable_3m10s_positive=on（金利カーブ：5s10s +26.1bp/stable(Δ-1.3bp)、3m10s +87.4bp/positive（Fed重視の逆イールド主ゲージ・後退シグナルなし）、belly_premium +18.7bp/structure=belly_elevated（政策ターミナル織り込みの瘤：front=政策3M/belly=5Y突出/long=growth10Y）、points_pct{3M:3.695,5Y:4.308,10Y:4.569}。yields=risingは利上げ警戒（ウィリアムズ）と整合。wk01 bull_flattening から上昇方向へ。※snapshotの「US2Y」枠は^FVX=5Y proxy(4.308)であり真の2年債ではない。）
+  - jp_rs_mixed=on（relative_strength verdict=mixed：jp225_usd_30d +2.85/us100_30d +0.64/fx_adj後 jp_vs_us +2.22pt/円安嵩上げ currency_effect +0.99pt。wk01のstructure_led（割安リレーティング主導）から mixed へ後退＝日本株の強さに円安寄与が混じり始めた。JP225は週次-1.7%も30日+3.84%で優位維持。boss：下がっても上がる強さ、押し目67,358拾い、設備投資（ファナック/安川/ディスコ/デクセリアルズ）＋テック優位。）
+- evidence (close / 2026-07-12 snapshot):
+  - US100: 29825.109（+0.64% 30d）← wk01 29329 比 +1.7%
+  - JP225: 68557.727（+3.84% 30d）← wk01 69744 比 -1.7%
+  - USDJPY: 161.672（+0.96% 30d）← +0.335 / intervention=watch
+  - XAUUSD: 4104.100（-2.63% 30d）← -83 / gold=off
+  - WTI: 71.410（-15.87% 30d）← +2.63 / oil=range
+  - US10Y: 4.569（+1.83% 30d）／US2Y(boss実測): 4.21%（+0.048・7/10終値）／US3M: 3.695 ／ yields=rising ※snapshot「US2Y」枠は^FVX=5Y proxy(4.308)で真の2年債でない。2年債はboss報告値4.21%を採用
+  - 5Y(^FVX): 4.308（snapshotがUS2Y枠に格納）／ 2s10s(5s10s): +26.1bp stable / 3m10s: +87.4bp positive / belly_premium +18.7bp / belly_elevated
+  - curve: 5s10s +26.1bp / 3m10s +87.4bp positive / belly_elevated
+  - VIX: 15.030 / Add risk open
+  - BTC: 64127.141（+0.92% 30d）← +4.3%
+  - Regime: Neutral
+- implication:
+  - 機械regime=Neutral（wk01 Equities Down から転換：equities=flat/vol=normal/oil=range/gold=off/crypto=range/yields=rising）＋VIX 15.03でAdd risk gate継続開放。ただしboss前方視点は「寄り天(午前天井)→一旦調整」の戻り売りが主筋で、機械のリスクオン許容とboss慎重の温度差に注意。7/14銀行決算が上振れ触媒、ウィリアムズ系利上げ警戒＋金利上昇（yields=rising転換）が抑制要因。
+  - US100：日足三角持ち合い形成中もboss「下落相場になりそう」とやや弱気。29,825（wk01比+1.7%）。月曜以降は上に走らずレンジなら上抜け注意、素直に上げれば戻り売り目線。高値追わず・分割。最大変数7/14銀行決算で金融株が全体を支えるか。
+  - JP225：強トレンド継続・押し目浅い（relative_strength=mixed＝円安寄与混在）。68,558（週次-1.7%も30d+3.8%）。67,000台後半からの下落フロー利用＋押し目約67,358拾い。設備投資・テック優位。※boss想定67,358前後 vs 実測68,558は作成タイミング差＝実測優先・boss押し目シナリオは参考。
+  - USDJPY：161.5 watch帯・coord_stage=meeting_held・imf_ammo=1。狭レンジ反発は取るがロング深追い禁物、水平線手前で早め利確・分散エントリー。不意打ち円買い介入で数円の円高フラッシュを想定内に。rate_check確認で155方向へ軸転換。
+  - 金利：yields=rising転換（ウィリアムズ利上げ警戒）。3m10s +87.4bp/positiveで逆イールドは遠く景気後退シグナルなし。belly_elevated継続。金利上昇継続なら株・金の上値抑制、CPI/PPI弱なら利回り低下で反転。
+  - Gold：boss順張り・押し目買い基調（日足下落トレンド内も4H底堅い上昇バイアス）。4,104（gold=off継続）。4,138超でカップ・ウィズ・ハンドル→4,175、押し目4,080反発。CFD Total1.5pipsは4Hダウ崩れ・15m実体確定でスウィング管理。
+  - WTI：71.41（oil=slump→range）。boss金曜は72前半反落も情勢未収束で再上昇余地→--news(7/12)の再エスカでその余地が現実化しつつある。72.17超→73.63/71.23割→69.78の両サイド、地政学ヘッドライン次第の両建て。
+  - BTC：64,127（wk01比+4.3%と週次反発）もboss方針は慎重維持＝レンジ・戻り売り寄り。61,477割れで60,000下落フローのみ利用、上方向はシグナル待ち。
+  - EURUSD：snapshot8ペア外。boss：明確なシグナル待ち・レンジ継続前提でブレイク確定まで様子見。
+  - 地政学：--news(7/12)の米軍イラン空爆再開・ホルムズ閉鎖宣言をboss金曜「リスク後退」と別レイヤーで監視（時間差・混同回避）。再点火なら原油上昇→株・センチメントに波及。
+  - リスク管理：7/14銀行決算の失望 OR ウィリアムズ系利上げ観測でのVIXスパイク OR USDJPY不意打ち円買い介入 OR ホルムズ再エスカの原油急伸、で株式エクスポージャー調整。Add risk gate開放中も慎重運用（boss主筋=戻り売り）。
+  - トレード実績：確定クローズ0件。CFDゴールド7/11 $4104.5で0.5pips追加、Total1.5pips週持越し（日足環境・4Hトレード足スウィング継続）。数値詳細は Portfolio-JP/US-Stocks-2026-07-12.png。
+- tags: [gm, monthly_distilled, 2026-07, 2026-7-10_wk02, signal:open_high_adjust_main, signal:memory_semi_buyback, signal:bank_earnings_7_14, signal:williams_inflation_hike_watch, signal:intervention_watch_zone, signal:gold_cfd_add_4104_5, signal:iran_time_split_boss_vs_news, signal:curve_stable_3m10s_positive, signal:jp_rs_mixed, event:us_bank_earnings_7_14, event:cpi_ppi_week, event:hormuz_closure_news_7_12, pattern:regime_equities_down_to_neutral, pattern:yields_rising_with_low_vix, risk:surprise_yen_intervention, risk:hormuz_re_escalation, risk:bank_earnings_disappointment]
+
+---

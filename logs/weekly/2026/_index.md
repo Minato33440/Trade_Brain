@@ -330,7 +330,7 @@ updated: 2026-01-19 (JST)
 
 ### 2026-7-17_wk03（2026-07-13 → 2026-07-17）
 - Regime: **Equities Down**（equities=down / volatility=normal / oil=range / gold=off / crypto=range / yields=rising）← wk02「Neutral」から再悪化。VIX 18.77でAdd risk gate閉鎖、WTI 82.49へ急伸、USDJPY 162.353でintervention upper_alert。
-- 1行：米イラン連日攻撃・海峡封鎖懸念・FRB追加引き締め観測・AI/メモリ関連急落で株安再燃。US100 -4.1%、JP225 -6.4%。Boss主筋は「セリクラ待ち」— 7/20日本休場明け火曜の追証売り後の押し目を分割で狙う二段構え。CFD Goldは$3,950日足ネックを割らず三角フラッグ、1.5Lot週持越し。
+- 1行：米イラン連日攻撃・海峡封鎖懸念・FRB追加引き締め観測・AI/メモリ関連急落で株安再燃。US100 -4.1%、JP225 -6.4%。Boss主筋は「セリクラ待ち」— 7/20日本休場明け火曜の追証売り後の押し目を分割で狙う二段構え。CFD Goldは **wk02から1.5Lot持越し**（$3,950日足ネック／三角フラッグ／日足スウィング）。
 - Key gates:
   - Add risk: **閉鎖**（VIX 18.77>18）。再開＝VIX<18回帰 + セリクラ反発確認 + WTI上振れ一服
   - Reduce / caution: VIX>20定着 OR WTI83.82超でインフレ再燃 OR USDJPY162台介入フラッシュ OR US100/JP225下落継続

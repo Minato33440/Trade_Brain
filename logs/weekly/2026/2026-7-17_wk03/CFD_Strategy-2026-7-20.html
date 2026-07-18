@@ -1,1 +1,200 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><title>CFD Strategy 2026-7-20</title><style>body{font-family:system-ui,sans-serif;line-height:1.6;margin:32px;background:#0f172a;color:#e5e7eb}.card{background:#111827;border:1px solid #374151;border-radius:12px;padding:18px;margin:14px 0}h1,h2{color:#facc15}.bad{color:#fb7185}.good{color:#34d399}table{border-collapse:collapse;width:100%}td,th{border:1px solid #374151;padding:8px}</style></head><body><h1>CFD Strategy 2026-7-20</h1><div class="card"><h2>Regime</h2><p class="bad">Equities Down / VIX 18.77 / Add risk gate closed</p><p>WTI 82.49、USDJPY 162.353。中東リスク・FRB追加引き締め観測・メモリ急落でセリクラ待ち。</p></div><div class="card"><h2>Gold CFD</h2><p>日足ネック $3,950 を割り込まず三角フラッグ形成。1.5Lot保有のまま週持越し。$3,900〜3,920反発ラインを監視。</p></div><div class="card"><h2>Triggers</h2><table><tr><th>Asset</th><th>Level</th><th>Action</th></tr><tr><td>VIX</td><td>18 / 20</td><td>18未満でAdd再開、20超でReduce強化</td></tr><tr><td>WTI</td><td>81.25 / 83.82</td><td>上抜けで原油上昇利用、株には逆風</td></tr><tr><td>JP225</td><td>63,600 / 63,000 / 60,820</td><td>火曜追証売り後のセリクラ反発確認</td></tr><tr><td>USDJPY</td><td>162台 / 161.90</td><td>基本触らない。161.90付近反発のみ小さく</td></tr></table></div><div class="card"><h2>Portfolio rebalance</h2><p>GX金/GX防衛圧縮、安川電新規、SPCX +2。NISA株数は変更なし。</p></div></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFD戦略 | 7/20週 (2026-7-17_wk03)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --mut:#8b949e;
+    --up:#3fb950; --down:#f85149; --warn:#d29922; --info:#58a6ff; --accent:#bc8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.65;padding:24px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:1.7rem;margin-bottom:4px}
+  h2{font-size:1.2rem;margin:30px 0 12px;border-left:4px solid var(--accent);padding-left:10px}
+  .sub{color:var(--mut);font-size:.9rem;margin-bottom:18px}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .banner{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:linear-gradient(90deg,#1f2937,#161b22);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0 8px}
+  .pill{padding:3px 11px;border-radius:999px;font-size:.8rem;font-weight:700}
+  .pill.bad{background:#5a2b2b;color:#ffb3b3}
+  .pill.closed{background:#5c4410;color:#ffd479}
+  .pill.trig{background:#3b2f10;color:#ffd479}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--mut);font-weight:600}
+  .up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}.info{color:var(--info)}.mut{color:var(--mut)}
+  .tag{display:inline-block;font-size:.72rem;padding:1px 7px;border-radius:5px;background:#21262d;color:var(--mut);margin-right:5px}
+  .inst{border-left:3px solid var(--info)}
+  .inst.sell{border-color:var(--down)}.inst.buy{border-color:var(--up)}.inst.wait{border-color:var(--warn)}
+  .inst h3{font-size:1rem;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .inst .lv{font-size:.83rem;color:var(--mut);margin-top:6px}
+  .tl{position:relative;padding-left:22px}
+  .tl li{list-style:none;margin-bottom:14px;position:relative}
+  .tl li::before{content:"";position:absolute;left:-22px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .tl li::after{content:"";position:absolute;left:-17px;top:15px;bottom:-14px;width:1px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .day{font-weight:700;color:var(--accent)}
+  .note{font-size:.8rem;color:var(--mut);border-top:1px dashed var(--line);margin-top:26px;padding-top:12px}
+  canvas{max-height:300px}
+  img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;padding:3px 0;border-bottom:1px solid #21262d}
+  .big{font-size:1.4rem;font-weight:800}
+  .lv{font-size:.83rem;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>📉 CFD戦略ブリーフ — 7/20週</h1>
+  <div class="sub">対象週: 2026-7-17_wk03（データ期間 2026-07-13→07-17 / snapshot 2026-07-18） ｜ ソース: review・meta・snapshot・boss(wr-2026-7-17)・--trade --news ｜ CFD正本: wk02→1.5Lot持越し / $3950ネック</div>
+
+  <div class="banner">
+    <span class="pill bad">Regime: Equities Down（Neutral→再悪化）</span>
+    <span class="pill closed">Add risk gate: 閉鎖（VIX 18.77&gt;18）</span>
+    <span class="pill trig">Reduce: caution（VIX20/WTI83.82/介入/追証）</span>
+    <span class="mut" style="font-size:.82rem">セリクラ待ち ｜ Gold 1.5Lot=wk02持越し継続 ｜ USDJPY触らない ｜ 7/20日本休場</span>
+  </div>
+
+  <h2>1. パネル 30日スナップショット</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="barChg"></canvas></div>
+    <div class="card">
+      <table>
+        <thead><tr><th>銘柄</th><th>最新</th><th>30日%</th><th>wk02→wk03</th></tr></thead>
+        <tbody>
+          <tr><td>US100</td><td>28,592.7</td><td class="down">-5.96%</td><td class="down">-4.13%</td></tr>
+          <tr><td>JP225</td><td>64,141.1</td><td class="down">-9.73%</td><td class="down">-6.44%</td></tr>
+          <tr><td>USD/JPY</td><td>162.353</td><td class="warn">+1.09%</td><td class="warn">+0.681（upper_alert）</td></tr>
+          <tr><td>US10Y</td><td>4.541</td><td class="warn">+2.02%</td><td class="mut">boss 4.551% (-0.018d)</td></tr>
+          <tr><td>XAU/USD</td><td>4,012.7</td><td class="down">-5.00%</td><td class="down">-2.23%（3950ネック）</td></tr>
+          <tr><td>BTC/USD</td><td>63,899.5</td><td class="up">+1.59%</td><td class="down">-0.36%</td></tr>
+          <tr><td>WTI</td><td>82.490</td><td class="up">+7.69%</td><td class="up">+15.52%</td></tr>
+          <tr><td>VIX</td><td>18.770</td><td class="down">+14.45%</td><td class="down">+3.74（gate閉）</td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">curve: 5s10s <b>+26.8bp bear_steepening</b> ／ 3m10s <b class="up">+83.4bp positive</b> ／ belly_elevated ／ intervention=<b class="warn">watch + upper_alert</b></p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <strong>8ペア30日 正規化プロット</strong>
+    <img src="charts/Portforio-2026-07-18.png" alt="8ペア30日プロット">
+  </div>
+
+  <h2>2. レジーム & ゲート</h2>
+  <div class="grid g3">
+    <div class="card"><div class="mut">機械レジーム</div><div class="big down">Equities Down</div><div class="lv">equities=<b class="down">down</b> / vol=normal / oil=range / gold=off / crypto=range / yields=<b class="warn">rising</b><br>wk02 Neutral から再悪化</div></div>
+    <div class="card"><div class="mut">Add risk ゲート</div><div class="big down">閉鎖</div><div class="lv">VIX 18.77 &gt; 18。再開＝VIX&lt;18 + セリクラ反発 + WTI上振れ一服</div></div>
+    <div class="card"><div class="mut">Reduce risk ゲート</div><div class="big warn">caution</div><div class="lv">VIX&gt;20 / WTI83.82超 / USDJPY介入 / US100下抜け継続 / JP225追証加速</div></div>
+  </div>
+
+  <h2>3. シナリオ（3分岐）</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="scn"></canvas></div>
+    <div class="card">
+      <div class="kv"><span><b class="warn">A. セリクラ待ち→押し目分割（boss主筋）</b></span><span>火曜追証後、JP225 63,600帯を分割</span></div>
+      <div class="kv"><span><b class="down">B. 中東/原油上振れ→株続落</b></span><span>WTI 81.25→83.82、インフレ再燃</span></div>
+      <div class="kv"><span><b class="info">C. USDJPY162 介入フラッシュ</b></span><span>upper_alert・原則触らない</span></div>
+      <p class="lv" style="margin-top:10px">高値追い禁止。弾薬は火曜以降の押し目へ。Goldは弱いが日足ネック維持で1.5Lot継続。</p>
+    </div>
+  </div>
+
+  <h2>4. CFD 銘柄別アクション</h2>
+  <div class="grid g2">
+    <div class="card inst sell">
+      <h3>US100 <span class="tag warn">戻り売り・三角下限</span></h3>
+      三角保ち合い下限接近。下抜けで急落警戒。Boss水準（万単位正規化）: <b>28,075割れ</b>から下落 → 一旦 <b>28,685</b> 反発も再下落。好材料（トランプ演説）なら <b>29,229</b> 方向の戻り余地だが基本は戻り売り。
+      <div class="lv">最新=28,593 ／ wk02比 -4.13% ／ 高値追い禁止</div>
+    </div>
+    <div class="card inst wait">
+      <h3>JP225 <span class="tag">セリクラ待ち→押し目</span></h3>
+      下目線。7/20休場、火曜追証でセリクラ警戒。65,297割れ→63,000/60,820方向。一方 <b>63,600</b> 赤エリア反発＝押し目。中期「日本は結局強い」。分割: 今日半分・火曜残り半分の思想。
+      <div class="lv">最新=64,141 ／ wk02比 -6.44% ／ 30d -9.73%</div>
+    </div>
+    <div class="card inst wait">
+      <h3>USD/JPY <span class="tag warn">トレード不可</span></h3>
+      三角レンジで触らない。円安材料は多いが方向感なし。161.90付近まで下げれば反発拾い程度。162.353は watch + <b>upper_alert</b>。
+      <div class="lv">ammo=1 ／ stage=meeting_held ／ ロング深追い禁止</div>
+    </div>
+    <div class="card inst buy">
+      <h3>Gold (XAU) <span class="tag">1.5Lot持越し（wk02→）</span></h3>
+      Boss市況: だら下げ・fib0.382下回り弱い。3,900–3,920反発ライン利用。<b>CFD正本: wk02からの Total 1.5Lot 持越し継続のみ</b>（当週新規なし）。日足ネック <b>$3,950</b> 未割れ・三角フラッグ・地固め。日足環境足スウィング継続。
+      <div class="lv">最新=4,012.7 ／ ネック=3,950 ／ 反発帯=3,900–3,920 ／ クローズ0</div>
+    </div>
+    <div class="card inst wait">
+      <h3>WTI <span class="tag">地政学ボックス</span></h3>
+      海峡封鎖懸念で急伸（82.49）。81.25超→83.82方向。株にはインフレ逆風。
+      <div class="lv">wk02比 +15.52% ／ oil=range ラベルだがプレミアム再燃</div>
+    </div>
+    <div class="card inst sell">
+      <h3>BTC/USD <span class="tag warn">下落方向のみ</span></h3>
+      63,200方向の下げ想定。量子コンピューター＋AI暗号化リスクで上昇局面は利用しない。
+      <div class="lv">最新=63,899 ／ 上追い禁止</div>
+    </div>
+  </div>
+
+  <h2>5. 週内タイムライン（行動: 7/20-）</h2>
+  <div class="card">
+    <ul class="tl">
+      <li><span class="day">7/20(月)</span> 海の日・日本休場。薄商い。USDJPY介入・中東ヘッドライン監視。</li>
+      <li><span class="day">7/21(火)</span> <b class="warn">信用追証・セリクラ候補</b>。JP225押し目分割の起点。US100戻り売り継続判断。</li>
+      <li><span class="day">週中</span> WTI 81.25/83.82、FRB発言、トランプ演説の余波。</li>
+      <li><span class="day">週内随時</span> Gold $3,950ネック維持確認。1.5Lotは切らず日足スウィング。BTC上昇非利用。</li>
+    </ul>
+  </div>
+
+  <h2>6. 監視トリガー</h2>
+  <div class="card grid g2" style="gap:6px">
+    <div class="kv"><span>VIX 18割れ / 20超え</span><span class="warn">→ Add再開 vs Reduce強化</span></div>
+    <div class="kv"><span>JP225 追証セリクラ</span><span class="warn">→ 63,600押し目 vs 63,000/60,820加速</span></div>
+    <div class="kv"><span>US100 28,075 / 28,685 / 29,229</span><span class="down">→ 下抜け警戒・戻り売り</span></div>
+    <div class="kv"><span>WTI 81.25 → 83.82</span><span class="info">→ 原油上昇＋株逆風</span></div>
+    <div class="kv"><span>USDJPY 162 upper_alert</span><span class="down">→ 触らない／介入フラッシュ</span></div>
+    <div class="kv"><span>Gold $3,950 / $3,900–3,920</span><span class="info">→ 1.5Lot生命線</span></div>
+    <div class="kv"><span>BTC 63,200</span><span class="down">→ 下落のみ</span></div>
+    <div class="kv"><span>海峡封鎖 / トランプ演説</span><span class="warn">→ ヘッドライン即応</span></div>
+  </div>
+
+  <h2>7. GMポートフォリオ（2026-07-18）</h2>
+  <div class="grid g3">
+    <div class="card"><strong>総合</strong><img src="charts/Portfolio-Total-2026-07-18.png" alt="総合ポートフォリオ"></div>
+    <div class="card"><strong>国内株</strong><img src="charts/Portfolio-JP-Stocks-2026-07-18.png" alt="国内株"></div>
+    <div class="card"><strong>米国株</strong><img src="charts/Portfolio-US-Stocks-2026-07-18.png" alt="米国株"></div>
+  </div>
+  <p class="lv" style="margin-top:8px">リバランス（7/17）: 特定 GX金 1530→730 / GX防衛 200→100 / 安川電 +100新規 / SPCX 8→10。NISA株数変更なし。総資産 4,776,846円・評価損益 +200,650円（画像OCR。要目視確認）。</p>
+
+  <div class="note">
+    ⚠️ 2026-7-17_wk03 確定データに基づく。創作なし。US100「2万875/2万8685」は 28,075/28,685 に正規化（初版20xxx誤読をGrok監査で訂正）。CFD正本は wk02→1.5Lot持越し＋$3,950ネック／三角フラッグ（Boss 2026-07-18）。投資助言ではなくGM作戦整理。最終判断はミナト。生成: Hermes Grok パッチ / 2026-07-18。
+  </div>
+
+</div>
+
+<script>
+const C={up:'#3fb950',down:'#f85149',warn:'#d29922',info:'#58a6ff',mut:'#8b949e',grid:'#30363d',txt:'#e6edf3'};
+Chart.defaults.color=C.txt;Chart.defaults.borderColor=C.grid;Chart.defaults.font.family='Segoe UI';
+
+new Chart(document.getElementById('barChg'),{
+  type:'bar',
+  data:{labels:['WTI','BTC','USDJPY','US10Y','US100','XAU','VIX','JP225'],
+    datasets:[{label:'30日変化率 (%)',
+      data:[7.69,1.59,1.09,2.02,-5.96,-5.00,14.45,-9.73],
+      backgroundColor:['#3fb950','#3fb950','#d29922','#d29922','#f85149','#f85149','#f85149','#f85149']}]},
+  options:{plugins:{legend:{display:false},title:{display:true,text:'パネル 30日変化率（2026-06-18→07-18）'}},
+    scales:{y:{grid:{color:C.grid},title:{display:true,text:'%'}},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('scn'),{
+  type:'doughnut',
+  data:{labels:['A セリクラ待ち→押し目分割','B 中東/原油上振れ→株続落','C USDJPY162介入フラッシュ'],
+    datasets:[{data:[45,30,25],backgroundColor:[C.warn,C.down,C.info],borderColor:'#161b22',borderWidth:2}]},
+  options:{plugins:{legend:{position:'bottom'},title:{display:true,text:'シナリオ比重（boss市況ベース）'}}}
+});
+</script>
+</body>
+</html>

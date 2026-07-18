@@ -26,6 +26,6 @@ tags: [gm_weekly, charts, macro, regime]
 - **Regime Equities Down**: wk02 Neutral から再悪化。US100 -4.1%、JP225 -6.4%、VIX18.77
 - **原油地政学プレミアム**: WTI 82.49、週次+15.5%。中東/海峡封鎖リスク
 - **介入 watch upper_alert**: USDJPY 162.353
-- **Gold $4012**: CFDは日足ネック$3950を維持し1.5Lot持越し
+- **Gold $4012**: CFDは wk02 から 1.5Lot 持越し継続。日足ネック$3950維持・三角フラッグ
 - **リバランス**: 特定GX金/GX防衛圧縮、安川電新規、SPCX +2
 - **X headlines**: Hermes/Grok経由の実データ取得不可 → 未取得として続行

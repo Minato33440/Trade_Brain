@@ -90,3 +90,38 @@
 - tags: [gm, monthly_distilled, 2026-07, 2026-7-10_wk02, signal:open_high_adjust_main, signal:memory_semi_buyback, signal:bank_earnings_7_14, signal:williams_inflation_hike_watch, signal:intervention_watch_zone, signal:gold_cfd_add_4104_5, signal:iran_time_split_boss_vs_news, signal:curve_stable_3m10s_positive, signal:jp_rs_mixed, event:us_bank_earnings_7_14, event:cpi_ppi_week, event:hormuz_closure_news_7_12, pattern:regime_equities_down_to_neutral, pattern:yields_rising_with_low_vix, risk:surprise_yen_intervention, risk:hormuz_re_escalation, risk:bank_earnings_disappointment]
 
 ---
+
+## 2026-7-17_wk03（2026-07-13 → 2026-07-17）
+> 注: 前週 wk02（2026-7-10）比較。snapshot end=2026-07-18。Boss=wr-2026-7-17.md。7/17(金)に東証株・米国株をリバランス。確定クローズ0／CFD Gold Total1.5Lot週持越し（日足ネック$3,950維持・三角フラッグ・日足環境足スウィング継続）。X headlinesはHermes/Grok経由で実投稿取得不可。
+- regime: **Equities Down**（equities=down / volatility=normal / oil=range / gold=off / crypto=range / yields=rising）← wk02「Neutral」から転換。US100 29,825→28,593（-4.1%）・JP225 68,558→64,141（-6.4%）・VIX 15.03→18.77でAdd risk gate閉鎖。WTI 71.41→82.49（+15.5%）で中東プレミアム再燃。USDJPY 162.353でintervention_watch upper_alert。
+- decision:
+  - middle_east_oil_inflation_risk=on（米軍のイラン連日攻撃、ホルムズ海峡＋バブエルマンデブ海峡封鎖懸念。--newsも米イラン全面戦争リスク・米軍によるイラン港監視塔破壊を捕捉。WTI 82.49へ急伸、81.25超→83.82方向の上昇利用余地。原油高→物価高→FRB追加引き締め観測→株安の連鎖リスク。）
+  - fed_hike_watch_front_end_sticky=on（ダラス連銀総裁「2%に向かわないなら追加引き締め」。boss CNBC: US10Y 4.551%（前日比-0.018）/ US2Y 4.183%（+0.027）。中東安全資産買いで長期低下、インフレ懸念で短期底堅いフラット化構図。snapshotではyields=rising、3m10s +83.4bp/positive、belly_elevated継続。）
+  - memory_ai_cloud_selloff=on（米AIクラウド企業がメモリ価格下落リスクを契約書に明記。SK hynix -13%、SanDisk -12.6%などメモリ関連急落、韓国株安が波及。キオクシアもストップ安気配。半導体/メモリはセリクラ待ち。）
+  - jp_margin_call_sell_climax_watch=on（7/20(月)海の日で日本休場、信用追証発生は火曜から。JP225 64,141（wk02比-6.4%）。boss: 65,297割れから63,000/60,820方向の下落想定、一方63,600周辺赤エリアから反発＝押し目。中期は「日本は結局強いので買われる」。今日半分・火曜残り半分の分割思想。）
+  - us100_triangle_break_sell_bias=on（US100 28,592（wk02比-4.1%）。boss: 三角保ち合い下限接近、下抜けで急落警戒。20,875割れから下落、一旦20,685付近で反発も再下落シナリオ。トランプ朝10時演説で好材料なら29,229方向反発余地だが、基本は戻り売り。）
+  - usdjpy_no_trade_intervention_upper_alert=on（USDJPY 162.353、intervention_watch=watch / upper_alert=true / imf_ammo=1 / coord_stage=meeting_held。boss: 三角保ち合いレンジでトレード不可、触ってはいけない。円安材料は多いが方向感なし。161.90付近まで下げれば反発拾い程度。）
+  - gold_cfd_flag_3950_hold=on（Gold 4,012.7、gold=off。boss: フィボ0.382下回り弱く3,900〜3,920付近から反発想定、下落追随より反発ライン利用。CFDは日足ネック$3,950を割り込まず三角フラッグ形成、地固めが整いつつあるためTotal1.5Lot保有のまま週持越し。日足環境足でのスウィング運用継続。）
+  - btc_downside_only_quantum_ai_risk=watch（BTC 63,899。boss: 63,200方向への下げを想定、反発しやすい水準だが量子コンピューター＋AI暗号化突破リスクを理由に上昇局面は利用せず下落方向のみ。）
+  - portfolio_rebalance_2026_07_17=on（7/17リバランス。東証特定: GXゴールド1530→730口、GX防衛テック日株200→100口、安川電0→100株新規、ファナック100/三菱重100維持。NISAは1655 270口・2243 174口・2638 193口・2847 80口・425A 2000口で変更なし。米国株: GDX15/IONQ14維持、SPCX8→10（+2）。総資産4,776,846円、評価損益+200,650円/+4.38%。）
+- evidence (close / 2026-07-18 snapshot):
+  - US100: 28,592.660（-5.96% / 30d）← wk02 29,825比 -1,232（-4.1%）。equities=down、三角下限・戻り売り優勢
+  - JP225: 64,141.121（-9.73% / 30d）← wk02 68,558比 -4,417（-6.4%）。追証売りセリクラ待ち、63,600反発帯
+  - USDJPY: 162.353（+1.09% / 30d）← wk02 161.672比 +0.681。intervention=watch / upper_alert=true / トレード不可
+  - XAUUSD: 4,012.700（-5.00% / 30d）← wk02 4,104比 -91.4。gold=off、CFDは$3,950日足ネック維持で1.5Lot持越し
+  - WTI: 82.490（+7.69% / 30d）← wk02 71.410比 +11.08（+15.5%）。中東/海峡封鎖プレミアム再燃
+  - US3M: 3.707（+1.34% / 30d）／US2Y(^FVX=5Y proxy): 4.273（+1.14% / 30d）／US10Y: 4.541（+2.02% / 30d）
+  - 5s10s: +26.8bp（bear_steepening・Δ+4.2bp）／3m10s: +83.4bp positive／belly_premium +16.0bp / belly_elevated
+  - VIX: 18.770（+14.45% / 30d）← wk02 15.030比 +3.74。Add risk gate閉鎖
+  - BTC/USD: 63,899.461（+1.59% / 30d）← wk02 64,127比 -0.36%。crypto=range、下落方向のみ利用
+  - Regime (system): Equities Down
+- implication:
+  - 機械regimeはNeutral→Equities Downへ再悪化。VIX18超えでAdd risk gate閉鎖、WTI急伸でインフレ再燃尾リスク。高値追い禁止、セリクラ確認まで分割・弾薬温存。
+  - US100：三角下限接近・戻り売り優勢。トランプ演説で好材料が出た場合のみ29,229方向反発余地、基本は下抜け警戒。
+  - JP225：7/20休場明け火曜の追証売りでセリクラ候補。63,600周辺の赤エリア反発を押し目候補、63,000/60,820方向の下落加速も想定。
+  - USDJPY：162台 upper_alert、原則トレード不可。触らない。161.90付近まで下げた場合の反発拾い程度、介入/rate checkに警戒。
+  - Gold/CFD：下落気味だが$3,950日足ネック維持、三角フラッグで地固め。1.5Lot週持越し。$3,900〜3,920反発ラインを監視し、日足環境足スウィング継続。
+  - WTI：81.25超から83.82方向の上昇利用。海峡封鎖・米イランヘッドラインで株への逆風に注意。
+  - BTC：63,200方向の下落のみ利用。反発しやすい水準でも、量子+AI暗号化リスクで上昇局面は扱わない。
+  - 長期ポートフォリオ：7/17リバランス反映。特定のGX金/GX防衛を圧縮し安川電新規、米SPCXを+2。NISAコアは変更なし。総資産4,776,846円、評価損益+200,650円。
+- tags: [gm, monthly_distilled, 2026-07, 2026-7-17_wk03, signal:middle_east_oil_inflation_risk, signal:fed_hike_watch_front_end_sticky, signal:memory_ai_cloud_selloff, signal:jp_margin_call_sell_climax_watch, signal:us100_triangle_break_sell_bias, signal:usdjpy_no_trade_intervention_upper_alert, signal:gold_cfd_flag_3950_hold, signal:portfolio_rebalance_2026_07_17, event:japan_marine_day_7_20, event:trump_10am_speech, event:iran_us_escalation_7_17, pattern:neutral_to_equities_down_vix_gate_close, pattern:sell_climax_wait, pattern:portfolio_rebalance_gold_defense_to_fa_spcx, risk:middle_east_oil_inflation_spike, risk:fed_additional_hike, risk:usdjpy_intervention_upper_alert, risk:jp_margin_call_selling, risk:memory_ai_cloud_selloff]

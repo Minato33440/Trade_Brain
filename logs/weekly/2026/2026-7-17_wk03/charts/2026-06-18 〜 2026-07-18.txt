@@ -1,0 +1,40 @@
+[--news] GMニュース取得:
+ニュース1
+タイトル: 米イラン 全面戦争のリスク高まる
+リンク: https://news.yahoo.co.jp/pickup/6588381?source=rss
+サマリー: ［ドバイ １７日 ロイター］ - 米中央軍は１７日、イランに対する新たな攻撃を実施したと発表した。攻撃は７夜連続となる。一方、イランはクウェートの発電所や‌海水淡水化プラントを攻撃。標的はインフラにも
+---
+
+ニュース2
+タイトル: 米軍 イランの港の監視塔を破壊
+リンク: https://news.yahoo.co.jp/pickup/6588350?source=rss
+サマリー: アメリカ軍は、イランがホルムズ海峡での商船への攻撃に使用している軍事施設を破壊したと発表しました。
+---
+
+ニュース3
+タイトル: 米国で寄生虫感染症 レタス関連か
+リンク: https://news.yahoo.co.jp/pickup/6588386?source=rss
+サマリー: （CNN） 米疾病対策センター（CDC）と米食品医薬品局（FDA）は、国内5州で発生している寄生虫感染症「サイクロスポラ症」の集団感染について、ファストフード大手タコベルの一部店舗で販売された細切り
+---
+[--trade] 8ペア30日データ取得中: 2026-06-18 〜 2026-07-18
+[--trade] レジームスナップショット保存: C:\Python\REX_AI\Trade_Brain\png_data\2026_07_18_snapshot.yaml
+[--trade] プロット保存: C:\Python\REX_AI\Trade_Brain\png_data\multi_pairs_plot_8.png
+取得期間: 2026-06-18 〜 2026-07-18 (JST基準)
+
+USD/JPY: 最新 162.353 (30日変化: +1.09%)
+US100: 最新 28592.660 (30日変化: -5.96%)
+JP225: 最新 64141.121 (30日変化: -9.73%)
+XAU/USD: 最新 4012.700 (30日変化: -5.00%)
+WTI: 最新 82.490 (30日変化: +7.69%)
+US3M: 最新 3.707 (30日変化: +1.34%)
+US2Y: 最新 4.273 (30日変化: +1.14%)
+VIX: 最新 18.770 (30日変化: +14.45%)
+US10Y: 最新 4.541 (30日変化: +2.02%)
+BTC/USD: 最新 63899.461 (30日変化: +1.59%)
+
+[regime] Equities Down (label=Equities Down, equities=down, volatility=normal, oil=range, gold=off, crypto=range, yields=rising, curve=bear_steepening(5s10s=+26.8bp,Δ+4.2bp; 3m10s=+83.4bp/positive; belly_elevated), intervention=watch(imf_ammo=1,stage=meeting_held), jp_rs=mixed(fx_adj-4.7pt))
+
+[完了] データ/ニュース挿入！ Rexに戦略相談しよう！
+Grok Assistant ready (model=grok-4). 空行で終了します。
+（8ペア30日データ＋プロットを使うには: python main.py --trade で起動）
+> 

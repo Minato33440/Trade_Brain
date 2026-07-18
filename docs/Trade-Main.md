@@ -982,3 +982,41 @@ updated: 2026-07-12 JST
 - **イラン・ホルムズ続報**
 - **Gold 4138 / 4080 / CFD 4H決済ルール**
 
+
+---
+
+## Weekly Brief | 2026-7-17_wk03
+created: 2026-07-18 JST（snapshot end=2026-07-18 / Boss wr-2026-7-17.md）
+
+### Macro / Regime
+- 機械regime **Neutral → Equities Down**（equities=down / yields=rising / oil=range / gold=off / crypto=range）。VIX **18.77** で Add risk gate 閉鎖。
+- boss主筋：**セリングクライマックス待ち**。米イラン連日攻撃・ホルムズ/バブエルマンデブ封鎖懸念、FRB追加引き締め観測、AI/メモリ関連急落が重なり、US100/JP225は下目線。
+- 7/20(月)は海の日で日本休場。火曜の信用追証売りがセリクラ候補。中期では日本株の押し目買い姿勢を維持。
+
+### Key Levels
+- US100: 28,593（wk02比-4.1%）/ 三角下限接近・戻り売り優勢
+- JP225: 64,141（wk02比-6.4%）/ 65,297割れ、63,600反発帯、63,000/60,820方向
+- USDJPY: 162.353 / intervention=watch + upper_alert / 原則トレード不可、161.90反発拾い程度
+- Gold: 4,012.7 / $3,950日足ネック維持 / $3,900〜3,920反発ライン / CFD **1.5Lot週持越し**
+- WTI: 82.49 / 81.25超→83.82方向 / 海峡封鎖ヘッドライン注視
+- BTC: 63,899 / 63,200方向の下落のみ利用、上昇は扱わない
+- 金利: US10Y 4.541 / US2Y(boss CNBC) 4.183 / 3m10s +83.4bp positive / VIX 18.77
+
+### Gates
+- Add risk: **閉鎖**（VIX18.77）。再開はVIX<18 + セリクラ反発 + WTI上振れ一服
+- Reduce: VIX>20 / WTI83.82超 / USDJPY介入フラッシュ / US100三角下抜け継続 / JP225追証売りが止まらない
+- Hedge: Gold 1.5Lotを日足ネック$3,950維持で管理。原油は81.25/83.82上方向、株にはインフレ逆風
+
+### This Week Focus（行動: 7/20-）
+- **7/20 日本休場 → 7/21 追証売り/セリクラ確認**
+- **中東・海峡封鎖ヘッドライン**
+- **FRB追加引き締め観測 / ダラス連銀総裁発言系**
+- **USDJPY 162台介入 watch**
+- **Gold $3,950 / $3,900〜3,920**
+
+### Signals (weekly, fixed keys)
+- us10y_accel: front_hike_long_safe_haven_split（US10Y 4.541 / boss US2Y 4.183。長期は中東安全資産買いで低下、短期は追加引き締め観測で底堅い）
+- hy_oas_widening: equities_down_sell_climax_watch（NeutralからEquities Downへ再悪化。セリクラ待ち）
+- vix_spike: add_risk_gate_closed_18_77（VIX18.77で18超え）
+- wti_shock: middle_east_oil_premium_82（WTI82.49。海峡封鎖・米イラン連日攻撃）
+- eps_revision_chain: memory_ai_cloud_selloff（SK hynix/SanDisk急落、AIクラウド契約のメモリ価格リスク）

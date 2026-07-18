@@ -1,0 +1,95 @@
+week: 2026-7-17_wk03
+date_range: 2026-07-13 -> 2026-07-17
+created: 2026-07-18
+updated: 2026-07-18
+note: "前週 wk02（2026-7-10）を比較基準。snapshot end=2026-07-18。Boss市況=wr-2026-7-17.md。機械regime Neutral→Equities Downへ再悪化。VIX 18.77でAdd risk gate閉鎖、WTI 82.49で中東プレミアム再燃、USDJPY 162.353でintervention upper_alert。7/17に東証株・米国株をリバランス（GX金/GX防衛圧縮、安川電新規、SPCX+2）。CFD Goldは日足ネック3950を割らず三角フラッグ形成、1.5Lot週持越し。"
+
+snapshot:
+  US100:
+    close: 28592.660
+    change_30d_pct: -5.96
+    weekly_change_pct: -4.13
+    bias: triangle_lower_break_sell_climax_watch
+    key_levels: [29229, 28685, 28592, 20875]
+    note: "wk02 29825比-4.13%。bossは三角保ち合い下限接近、下抜けで急落警戒。戻り売り優勢、トランプ演説好材料時のみ反発余地。"
+  JP225:
+    close: 64141.121
+    change_30d_pct: -9.73
+    weekly_change_pct: -6.44
+    bias: semi_selloff_margin_call_sell_climax_dip_buy
+    key_levels: [65297, 64141, 63600, 63000, 60820]
+    note: "wk02 68558比-6.44%。7/20海の日休場、火曜追証売りでセリクラ警戒。中期は日本株強気、63,600周辺反発帯を押し目候補。"
+  USDJPY:
+    close: 162.353
+    change_30d_pct: 1.09
+    bias: no_trade_triangle_intervention_upper_alert
+    key_levels: [162.353, 162.2, 161.9, 155.0]
+    note: "intervention_watch=watch / upper_alert=true / imf_ammo=1 / coord_stage=meeting_held。bossはトレード不可・触らない。161.90付近まで下げれば反発拾い程度。"
+  XAUUSD:
+    close: 4012.700
+    change_30d_pct: -5.00
+    weekly_change_pct: -2.23
+    bias: weak_but_flag_hold_3950_neckline_swing
+    key_levels: [4012.7, 3950, 3920, 3900]
+    note: "gold=off。bossはだら下げ・フィボ0.382下回り弱いが、3900-3920反発ラインを利用。CFDは3950日足ネック維持で1.5Lotスウィング持越し。"
+  WTI:
+    close: 82.490
+    change_30d_pct: 7.69
+    weekly_change_pct: 15.52
+    bias: middle_east_box_break_8125_8382
+    key_levels: [83.82, 82.49, 81.25]
+    note: "wk02 71.41比+15.52%。中東/海峡封鎖リスクで急伸。bossはボックスだが81.25超で83.82方向利用可。"
+  BTC_USD:
+    close: 63899.461
+    change_30d_pct: 1.59
+    weekly_change_pct: -0.36
+    bias: downside_only_quantum_ai_decrypt_risk
+    key_levels: [63899, 63200]
+    note: "bossは63200方向の下落想定。量子コンピューター+AI暗号化リスクで上昇利用せず下落方向のみ。"
+  US10Y:
+    close: 4.541
+    change_30d_pct: 2.02
+    bias: long_end_safe_haven_vs_front_hike_watch
+    note: "boss CNBC値4.551%（前日比-0.018）。中東リスクで長期債買い、長期金利低下方向。"
+  US2Y:
+    close: 4.183
+    change_30d_pct: null
+    bias: front_end_hike_watch
+    note: "boss CNBC値4.183%（前日比+0.027）。snapshotのUS2Y枠は^FVX=5Y proxy 4.273。短期は追加引き締め観測で底堅い。"
+  "5Y(^FVX)":
+    close: 4.273
+    change_30d_pct: 1.14
+    note: "snapshotがUS2Y枠に格納している5年proxy。"
+  VIX:
+    close: 18.770
+    change_30d_pct: 14.45
+    bias: add_risk_gate_closed
+    key_levels: [18, 20]
+    note: "wk02 15.03比+3.74。Add risk gate閉鎖。"
+
+signals:
+  - regime_equities_down_from_neutral: "機械regime Neutral→Equities Down。US100/JP225急落、VIX18超え、WTI急伸。"
+  - middle_east_inflation_hike_watch: "米イラン連日攻撃・海峡封鎖懸念→物価高警戒、FRB追加引き締め観測。"
+  - memory_ai_cloud_selloff: "米AIクラウド契約書のメモリ価格下落リスク明記でメモリ関連急落。"
+  - jp_margin_call_sell_climax_watch: "7/20日本休場、火曜追証売りでセリクラ警戒。"
+  - intervention_upper_alert_usdjpy_162: "USDJPY 162.353、watchかつupper_alert=true。"
+  - gold_cfd_flag_3950_hold: "日足ネック3950を割らず三角フラッグ。1.5Lot週持越し。"
+  - portfolio_rebalance_2026_07_17: "GX金/GX防衛圧縮、安川電新規、SPCX+2。"
+
+decision_bias:
+  risk: "Add risk gate閉鎖。セリクラ待ちで高値追い禁止。押し目は分割・火曜追証売り確認後。"
+  hedge: "Gold 1.5Lotは3950日足ネック維持でスウィング継続。WTIは81.25超→83.82方向。"
+  ammo: "日本株は火曜追証売り後の押し目候補へ弾を温存。ドル円は触らない。"
+  usdjpy: "162台 upper_alert。ロング深追い禁止、161.90反発拾い程度。"
+  long_port: "リバランス後の長期コア維持。NISA変更なし、特定は金/防衛一部圧縮からFA/設備投資寄りへ。"
+
+event_risk:
+  - "7/20(月) 海の日で日本休場、信用追証は火曜から"
+  - "米イラン連日攻撃・ホルムズ/バブエルマンデブ封鎖"
+  - "FRB追加引き締め観測・ダラス連銀総裁発言"
+  - "トランプ大統領朝10時演説"
+  - "USDJPY 162台の介入/rate check"
+  - "メモリ/半導体の投げ売り継続"
+
+links:
+  charts: "./charts.md"

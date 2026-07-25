@@ -339,3 +339,15 @@ updated: 2026-01-19 (JST)
   - [meta](./2026-7-17_wk03/meta.yaml)
   - [review](./2026-7-17_wk03/review.md)
   - [charts](./2026-7-17_wk03/charts.md)
+
+### 2026-7-24_wk04（2026-07-20 → 2026-07-24）
+- Regime: **Equities Down / Oil Surge**（equities=down / volatility=normal / **oil=surge** / **gold=range** / **crypto=strong** / yields=rising）← wk03「Equities Down」からラベルは継続だが**内部が転換**（oil range→surge・gold off→range・crypto range→strong）。VIX 18.58で**Add risk gate 閉鎖継続**（2週連続）。USDJPY 163.791で upper_alert 継続。※**WTIは機械89.310 vs Boss金曜引け85.15で乖離＝"Oil Surge"部分はこの乖離に依存**（両論併記）。
+- 1行：**金曜に相場の骨格が入れ替わった週**。木曜NY後の「原油高→インフレ→FRB利上げ→株全売り」が、**米イラン協議継続＋IEA/OECD戦略備蓄放出観測**でBrent-3.88%・WTI急落 → **ダウ+0.46%・S&P+0.05%がプラス転換、下げたのはNDX・日経・韓国だけ**＝指数間の完全分裂（「WTI100ドル→株全滅」は一旦否定）。共通ドライバーは金利で **US10Y 4.679%（52週高値4.714の後・18カ月ぶり高水準）／US2Y 4.331%（52週高値4.366の後）**、FOMC利上げ確率 0%近辺→**38%**。NDX下落主因は**Alphabet・Tesla決算のAI capex懸念**。週末に**SKハイニックス→Nvidia等7,500億＋サムスン→Broadcom 2,000億＝計9,500億ドル**のメモリ供給提携＝月曜ギャップアップ要因。USDJPYは**52週高値164.00に張り付き介入未実施**（164抜けで165まで真空だが**165到達前の急落が最大の非対称性**）。CFD Goldは **1.5Lot持越し継続**（$3,950ネック未割れ→**三角フラッグから日足実体上抜け**→**4H上昇3波の起点**）。★Boss1次の真の2年債4.331%により**真の2s10s +34.8bp > 機械5s10s +25.3bp** が確認され、[2026-06-27の年輪](../../../docs/system/2026-06-27_belly-elevated_rex-curve-error.md)の proxy caveat が実測検証された。
+- Key gates:
+  - Add risk: **閉鎖継続**（VIX 18.58>18）。再開＝VIX<18回帰 + NDX 28,173回復 + 原油の乱高下一服（or US2Yピークアウト確認）
+  - Reduce / caution: **US10Y 4.714 or US2Y 4.366 上抜け** OR **NDX 28,173を明確に割って28,000割れ**（先物28,212割れで加速） OR WTI 93.60超→96台 OR **USDJPY 164.00突破→165手前の介入フラッシュ** OR VIX 20超え定着
+- Links:
+  - [note](./2026-7-24_wk04/note.md)
+  - [meta](./2026-7-24_wk04/meta.yaml)
+  - [review](./2026-7-24_wk04/review.md)
+  - [charts](./2026-7-24_wk04/charts.md)

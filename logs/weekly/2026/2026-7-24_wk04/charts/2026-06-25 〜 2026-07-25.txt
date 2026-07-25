@@ -1,0 +1,57 @@
+取得期間: 2026-06-25 〜 2026-07-25 (JST基準)
+snapshot: 2026_07_25_snapshot.yaml
+source: python main.py --trade --news（2026-07-25 実行）
+
+== 10ペア30日データ（最新値 / 30日変化率） ==
+USD/JPY: 最新 163.791 (30日変化: +1.25%)
+US100:   最新 28128.340 (30日変化: -4.46%)
+JP225:   最新 64611.148 (30日変化: -10.72%)
+XAU/USD: 最新 4067.600 (30日変化: +0.92%)
+WTI:     最新 89.310 (30日変化: +24.18%)   ※Boss1次(金曜引け85.15)と乖離。下記「注」参照
+US3M:    最新 3.805  (30日変化: +3.40%)
+US2Y:    最新 4.426  (30日変化: +6.32%)    ※枠名US2Yだが実体は^FVX=5年債proxy
+VIX:     最新 18.580 (30日変化: -1.64%)
+US10Y:   最新 4.679  (30日変化: +6.53%)
+BTC/USD: 最新 64098.496 (30日変化: +7.33%)
+
+[regime] Equities Down / Oil Surge
+  (label=Equities Down / Oil Surge, equities=down, volatility=normal, oil=surge,
+   gold=range, crypto=strong, yields=rising,
+   curve=bear_steepening(5s10s=+25.3bp,Δ+2.4bp; 3m10s=+87.4bp/positive; belly_elevated),
+   intervention=watch(imf_ammo=1,stage=meeting_held),
+   jp_rs=mixed(fx_adj-7.4pt))
+
+== 金利カーブ3点（front=政策 / belly=5Y / long=growth） ==
+points_pct: 3M 3.805 / 5Y 4.426 / 10Y 4.679
+5s10s:  +25.3bp（Δ+2.4bp・bear_steepening）
+3m10s:  +87.4bp（Δ+16.2bp・bear_steepening / recession=positive＝逆イールド未達）
+3m5s:   +62.1bp
+belly_premium: +19.5bp → structure=belly_elevated（wk03 +16.0bpから拡大）
+
+★ Boss1次（investing.com）の「真の2年債」= 4.331%。
+   → 真の2s10s = 4.679 - 4.331 = +34.8bp（Boss本文の「約34.8bp」と一致）
+   → 機械の5s10s(+25.3bp) < 真の2s10s(+34.8bp)
+   ＝ 2026-06-27 の年輪（docs/system/2026-06-27_belly-elevated_rex-curve-error.md）が示した
+     「5s10sは順イールド環境で最フラット区間＝逆イールド接近を過大評価しうる」が
+     実測で裏付けられた（proxy caveat の本番検証）。
+
+== wk03（2026-07-18 snapshot）→ wk04（2026-07-25 snapshot）比較 ==
+USD/JPY: 162.353 → 163.791 （+1.438／円安続伸・52週高値164.00に張り付き・upper_alert継続）
+US100:   28592.660 → 28128.340 （-464.3／-1.62%・Boss「動画の生死ライン28,173」を終値で割り込み）
+JP225:   64141.121 → 64611.148 （+470.0／+0.73%・週次はBoss実測-2.73%の急落後の水準）
+XAU/USD: 4012.700 → 4067.600 （+54.9／+1.37%・gold off→range に改善）
+WTI:     82.490 → 89.310 （+6.82／+8.27%・oil range→surge。ただしBoss金曜引け85.15と乖離）
+US3M:    3.707 → 3.805 （+0.098／政策金利近接のfrontも利上げ確率38%で上昇）
+US2Y(5Y proxy): 4.273 → 4.426 （+0.153／利上げ観測で中期が最も上昇）
+VIX:     18.770 → 18.580 （-0.19／18超え継続＝Add risk gate閉鎖のまま）
+US10Y:   4.541 → 4.679 （+0.138／52週高値4.714をつけた後の引け・18カ月ぶり高水準）
+BTC/USD: 63899.461 → 64098.496 （+199.0／+0.31%・crypto range→strong）
+
+注（WTIのソース乖離・創作補完なし）:
+- 機械snapshot: 89.310（30日+24.18%）→ oil=surge 判定、regimeラベルに "Oil Surge" が付与された。
+- Boss1次(wr-2026-7-24): 金曜引け **85.15ドル(-2.14%)**、高値87.25 / 安値83.80、Brent 96.78(-3.88%)。
+- 両者は一致しない。Bossは高値・安値まで明示した1次資料であり、金曜引けは85.15を採用して読む。
+- 仮に85.15で30日変化を計算すると約+18%となり oil は surge ではなく range 相当
+  ＝ regimeラベルの "Oil Surge" 部分はこの乖離に依存する。ラベルを鵜呑みにせず両論併記で扱う。
+- 原因（yfinance CL=Fの限月/最終バー日付など）は本セッションで特定できないため断定しない。
+</content>

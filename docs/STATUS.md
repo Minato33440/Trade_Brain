@@ -1016,3 +1016,51 @@ created: 2026-07-18 JST（snapshot end=2026-07-18 / Boss wr-2026-7-17.md）
 - vix_spike: add_risk_gate_closed_18_77（VIX18.77で18超え）
 - wti_shock: middle_east_oil_premium_82（WTI82.49。海峡封鎖・米イラン連日攻撃）
 - eps_revision_chain: memory_ai_cloud_selloff（SK hynix/SanDisk急落、AIクラウド契約のメモリ価格リスク）
+
+---
+
+## Weekly Brief | 2026-7-24_wk04（2026-07-20 → 2026-07-24）
+created: 2026-07-25 JST（snapshot end=2026-07-25 / Boss wr-2026-7-24.md＝「木曜NY後の見立て vs 金曜の実際の引け」答え合わせ形式）
+market_theme: Friday oil-unwind flips the script → index divergence × rates at 52w highs (hike odds 38%) × AI capex doubt vs $950B memory deal × USDJPY pinned at 52w high 164.00
+
+### Macro / Regime
+- 機械regime **Equities Down / Oil Surge**（equities=down / **oil=surge** / **gold=range** / **crypto=strong** / yields=rising）← wk03 Equities Down からラベル継続も**内部が転換**（oil range→surge・gold off→range・crypto range→strong）。VIX **18.58** で **Add risk gate 閉鎖継続**（2週連続）。
+- **金曜に骨格が入れ替わった**: 木曜NY後の前提「原油高→インフレ→FRB利上げ→株全売り」が、**米イラン協議継続報道＋IEA/OECD戦略備蓄追加放出観測**でBrent-3.88%・WTI急落。**ダウ+0.46%・S&P+0.05%がプラス転換、下げたのはNDX・日経・韓国だけ**＝指数間の完全分裂。**「WTI100ドル→株全滅」は一旦否定**。
+- **共通ドライバーは金利**: US10Y **4.679%**（日中高値4.714=52週高値・**18カ月ぶり高水準**）／US2Y **4.331%**（日中高値4.366=52週高値）。FOMC利上げ確率 0%近辺→**38%**。**US2Y STOCHRSI 100＝短期ピークアウトの警戒サイン**（実現ならドル安・金高・ハイテク反発）。
+- **AI capex懸念が表面化**: NDX下落主因はAlphabet・Tesla決算（時間外-3%/-4%）の設備投資過大・FCF悪化。Intelは良好で明暗が分岐。一方**週末にSKハイニックス→Nvidia等7,500億＋サムスン→Broadcom 2,000億＝計9,500億ドル**のメモリ供給提携＝月曜ギャップアップ要因。
+- **介入**: USDJPY 163.791（Boss実測 終値163.85・高値163.97）＝**52週高値164.00に張り付き介入未実施**。watch / **upper_alert=true** / ammo=1 / **coord_stage=meeting_held 据置**（口先介入は強化されたがNY連銀 rate check 未確認のため昇格させず）。
+
+### Position / Orders
+- Core: 長期コア維持。**NF日経エンタメ（586A）50口の新規追加が唯一の株数変更**。総資産 **4,874,946円 / +298,667円 / +6.52%**（前週 4,776,846円 / +4.38%）。牽引は**GX半導体 +53,244円**・**三菱重 +26,400円**＝半導体・防衛の戻り。
+- CFD: **当週確定クローズ0件**。Gold **Total 1.5Lot を持越し継続**（wk02から）。日足ネック**$3,950 を依然割り込まず、三角フラッグから日足実体上抜け**、週末は**4H上昇3波の起点**を推移。日足環境足スウィング運用継続。
+- Mode: 指数一括で見ず**選別**（NDX/日経は戻り売り寄り、ダウ/S&Pは相対優位）。7/29 FOMC までイベントドリブンでポジションは軽く。ドル円は**上目線でも建玉を軽くする**。
+
+### Key Levels (close-based / 2026-07-25 snapshot ＋ Boss実測)
+- US100: 28,128.34（wk03比-1.62%）/ **生死ライン28,173を終値で割り込み** / 先物28,282はライン上・28,212割れで加速 / 上は28,700-28,736の壁
+- JP225: 64,611.15（金曜単日 **-1,811.45円/-2.73%**）/ 安値64,201 / **63,856は未達で下値ターゲット生存** / 先物64,327.50 / 上は65,721
+- USDJPY: 163.791（Boss 163.85・高値163.97）/ **164.00が起点→164.60→165まで真空** / 163.64割れで押し目 / upper_alert
+- XAUUSD: 4,067.6（gold off→**range**）/ Boss終値4,070.80・安値4,024 / **4,040が上下の分岐** / 上4,085.20・下4,000 / ネック3,950
+- WTI: **機械89.310 vs Boss金曜引け85.15（-2.14%）高値87.25/安値83.80** ← 乖離 / Brent 96.78（-3.88%）/ **Brent-WTIスプレッド約11.6ドル**
+- 金利: US10Y 4.679（**52週高値4.714**）/ US2Y 4.331（**52週高値4.366**）/ 5Y(^FVX) 4.426 / US3M 3.805
+- カーブ: 5s10s **+25.3bp bear_steepening**（Δ+2.4）/ 3m10s **+87.4bp positive**（Δ+16.2）/ belly_premium **+19.5bp**（wk03 +16.0から拡大）/ **真の2s10s +34.8bp**
+- VIX: 18.580（>18 閉鎖継続）/ BTC: 64,098（Boss終値63,845.8・安値63,800.5＝**63,854目標をほぼ達成**）
+
+### Gates（最重要：終値で判定）
+- Add risk: **閉鎖継続**（VIX 18.58>18・2週連続）。再開＝VIX<18回帰 + NDX 28,173回復 + 原油の乱高下一服（or US2Yピークアウト確認）
+- Reduce / caution if: **US10Y 4.714 or US2Y 4.366 の上抜け**（株・金・BTCすべてに追加打撃） OR **NDX 28,173を明確に割って28,000割れ**（先物28,212割れで加速） OR WTI 93.60超→96台でインフレ再燃 OR **USDJPY 164.00突破→165手前の介入フラッシュ** OR VIX 20超え定着
+- Hedge gate: Gold **1.5Lot持越し継続**（$3,950ネック→日足実体上抜け→4H上昇3波起点）。**4,040が分岐・FOMC(7/29)が決着点**。原油は地政学で±4%飛ぶため**両サイドともサイズを抑える**
+
+### This Week Focus（行動: 7/27-）
+- **7/29(水) FOMC — 利上げ確率38%**（今月は0%近辺だった前提が崩れた）。今週最大のイベントかつGoldの綱引きの決着点
+- **7/29 Meta・Microsoft / 7/30 Apple・Amazon 決算** — AI capex懸念の審判
+- **7/31(金) 日銀** — 政策金利1%据え置き見通し、追加利上げは10-12月＝「上げても上げなくても円安」
+- **USDJPY 164.00 / 165（介入ライン）** — 165到達前の急落という**最大の非対称性**。片山財務相「果断な措置」・財務省の介入示唆
+- **US10Y 4.714 / US2Y 4.366（ともに52週高値）** — 上抜けで全面打撃 vs STOCHRSI 100からのピークアウトで反転
+- **日本の半導体決算**（アドバンテスト・東エレク・キオクシア）— 9,500億ドル提携の追い風を織り込むか。**リバランス売りは金曜で消化済み＝月曜以降需給好転**
+
+### Signals (weekly, fixed keys)
+- us10y_accel: rates_52w_high_both_ends_stochrsi_peakout（US10Y 4.679/52週高値4.714、US2Y 4.331/52週高値4.366。利上げ確率38%。US2Y STOCHRSI 100＝ピークアウト警戒。curve 30日=bear_steepening vs 直近数日=ベアフラットの時間軸差、真の2s10s +34.8bp > 機械5s10s +25.3bp、3m10s +87.4bp/positive、belly_premium +19.5bp）
+- hy_oas_widening: friday_oil_unwind_index_split（原油巻き戻しでダウ・S&Pプラス転換、NDX・日経・韓国のみ下落＝全面リスクオフではない指数分裂）
+- vix_spike: add_risk_gate_closed_18_58（18.58。2週連続で18超え、パニックでも解除でもない中間帯）
+- wti_shock: friday_crash_premium_unwound_source_gap（Boss金曜引け85.15/-2.14%・安値83.80、Brent96.78/-3.88%、Brent-WTIスプレッド11.6ドル。※機械89.310と乖離しoil=surge判定はこれに依存）
+- eps_revision_chain: ai_capex_doubt_vs_950b_memory_deal（Alphabet・Tesla決算のFCF悪化懸念 vs SKハイニックス/サムスンの計9,500億ドルメモリ供給提携＝半導体内で選別）

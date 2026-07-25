@@ -1020,3 +1020,40 @@ created: 2026-07-18 JST（snapshot end=2026-07-18 / Boss wr-2026-7-17.md）
 - vix_spike: add_risk_gate_closed_18_77（VIX18.77で18超え）
 - wti_shock: middle_east_oil_premium_82（WTI82.49。海峡封鎖・米イラン連日攻撃）
 - eps_revision_chain: memory_ai_cloud_selloff（SK hynix/SanDisk急落、AIクラウド契約のメモリ価格リスク）
+
+## Weekly Brief | 2026-7-24_wk04（2026-07-20 → 2026-07-24）
+created: 2026-07-25 JST（snapshot end=2026-07-25 / Boss wr-2026-7-24.md＝答え合わせ形式）
+
+### Macro / Regime
+- 機械regime **Equities Down / Oil Surge**（equities=down / oil=surge / gold=range / crypto=strong / yields=rising）← wk03からラベル継続も**内部転換**（oil range→surge・gold off→range・crypto range→strong）。VIX **18.58** で Add risk gate **閉鎖継続**。
+- **金曜に骨格が入れ替わった**：米イラン協議継続＋IEA/OECD戦略備蓄放出観測でBrent-3.88%・WTI急落 → **ダウ+0.46%・S&P+0.05%プラス転換、下げたのはNDX・日経・韓国だけ**＝指数間の完全分裂。「WTI100ドル→株全滅」は一旦否定。
+- **共通ドライバーは金利**：US10Y 4.679%（52週高値4.714の後・18カ月ぶり高水準）／US2Y 4.331%（52週高値4.366の後）。**FOMC利上げ確率38%**。US2Y STOCHRSI 100＝ピークアウト警戒。
+- **AI capex懸念** vs **9,500億ドルメモリ供給提携**（SKハイニックス→Nvidia等7,500億＋サムスン→Broadcom 2,000億）が同時進行＝半導体内で選別。
+- USDJPY **52週高値164.00に張り付き介入未実施**。upper_alert=true / coord_stage=meeting_held 据置。
+
+### Position / Orders
+- Core: 長期コア維持。**NF日経エンタメ（586A）50口 新規**が唯一の株数変更。総資産 4,874,946円 / +6.52%（牽引：GX半導体+53,244・三菱重+26,400）。
+- CFD: 確定クローズ0件。Gold **1.5Lot持越し継続**（$3,950ネック未割れ→**三角フラッグから日足実体上抜け**→**4H上昇3波の起点**／日足環境足スウィング）。
+- Mode: 指数一括で見ず選別。7/29 FOMCまでポジション軽く。ドル円は**上目線でも建玉を軽くする**。
+
+### Key Levels (snapshot-based / 2026-07-25 ＋ Boss実測)
+- US100: 28,128（生死ライン28,173を終値で割り込み／先物28,282・28,212割れで加速／上28,700-28,736）
+- JP225: 64,611（金曜-2.73%／安値64,201／**63,856は未達で生存**／先物64,327.5／上65,721）
+- USDJPY: 163.791（Boss 163.85・高値163.97）／**164.00起点→165まで真空**／163.64割れで押し目
+- XAUUSD: 4,067.6（off→range）／Boss 4,070.80・安値4,024／**4,040が分岐**／上4,085.20・下4,000・ネック3,950
+- WTI: **機械89.310 vs Boss金曜引け85.15**（乖離）／Brent 96.78／スプレッド11.6ドル
+- 金利: US10Y 4.679（52週高値4.714）／US2Y 4.331（52週高値4.366）／5s10s +25.3bp bear_steepening／3m10s +87.4bp positive／belly_premium +19.5bp／**真の2s10s +34.8bp**
+- VIX: 18.580（閉鎖継続）／BTC: 64,098（Boss 63,845.8・安値63,800.5）
+
+### Gates（最重要：終値で判定）
+- Add risk: **閉鎖継続**（VIX 18.58>18）。再開＝VIX<18 + NDX 28,173回復 + 原油一服（or US2Yピークアウト）
+- Reduce / caution: US10Y 4.714 or US2Y 4.366 上抜け ／ NDX 28,173明確割れ→28,000割れ ／ WTI 93.60超→96台 ／ USDJPY 164突破→165手前の介入フラッシュ ／ VIX 20超え定着
+- Hedge gate: Gold 1.5Lot持越し（**4,040が分岐・FOMC(7/29)が決着点**・$3,950が最終防衛）。原油は両サイドともサイズを抑える
+
+### This Week Focus & Catalysts（行動: 7/27-）
+- **7/29(水) FOMC — 利上げ確率38%**（最大のイベントリスク／Goldの綱引きの決着点）
+- **7/29 Meta・Microsoft / 7/30 Apple・Amazon** — AI capex懸念の審判
+- **7/31(金) 日銀** — 1%据え置き見通し、追加利上げは10-12月＝「上げても上げなくても円安」
+- **USDJPY 164.00 / 165** — 165到達前の急落という最大の非対称性
+- **US10Y 4.714 / US2Y 4.366** — 上抜けで全面打撃 vs STOCHRSI 100からのピークアウトで反転
+- **日本の半導体決算** — 9,500億ドル提携の追い風／**リバランス売りは金曜で消化済み＝月曜以降需給好転**

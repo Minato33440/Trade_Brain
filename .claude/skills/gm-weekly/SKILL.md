@@ -109,7 +109,7 @@ rtk git add logs/weekly/2026/<YYYY-M-D_wkNN>/ \
             logs/weekly/x_headlines_raw.txt "logs/boss's-weeken-Report/2026/wr-YYYY-M-D.md"
 rtk git commit -m "weekly: YYYY-M-D_wkNN review + trade_results + charts + CFD human-view (...要約...)
 
-Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 rtk git push origin main
 ```
 - `data/private_trades.csv` は .gitignore のため add しない（force要否はボス判断）。

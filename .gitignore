@@ -10,7 +10,7 @@ __pycache__/
 *.pyd
 .env
 configs/*.yaml
-data/private_*.csv
+# data/private_*.csv  ← 2026-08-02 ボス判断で追跡対象へ変更（トレード履歴をリポで版管理する）
 *.log
 env/
 *.swp

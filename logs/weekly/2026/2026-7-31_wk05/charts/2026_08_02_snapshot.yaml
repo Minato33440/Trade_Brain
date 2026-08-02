@@ -1,0 +1,94 @@
+# 2026_08_02_snapshot.yaml
+
+date:
+  start: 2026-07-03
+  end: 2026-08-02
+
+panel:
+  Risk: [US100, JP225, BTC/USD]
+  Fear: [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates: [US3M, US2Y, US10Y]
+
+regime:
+  label: "Equities Down / Oil Surge"
+  equities: down
+  volatility: normal
+  oil: surge
+  gold: off
+  crypto: range
+  yields: rising
+
+curve_2s10s:
+  spread_bp: 28.5            # 5s10s（US2Y=^FVX=5y proxy − US10Y）
+  change_bp: 1.7
+  shape: stable            # 5s10s の質
+  inverted: false
+  spread_3m10s_bp: 106.3      # 3m10s（^IRX − US10Y）=Fed重視の景気後退カーブ・逆イールド主ゲージ
+  change_3m10s_bp: 27.4
+  shape_3m10s: bull_steepening
+  spread_3m5s_bp: 77.8
+  belly_premium_bp: 26.0      # 5Yの直線補間からの突出度（+=belly elevated/hump）
+  structure: belly_elevated      # front=政策(3M)/belly=5Y/long=growth(10Y) の形
+  recession_3m10s: positive      # positive/near_inversion(<25bp)/inverted
+  points_pct: {m3: 3.682, y5: 4.46, y10: 4.745}
+  note: "5s10s（US2Y=^FVX=5y proxy）は5年がカーブ中腹のため、front=政策(3M)が belly(5Y) より低い順イールド環境では最もフラットな区間＝5s10sのbear_flatteningは逆イールド接近を過大評価しうる。景気後退の主ゲージは 3m10s（spread_3m10s_bp）で読む。structure=belly_elevated は政策ターミナル織り込みの瘤＝front低・belly突出・long growth。shape*は短期↑/長期↓のフラット化の質、recession_3m10s が near_inversion/inverted に入ったら本格警戒。"
+
+intervention_watch:
+  pair: USD/JPY
+  level: 157.4
+  zone: calm            # >=watch_zone(161.0) で watch
+  upper_alert: false   # >=upper_alert_level(162.674) で true
+  imf_ammo_remaining: 0
+  imf_window_note: "エピソード3は7/30(木)起点で3営業日=7/31(金)・8/3(月)まで同一回。8/4(火)以降の新規介入は4回目=free-floating分類を逸脱。1回目が6ヶ月ルックバックから外れるのは10月末"
+  us_participation: "2026-07-31 米財務省が複数行に『介入の可能性、今後の行動に備えよ』と通告（ロイター）。日経・Bloombergが米側のrate check実施を報道。IMF3エピソード枠が縛るのは日本の分類であって米財務省の行動ではない"
+  last_meeting: "2026-07-30/31 協調介入実施（三村財務官『米国から心理的支援を超える支援』／ベッセント財務長官『円は非常に過小評価』）"
+  coord_stage: executed   # 予兆→秒読み→着弾の4段（手動更新）
+  coord_stage_idx: 3            # 0=unconfirmed..3=executed
+  coord_ladder: [unconfirmed, meeting_held, rate_check_detected, executed]
+  coord_stage_note: "予兆(meeting_held)→秒読み(rate_check_detected)→着弾(executed)。2026-07-30にmeeting_held→executedへ2段跳躍。次の焦点は『撃てない期間に市場がどこまで戻すか』"
+  down_target: 153.9
+  asymmetry: "日本の残弾は0だが米国の関与により『枠切れ＝無防備』とは限らない。8/4以降のドル円上昇を狙う場合、日付でなく『当局が撃たないことを価格が証明した後』（161回復して叩かれない）を待つ"
+  history: "2026-01 協調rate check=10営業日で2,100pips急落 / 2026-07-30 協調介入=163→158（-3.3%、ドルは2023年1月以来最大の日次下落）"
+  judgment_note: "単独/協調はNY連銀rate check確認で判定（毎朝チェック）。介入は経験則上24:30以降に入ったことがなく円安は深夜帯。財務省の介入実績公表は8月末"
+
+relative_strength:
+  jp225_jpy_30d: -7.72
+  jp225_usd_30d: -5.34        # JP225/USDJPY のΔ（通貨効果を除去）
+  currency_effect_pt: -2.37   # 通貨効果（+=円安が嵩上げ / -=円高が押し下げ）
+  us100_30d: -4.79
+  jp_vs_us_nominal_pt: -2.92
+  jp_vs_us_fx_adj_pt: -0.55   # 本物の相対強度（FX調整後）
+  verdict: mixed   # structure_led=割安リレーティング主導 / currency_led=円安主導 / mixed
+
+snapshot_30d:
+  "USD/JPY":
+    latest: 157.400
+    change_pct: -2.51
+  "US100":
+    latest: 28274.199
+    change_pct: -4.79
+  "JP225":
+    latest: 64362.020
+    change_pct: -7.72
+  "XAU/USD":
+    latest: 4049.100
+    change_pct: -2.55
+  "WTI":
+    latest: 84.670
+    change_pct: 23.52
+  "US3M":
+    latest: 3.682
+    change_pct: -0.22
+  "US2Y":
+    latest: 4.460
+    change_pct: 5.91
+  "VIX":
+    latest: 15.990
+    change_pct: 2.70
+  "US10Y":
+    latest: 4.745
+    change_pct: 5.94
+  "BTC/USD":
+    latest: 62813.746
+    change_pct: 0.43

@@ -203,8 +203,12 @@ def build_regime_snapshot(
         return {
             "level": round(latest_usdjpy, 3),
             "zone": zone,
+            "watch_zone": watch_zone,                   # zone判定のしきい値（yamlコメント用）
             "upper_alert": latest_usdjpy >= upper_alert,
+            "upper_alert_level": upper_alert,
             "imf_ammo_remaining": cfg.get("imf_ammo_remaining"),
+            "imf_window_note": cfg.get("imf_window_note"),      # エピソード窓の終期など（手動更新）
+            "us_participation": cfg.get("us_participation"),    # 米側の関与（IMF枠の外側）
             "last_meeting": cfg.get("last_meeting"),
             "coord_stage": stage,                       # 4段梯子の現在地（手動更新）
             "coord_stage_idx": stage_idx,               # 0=unconfirmed .. 3=executed
@@ -390,9 +394,13 @@ def build_regime_snapshot(
         lines.append("intervention_watch:")
         lines.append("  pair: USD/JPY")
         lines.append(f"  level: {intervention['level']}")
-        lines.append(f"  zone: {intervention['zone']}            # >=watch_zone(161.5) で watch")
-        lines.append(f"  upper_alert: {str(intervention['upper_alert']).lower()}")
+        lines.append(f"  zone: {intervention['zone']}            # >=watch_zone({intervention['watch_zone']}) で watch")
+        lines.append(f"  upper_alert: {str(intervention['upper_alert']).lower()}   # >=upper_alert_level({intervention['upper_alert_level']}) で true")
         lines.append(f"  imf_ammo_remaining: {_yv(intervention['imf_ammo_remaining'])}")
+        if intervention.get("imf_window_note"):
+            lines.append(f"  imf_window_note: {_yv(intervention['imf_window_note'])}")
+        if intervention.get("us_participation"):
+            lines.append(f"  us_participation: {_yv(intervention['us_participation'])}")
         lines.append(f"  last_meeting: {_yv(intervention['last_meeting'])}")
         _ladder = intervention.get("coord_ladder") or []
         lines.append(f"  coord_stage: {intervention['coord_stage']}   # 予兆→秒読み→着弾の4段（手動更新）")
@@ -410,7 +418,7 @@ def build_regime_snapshot(
         lines.append("relative_strength:")
         lines.append(f"  jp225_jpy_30d: {relative['jp225_jpy_30d']}")
         lines.append(f"  jp225_usd_30d: {relative['jp225_usd_30d']}        # JP225/USDJPY のΔ（通貨効果を除去）")
-        lines.append(f"  currency_effect_pt: {relative['currency_effect_pt']}   # 円安が嵩上げした分")
+        lines.append(f"  currency_effect_pt: {relative['currency_effect_pt']}   # 通貨効果（+=円安が嵩上げ / -=円高が押し下げ）")
         lines.append(f"  us100_30d: {relative['us100_30d']}")
         lines.append(f"  jp_vs_us_nominal_pt: {relative['jp_vs_us_nominal_pt']}")
         lines.append(f"  jp_vs_us_fx_adj_pt: {relative['jp_vs_us_fx_adj_pt']}   # 本物の相対強度（FX調整後）")

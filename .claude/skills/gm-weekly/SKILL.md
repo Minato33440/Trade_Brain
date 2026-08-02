@@ -36,9 +36,17 @@ PowerShellで（バックグラウンド可）:
 $env:HERMES_HOME = "C:\Users\Setona\AppData\Local\hermes"
 $env:Path += ";$env:HERMES_HOME\hermes-agent\venv\Scripts"
 $q = "latest market sentiment macroeconomic headlines ... from last 7 days high engagement"
-& "$env:HERMES_HOME\hermes-agent\venv\Scripts\hermes.exe" -z $q -t x_search,vision --accept-hooks | Out-File -Encoding UTF8 "logs\weekly\x_headlines_raw.txt"
+# ★ -p grok（Provider-Agent 指定）が必須。x_search は Grok(xAI) 側の機能
+& "$env:HERMES_HOME\hermes-agent\venv\Scripts\hermes.exe" -p grok -z $q -t x_search,web,vision --accept-hooks | Out-File -Encoding UTF8 "logs\weekly\x_headlines_raw.txt"
 ```
-- 取得失敗・空でもプロセス続行（前週は「取得ツイートなし」だった週もある）。聖域: hermes の出力先は必ず Trade_Brain 配下、REX_Brain_Vault へ書かない。
+- 取得失敗・空でもプロセス続行（マイナーデータ・失敗許容）。聖域: hermes の出力先は必ず Trade_Brain 配下、REX_Brain_Vault へ書かない。
+- ⚠️ **「ライブ検索ツールが無い／独立検証できない」と返る場合の切り分け（2026-08-02 に3週連続失敗の真因を特定）**:
+  1. `hermes tools list` → **`x_search` が `✗ disabled` なら `hermes tools enable x_search`**。**`-t` は絞り込みであって有効化ではない**ため、disabled のまま `-t x_search,vision` と書くと vision だけ残り検索ツールが皆無になる（＝それらしい分析だけ返って実データが無い症状の正体）
+  2. `hermes status` / `hermes profile list` → **アクティブ profile（◆）が `grok` か**。既定は `gpt`(OpenAI Codex) のことが多く、その場合 x_search は動かない。**`-p grok` でその場だけ指定**する（恒久切替は他工程に影響するのでしない）
+  - profile 一覧例: `grok`=grok-4.5（**X検索はこれ**）/ `gpt`=gpt-5.6-sol / `claude`=claude-opus-4-8 / `ai`,`default`=grok-4.3 / `local`。最新は `hermes profile list` が正。
+  - 詳細は `docs/WEEKLY_UPDATE_WORKFLOW.md` Step 1b §Provider-Agent の指定（`-p`）。
+- **取得できた場合の扱い**: 各ポストは**市場参加者の解釈**で1次報道ではない → Boss市況・`--news` と**レイヤーを分ける**。エンゲージメント順位は厳密でない（Grokが「いいね/RT絶対数は常に返らない」と明記することがある）。X上の推定値は公式確定値ではない旨を明記して使う。
+- **取得できない場合**: エージェントが返した"それらしい分析"は**クエリのテーマの言い換え**であり1次情報ではないため **Evidence に採用しない**（不変ルール7）。生ログのみ `charts/x_headlines_raw_YYYY-M-D.txt` に保全。
 
 ## 4. Step 3 — 当週トレードを記録 → summary
 

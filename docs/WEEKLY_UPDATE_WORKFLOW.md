@@ -147,7 +147,8 @@ $env:Path += ";$env:HERMES_HOME\hermes-agent\venv\Scripts"
 # X 検索クエリ: 最新マクロ経済・為替・株価の注目ポスト
 $query = "market sentiment macroeconomic data FX JPY gold S&P500 financial news from last 7 days high engagement"
 
-hermes -z $query -t x_search,vision | Out-File -Encoding UTF8 "logs/weekly/x_headlines_raw.txt"
+# ★ -p grok（プロバイダ指定）が必須。詳細は下の「§Provider-Agent の指定」参照
+hermes -p grok -z $query -t x_search,web,vision --accept-hooks | Out-File -Encoding UTF8 "logs/weekly/x_headlines_raw.txt"
 
 Write-Host "✅ X headlines fetched → logs/weekly/x_headlines_raw.txt"
 ```
@@ -157,9 +158,58 @@ Write-Host "✅ X headlines fetched → logs/weekly/x_headlines_raw.txt"
 2. 各ツイートを 2-3 行に日本語要約（Grok vision or Python regex）
 3. `Market conditions -YYYY-M-D~.txt` に統合
 
-**失敗時**: 
-- X キーボード制限 / OAuth 再認証エラー → HERMES_HOME ログを確認し Boss に報告
-- ネットワークタイムアウト → hermes コマンド再実行（`--accept-hooks < /dev/null` で自動 continue）
+#### ★ Provider-Agent の指定（`-p`）と toolset の有効化 — 2026-08-02 追記
+
+**wk03〜wk05 の3週連続で X 取得に失敗していた真因**は OAuth ではなく、**設定側の2段階**だった。同じ症状（Grok/エージェントが「ライブ検索ツールが無いので検証できない・創作しない」と返す）が出たら、以下の順に確認する。
+
+**① toolset が有効か（`-t` では有効化されない）**
+
+```powershell
+hermes tools list          # ✓ enabled / ✗ disabled を確認
+hermes tools enable x_search
+```
+
+> ⚠️ **`-t x_search,vision` と指定しても、無効化された toolset は有効にならない**。`-t` は「そのinvocationで使う toolset の**絞り込み**」であって有効化ではないため、`x_search` が disabled のまま指定すると **vision だけが残り、検索ツールが1つも無い状態**になる。これが「毎回それらしい分析は返るのに実データが無い」症状の正体。
+
+**② アクティブな Provider-Agent（profile）が目的のものか**
+
+```powershell
+hermes status              # Model / Provider / APIキーの有無
+hermes profile list        # ◆ がアクティブ、Gateway 列が running か
+```
+
+wk05 時点の実例：`hermes status` は **Model=gpt-5.6-sol / Provider=OpenAI Codex**、**xAI/Grok APIキーは未設定**。`hermes profile list` には別途 **`grok`（grok-4.5・running）** が存在し、アクティブは `gpt` だった。**x_search は Grok(xAI) 側の機能**なので、profile が `gpt` のままでは toolset を有効化しても動かない。
+
+**→ 恒久ルール: 目的の機能を持つ Provider-Agent を `-p <profile>` で明示する**
+
+```powershell
+# 汎用形（profile を切り替えれば他の Provider-Agent も同じ形で呼べる）
+hermes -p <profile> -z "<query>" -t <toolsets> --accept-hooks
+
+# X市況の確定形（本工程で使うのはこれ）
+hermes -p grok -z $query -t x_search,web,vision --accept-hooks
+```
+
+| profile | Model | 主な用途 |
+|---|---|---|
+| `grok` | grok-4.5 | **X検索（x_search）・市況センチメント** ← Step 1b はこれ |
+| `gpt` | gpt-5.6-sol | 汎用（既定でアクティブになっていることが多い） |
+| `claude` | claude-opus-4-8 | 長文推論・文章生成 |
+| `ai` / `default` | grok-4.3 | 予備 |
+| `local` | ローカルモデル | オフライン用 |
+
+> ※ `hermes profile list` の出力が最新。上表は 2026-08-02 時点のスナップショット。**アクティブ profile を恒久的に変えると他工程に影響する**ため、週次工程では**切り替えではなく `-p` でその場だけ指定**する。
+
+**失敗時**:
+- **「ライブ検索ツールが無い」と返る** → 上記①②を順に確認（`tools list` → `status` → `profile list`）
+- X レート制限 / OAuth 再認証エラー → HERMES_HOME ログを確認し Boss に報告
+- ネットワークタイムアウト → 再実行（`--accept-hooks` で自動 continue）
+- **どうしても取得できない場合は「未取得」として続行**（マイナーデータ・失敗許容）。**エージェントが返した"それらしい分析"は、クエリのテーマを言い換えただけで1次情報ではないため Evidence に採用しない**（不変ルール7）。生ログのみ `charts/x_headlines_raw_YYYY-M-D.txt` に保全する。
+
+**取得できた場合の取り扱い**:
+- 各ポストは**市場参加者の解釈**であり1次報道ではない。**Boss市況・`--news` とはレイヤーを分ける**。
+- Grok自身が「x_search は要約＋引用中心で**いいね/RT絶対数は常に返らない**」と明記することがある＝**エンゲージメント順位は厳密でない**前提で読む。
+- X上の推定値（例: 介入額）は**公式確定値ではない**ことを明記して用いる。
 
 ---
 
@@ -286,7 +336,7 @@ Write-Host "✅ X headlines fetched → logs/weekly/x_headlines_raw.txt"
 
 このコマンドで、以下が自動実行されます：
 - ✅ Step 1a: `python main.py --trade --news` （8ペア市場データ + GM ニュース）
-- ✅ Step 1b: `hermes -z -t x_search` で X ヘッドライン TOP3 取得
+- ✅ Step 1b: `hermes -p grok -z ... -t x_search,web,vision` で X ヘッドライン TOP3 取得（★`-p grok` 必須 / 2026-08-02〜）
 - ✅ Step 2: Boss 市況 + X ヘッドライン + GMニュース を統合
 - ✅ Step 3: 当週トレード Markdown 生成（private_trades.csv から）
 - ✅ Step 4-7: review.md / note.md / meta.yaml / charts.md 自動生成 + Git 更新（Boss 確認後）
@@ -311,16 +361,18 @@ Write-Host "✅ X headlines fetched → logs/weekly/x_headlines_raw.txt"
   # Step 1a: 8ペア市場データ + GMニュース
   python main.py --trade --news < /dev/null
 
-  # Step 1b: X 市況ヘッドライン（新規）
+  # Step 1b: X 市況ヘッドライン（★ -p grok が必須 / 2026-08-02〜）
   $env:HERMES_HOME = "C:\Users\Setona\AppData\Local\hermes"
-  & C:\Users\Setona\AppData\Local\hermes\hermes-agent `
-    -z "latest market sentiment macroeconomic headlines FX JPY gold from last 7 days" `
-    -t x_search,vision --accept-hooks < $null > logs/weekly/x_headlines_raw.txt
+  $env:Path += ";$env:HERMES_HOME\hermes-agent\venv\Scripts"
+  hermes -p grok `
+    -z "latest market sentiment macroeconomic headlines FX JPY gold from last 7 days high engagement" `
+    -t x_search,web,vision --accept-hooks | Out-File -Encoding UTF8 "logs/weekly/x_headlines_raw.txt"
   ```
 
   **失敗時**（exit≠0・データ欠落）:
   - Step 1a: 不変ルール7に従い停止・報告（実測値なしでは進められない）
   - Step 1b: 警告のみ。X取得失敗でもプロセスは続行（マイナーデータ）
+  - ★ **「ライブ検索ツールが無い」と返る場合** → `hermes tools list`（`x_search` が disabled なら `hermes tools enable x_search`）→ `hermes status` / `hermes profile list`（アクティブ profile が `grok` か）の順に確認。**`-t` は絞り込みであって有効化ではない**点に注意。詳細は §Step 1b の「Provider-Agent の指定（`-p`）」参照
 
 - [ ] **1b. ボス提供の1次資料を確認（#1/#4/#5 の3点のみ）**
   - #1 市況サマリ → `logs/boss's-weeken-Report/2026/wr-YYYY-M-DD.md` に保存

@@ -1,0 +1,72 @@
+取得期間: 2026-07-09 〜 2026-08-08 (JST基準)
+snapshot: 2026_08_08_snapshot.yaml
+source: python main.py --trade --news（2026-08-08 実行）
+
+== 10ペア30日データ（最新値 / 30日変化率） ==
+USD/JPY: 最新 157.745 (30日変化: -2.95%)
+US100:   最新 29722.301 (30日変化: -0.02%)   ※Boss実測 NDX現物 29,722.30(+1.19%) と一致
+JP225:   最新 65606.711 (30日変化: -3.15%)   ※Boss実測 現物終値 65,606.71(-0.12%) と一致
+XAU/USD: 最新 4340.700 (30日変化: +5.09%)   ★gold=bid へ2段階改善
+WTI:     最新 78.180 (30日変化: +8.46%)     ※Boss実測 77.08(-0.21)・週間-8.96%（既知のフィード差）
+US3M:    最新 3.710  (30日変化: +0.76%)
+US2Y:    最新 4.362  (30日変化: +2.18%)     ※枠名US2Yだが実体は^FVX=5年債proxy
+VIX:     最新 14.900 (30日変化: -5.93%)     ★18割れ継続＝Add risk gate 開放
+US10Y:   最新 4.660  (30日変化: +2.67%)     ※Boss実測 4.649% と近似
+BTC/USD: 最新 64880.191 (30日変化: +2.67%)  ※Boss実測 64,975(+0.09%) と近似
+
+[regime] **Gold Bid**
+  (label=Gold Bid, equities=flat, volatility=normal, oil=range,
+   gold=bid, crypto=range, yields=rising,
+   curve=bear_steepening(5s10s=+29.8bp,Δ+2.8bp; 3m10s=+95.0bp/positive; belly_elevated),
+   intervention=calm(imf_ammo=0,stage=executed),
+   jp_rs=mixed(fx_adj-0.2pt))
+
+== 金利カーブ3点（front=政策 / belly=5Y / long=growth） ==
+points_pct: 3M 3.710 / 5Y 4.362 / 10Y 4.660
+5s10s:  +29.8bp（Δ+2.8bp・bear_steepening）
+3m10s:  +95.0bp（Δ+9.3bp・bear_steepening / recession=positive＝逆イールド未達）
+3m5s:   +65.2bp
+belly_premium: +18.9bp → structure=belly_elevated（wk05 +26.0bp から**縮小**＝再利上げ織り込みの瘤が萎んだ）
+
+★ Boss 1次（investing.com / 金曜終値）の実物年限:
+   US2Y **4.199%**（日中安値4.154→引けにかけ+4.5bp買い戻し）
+   US10Y **4.649%**（4.639まで下げて）
+   US30Y **5.202%**  ← ※機械snapshotに30年は含まれない（下記「拡張候補」参照）
+   → 真の2s10s = 4.649 - 4.199 = **+45.0bp**
+   → 10s30s   = 5.202 - 4.649 = **+55.3bp**（Bossトレードレポート§8-2の系列では 8/7 時点 +54.4bp）
+
+★ 拡張候補（要ボス判断）: Bossトレードレポート §8-2 が **10s30s を金の補完監視線**として提案。
+   「拡大（30Yが粘る）＝タームプレミアム／ソブリン信用の象限 → 金に追い風 ／ 縮小＝純粋なディスインフレ → 金に何も来ない」。
+   実測系列: 7/31 +54.9bp → 8/4 +55.4 → 8/5 +56.1（拡大・金+3%）→ 8/7 +54.4（縮小）。
+   機械側は現在 3M/5Y/10Y の3点のみで **30年（^TYX）を取得していない**ため、10s30s は自動算出できない。
+   → `TRADE_PAIRS` に `US30Y: ^TYX` を足せば 10s30s を curve に併記可能（今週は未実装）。
+
+== wk05（2026-08-02 snapshot）→ wk01（2026-08-08 snapshot）比較 ==
+USD/JPY: 157.400 → 157.745 （+0.345／**NFPでもほぼ無風**。介入効果の剥落）
+US100:   28274.199 → 29722.301 （**+1,448.1 / +5.12%**・金利低下でグロース買い、生死ライン28,173を大きく超えて回復）
+JP225:   64362.020 → 65606.711 （+1,244.7 / +1.93%・CFD夜間は66,698まで買われ月曜は600-650円上ギャップ想定）
+XAU/USD: 4049.100 → 4340.700 （**+291.6 / +7.20%**・**gold off→bid の2段階改善**）
+WTI:     84.670 → 78.180 （**-6.49 / -7.66%**・oil surge→range。ホルムズ再開交渉で緩和）
+US3M:    3.710（wk05 3.682）＋0.028
+US2Y(5Y proxy): 4.460 → 4.362 （**-0.098**・利上げ観測後退）
+VIX:     15.990 → 14.900 （-1.09・**Add risk gate 開放継続**）
+US10Y:   4.745 → 4.660 （**-0.085**・wk05の52週高値圏から低下）
+BTC/USD: 62813.746 → 64880.191 （+2,066.4 / +3.29%・ただしBoss実測の金曜は+0.09%でほぼ横ばい）
+
+== 新指標の状態遷移（wk05 → wk01）==
+regime:  Equities Down / Oil Surge → **Gold Bid**
+         equities down→**flat** ／ oil surge→**range** ／ gold **off→bid（2段階）** ／ crypto range（据置）
+VIX:     15.99 → 14.90（18割れ継続）
+curve:   5s10s stable→**bear_steepening** ／ 3m10s +106.3→**+95.0bp**（フラット化）／ belly_premium +26.0→**+18.9bp**（瘤が縮小）
+intervention: zone=calm / coord_stage=executed / imf_ammo=0（据置）
+         ※settings.py の us_participation / asymmetry がボス更新（NY連銀のユーロ売り円買い直接介入＝FT・2011年3月以来／FIMAで火力制約は消失）
+relative_strength: fx_adj **-0.55pt → -0.20pt**（劣後がほぼ解消）
+         currency_effect **-2.37pt → -2.94pt**（**円高の押し下げが拡大**）
+         ＝JP225は円建て-3.15%だがドル建て-0.21%で、米株-0.02%との差は-0.20ptまで縮小
+
+注（既知のソース差・創作補完なし）:
+- WTI は機械(CL=F) 78.180 と Boss参照フィード 77.08（高値78.77／安値76.53・週間-8.96%）で乖離。
+  Bossレポートが「別チャート／別限月」を参照する旨は wk04 §5 で既に明記済み。
+- US10Y は機械 4.660 と Boss 4.649%、BTC は機械 64,880 と Boss 64,975 で微差（取得時点差）。
+- US100 と JP225 は Boss 実測と**完全一致**（29,722.30 / 65,606.71）。
+</content>

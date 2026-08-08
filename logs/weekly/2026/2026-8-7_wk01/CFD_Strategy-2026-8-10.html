@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFD戦略 | 8/10週 (2026-8-7_wk01)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --mut:#8b949e;
+    --up:#3fb950; --down:#f85149; --warn:#d29922; --info:#58a6ff; --accent:#bc8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.65;padding:24px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:1.7rem;margin-bottom:4px}
+  h2{font-size:1.2rem;margin:30px 0 12px;border-left:4px solid var(--accent);padding-left:10px}
+  .sub{color:var(--mut);font-size:.9rem;margin-bottom:18px}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .banner{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:linear-gradient(90deg,#1f2937,#161b22);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0 8px}
+  .pill{padding:3px 11px;border-radius:999px;font-size:.8rem;font-weight:700}
+  .pill.bad{background:#5a2b2b;color:#ffb3b3}
+  .pill.open{background:#1d4d2b;color:#9bffb0}
+  .pill.trig{background:#3b2f10;color:#ffd479}
+  .pill.exec{background:#3a2b5f;color:#d0b3ff}
+  .pill.gold{background:#4a3b12;color:#ffd479}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--mut);font-weight:600}
+  .up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}.info{color:var(--info)}.mut{color:var(--mut)}
+  .tag{display:inline-block;font-size:.72rem;padding:1px 7px;border-radius:5px;background:#21262d;color:var(--mut);margin-right:5px}
+  .inst{border-left:3px solid var(--info)}
+  .inst.sell{border-color:var(--down)}.inst.buy{border-color:var(--up)}.inst.wait{border-color:var(--warn)}
+  .inst h3{font-size:1rem;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .inst .lv{font-size:.83rem;color:var(--mut);margin-top:6px}
+  .tl{position:relative;padding-left:22px}
+  .tl li{list-style:none;margin-bottom:14px;position:relative}
+  .tl li::before{content:"";position:absolute;left:-22px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .tl li::after{content:"";position:absolute;left:-17px;top:15px;bottom:-14px;width:1px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .day{font-weight:700;color:var(--accent)}
+  .note{font-size:.8rem;color:var(--mut);border-top:1px dashed var(--line);margin-top:26px;padding-top:12px}
+  canvas{max-height:300px}
+  img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;padding:3px 0;border-bottom:1px solid #21262d}
+  .big{font-size:1.4rem;font-weight:800}
+  .lv{font-size:.83rem;color:var(--mut)}
+  .flag{background:#3a2b5f;border:1px solid #5a44a0;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.85rem}
+  .flag.warnbox{background:#3b2f10;border-color:#5c4410}
+  .flag.goldbox{background:#3d2f0d;border-color:#6b5410}
+  .flag.okbox{background:#12331d;border-color:#1f6b34}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>💴 CFD戦略ブリーフ — 8/10週</h1>
+  <div class="sub">対象週: 2026-8-7_wk01（データ期間 2026-08-03→08-07 / snapshot 2026-08-08） ｜ ソース: review・meta・snapshot・boss(wr-2026-8-7)・<b>週末終値チャート10枚</b>・口座3枚・--trade --news・X実データ（2週連続取得成功） ｜ CFD正本: <b>Boss専用トレードレポート Gold-2026-06-12_to_08-07（全期間reconciled）</b> — <b>8/7に全決済しフラット</b></div>
+
+  <div class="banner">
+    <span class="pill gold">Regime: Gold Bid（gold off→bid の2段階改善）</span>
+    <span class="pill open">Add risk gate: 開放（VIX 14.90&lt;18）</span>
+    <span class="pill trig">Reduce: caution</span>
+    <span class="pill exec">介入 coord_stage: executed / IMF残弾 0（据置）</span>
+  </div>
+
+  <div class="flag">
+    ★ <b>8/7 NFP -23,000人（予想 +83,000）</b>＝増加どころか<b>純減</b>。さらに<b>5月 +129,000→+63,000 / 6月 +57,000→+20,000 ＝ 2ヶ月合計 -103,000人の下方修正</b>で、過去12ヶ月平均も月<b>+34,000人</b>まで鈍化。内訳は地方政府教育 -50,000／小売 -19,000／金融 -14,000（2025年5月ピークから累計 -121,000）、増加は<b>ヘルスケア +22,000のみ</b>でそれも過去平均+36,000を下回る。
+    ★ <b>失業率は4.2%→4.1%に「低下」したが、労働参加率が 61.5%→61.4% と5年超ぶりの低水準</b>＝「<b>職探しをやめた人が増えた結果の失業率低下</b>」という<b>質の悪い改善</b>。一時解雇者は +153,000 増えて <b>921,000人</b>。平均時給は前年比 <b>+3.2%</b> でインフレ圧力は残存。
+    → <b>「雇用は純減、しかしインフレは高止まり」＝スタグフレーション型</b>で、FRB は「<b>conundrum（板挟み）</b>」に置かれた。
+  </div>
+
+  <div class="flag warnbox">
+    ⚠️ <b>ここが肝：利上げは「否定」されたのではなく「9月から10月以降へ後ろ倒し」されただけ</b>。CME FedWatch ベースで <b>9月利上げ確率 約42%</b>（発表前から大幅低下・50%割れ）だが、<b>10月までの利上げ確率は57%超＝依然として過半数が利上げを見込む</b>。
+    裏付けが債券の値動きで、<b>US2Y は日中安値 4.154% まで急低下した後、引けにかけて 4.199% まで4.5bp買い戻され（＝利回り上昇）</b>、US10Y も 4.639% まで下げた後 <b>4.649%</b> で引けた。★<b>市場は金利低下を最後まで追いかけなかった</b>、というのが金曜の本質。
+    <b>US2Y の 4.154% を割るか、4.256% を超えるかが今週すべての起点</b>。
+  </div>
+
+  <div class="flag okbox">
+    🏆 <b>Gold CFD キャンペーン終了（6/12 建て → 8/7 全決済・57日）</b>：<b>確定6件・6勝0敗（勝率100%）・pnl_%合計 +21.06%・ロット加重 +505.75 pt·Lot</b>、最大逆行は7/17週の安値4,012.7時点で <b>-76.7 pt·Lot</b>。
+    <b>当週分は X5 + X6 = +224.25 pt·Lot（+10.94%）</b> — <b>X5</b>＝8/6 10:00 に0.5Lotを<b>4,300</b>で計画決済（+203.00pt／+101.50 pt·Lot／+4.95%。トリガーは<b>実行帯4,250-4,300への到達＋根拠の質の劣化＝イラン外務省が交渉を否定</b>）、<b>X6</b>＝8/7 23:30 に残0.5Lotを<b>4,350</b>で決済（+245.50pt／+122.75 pt·Lot／+5.98%。<b>NFP急騰で高値4,370.51→1分足ダブルトップ切り下げ</b>）。玉割当は<b>FIFO</b>採用（両玉とも益のため論理制約が働かず、<b>合計pt·Lotは割当に依存しない</b>）。
+    <b>三相</b>＝<b>I.収穫</b>(6/12-6/29・建てた当日から6日で3回決済・+252.5 pt·Lot・2.0→0.5Lot)／<b>II.耐久</b>(7/1-7/31・積み増して1.5Lot・7月中旬に最大逆行・原油急騰下でgold=off)／<b>III.回収</b>(8/1-8/7・ホルムズ→NFPで4,370.51まで・1.0→0Lot)。
+    ★<b>対称性</b>：4,097玉は <b>6/18に4,300で半分</b>を、<b>8/6に残りを同じ4,300</b> で決済＝<b>同一建値・同一決済価格を7週間隔で2回</b>。
+  </div>
+
+  <h2>1. 10ペア 30日スナップショット</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="barChg"></canvas></div>
+    <div class="card">
+      <table>
+        <thead><tr><th>銘柄</th><th>最新</th><th>30日%</th><th>wk05→wk01</th></tr></thead>
+        <tbody>
+          <tr><td>XAU/USD</td><td><b>4,340.700</b></td><td class="up">+5.09%</td><td class="up"><b>+291.6 (+7.20%)</b> off→bid</td></tr>
+          <tr><td>US100</td><td><b>29,722.301</b></td><td class="mut">-0.02%</td><td class="up"><b>+1,448.1 (+5.12%)</b></td></tr>
+          <tr><td>JP225</td><td>65,606.711</td><td class="down">-3.15%</td><td class="up">+1,244.7 (+1.93%)</td></tr>
+          <tr><td>USD/JPY</td><td>157.745</td><td class="up">-2.95%</td><td class="mut">+0.345 <b>NFP後ほぼ無風</b></td></tr>
+          <tr><td>WTI</td><td>78.180 <span class="mut">/ Boss 77.08</span></td><td class="up">+8.46%</td><td class="down"><b>週間 -8.96%</b>（既知のフィード差）</td></tr>
+          <tr><td>US10Y</td><td>4.660 <span class="mut">/ Boss 4.649</span></td><td class="warn">+2.67%</td><td class="up">-0.085</td></tr>
+          <tr><td>US2Y <span class="mut">(真・Boss)</span></td><td><b>4.199</b></td><td class="up">安値4.154→<b>+4.5bp戻し</b></td><td class="up">-0.063</td></tr>
+          <tr><td>US30Y <span class="mut">(Boss・新規)</span></td><td><b>5.202</b></td><td class="warn">上は5.28＝2007年来高値</td><td class="mut">10s30s <b>+55.3bp</b></td></tr>
+          <tr><td>5Y (^FVX)</td><td>4.362</td><td class="warn">+2.18%</td><td class="up">-0.098 <b>belly の瘤が縮小</b></td></tr>
+          <tr><td>US3M</td><td>3.710</td><td class="mut">+0.76%</td><td class="warn">+0.028</td></tr>
+          <tr><td>VIX</td><td><b>14.900</b></td><td class="up">-5.93%</td><td class="up"><b>-1.09 → gate開放継続</b></td></tr>
+          <tr><td>BTC/USD</td><td>64,880.191</td><td class="up">+2.67%</td><td class="up">+2,066.4（Boss 64,975・<b>ほぼ横ばい</b>）</td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">Boss実測: NDX <b>29,722.30(+1.19%)</b> ／ <b>SP500 7,757.64(+0.62%)＝8/6に史上最高値</b> ／ ダウ 54,036.93(+0.28%) ／ ナス総合 26,690.62(+1.30%) ／ JP225現物 65,606.71(-0.12%)・<b>CFD夜間 66,698→66,248</b> ／ USDJPY <b>157.78(-0.64)</b> ／ Gold <b>4,342.41(+2.43%)</b> 高値4,370.49 ／ WTI 77.08(-0.21) 高値78.77/安値76.53 ／ <b>DXY 99.604</b>（8/7当日は99.422まで） ／ EURUSD 1.1558 ／ BTC 64,975(+0.09%)</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <strong>10ペア30日 正規化プロット</strong>
+    <img src="charts/Portforio-2026-08-08.png" alt="10ペア30日プロット">
+  </div>
+
+  <h2>2. ★ 金利カーブ — 再利上げ織り込みの「瘤」が萎んだ</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="curve"></canvas></div>
+    <div class="card">
+      <div class="kv"><span>3m10s（<b>主ゲージ</b>）</span><span class="warn"><b>+95.0bp</b> / positive（wk05 +106.3 → <b>フラット化</b>）</span></div>
+      <div class="kv"><span>5s10s（^FVX=5y proxy）</span><span class="up">+29.8bp / <b>bear_steepening</b>（Δ+2.8bp）</span></div>
+      <div class="kv"><span>★ 真の 2s10s（Boss）</span><span class="info"><b>+45.0bp</b>（wk05 +45.6bp → ほぼ横ばい）</span></div>
+      <div class="kv"><span>★ 10s30s（Boss・新規）</span><span style="color:#d0b3ff"><b>+55.3bp</b>（US30Y 5.202 − US10Y 4.649）</span></div>
+      <div class="kv"><span>belly_premium</span><span class="up"><b>+26.0 → +18.9bp（縮小）</b></span></div>
+      <div class="kv"><span>structure / recession</span><span>belly_elevated / <b class="up">positive</b>（逆イールドは遠い）</span></div>
+      <p class="lv" style="margin-top:10px"><b class="up">belly_premium の縮小が今週の実体</b>：5Y(^FVX) が <b>4.460 → 4.362（-0.098）</b> と front(3M +0.028) より大きく下げ、直線補間からの乖離が <b>26.0bp → 18.9bp</b> へ。★<b>「9月に利上げがある」という織り込みの瘤が萎んだ</b>ことの表れで、<b>9月利上げ確率 64%→42% への低下と整合</b>する。</p>
+      <p class="lv" style="border-top:1px dashed var(--line);padding-top:8px"><b>3m10s は +106.3→+95.0bp とフラット化</b>したが <b>positive のまま</b>＝逆イールドは遠い。景気後退シグナルではなく「<b>利上げパスが後ろへずれた</b>」の反映として読む。X市況も「フロント（2年）は雇用ショックで低下＝利上げ織り込み剥落、<b>30年は5.2%前後で相対的に高止まりしタームプレミアム・供給・インフレ粘着を意識</b>」「<b>短中期はハト派化、超長期は警戒残存のツイスト寄り</b>」（@O4SI5）と整理。</p>
+      <p class="lv"><b class="warn">拡張候補（ボス検討中）</b>：トレードレポート §8-2 が <b>10s30s をゴールドの補完監視線</b>として提案（<b>拡大＝タームプレミアム／ソブリン信用の象限で金に追い風</b>／<b>縮小＝純粋なディスインフレで金には何も来ない</b>）。実測は 7/31 +54.9 → 8/4 +55.4 → <b>8/5 +56.1（拡大・金+3%）</b> → 8/7 +54.4（縮小）。機械は30年（<code>^TYX</code>）を未取得のため自動算出できず、<code>TRADE_PAIRS</code> への <b><code>US30Y: ^TYX</code></b> 追加が必要＝<b>今週は未実装</b>。</p>
+    </div>
+  </div>
+
+  <h2>3. レジーム &amp; ゲート状況</h2>
+  <div class="grid g3">
+    <div class="card"><div class="mut">機械レジーム</div><div class="big warn">Gold Bid</div><div class="lv"><b class="mut">equities=flat</b> / vol=normal / <b class="mut">oil=range</b> / <b class="up">gold=bid</b> / <b class="mut">crypto=range</b> / <b class="warn">yields=rising</b><br><span class="up">wk05「Equities Down / Oil Surge」から<b>3項目が同時に転換</b>（<b>gold は off→bid の2段階改善</b>）</span></div></div>
+    <div class="card"><div class="mut">Add risk ゲート</div><div class="big up">開放</div><div class="lv">VIX <b>15.99 → 14.90 &lt; 18</b>。ただし骨格は「<b>利上げ先送りによる株高・金高、ただしCPI待ちの一時的な安心感</b>」＝<b>8/12 CPIがスイッチ</b>。<b>8/11(火)は日本が山の日で休場</b>＝お盆の薄商いでボラ増幅</div></div>
+    <div class="card"><div class="mut">ポジション</div><div class="big" style="color:#d0b3ff">フラット</div><div class="lv">★<b>Gold CFD は8/7に全決済＝ヘッジ枠ゼロ</b>。再構築は<b>4,302.18 を上抜けサポートとして守れることを確認してから</b>。介入は coord_stage=<b>executed</b> / imf_ammo=<b>0</b> / zone=calm（据置）</div></div>
+  </div>
+
+  <h2>4. シナリオ（★主要リスクごとに反対方向の分岐を明示 — 設計変更）</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="scn"></canvas></div>
+    <div class="card">
+      <div class="kv"><span><b class="up">メイン</b></span><span>CPI待ちのレンジ。押し目買い優先・<b>追いかけ買いはしない</b></span></div>
+      <div class="kv"><span><b class="info">A CPI下振れ</b></span><span>利上げ観測ほぼ消滅→<b>株と金の同時上昇</b>・DXY 99.527割れ・EURUSD 1.16</span></div>
+      <div class="kv"><span><b class="down">B CPI上振れ</b></span><span>10月利上げ確率70-80%→<b>株安・ドル高・金は板挟み</b>（インフレヘッジ vs 利上げ警戒）</span></div>
+      <div class="kv"><span><b class="warn">C 雇用の二次反応</b></span><span><b>「雇用純減＝景気減速」が意識され業績懸念が金利低下メリットに勝つ</b>／逆に一時解雇+153,000が一過性なら反発</span></div>
+      <div class="kv"><span><b style="color:#d0b3ff">D ホルムズ交渉決裂</b></span><span>WTI <b>82.749</b>へ戻しインフレ再燃／逆に<b>正式合意なら70ドル方向</b></span></div>
+      <p class="lv" style="margin-top:10px">★ <b>設計変更（トレードレポート §7-3 の指摘を受けた是正）</b>：§7-3 は「<b>wk05のシナリオツリーはBが地政学エスカレーションだけで、デエスカレーションのシナリオが1本もなかった。そのため原油急落起点の株高を受け止める枠がなく、US100のレンジ想定（28,500-28,800が売り手優勢）が29,112まで破られた</b>」と指摘し、<b>設計ルール化：シナリオツリーには主要リスクごとに反対方向の分岐を明示的に置く</b>と定めた。→ <b>本週から労働市場・ホルムズ/原油・ドル円・ゴールド・米国株・日本株の6項目すべてに悪化側と改善側の両分岐を明示</b>している。<b>これはアーカイブ側（ClaudeCode）が作成した成果物への指摘であり、そのまま受け止めて設計に反映した</b>。</p>
+    </div>
+  </div>
+
+  <h2>5. CFD 銘柄別アクションプラン</h2>
+  <div class="grid g2">
+    <div class="card inst buy">
+      <h3>Gold (XAU) <span class="tag" style="background:#4a3b12;color:#ffd479">全決済・フラット / 4,302.18 が試金石</span></h3>
+      現物 <b>4,342.41（+103.18／+2.43%）</b>・日中高値 <b>4,370.49</b> で<b>7週間ぶり高値圏</b>。動画のターゲット4,288と抵抗帯4,290をあっさり突破し<b>日足の抵抗4,302.18も上抜け</b>。snapshot も <b>off→bid の2段階改善</b>（30日+5.09%・<b>週次+7.20%</b>）。
+      <div class="lv"><b>上昇理由の3層</b>：①<b>雇用純減＋インフレ高止まり＝スタグフレーション懸念（金の最も好きな環境）</b> ②<b>ドル安</b>（DXY 99.604で6週ぶり安値圏・サポート99.527の直前） ③<b>ホルムズ海峡再開に向けたイラン=オマン交渉進展</b>によるリスク資産改善と、それに伴う原油下落（<b>金は原油と逆相関で推移してきた経緯</b>）。加えて<b>中国など中銀の継続買い</b>という構造要因。</div>
+      <div class="lv">上=4,370.49→4,380.85→4,400→4,651.26 ／ 下=<b>4,302.18（旧抵抗→新サポート）</b>→4,248.25→4,216.34 ／ <b>最終防衛 $3,940（2026-08-08以降の新基準）</b>。<b>4,302.18 を上抜けサポートとして機能させられるかを確認しつつ押し目買い、割れれば「一日限りの過剰反応」と判断して4,248まで撤退</b>。</div>
+      <div class="lv" style="border-top:1px dashed var(--line);padding-top:6px">★<b class="warn">忘れないこと</b>：金は今年1/29の史上最高値 <b>5,585〜5,589</b> から依然<b>20%以上下</b>にあり、<b>日足の大きな下降チャネルの中の戻り</b>。★<b>上値追随の条件は DXY 99.527割れ かつ 10s30s拡大</b>（§8-2：<b>ドル安だけでは足りない</b>／8/4にDXYがヒゲで99.69を割ったが金は下げた）。X市況は「<b>中期は強気優勢だが短期は抵抗帯での利確・売りセットアップも目立つ＝勢いBull＋短期ダイバージェンス型</b>」（@XauBossAnalysis が4,340-4,350のショート案、@PeterLBrandt が過熱・調整リスク）。</div>
+    </div>
+    <div class="card inst wait">
+      <h3>USD/JPY <span class="tag exec" style="background:#3a2b5f;color:#d0b3ff">NFP後もほぼ無風＝介入効果の剥落</span></h3>
+      <b>157.78（-0.64）</b>。★<b>今週一番の注目点</b>は、米金利が低下し DXY が 99.604 まで売られたにもかかわらず<b>ドル円だけがほとんど動かなかった</b>こと。
+      <div class="lv"><b>理由3つ</b>：①<b>失業率は逆に低下して4.1%</b> ②<b>利上げは否定されず10月に先送りされただけ</b> ③<b>円側の要因（財政拡張・日銀の遅れ）が重く介入効果が剥落中</b>。CNBC検証では7/31の日米協調介入で163台から<b>155ちょうど</b>まで進んだが、<b>その値幅の半分近くを既に戻して158.50前後</b>に落ち着いた。BofAは当局の短期目標を「155割れ」と見ていたが<b>155は一瞬タッチしただけ</b>。</div>
+      <div class="lv">上=158.100→<b>158.50-158.56</b>→<b>159.20-159.50（戻り売りゾーン）</b>→161.013 ／ 下=157.219/157.157→157.086→<b>156.589（割れで介入警戒モード）</b>→155.7 ／ <b>157.0〜158.5のレンジ</b>で上限売り・下限買いの往復。<b>「円安に戻りやすい」という見立ては維持</b>、ただし159.30の売りゾーンには届かず<b>レンジ上限を切り下げ</b>。</div>
+      <div class="lv" style="border-top:1px dashed var(--line);padding-top:6px">ベッセント財務長官『<b>介入はシグナル、方向を変えるのは政策</b>』、PGIMのエコノミスト『<b>介入だけで円安トレンドは反転しない、むしろ裏目に出る可能性がある</b>』。X市況も @Francesc_Forex が「<b>介入は時間稼ぎ、金利差が本質</b>」、全体は「<b>介入で一度止めたが効果は薄れつつある／ファンダ（金利差）はなおドル支持</b>」で<b>Bossと完全一致</b>（X側の156.65サポートはBossの156.589とほぼ同水準）。</div>
+    </div>
+    <div class="card inst buy">
+      <h3>US100 / SP500 <span class="tag">強気シナリオが的中・トリガー発動済み</span></h3>
+      NDX現物 <b>29,722.30（+1.19%）</b>、<b>S&amp;P500 7,757.64（+0.62%）は8/6に史上最高値を更新</b>しその週は<b>4月以来最強</b>の地合い。ダウ 54,036.93（+0.28%）、ナス総合 26,690.62（+1.30%）。金利低下＝グロース株買いという素直な反応で <b>「29,560超えで上昇」というトリガーは既に発動済み</b>。
+      <div class="lv">上=<b>29,870→30,000→30,922</b> ／ 下=<b>29,560〜29,600（上抜けたサポート）</b>、<b>29,560割れで初めて「ダマシ」を疑う</b>。wk05の「29,129割れ→28,718」は<b>当面棚上げ</b>。</div>
+      <div class="lv" style="border-top:1px dashed var(--line);padding-top:6px">★<b class="warn">反対方向の分岐</b>：「<b>雇用純減＝景気減速</b>」が意識され始めると<b>金利低下メリットより業績懸念が勝つ局面に反転</b>し、<b>そのスイッチは8/12のCPI</b>。X市況は「Bad news is good news」でATH更新を正当化する投稿が多い一方、<b>高バリュエーション・レバレッジ・季節性（9月）を理由にした警戒も一定数</b>あり、全体は「<b>乗りつつも天井感を意識する二層構造</b>」＝<b>追いかけ買いはしない</b>。</div>
+    </div>
+    <div class="card inst wait">
+      <h3>JP225 <span class="tag warn">上ギャップ想定だが「寄り天」が典型</span></h3>
+      現物終値 <b>65,606.71（-0.12%）</b>だが、<b>日経CFDが夜間セッションでNFP後に高値66,698→66,248まで買われ、月曜は600〜650円程度の上ギャップで始まる計算</b>。<b>66,340円の上抜けトリガーは夜間で既にクリア済み</b>。
+      <div class="lv">上=<b>67,353→67,596</b> ／ 押し目=<b>66,340〜66,000</b> ／ 66,000を明確に割ればギャップ埋め＝<b>65,606（金曜現物終値）</b>。★<b>ギャップアップ後の「寄り天」は日経の典型パターン</b>なので<b>寄り付きで飛びつかず押し目を待つ</b>のが定石。</div>
+      <div class="lv" style="border-top:1px dashed var(--line);padding-top:6px"><b>ドル円がほぼ動いていない（円高が進んでいない）ことは日本株にとって追い風の維持</b>を意味する。SBG・アドバンテスト主導、TOPIX浮動株400億円未満除外の話は変更なし。--news は<b>東芝の4-6月期純利益が前年同期比約30倍の4兆4673億円</b>（第1四半期として過去最高／<b>キオクシア株の評価益</b>が寄与）を報じ、wk04以降続く「キオクシア/メモリ主導」テーマが<b>保有側の決算という形で数値化</b>された。</div>
+    </div>
+    <div class="card inst sell">
+      <h3>WTI <span class="tag down">上目線を一旦破棄・TACOリスク顕在化</span></h3>
+      <b>77.08（-0.21）</b>、日中高値78.77・安値76.53、<b>週間 -8.96%</b>。★<b>動画の上昇シナリオ（中東情勢悪化→79.50）は不成立</b>で、<b>実際に進んだのは逆の「イラン=オマンによるホルムズ海峡再開合意が近い」という緩和ニュース</b>。<b>「イラン情勢は緩和と悪化が毎日入れ替わる」というTACOトレードのリスクが顕在化</b>した形。snapshot も surge→<b>range</b> へ。
+      <div class="lv">上=78.77→79.762→<b>82.749</b> ／ 下=<b>76.705（重要／割れると加速）</b>→74.899→70.00 ／ <b>79.50ターゲットの上目線を一旦破棄し、76.705の攻防を見て方向を決める</b>。<b>ホルムズ再開が正式合意なら70ドル方向、交渉決裂なら一気に82.749まで戻す</b>＝<b>ヘッドライン主導の二極化相場＝持ってもポジションは軽く</b>。</div>
+      <div class="lv" style="border-top:1px dashed var(--line);padding-top:6px">★<b class="warn">X独自の付加価値</b>：「<b>紙の価格は織り込んだが、海（実物流）はまだ戻っていない</b>」（@Sham1069204 が実タンカー本数はまだ細いと懐疑）、「<b>イランは信用できない／時限的</b>」（@DailyIranNews / @Pettunia14）＝<b>持続安を疑問視する声とセット</b>。機械(CL=F 78.180)とBoss参照フィード(77.08)には<b>既知の乖離</b>あり。</div>
+    </div>
+    <div class="card inst wait">
+      <h3>BTC/USD <span class="tag warn">株高・金急騰の中で動かなかった</span></h3>
+      <b>64,975（+0.09%）でほぼ横ばい</b>（snapshot 64,880.19・30日+2.67%）。<b>64,132割れは未発生</b>。crypto=range 継続。
+      <div class="lv">下=<b>64,132割れ → 57,744</b>（条件付きショート＝<b>条件成立まで待つ</b>） ／ ★<b>株高＋金急騰という強い追い風の中で動かなかった相対的弱さ</b>は継続監視で、wk05の「<b>株が崩れた場合の先行指標</b>」という位置づけを維持する。</div>
+    </div>
+  </div>
+  <div class="card inst buy" style="margin-top:14px">
+    <h3>EUR/USD / DXY <span class="tag">1.15741 ブレイク待ちの上目線</span></h3>
+    EURUSD <b>1.1558</b>（4H 1.15317を上抜け、日足レジスタンス<b>1.15741</b>に接近）。DXY <b>99.604</b>で<b>6週ぶり安値圏</b>、サポート<b>99.527</b>の直前（8/7当日は<b>99.422</b>まで）。
+    <div class="lv">★<b>DXY 99.527 が全通貨ペア共通のトリガー</b>：割れれば<b>ドル全面安の継続</b>で EURUSD の上放れ・<b>ゴールドの上値追随</b>が同時に走る。ただし<b>ゴールドには 10s30s拡大 という第2条件が要る</b>（§8-2）。</div>
+  </div>
+
+  <h2>6. 週内タイムライン</h2>
+  <div class="card">
+    <ul class="tl">
+      <li><span class="day">8/10(月)</span> 日経は<b>600〜650円の上ギャップ想定</b>（CFD夜間66,248）。★<b>寄り天が典型</b>＝飛びつかず<b>66,340〜66,000の押し目</b>を待つ。ゴールドは<b>4,302.18を上抜けサポートとして守れるか</b>を最初に確認。</li>
+      <li><span class="day">8/11(火)</span> <b class="warn">日本は休場（山の日）</b>。<b>お盆の薄商いが本格化</b>し、少ない出来高で値が飛びやすくなる＝<b>ボラ増幅に注意</b>。</li>
+      <li><span class="day">8/12(水)</span> <b class="down">★米7月CPI — 今週最大のイベント</b>。<b>強ければ</b>10月利上げ確率70-80%へ→株安・ドル高・<b>金は板挟み</b>／<b>弱ければ</b>利上げ観測ほぼ消滅→<b>株・金の同時上昇</b>・EURUSD 1.16。<b>どちらに転んでもボラは金曜より確実に大きくなる</b>。</li>
+      <li><span class="day">8/13(木)</span> <b>米7月PPI</b>。CPIの確認材料。</li>
+      <li><span class="day">8/28(金)</span> <b class="down">BLS年次ベンチマーク改定の速報値（QCEW準拠）</b>。<b>過去1年の雇用者数が大幅に下方修正されるリスク</b>。</li>
+      <li><span class="day">週内随時</span> <b>US2Y 4.154 / 4.256</b>（★今週すべての起点）／<b>DXY 99.527</b>／<b>Gold 4,302.18</b>／<b>WTI 76.705</b>／<b>ホルムズ交渉の行方</b>。</li>
+    </ul>
+  </div>
+
+  <h2>7. 監視トリガー（毎朝チェック）</h2>
+  <div class="card grid g2" style="gap:6px">
+    <div class="kv"><span>★ US2Y 4.154% 割れ / 4.256% 超え</span><span class="warn">→ 今週すべての起点。超え＝利上げ観測復活で<b>株と金にダブルパンチ</b></span></div>
+    <div class="kv"><span>★ 8/12 CPI</span><span class="down">→ 上振れで10月70-80%＝株安ドル高・金は板挟み／下振れで株・金の同時上昇</span></div>
+    <div class="kv"><span>★ Gold 4,302.18</span><span class="warn">→ 守れれば押し目買い、割れれば4,248.25へ撤退。最終防衛 <b>$3,940</b></span></div>
+    <div class="kv"><span>★ DXY 99.527 割れ</span><span class="up">→ ドル全面安の継続（現値99.604＝0.08の距離）。金は <b>10s30s拡大</b> が第2条件</span></div>
+    <div class="kv"><span>USDJPY 156.589 割れ / 158.50-158.56 上抜け</span><span class="warn">→ 介入警戒モード / 159.20-159.50 の戻り売りゾーン</span></div>
+    <div class="kv"><span>WTI 76.705 割れ / 82.749 戻し</span><span class="down">→ 74.899→70.00 / インフレ再燃</span></div>
+    <div class="kv"><span>US100 29,560 割れ</span><span class="down">→ 初めて「ダマシ」を疑う（→29,129→28,718）</span></div>
+    <div class="kv"><span>JP225 66,340-66,000 / 66,000割れ</span><span class="mut">→ 押し目ゾーン / ギャップ埋め 65,606</span></div>
+    <div class="kv"><span>BTC 64,132 割れ</span><span class="down">→ 57,744へ。<b>株が崩れた場合の先行指標</b></span></div>
+    <div class="kv"><span>8/28 BLS年次ベンチマーク改定</span><span class="down">→ 過去1年の雇用者数が大幅下方修正されるリスク</span></div>
+  </div>
+
+  <h2>8. Boss提供チャート（週末終値 / 2026-08-07 close・10枚）</h2>
+  <div class="grid g2">
+    <div class="card"><strong>XAU/USD — 4,342.41(+2.43%)・高値4,370.49で7週間ぶり高値圏</strong><img src="charts/XAUUSD-2026-08-07.png" alt="XAUUSD"></div>
+    <div class="card"><strong>US100 — 29,722.30(+1.19%)・29,560超えトリガー発動済み</strong><img src="charts/US100-2026-08-07.png" alt="US100"></div>
+    <div class="card"><strong>USD/JPY — 157.78・★NFP後もほぼ無風</strong><img src="charts/USDJPY-2026-08-07.png" alt="USDJPY"></div>
+    <div class="card"><strong>JP225 — 現物65,606.71・CFD夜間は66,248</strong><img src="charts/JP225-2026-08-07.png" alt="JP225"></div>
+    <div class="card"><strong>WTI — 77.08・週間-8.96%（ホルムズ再開交渉）</strong><img src="charts/WTI-2026-08-07.png" alt="WTI"></div>
+    <div class="card"><strong>DXY — 99.604・6週ぶり安値圏（サポート99.527の直前）</strong><img src="charts/DXY-2026-08-07.png" alt="DXY"></div>
+    <div class="card"><strong>EUR/USD — 1.1558・日足1.15741に接近</strong><img src="charts/EURUSD-2026-08-07.png" alt="EURUSD"></div>
+    <div class="card"><strong>US2Y — 4.199%（安値4.154→引けにかけ+4.5bp戻し）</strong><img src="charts/US2Y-2026-08-07.png" alt="US2Y"></div>
+    <div class="card"><strong>US10Y — 4.649%（4.639%まで下げた後）</strong><img src="charts/US10Y-2026-08-07.png" alt="US10Y"></div>
+    <div class="card"><strong>★US30Y（新規） — 5.202%／10s30s = +55.3bp</strong><img src="charts/US30Y-2026-08-07.png" alt="US30Y"></div>
+  </div>
+
+  <h2>9. GMポートフォリオ（2026-08-08 13:34）</h2>
+  <div class="grid g3">
+    <div class="card"><div class="mut">総資産</div><div class="big up">4,993,914円</div><div class="lv">前週 4,833,577円 → <b class="up">+160,337円</b></div></div>
+    <div class="card"><div class="mut">評価損益</div><div class="big up">+417,056円 / +9.11%</div><div class="lv">前週 +256,719円 / +5.60% → <b class="up">+3.51pt</b></div></div>
+    <div class="card"><div class="mut">株数変更</div><div class="big mut">なし</div><div class="lv">東証・米国株とも変更なし。長期コアは維持</div></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><strong>総合ポートフォリオ</strong><img src="charts/Portfolio-Total-2026-08-08.png" alt="総合"></div>
+    <div class="card"><strong>国内株</strong><img src="charts/Portfolio-JP-Stocks-2026-08-08.png" alt="国内株"></div>
+  </div>
+  <div class="card" style="margin-top:14px"><strong>米国株</strong><img src="charts/Portfolio-US-Stocks-2026-08-08.png" alt="米国株"></div>
+  <div class="card" style="margin-top:14px">
+    <div class="kv"><span>国内株式(現物)</span><span class="up">4,469,189円 / +438,584円 / +10.88%（特定 1,948,513円 / NISA 2,520,676円）</span></div>
+    <div class="kv"><span>米国株式</span><span class="warn">523,017円 / <b>-21,528円 / -3.95%</b>（外貨建 3,301.47 USD / -77.37 USD）</span></div>
+    <p class="lv" style="margin-top:10px">★ <b class="up">米国株が劇的改善</b>：<b>-18.10% → -3.95%</b>（+77,048円／外貨建 -604.36 → -77.37 USD ＝ <b>+526.99 USD</b>）。銘柄別は <b class="up">GDX -114.60→+82.05 USD（+196.65・黒字転換）＝金急騰の直撃</b>、<b class="up">IONQ -111.16→+10.08 USD（+121.24・黒字転換）</b>、<b class="up">SPCX -378.60→-169.50 USD（+209.10）＝8/6のロックアップ解除を+1.5%で吸収</b>。<br>
+    <b>国内株</b>も <b class="up">GXゴールド特定が -8,614→+438 で黒字転換</b>・<b class="up">GXゴールドNISAも -87,600→-62,800（+24,800）</b>＝★<b>金急騰が現物側にも波及</b>。明暗は<b>wk05から入れ替わり</b>で、<b class="up">安川電 -15,600→+19,700（+35,300）</b>・<b class="up">三菱重 -9,900→+16,400（+26,300）</b>が改善する一方、<b class="down">ファナックは +88,300→+33,000（-55,300）で最大の重し</b>（wk05では牽引役だった）。<br>
+    ★ <b class="warn">CFDをフラットにした一方で現物側の金エクスポージャーは残存</b>しており、<b>Goldが4,302を割れば口座にも逆風</b>。</p>
+  </div>
+
+  <div class="note">
+    ⚠️ 本資料は 2026-8-7_wk01 の確定データ（snapshot 2026-08-08 / review / meta / Boss市況 wr-2026-8-7 / <b>週末終値チャート10枚</b> / 口座3枚 / --trade --news / X実データ）＋ <b>Boss専用トレードレポート Gold-2026-06-12_to_08-07（6/12建て→8/7全決済の全期間reconciled）</b> に基づく整理であり、創作・ソース外情報は含まない。<br>
+    ★ <b>キャンペーン終了</b>：確定6件・<b>6勝0敗</b>・<b>+505.75 pt·Lot（+21.06%）</b>、最大逆行 -76.7 pt·Lot。<b>6件の決済すべてが価格目標ではなく「根拠の状態変化」をトリガー</b>にしている（X3=15分ダウ崩れ／<b>X4=週足Fibo38.2割れ＝上位足の根拠が一段落ちた</b>／<b>X5=実行帯到達＋根拠が当事者に否定された＝根拠の質の劣化</b>／X6=1分足DT切り下げ）。他に機能した設計は <b>①値ではなく日付でロットを落とす</b>（4,302.18の反落をほぼ天井で捕捉）／<b>②損益分岐の事前計算</b>（<code>X + 3,940 − 8,201.5 = 0 → X = 4,261.5</code> ＝バンドの下端と上端で符号が変わることを事前確認）／<b>③反応型ルールには時計の上限を対にする</b>／<b>④上位足で環境確定→下位足で執行</b>。<br>
+    ★ <b>最終防衛ラインは 2026-08-08 以降 $3,940</b>（2026-06〜07-31 は <b>$3,950</b>）。これは<b>誤りの訂正ではなく基準変更</b>で、<b>6-7月の記録に遡って $3,940 で上書きしない</b>（当時運用されていた線は $3,950 であり、書き換えると「3週連続で $3,950 を割らなかった」という判断の記録が壊れる）。<b>新基準は今回のキャンペーンで一度も到達しておらず、実運用での検証は未実施</b>。<br>
+    ★ <b>設計変更</b>：トレードレポート §7-3 の指摘（<b>wk05のシナリオツリーに反対方向の分岐がなくUS100レンジ想定が29,112まで破られた</b>）を受け、<b>本週から主要リスクごとに反対方向の分岐を明示</b>。<br>
+    ★ <b>X-Search は2週連続で取得成功</b>（<code>hermes -p grok -z "&lt;query&gt;" -t x_search,web,vision --accept-hooks</code>）。実ハンドル付き<b>7トピックすべてでBoss市況と方向一致</b>。X独自の付加価値は<b>①原油の「紙は織り込んだが海（実物流）はまだ」②株の「乗りつつも天井感を意識する二層構造」</b>。<b>各ポストは市場参加者の解釈であり1次報道とはレイヤーを分ける</b>（Grok自身も「Xの集計はリアルタイム合成であり公式BLS/CME/取引所の一次ソースそのものではない」と明記）。<br>
+    ★ <b>未確定・未実装</b>：§3-1 の E2 建値 <b>$3,992 vs $3,990</b> は約定履歴が未確認のため<b>確定させていない</b>。§8-2 の <b>10s30s</b> を機械の監視線にするには <code>TRADE_PAIRS</code> への <b><code>US30Y: ^TYX</code></b> 追加が必要で<b>今週は未実装（ボス検討中）</b>。§8 の年輪候補4件は <code>docs/system/</code> へ<b>未昇格</b>（特に <b>8-1「原油↑→金↓」は 8/7 の NFP純減で前提が変わりつつあり、適用範囲の再検証が近く必要</b>）。WTI は機械(CL=F 78.180)とBoss参照フィード(77.08)に<b>既知の乖離</b>あり。<br>
+    投資助言ではなく GM運用の作戦整理。最終判断はミナト。 生成: ClaudeCode / 2026-08-08。
+  </div>
+
+</div>
+
+<script>
+const C={up:'#3fb950',down:'#f85149',warn:'#d29922',info:'#58a6ff',mut:'#8b949e',grid:'#30363d',txt:'#e6edf3'};
+Chart.defaults.color=C.txt;Chart.defaults.borderColor=C.grid;Chart.defaults.font.family='Segoe UI';
+
+new Chart(document.getElementById('barChg'),{
+  type:'bar',
+  data:{labels:['JP225','USDJPY','US100','US3M','US2Y(5Y)','US10Y','BTC','XAU','WTI','VIX'],
+    datasets:[{label:'30日変化率 (%)',
+      data:[-3.15,-2.95,-0.02,0.76,2.18,2.67,2.67,5.09,8.46,-5.93],
+      backgroundColor:['#f85149','#3fb950','#8b949e','#d29922','#d29922','#f85149','#8b949e','#d29922','#d29922','#3fb950']}]},
+  options:{plugins:{legend:{display:false},title:{display:true,text:'10ペア 30日変化率（2026-07-09→08-08）'}},
+    scales:{y:{grid:{color:C.grid},title:{display:true,text:'%'}},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('curve'),{
+  type:'line',
+  data:{labels:['3M','5Y','10Y'],
+    datasets:[
+      {label:'wk01 実測 (%)',data:[3.710,4.362,4.660],borderColor:C.info,backgroundColor:C.info,tension:0.25,pointRadius:5},
+      {label:'wk05 実測 (%)',data:[3.682,4.460,4.745],borderColor:C.mut,borderDash:[5,4],tension:0.25,pointRadius:4},
+      {label:'3M→10Y 直線補間 (wk01)',data:[3.710,4.173,4.660],borderColor:C.warn,borderDash:[2,3],pointRadius:0,tension:0}
+    ]},
+  options:{plugins:{legend:{position:'bottom'},title:{display:true,text:'belly(5Y)が front より大きく低下＝利上げ織り込みの瘤が萎んだ（premium 26.0→18.9bp）'}},
+    scales:{y:{grid:{color:C.grid},title:{display:true,text:'%'},suggestedMin:3.5,suggestedMax:4.9},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('scn'),{
+  type:'doughnut',
+  data:{labels:['メイン CPI待ちのレンジ・押し目買い','A CPI下振れ（株と金の同時上昇）','B CPI上振れ（株安ドル高・金は板挟み）','C 雇用の二次反応（業績懸念）','D ホルムズ交渉決裂（WTI 82.749）'],
+    datasets:[{data:[35,25,25,10,5],backgroundColor:[C.up,C.info,C.down,C.warn,'#bc8cff'],borderColor:'#161b22',borderWidth:2}]},
+  options:{plugins:{legend:{position:'bottom'},title:{display:true,text:'シナリオ比重（boss市況ベースの目安／★反対方向の分岐を明示）'}}}
+});
+</script>
+</body>
+</html>

@@ -26,7 +26,8 @@ python main.py --trade --news < /dev/null
 ```
 - 生成物: `png_data/multi_pairs_plot_8.png`（ファイル名は据置だが中身は9ペア）、`png_data/YYYY_MM_DD_snapshot.yaml`、ターミナルに各ペア30日値・regime・GMニュース。
 - 出力の **各ペア最新値・30日%・regimeラベル**＋ **`curve_2s10s`（カーブ形状）・`intervention_watch`（ドル円介入フラグ）** を控える（これが Evidence の正本）。
-- **2026-06-27〜の構造改善**: ①JP225（^N225）を実測パネルに追加＝**JP225も機械実測で取れる**、②`curve_2s10s`＝金利カーブ3点立体（5s10s＋**3m10s**＝Fed重視の景気後退カーブ／`recession_3m10s`が主ゲージ／`structure=belly_elevated`等）、③`intervention_watch`＝IMF残弾/会談/`coord_stage`4段梯子（`configs/settings.py` の `INTERVENTION_WATCH` を手動更新）、④`relative_strength`＝JP225 vs US100 を共通通貨で分解（`verdict=structure_led`等）。詳細は `docs/WEEKLY_UPDATE_WORKFLOW.md` Step 1a §スナップショットの構造改善。
+- **2026-06-27〜の構造改善**: ①JP225（^N225）を実測パネルに追加＝**JP225も機械実測で取れる**、②`curve_2s10s`＝金利カーブ**4点立体**（5s10s＋**3m10s**＝Fed重視の景気後退カーブ／`recession_3m10s`が主ゲージ／`structure=belly_elevated`等）、③`intervention_watch`＝IMF残弾/会談/`coord_stage`4段梯子（`configs/settings.py` の `INTERVENTION_WATCH` を手動更新）、④`relative_strength`＝JP225 vs US100 を共通通貨で分解（`verdict=structure_led`等）。詳細は `docs/WEEKLY_UPDATE_WORKFLOW.md` Step 1a §スナップショットの構造改善。
+- **2026-08-09〜の命名是正と30Y追加**: 旧 `US2Y`(^FVX) は実体が5年債だったため **`US5Y` に改名**（毎週 distilled に「真の2s10s」と補正語を書き続ける必要がなくなった）。**`US30Y`(^TYX) を追加**して `spread_10s30s_bp` / `change_10s30s_bp` / `direction_10s30s` を自動算出。★**10s30s は判定に使わない**（水準・Δ・**符号のみの方向ラベル**の3つを出すだけで、レジームラベル・複合スコアには混ぜない。サンプル4営業日分では閾値を置けないため、8〜12週ためてから検討）。**真の2Y は Boss 実測（チャート読み）として別レイヤー**に置く＝機械の数値と混ぜない。日本国債（旧 `JP10Y`/`JP2Y`＝米国債の使い回し）は**削除して未取得のまま空けた**。詳細は同 §ティッカー命名の原則と 10s30s の扱い。
 - 失敗(exit≠0・データ欠落)時は**不変ルール7に従い創作補完せず停止・ボス報告**。
 
 ## 3. Step 1b — X市況ヘッドライン（マイナーデータ・失敗許容）

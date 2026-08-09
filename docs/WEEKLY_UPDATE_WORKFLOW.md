@@ -128,12 +128,30 @@ python main.py --trade --news < /dev/null
 `png_data/YYYY_MM_DD_snapshot.yaml` と `[regime]` 出力に以下が**機械側で自動付与**される。Evidence/レジーム判定で必ず参照すること（プロンプトでの手当てではなく知識アーキテクチャ側で保持）。
 
 1. **JP225 を実測パネルに追加**（`TRADE_PAIRS` に `^N225`）。従来「snapshot8ペアにJP225含まれない」という注記は**不要**になった（9ペアに拡張）。boss市況の主役（日本株）の金曜終値が機械実測で取れる。`snapshot_30d."JP225"` と `panel.Risk` に出る。
-2. **`curve_2s10s` セクション**（金利カーブの**3点立体** 3M/5Y/10Y / 2026-06-27 拡張）: `spread_bp`（5s10s=US10Y−US2Y[^FVX 5y proxy]）/ `change_bp` / `shape` ＋ **`spread_3m10s_bp`（3m10s=US10Y−US3M[^IRX]＝Fed重視の景気後退カーブ・逆イールド主ゲージ）** / `shape_3m10s` / `spread_3m5s_bp` / `belly_premium_bp`（5Yの直線補間からの突出度）/ `structure`（`belly_elevated`=front政策<belly5Y突出<long の瘤 等）/ `recession_3m10s`（`positive`/`near_inversion`<25bp/`inverted`）/ `points_pct`。**`yields` ラベルは2Y/10Y平均符号の丸めで、ベアフラット（短期↑/長期↓）を見落とす**ため、その補正指標。**読み方**: `shape`は各区間のフラット化の質、**逆イールド接近の本格警戒は `recession_3m10s` で判定**（5s10sは順イールド環境で最フラット区間＝逆イールド接近を過大評価しうるため）。`structure=belly_elevated`＝政策ターミナル織り込みの瘤（front=政策3M / belly=5Y突出 / long=growth 10Y）。
+2. **`curve_2s10s` セクション**（金利カーブの**4点立体** 3M/5Y/10Y/30Y / 2026-06-27 拡張・**2026-08-09 に30Y追加**）: `spread_bp`（5s10s=US10Y−US5Y[^FVX]）/ `change_bp` / `shape` ＋ **`spread_3m10s_bp`（3m10s=US10Y−US3M[^IRX]＝Fed重視の景気後退カーブ・逆イールド主ゲージ）** / `shape_3m10s` / `spread_3m5s_bp` / `belly_premium_bp`（5Yの直線補間からの突出度）/ `structure`（`belly_elevated`=front政策<belly5Y突出<long の瘤 等）/ `recession_3m10s`（`positive`/`near_inversion`<25bp/`inverted`）/ `points_pct`（m3/y5/y10/**y30**）＋ **`spread_10s30s_bp` / `change_10s30s_bp` / `direction_10s30s`**。**`yields` ラベルは5Y/10Y平均符号の丸めで、ベアフラット（短期↑/長期↓）を見落とす**ため、その補正指標。**読み方**: `shape`は各区間のフラット化の質、**逆イールド接近の本格警戒は `recession_3m10s` で判定**（5s10sは順イールド環境で最フラット区間＝逆イールド接近を過大評価しうるため）。`structure=belly_elevated`＝政策ターミナル織り込みの瘤（front=政策3M / belly=5Y突出 / long=growth 10Y）。
 3. **`intervention_watch` セクション**（ドル円 介入監視）: `zone`（watch/calm・閾値161.5）/ `upper_alert`（162.2）/ `imf_ammo_remaining` / `last_meeting` / `coord_stage`（**4段梯子** `unconfirmed→meeting_held→rate_check_detected→executed`＝予兆→秒読み→着弾）/ `coord_stage_idx` / `coord_ladder` / `down_target` / `asymmetry` / `history`。**残弾・会談・介入実施は市場価格から自動検知できない**ため、`configs/settings.py` の `INTERVENTION_WATCH`（`coord_stage` 含む）を**手動更新**する運用（会談→rate check→実弾が確認された週に `coord_stage` を上げてからStep 1aを回す）。`rate_check_detected` に上がった瞬間に戦略軸が「162待ち伏せ売り」→「155-156底打ち確認」へ切替。
 4. **`relative_strength` セクション**（2026-06-27〜 追加 / JP225 vs US100 を共通通貨で分解）: `jp225_jpy_30d` / `jp225_usd_30d`（=JP225/USDJPY のΔ・通貨効果除去）/ `currency_effect_pt` / `us100_30d` / `jp_vs_us_nominal_pt` / `jp_vs_us_fx_adj_pt`（本物の相対強度）/ `verdict`（`structure_led`=割安リレーティング主導 / `currency_led`=円安主導 / `mixed`）。**為替・日米金利ボラが高い環境では相対は共通通貨で読む**ための分解。日本株の強さが構造か通貨かで米株ヘッジとしての有効性が変わる。
 
 → これらは review/meta/note/distilled の Evidence・gates・Implication に反映し、人間ビュー（hub/HTML）の「レジーム/ゲート」「監視トリガー」にも織り込む。
-※ `curve_2s10s` は3点（3M/5Y/10Y）を併記。`US2Y=^FVX`(5年)・`US3M=^IRX`(13週)。5s10sは順イールド環境で最フラット区間のため逆イールド接近を過大評価しうる→**主ゲージは `recession_3m10s`**（yamlの`note`参照）。
+※ `curve_2s10s` は4点（3M/5Y/10Y/30Y）を併記。`US3M=^IRX`(13週) / `US5Y=^FVX` / `US10Y=^TNX` / `US30Y=^TYX`。5s10sは順イールド環境で最フラット区間のため逆イールド接近を過大評価しうる→**主ゲージは `recession_3m10s`**（yamlの`note`参照）。
+
+#### ティッカー命名の原則と 10s30s の扱い（2026-08-09 / ボス指摘）
+
+**「X」と「真のX」を並記し続けないと成立する指標は、名前の側が間違っている。** 代用品には本物の名前を付けず、取れないものは「未取得」として空けておく。**欠損は気づかれるが、間違った値は気づかれない**。
+
+| 変更 | 内容 |
+|---|---|
+| **改名** | `TRADE_PAIRS` / `CORE_TICKERS` の **`US2Y: ^FVX` → `US5Y: ^FVX`**。`^FVX` の実体は5年債で、毎週 distilled に「**真の2s10s**」という補正語を書き続ける羽目になっていた。改名により補正語が不要になる |
+| **追加** | **`US30Y: ^TYX`**（4点目）。Yahoo系で取れる米国債の指数は 3M/5Y/10Y/30Y で、**2Y の指数は存在しない**。→ 機械は4点を正直な名前で持ち、**真の2Y は Boss の実測（チャート読み）として別レイヤー**に置く |
+| **削除** | `CORE_TICKERS` の **`JP10Y: ^TNX`** と `FULL_TICKERS` の **`JP2Y: ^FVX`**。日本のラベルで米国の値を返しており、対話モードで日米金利差を出すと **0.00bp** になって「壊れて見えない」形で誤った。日本国債は取得手段がないため**未取得のまま空ける** |
+
+**`10s30s` は判定に使わない**（2026-08-09 時点）。出すのは以下の**3つだけ**で、レジームラベルにも複合スコアにも混ぜない：
+
+- `spread_10s30s_bp`（水準）／ `change_10s30s_bp`（30日前比Δ）／ `direction_10s30s`（**Δの符号のみ** = `widening` / `narrowing` / `flat`）
+
+**閾値を置かない理由**: サンプルが4営業日分しかない（7/31 +54.9 → 8/4 +55.4 → 8/5 +56.1 → 8/7 +54.4）。線を引くには足りず、水準に意味を割り当てるには全然足りない。**8〜12週ためてから閾値の検討を行う**（それまでは人間側で読む）。
+
+**読み筋（人間側）**: **拡大＝タームプレミアム／ソブリン信用の象限で金に追い風** ／ **縮小＝純粋なディスインフレで金には何も来ない**。CPI のような「金にとって板挟み」のイベントで**どちらに転ぶかを決めるのがここ**なので、指標発表後は「2年債の反応 → **10s30s が開いたか閉じたか**」の順で確認する（手計算だと判断を要する時間帯にその手間を払うことになる）。
 
 ### Step 1b: X (Twitter) 市況ヘッドライン取得（新規・2026-05-24〜）
 

@@ -29,9 +29,10 @@ pairs = {
     "US100": "^NDX",
     "XAU/USD": "GC=F",
     "WTI": "CL=F",
-    "US2Y": "^FVX",
+    "US5Y": "^FVX",
     "VIX": "^VIX",
     "US10Y": "^TNX",
+    "US30Y": "^TYX",
     "BTC/USD": "BTC-USD",
 }
 

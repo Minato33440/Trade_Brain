@@ -133,13 +133,24 @@ def fetch_trade_data(
             latest = float(data.iloc[-1])
             first = float(data.iloc[0])
             change_30d = (latest - first) / first * 100
+            # 週次基準点: 最新営業日から7暦日前【以前】の最後の終値。
+            # 位置指定(-6)ではなく日付基準にするのは、祝日で営業日数が週により変わるため。
+            prev_1w: Optional[float] = None
+            try:
+                cutoff = data.index[-1] - pd.Timedelta(days=7)
+                prior = data.loc[:cutoff]
+                if not prior.empty:
+                    prev_1w = float(prior.iloc[-1])
+            except Exception:
+                prev_1w = None
             output_lines.append(
                 f"{name}: 最新 {latest:.3f} (30日変化: {change_30d:+.2f}%)"
             )
             df_all[name] = data
             pair_snapshots[name] = {
                 "latest": latest,
-                "first": first,        # 30日前の始値（2s10sカーブのΔ算出に使用）
+                "first": first,        # 30日前の始値（カーブの30日Δ算出に使用）
+                "prev_1w": prev_1w,    # 7暦日前以前の最後の終値（カーブの週次Δ算出に使用）
                 "change_30d": change_30d,
             }
         else:

@@ -118,7 +118,7 @@ def build_regime_snapshot(
             return "bull_steepening" if not short_up else "bear_steepening"
         return "stable"
 
-    def _curve_2s10s() -> Optional[Dict[str, object]]:
+    def _curve_spreads() -> Optional[Dict[str, object]]:
         """4点（3M/5Y/10Y/30Y）でイールドカーブの形状を立体的に判定。
 
         ★スプレッドの符号はすべて【市場慣行＝長期 − 短期】で統一する（2026-08-09 ボス指摘）。
@@ -135,6 +135,8 @@ def build_regime_snapshot(
         - 10s30s（US30Y=^TYX − US10Y）: 超長期のタームプレミアム。2026-08-09追加。
           ★出すのは【水準bp / Δbp（30日・週次の2窓）/ 方向ラベル（週次Δの符号のみ）】だけで、
           レジームラベル・複合スコアには混ぜない（サンプルが4営業日分しかなく閾値を置けないため）。
+          ★この close-to-close 系列が 10s30s の正本。手読みの値と1本の時系列に混ぜない
+          （手読みは取得時刻がスクショ依存で、日次1〜3bpの指標では変化の大半が時刻差になりうる）。
         yields ラベル（5Y/10Y平均符号で rising/falling に丸める）の補正指標。
         """
         if latest_us5y is None or latest_us10y is None:
@@ -151,7 +153,7 @@ def build_regime_snapshot(
 
         out: Dict[str, object] = {
             "spread_bp": round(spread_5s10s, 1),                 # 後方互換: 5s10s
-            "change_bp": (round(d_5s10s, 1) if d_5s10s is not None else None),
+            "change_bp_30d": (round(d_5s10s, 1) if d_5s10s is not None else None),
             "shape": _classify_shape(d_5s10s, short_up),
             "inverted": spread_5s10s < 0,
         }
@@ -186,7 +188,7 @@ def build_regime_snapshot(
 
             out.update({
                 "spread_3m10s_bp": round(spread_3m10s, 1),
-                "change_3m10s_bp": (round(d_3m10s, 1) if d_3m10s is not None else None),
+                "change_3m10s_bp_30d": (round(d_3m10s, 1) if d_3m10s is not None else None),
                 "shape_3m10s": _classify_shape(d_3m10s, short3_up),
                 "spread_3m5s_bp": round(spread_3m5s, 1),
                 "belly_premium_bp": round(belly_premium, 1),
@@ -324,7 +326,7 @@ def build_regime_snapshot(
     gold = _gold_regime()
     crypto = _crypto_regime()
     yields_regime = _yields_regime()
-    curve = _curve_2s10s()
+    curve = _curve_spreads()
     intervention = _intervention_flag()
     relative = _relative_strength()
 
@@ -350,8 +352,8 @@ def build_regime_snapshot(
         f"oil={oil}, gold={gold}, crypto={crypto}, yields={yields_regime}"
     )
     if curve is not None:
-        _chg = curve["change_bp"]
-        _chg_str = (f"Δ{_chg:+.1f}bp" if _chg is not None else "Δn/a")
+        _chg = curve["change_bp_30d"]
+        _chg_str = (f"Δ30d{_chg:+.1f}bp" if _chg is not None else "Δ30d n/a")
         summary += f", curve={curve['shape']}(5s10s={curve['spread_bp']:+.1f}bp,{_chg_str}"
         if "spread_3m10s_bp" in curve:
             summary += (
@@ -417,19 +419,22 @@ def build_regime_snapshot(
     lines.append(f"  yields: {yields_regime}")
     lines.append("")
 
-    # ── 金利カーブ（3点 3M/5Y/10Y）: yields ラベルの丸めを補正する立体形状指標 ──
+    # ── 金利カーブ（4点 3M/5Y/10Y/30Y）: yields ラベルの丸めを補正する立体形状指標 ──
     if curve is not None:
-        lines.append("curve_2s10s:")
+        lines.append("curve_spreads:")
+        lines.append("  # renamed 2026-08-09: curve_2s10s → curve_spreads / change_bp → change_bp_30d / change_3m10s_bp → change_3m10s_bp_30d")
+        lines.append("  #   旧名は 2026-08-09 以前の distilled・週次アーカイブに残っている。同名の別指標ではなく同一指標の旧名。")
+        lines.append("  #   （旧 curve_2s10s は中身が 5s10s/3m10s/belly/10s30s で 2s10s を1つも含まなかったための改名）")
         lines.append(f"  spread_bp: {curve['spread_bp']}            # 5s10s（US10Y − US5Y=^FVX）※符号は市場慣行の【長期−短期】")
-        if curve.get("change_bp") is not None:
-            lines.append(f"  change_bp: {curve['change_bp']}")
+        if curve.get("change_bp_30d") is not None:
+            lines.append(f"  change_bp_30d: {curve['change_bp_30d']}")
         lines.append(f"  shape: {curve['shape']}            # 5s10s の質")
         lines.append(f"  inverted: {str(curve['inverted']).lower()}")
         if "spread_3m10s_bp" in curve:
             pts = curve.get("points_pct") or {}
             lines.append(f"  spread_3m10s_bp: {curve['spread_3m10s_bp']}      # 3m10s（US10Y − US3M=^IRX）=Fed重視の景気後退カーブ・逆イールド主ゲージ")
-            if curve.get("change_3m10s_bp") is not None:
-                lines.append(f"  change_3m10s_bp: {curve['change_3m10s_bp']}")
+            if curve.get("change_3m10s_bp_30d") is not None:
+                lines.append(f"  change_3m10s_bp_30d: {curve['change_3m10s_bp_30d']}")
             lines.append(f"  shape_3m10s: {curve['shape_3m10s']}")
             lines.append(f"  spread_3m5s_bp: {curve['spread_3m5s_bp']}")
             lines.append(f"  belly_premium_bp: {curve['belly_premium_bp']}      # 5Yの直線補間からの突出度（+=belly elevated/hump）")
@@ -451,14 +456,18 @@ def build_regime_snapshot(
             'structure=belly_elevated は政策ターミナル織り込みの瘤＝front低・belly突出・long growth。shape*は短期↑/長期↓のフラット化の質、'
             'recession_3m10s が near_inversion/inverted に入ったら本格警戒。'
             '10s30s は【水準・Δ(週次/30日の2窓)・方向(週次Δの符号のみ)】を出すだけでレジームラベル・複合スコアには混ぜない。'
-            'サンプルが4営業日分しかなく閾値を置けないため、8〜12週ためてから閾値の検討を行う。'
+            '閾値を置かないのはサンプルが4営業日分しかないため。8〜12週ためてから閾値の検討を行う。'
             '同じスプレッドでも窓が違えば符号が逆になりうる（30日では拡大・直近1週では縮小 等）ので、必ず窓を明示して引用すること。'
-            '★フィード差の注意: 機械(Yahoo ^TYX/^TNX)とBossチャート読みでは同日でも最大約1.9bpずれる（実測 2026-07-31: 機械53.0 vs Boss54.9）。'
-            'これは週次Δの絶対値(~0.5-2bp)と同オーダーなので、週次Δの符号はフィード依存になりうる。'
-            '方向ラベルは【機械フィード内で完結して】読み、Boss実測の系列と1本の時系列に混ぜない。'
-            '読み筋（人間側）: 拡大=タームプレミアム／ソブリン信用の象限で金に追い風、縮小=純粋なディスインフレで金には何も来ない。'
-            '★ただし本欄は【事後の記録】であって当日の判定には使えない。CPI等の当日反応は US10Y/US30Y のチャートを直接読み、'
-            '30Y−10Y を手で引く（--trade のΔは週次/30日窓のため当日の動きをほぼ拾わない）。"'
+            '★本欄（機械のclose-to-close系列）が 10s30s の正本。手読みの値と1本の時系列に混ぜない。'
+            '理由は【時刻とベンダーの二重の不一致】。手読みはスクショを撮った時刻に依存し（NY引け/ロンドン午後が混在しうる）、'
+            'ベンダーも異なる。日次変動が1〜3bpの指標では、変化の大半が時刻差になりうる。'
+            '※この2つの誤差源はまだ分離できていない（純粋なベンダー差の比較は同一時刻同士の n=1 のみ）。分離できれば併用可能になる余地は残る。'
+            '機械側は毎日同じ時刻・同じベンダーで自動的に積み上がるため、8〜12週の計数はこちらで数える。'
+            '読み筋（人間側・★未検証）: 拡大=タームプレミアム／ソブリン信用の象限で金に追い風、縮小=純粋なディスインフレで金には何も来ない。'
+            '2026-08-09時点で機械系列による裏づけは無い（7営業日で符号一致5/7だが、金が週で最も上げた8/5に10s30sは縮小）。機構の仮説として保持し、実測の主張はしない。'
+            '★本欄は【事後の記録】であって当日の判定には使えない。CPI等の当日反応は【同一日・同一チャートのセッション内前後比較】で見る'
+            '（発表直前に 30Y−10Y を読み、反応が落ち着いた頃に同じチャートで再度読み、その2点の差を取る）。'
+            '同じ日・同じ時間帯・同じベンダーなので時刻差もベンダー差も入らない。求めているのは当日の変化であって水準ではない。"'
         )
         lines.append("")
 

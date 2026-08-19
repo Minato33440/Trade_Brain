@@ -21,7 +21,7 @@ if str(_repo_root) not in sys.path:
 from configs.settings import ROOT_DIR, PNG_DATA_DIR, TEXT_LOG_DIR  # noqa: E402
 from src.chat import call_grok_chat_completions  # noqa: E402
 from src.history import load_conversation_history, save_conversation_history  # noqa: E402
-from src.market import fetch_trade_data  # noqa: E402
+from src.market import fetch_fred_snapshots, fetch_trade_data  # noqa: E402
 from src.news import get_gm_news  # noqa: E402
 from src.plotter import save_normalized_plot  # noqa: E402
 from src.regime import build_regime_snapshot  # noqa: E402
@@ -99,10 +99,21 @@ def main() -> int:
 
             df_all, pair_snapshots, multi_data_text = fetch_trade_data(days=30)
 
+            # ★FRED（インフレ補償）は Yahoo とは別フィード・別経路・公表ラグあり。
+            #   外部HTTPなので Yahoo より失敗しやすい。取得失敗は None ではなく
+            #   {"_error": ...} で返るので、snapshot 側で「欠損」と区別して出力される。
+            fred_snapshots = fetch_fred_snapshots(days=30)
+            if isinstance(fred_snapshots, dict) and "_error" in fred_snapshots:
+                print(
+                    "[--trade] FRED（インフレ補償）取得失敗: "
+                    + str(fred_snapshots["_error"]),
+                    file=sys.stderr,
+                )
+
             if pair_snapshots:
                 try:
                     regime_label, regime_summary, regime_yaml = build_regime_snapshot(
-                        start_date, end_date, pair_snapshots
+                        start_date, end_date, pair_snapshots, fred_snapshots
                     )
                     regime_path = PNG_DATA_DIR / f"{end_date:%Y_%m_%d}_snapshot.yaml"
                     ensure_dir_exists(regime_path.parent)
@@ -114,7 +125,40 @@ def main() -> int:
                         + f"[regime] {regime_label} ({regime_summary})"
                     )
                 except Exception as e:
-                    print(f"[--trade] レジーム判定/保存でエラー: {e}", file=sys.stderr)
+                    # ★握り潰さない（2026-08-09 の教訓）。
+                    #   以前はここが例外を吸って stderr にだけ出し、--trade は完走するのに
+                    #   snapshot が丸ごと欠落する経路があった（_curve_2s10s is not defined）。
+                    #   「欠損は気づかれる」は、欠損が欠損として見えるときにしか成り立たない。
+                    #   → LLM に渡すテキストにも明示し、失敗を記録した snapshot も書き出す。
+                    err = f"{type(e).__name__}: {e}"
+                    print(f"[--trade] レジーム判定/保存でエラー: {err}", file=sys.stderr)
+                    multi_data_text = (
+                        multi_data_text
+                        + "\n\n"
+                        + f"[regime] ERROR: {err}\n"
+                        + "（レジーム判定が失敗しています。この実行のレジーム／カーブ／"
+                        + "介入／インフレ補償の各ブロックは【存在しません】。"
+                        + "欠損として扱い、前回値で代用しないこと）"
+                    )
+                    try:
+                        regime_path = (
+                            PNG_DATA_DIR / f"{end_date:%Y_%m_%d}_snapshot.yaml"
+                        )
+                        ensure_dir_exists(regime_path.parent)
+                        regime_path.write_text(
+                            f"# {end_date:%Y_%m_%d}_snapshot.yaml\n"
+                            f"# ERROR: {err}\n"
+                            "# レジーム判定が失敗したため、このスナップショットは空です。\n"
+                            "# データ欠損ではなく【処理失敗】。前回値で代用しないこと。\n"
+                            "regime: null\n",
+                            encoding="utf-8",
+                        )
+                        print(
+                            f"[--trade] 失敗を記録したスナップショットを保存: {regime_path}",
+                            file=sys.stderr,
+                        )
+                    except Exception as e2:
+                        print(f"[--trade] 失敗記録の保存にも失敗: {e2}", file=sys.stderr)
 
             system_content = f"最新8ペア30日データ:\n{multi_data_text}\nこのデータを見てGM戦略を提案して。"
             if news_text:

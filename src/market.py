@@ -5,13 +5,22 @@ yfinance によるリアルタイム/ヒストリカルデータ取得、
 """
 from __future__ import annotations
 
+import csv
+import io
+import urllib.request
 from datetime import date, datetime, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import yfinance as yf
 
-from configs.settings import CORE_TICKERS, FULL_TICKERS, TRADE_PAIRS
+from configs.settings import (
+    CORE_TICKERS,
+    FRED_CSV_URL,
+    FRED_SERIES,
+    FULL_TICKERS,
+    TRADE_PAIRS,
+)
 from src.data_fetch import fetch_market_data
 
 
@@ -157,3 +166,91 @@ def fetch_trade_data(
             output_lines.append(f"{name}: データ取得失敗")
 
     return df_all, pair_snapshots, "\n".join(output_lines)
+
+
+# ── FRED 取得（★Yahooとは別ソース・別経路・公表ラグあり）────────────────
+# 2026-08-20 追加。インフレ補償（ブレークイーブン）の実測。
+# Yahoo 側の関数とは意図的に分離している。同じ経路に混ぜると
+# 「別フィードであること」がコード上見えなくなり、測定窓の不一致を焼き付ける。
+
+def fetch_fred_series(series_id: str, days: int = 30) -> "pd.Series":
+    """FRED の CSV を取得し、直近 days 日分の Series（index=日付, 値=float）を返す。
+
+    ★失敗時は例外を送出する（握り潰さない）。呼び出し側で捕捉し、
+      「データ欠損」ではなく「取得失敗」として区別可能な形で出すこと。
+
+    CSV仕様（2026-08-20 実測）:
+      - ヘッダは "observation_date,<SERIES_ID>"（"DATE" ではない）
+        → 列名に依存せず【位置】で読む
+      - 欠損は空フィールドで返る（祝日の行は存在し、値だけが空）
+        旧APIの "." 表記も念のため許容する
+      - 非営業日を含むため、窓は必ず【日付基準】で取る（位置指定 iloc[-7] は不可）
+    """
+    url = FRED_CSV_URL.format(series_id=series_id)
+    with urllib.request.urlopen(url, timeout=30) as resp:
+        raw = resp.read().decode("utf-8-sig")
+
+    reader = csv.reader(io.StringIO(raw))
+    header = next(reader, None)
+    if not header or len(header) < 2:
+        raise ValueError(f"FRED CSV のヘッダが不正: {series_id} -> {header!r}")
+
+    idx: List[pd.Timestamp] = []
+    vals: List[float] = []
+    for row in reader:
+        if len(row) < 2:
+            continue
+        d_raw, v_raw = row[0].strip(), row[1].strip()
+        # 欠損: 空文字 / "." / その他の非数値
+        if not v_raw or v_raw == ".":
+            continue
+        try:
+            v = float(v_raw)
+        except ValueError:
+            continue
+        try:
+            d = pd.Timestamp(d_raw)
+        except Exception:
+            continue
+        idx.append(d)
+        vals.append(v)
+
+    if not idx:
+        raise ValueError(f"FRED CSV に有効な観測値が無い: {series_id}")
+
+    ser = pd.Series(vals, index=pd.DatetimeIndex(idx), name=series_id).sort_index()
+    cutoff = ser.index[-1] - pd.Timedelta(days=days)
+    return ser.loc[ser.index >= cutoff]
+
+
+def fetch_fred_snapshots(days: int = 30) -> Dict[str, Any]:
+    """FRED_SERIES 全系列のスナップショットを返す。
+
+    成功時: {name: {"latest", "as_of", "prev_1w", "prev_30d"}}
+    失敗時: {"_error": "<例外クラス名>: <メッセージ>"}
+            ★None を返さないのは「データ欠損」と「取得失敗」を区別するため。
+              呼び出し側は _error を見て `null  # ERROR: ...` を出力する。
+
+    窓は fetch_trade_data の prev_1w と同方針で【日付基準】。
+    非営業日の行が無い／祝日値が空なので、位置指定では窓がずれる。
+    """
+    out: Dict[str, Any] = {}
+    try:
+        for name, series_id in FRED_SERIES.items():
+            ser = fetch_fred_series(series_id, days=days)
+            last_ts = ser.index[-1]
+
+            def _at_or_before(delta_days: int) -> Optional[float]:
+                prior = ser.loc[ser.index <= last_ts - pd.Timedelta(days=delta_days)]
+                return float(prior.iloc[-1]) if not prior.empty else None
+
+            out[name] = {
+                "series_id": series_id,
+                "latest": float(ser.iloc[-1]),
+                "as_of": last_ts.date().isoformat(),   # ★公表ラグがあるので必ず添える
+                "prev_1w": _at_or_before(7),
+                "prev_30d": _at_or_before(days),
+            }
+    except Exception as e:  # noqa: BLE001 - 分類のためにクラス名を残して伝播させる
+        return {"_error": f"{type(e).__name__}: {e}"}
+    return out

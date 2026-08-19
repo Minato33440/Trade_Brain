@@ -18,9 +18,17 @@ def build_regime_snapshot(
     start_date: date,
     end_date: date,
     snapshots: Dict[str, Dict[str, float]],
+    fred_snapshots: Optional[Dict[str, object]] = None,
 ) -> Tuple[str, str, str]:
     """
     8ペア30日データからレジームを簡易判定し、概要テキストとYAMLスナップショットを返す。
+
+    Args:
+        snapshots: Yahoo 側（当日終値ベース）の pair_snapshots
+        fred_snapshots: ★FRED 側（別フィード・公表ラグあり）の snapshots。
+            src.market.fetch_fred_snapshots() の戻り値をそのまま渡す。
+            取得失敗時は {"_error": "..."} が入っており、その旨を明示出力する。
+            None（未取得）と取得失敗は区別して扱う。
 
     Returns:
         (label, summary_text, yaml_text)
@@ -320,6 +328,68 @@ def build_regime_snapshot(
             "verdict": verdict,
         }
 
+    def _inflation_compensation() -> Optional[Dict[str, object]]:
+        """インフレ補償（ブレークイーブン）を FRED 実測から組み立てる。2026-08-20 追加。
+
+        年輪候補 8-2 の第二条件「金の上昇には ドル安 かつ BEが崩れないこと」の
+        BE を、代理ではなく本体で測るためのブロック。
+        代理は2回失敗している（10s30s=反例2件で棄却 / 原油=FOMC議事録が明示的に否定）。
+
+        ★このブロックは【判定しない】。
+          - _yields_regime() にも label にも、他のどの合成指標にも混ぜない
+            （US30Y を混ぜなかったのと同じ理由。サンプルがゼロの指標に判定させると、
+              判定が実測より先に固まる＝8-2 で2回やった失敗そのもの）
+          - 閾値も置かない。direction は符号のみ。「BEが崩れた」の水準は今決めない
+          - 原油との相関も自動計算しない。議事録の観測は1期間分の1事例で、
+            まだ自分で確かめていない。機械が相関を出すと検証済みの事実として扱われる
+
+        ★as_of を必ず添える。FRED は Yahoo より1日古い可能性が常にある。
+          黙って同じスナップショットに並べると測定窓の不一致を機械に焼き付ける。
+        """
+        if not fred_snapshots:
+            return None
+        if "_error" in fred_snapshots:
+            return {"_error": fred_snapshots["_error"]}
+
+        def _one(key: str) -> Optional[Dict[str, object]]:
+            info = fred_snapshots.get(key)
+            if not isinstance(info, dict):
+                return None
+            latest = info.get("latest")
+            if latest is None:
+                return None
+
+            def _delta_bp(base: object) -> Optional[float]:
+                if base is None:
+                    return None
+                return round((float(latest) - float(base)) * 100.0, 1)
+
+            d_1w = _delta_bp(info.get("prev_1w"))
+            d_30d = _delta_bp(info.get("prev_30d"))
+            # 方向は【週次Δの符号のみ】。閾値は未設定＝判定はしない
+            if d_1w is None:
+                direction = "unknown"
+            elif d_1w > 0:
+                direction = "widening"
+            elif d_1w < 0:
+                direction = "narrowing"
+            else:
+                direction = "flat"
+            return {
+                "series_id": info.get("series_id"),
+                "as_of": info.get("as_of"),
+                "pct": round(float(latest), 3),   # 水準は%表記（bpではない）
+                "change_bp_1w": d_1w,
+                "change_bp_30d": d_30d,
+                "direction_1w": direction,
+            }
+
+        be5 = _one("US5YBE")
+        be5y5y = _one("US5Y5YBE")
+        if be5 is None and be5y5y is None:
+            return None
+        return {"us5y_be": be5, "us5y5y_be": be5y5y}
+
     equities = _equities_regime()
     vol = _vol_regime()
     oil = _oil_regime()
@@ -329,6 +399,7 @@ def build_regime_snapshot(
     curve = _curve_spreads()
     intervention = _intervention_flag()
     relative = _relative_strength()
+    inflation_comp = _inflation_compensation()
 
     if vol == "spike" and oil == "surge":
         label = "Geopolitical Risk-Off + Energy Shock"
@@ -381,6 +452,26 @@ def build_regime_snapshot(
             f", jp_rs={relative['verdict']}"
             f"(fx_adj{relative['jp_vs_us_fx_adj_pt']:+.1f}pt)"
         )
+    # インフレ補償（BE）は【表示のみ】。ラベル判定には一切使わない。
+    # as_of を必ず併記する（FRED は別フィードで公表ラグがあり、他の値と同日ではない）
+    if inflation_comp is not None:
+        if "_error" in inflation_comp:
+            summary += f", inflation_comp=FETCH_FAILED({inflation_comp['_error']})"
+        else:
+            _b5 = inflation_comp.get("us5y_be")
+            _b55 = inflation_comp.get("us5y5y_be")
+            _parts: List[str] = []
+            if _b5:
+                _d = _b5["change_bp_1w"]
+                _ds = (f"Δ1w{_d:+.1f}bp" if _d is not None else "Δ1w n/a")
+                _parts.append(f"5yBE={_b5['pct']:.2f}%,{_ds}/{_b5['direction_1w']}")
+            if _b55:
+                _d = _b55["change_bp_1w"]
+                _ds = (f"Δ1w{_d:+.1f}bp" if _d is not None else "Δ1w n/a")
+                _parts.append(f"5y5yBE={_b55['pct']:.2f}%,{_ds}/{_b55['direction_1w']}")
+            _as_of = (_b5 or _b55 or {}).get("as_of")
+            if _parts:
+                summary += f", inflation_comp[as_of {_as_of}]({'; '.join(_parts)})"
 
     # YAMLスナップショット文字列を構築
     order = [
@@ -513,6 +604,47 @@ def build_regime_snapshot(
         lines.append(f"  jp_vs_us_nominal_pt: {relative['jp_vs_us_nominal_pt']}")
         lines.append(f"  jp_vs_us_fx_adj_pt: {relative['jp_vs_us_fx_adj_pt']}   # 本物の相対強度（FX調整後）")
         lines.append(f"  verdict: {relative['verdict']}   # structure_led=割安リレーティング主導 / currency_led=円安主導 / mixed")
+        lines.append("")
+
+    # ── インフレ補償（BE）: ★FRED＝Yahooとは別フィード・公表ラグあり（2026-08-20 追加）──
+    #    年輪候補 8-2 の第二条件「ドル安 かつ BEが崩れないこと」の BE を代理でなく本体で測る。
+    #    ★判定はしない（レジームラベル・複合スコアに混ぜない。閾値も未設定。原油との相関も出さない）。
+    if inflation_comp is not None:
+        lines.append("inflation_compensation:")
+        if "_error" in inflation_comp:
+            # ★「データ欠損」と「取得失敗」を区別する。黙って欠落させない（2026-08-09 の教訓）
+            lines.append(f"  # ERROR: {inflation_comp['_error']}（データ欠損ではなく取得失敗）")
+            lines.append("  status: fetch_failed")
+        else:
+            lines.append("  # FRED（Yahooとは別フィード）。公表ラグがあるため as_of を必ず確認すること。")
+            lines.append("  # 他ブロックの価格は当日、ここは as_of の日付。同日として比較しないこと。")
+            _be5 = inflation_comp.get("us5y_be")
+            _be55 = inflation_comp.get("us5y5y_be")
+            if _be5:
+                lines.append(f"  us5y_be_as_of: {_be5['as_of']}        # ★必須。他ブロックと不一致でも異常ではない")
+                lines.append(f"  us5y_be_pct: {_be5['pct']}                 # 5年BE＝近期インフレ補償（{_be5['series_id']}）。水準は%表記（bpではない）")
+                lines.append(f"  change_5ybe_bp_1w: {_be5['change_bp_1w']}           # 週次Δ（bp）")
+                lines.append(f"  change_5ybe_bp_30d: {_be5['change_bp_30d']}          # 30日Δ（bp）")
+                lines.append(f"  direction_5ybe_1w: {_be5['direction_1w']}      # 週次Δの符号のみ。閾値は未設定＝判定はしない")
+            if _be55:
+                lines.append(f"  us5y5y_be_as_of: {_be55['as_of']}")
+                lines.append(f"  us5y5y_be_pct: {_be55['pct']}               # 5年5年先フォワード＝長期インフレ期待アンカー（{_be55['series_id']}）")
+                lines.append(f"  change_5y5ybe_bp_1w: {_be55['change_bp_1w']}")
+                lines.append(f"  change_5y5ybe_bp_30d: {_be55['change_bp_30d']}")
+                lines.append(f"  direction_5y5ybe_1w: {_be55['direction_1w']}")
+            lines.append(
+                '  note: "年輪候補8-2の第二条件（金の上昇には ドル安 かつ BEが崩れないこと）を、代理でなく本体で測るブロック。'
+                '代理は2回失敗している——10s30s（反例2件で棄却）と原油（8/19公表の7/28-29 FOMC議事録が'
+                '「インフレ補償は原油高にほとんど動かず／近期のインフレ補償は6月FOMC後に大きく低下し、その後原油の急騰にもかかわらず小幅にしか戻らなかった」と明示して否定）。'
+                '★判定はしない: レジームラベルにも他のどの合成指標にも混ぜず、閾値も置かない（「BEが崩れた」の水準を今決めない）。'
+                'サンプルがゼロの指標に判定させると判定が実測より先に固まる＝8-2で2回やった失敗そのもの。8〜12週ためてから検討する。'
+                '★原油との相関は自動計算しない。議事録の観測は1期間分の1事例で、まだ自分で確かめていない。'
+                '機械が相関を出すと検証済みの事実として扱われる。まず生の系列をためる。'
+                '★2本ある理由: 近期(5Y BE)はエネルギー価格の影響を受けやすく、5y5yフォワードはそれを剥いだアンカー。'
+                '差が診断になる——5Y BEだけ動いて5y5yが動かない=市場は原油の影響を一時的と見ている / 両方動く=インフレ期待そのものが動いた。'
+                '8-2が問いたいのは後者なので1本だけでは判別できない。'
+                '★as_of は Yahoo 側より1日古いことが常にありうる（FREDの公表ラグ）。同日として比較しないこと。"'
+            )
         lines.append("")
 
     lines.append("snapshot_30d:")

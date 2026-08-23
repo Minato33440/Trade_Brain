@@ -140,4 +140,3 @@
 - charts.md: ./charts.md
 - trade_results.md: ./trade_results.md
 - Boss専用トレードレポート: ../../boss's-trade-Report/Gold-2026-06-12_to_08-07 .md
-</content>

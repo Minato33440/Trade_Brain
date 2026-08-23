@@ -140,4 +140,3 @@ tags: [gm_weekly, review, macro, portfolio, intervention]
 ---
 
 *Filed: 2026-08-02（日）— ClaudeCode 週末更新工程 / Boss: wr-2026-7-31.md（Rex検証メモ§5込み）＋添付チャート8点 / CFD: 7/31 0.5Lot利確@4,048（+1.45%）・残1Lot持越し / 機械: main.py --trade --news*
-</content>

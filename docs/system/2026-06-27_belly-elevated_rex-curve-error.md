@@ -387,4 +387,3 @@ wk01（2026-8-7）の distilled を書き終えたあと、ボスが `configs/se
 *Addendum filed: 2026-08-20 — ClaudeCode / 提起: Minato（実装指示書 docs/system/実装指示：インフレ補償（BE）の機械取得-2026-8-20.md）。実装: configs/settings.py・src/market.py・src/regime.py・configs/rex_chat.py・docs/WEEKLY_UPDATE_WORKFLOW.md*
 
 *Filed: 2026-06-27 — ClaudeCode（Rex運用） / 提起: Minato。docs/system/ 最初の年輪。*
-</content>

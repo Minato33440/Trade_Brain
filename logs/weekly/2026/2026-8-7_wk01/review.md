@@ -188,4 +188,3 @@ WTIだけが**週間-8.96%**と別ドライバー（**イラン=オマンのホ�
 
 *Filed: 2026-08-08（土）— ClaudeCode 週末更新工程 / Boss: wr-2026-8-7.md ＋ 専用トレードレポート ＋ 週末チャート10枚 /
 機械: main.py --trade --news（regime `Gold Bid` へ転換）/ X: hermes -p grok（2週連続取得成功）*
-</content>

@@ -82,4 +82,3 @@ TOP3要約（日本語）:
 ＝直近で再エスカ方向へ振れた可能性。両論を併記（創作回避）。
 
 — Filed: 2026-06-27 ClaudeCode 週末更新工程（生ログ: logs/weekly/x_headlines_raw.txt）
-</content>

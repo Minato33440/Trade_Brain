@@ -28,5 +28,3 @@ BTC/USD: 62896.473 → 59721.676 （-3174.8／下落相場継続・boss 56,869�
 - JP225はsnapshot8ペアに含まれない。boss市況は日経=米株より明確に強い（PER 21→18倍・カップウィズハンドル・72,600超えからの上昇期待）と評価も、金曜終値の実測値はboss提供になし（創作回避）。
 - 機械regimeは「Equities Down（equities=down / yields=rising）」＝wk03「Neutral（equities=up / yields=falling）」から株安・金利上昇方向へ反転。boss前方視点は「レンジ相場・戻り売り中心、ただし日本株の半導体/メモリ関連と金は押し目買い、BTCは戻り売り」＝両論併記。
 - VIX 18.41で18をわずかに上抜け＝Add risk gate再閉鎖（wk03 16.4で再開→wk04で再び閉）。
-</content>
-</invoke>

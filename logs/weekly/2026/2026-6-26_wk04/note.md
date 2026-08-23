@@ -70,4 +70,3 @@
 
 - charts.md: ./charts.md
 - trade_results.md: ./trade_results.md
-</content>

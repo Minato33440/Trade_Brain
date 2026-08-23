@@ -218,4 +218,3 @@ Boss市況・--news とはレイヤーを分けて扱う。Grok自身も末尾�
 キーワードは「**bad news is good news**」「**データ次第（Warsh）**」「**スタグフレーション警戒は残るが市場はまず金融条件緩和を買った**」。
 
 — Filed: 2026-08-08 ClaudeCode 週末更新工程
-</content>

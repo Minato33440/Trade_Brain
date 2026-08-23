@@ -114,6 +114,160 @@ snapshot:
     coord_stage: executed
     note: "据置。158.940 < watch_zone 161.0"
 
+# ── ポートフォリオ台帳（2026-08-23 追加 / handoff 2026-08-23_instruction_portfolio-purpose-field.md）──
+# ★このブロックは【記述用】であって判定材料ではない。
+#   regime label・複合スコア・decision_bias には入れない。
+# ★purpose は統制語彙のみ（hedge / capital / proxy / core / unset）。自由記述にしない。
+# ★★推定で purpose を埋めない。unset は欠損として見えるが、間違った purpose は二度と気づかれない。
+#   このフィールドは「誤読を防ぐ」ために作るものなので、推定値を入れた瞬間に目的が反転する。
+# ★過去週の meta.yaml には遡って追加しない（当時この情報は台帳に存在しなかった）。本週から前向きに適用。
+portfolio_snapshot_20260823:
+  as_of: "2026-08-23T09:18+09:00"
+  source: "SBI証券 資産残高スクリーンショット"
+  total_jpy: 5020238
+  valuation_pl_jpy: 416720
+  valuation_pl_pct: 9.05
+  buying_power_jpy: 265596      # 預り金132,315 + スイープ133,281
+  filled_by_boss_statement:
+    date: 2026-08-23
+    count: 3
+    items: ["425A(特定/NISA両方)=hedge", "200A=proxy→285A", "CFD XAUUSD=capital（trade_results側に記録）"]
+    note: "★この3件以外の purpose はすべて unset。推定で埋めていない"
+  holdings:
+    # ── purpose 確定分（Boss明言・2026-08-23）────────────────
+    - code: "200A"
+      name: "NEXT FUNDS 日経半導体株指数連動型上場投信"
+      account: "特定"
+      units: 68
+      value_jpy: 300288
+      purpose: proxy                      # ★Boss確認済（2026-08-23）
+      proxy_for: "285A キオクシアホールディングス"
+      proxy_ratio_pct: 28.80              # 2026-08-20時点の組入比率
+      proxy_reason: "単元100株=約5,294,694円（総資産の105%）で直接取得不可"
+      judgment_frame: unset
+      note: "キャリー71.2%は東エレ13.21/アドバンテスト12.78/ディスコ6.59等。上位3で54.79%、上位10で83.63%の実質3銘柄バスケット"
+
+    - code: "425A"
+      name: "グローバルX ゴールドETF"
+      account: "特定+NISA合算"
+      units: 2750                          # 特定750 + NISA2,000
+      value_jpy: 1064800                   # 特定290,400 + NISA774,400
+      purpose: hedge                      # ★Boss確認済（2026-08-23）
+      hedge_against: "インフレ"
+      judgment_frame: permanent
+      note: "キャピタルゲイン狙いではない。ドローダウンを通す前提。キャピタルはCFDのみ。※特定(+18,150)とNISA(-13,600)で符号が分かれるのは取得単価363 vs 394のため"
+
+    # ── purpose 未確認（★推定禁止。unset のまま可視化する）──────
+    - code: "GDX"
+      name: "ヴァンエック 金鉱株ETF"
+      account: "特定(米国株)"
+      units: 15
+      value_jpy: 245295
+      purpose: unset                      # ★推定禁止
+      judgment_frame: unset
+      note: "★『ポートフォリオのゴールド』に含まれるか不明。金鉱株は地金と別物（高ベータの株式）。hedge と決めつけない"
+
+    - code: "2243"
+      name: "グローバルX 半導体 ETF"
+      account: "NISA"
+      units: 174
+      value_jpy: 777780
+      purpose: unset
+      judgment_frame: unset
+      note: "★名前は『半導体』だが実体は米国半導体（NVDA11.80/MU10.04/AVGO8.87…上位10で69.21%、日本株ゼロ）。組入は2026-06-30時点で約2か月古い。為替ヘッジ有無 未確認"
+
+    - code: "6954"
+      name: "ファナック"
+      account: "特定"
+      units: 100
+      value_jpy: 603500
+      purpose: unset
+      judgment_frame: unset
+
+    - code: "2638"
+      name: "グローバルX ロボティクス&AI日本株 ETF"
+      account: "NISA"
+      units: 193
+      value_jpy: 513187
+      purpose: unset
+      judgment_frame: unset
+
+    - code: "7011"
+      name: "三菱重工業"
+      account: "特定"
+      units: 100
+      value_jpy: 393200
+      purpose: unset
+      judgment_frame: unset
+
+    - code: "SPCX"
+      name: "スペース エクスプロレーション テクノ A"
+      account: "特定(米国株)"
+      units: 13
+      value_jpy: 283170
+      purpose: unset
+      judgment_frame: unset
+      note: "未確認（削減検討中）。秋（8〜10月）に7%トランシェのロックアップ解除、12/8満了。為替ヘッジ有無 未確認"
+
+    - code: "2847"
+      name: "グローバルX 新成長インフラ日本株 ETF"
+      account: "NISA"
+      units: 80
+      value_jpy: 240640
+      purpose: unset
+      judgment_frame: unset
+      note: "★名前は『インフラ』だが実体は物流18.59%＋通信/IT23.17%で電力は5.99%のみ。半導体色30.49%"
+
+    - code: "1655"
+      name: "iシェアーズ S&P500 米国株 ETF"
+      account: "NISA"
+      units: 270
+      value_jpy: 236547
+      purpose: unset
+      judgment_frame: unset
+      note: "為替ヘッジ有無 未確認"
+
+    - code: "513A"
+      name: "グローバルX 防衛テック日本株 ETF"
+      account: "特定"
+      units: 100
+      value_jpy: 84000
+      purpose: unset
+      judgment_frame: unset
+
+    - code: "586A"
+      name: "NEXT FUNDS 日経エンタメ"
+      account: "特定"
+      units: 50
+      value_jpy: 12235
+      purpose: unset
+      judgment_frame: unset
+
+  currency_exposure:
+    usd_assets_jpy: 1542792     # 2243 + SPCX + GDX + 1655
+    usd_pct_of_total: 30.7
+    note: "★Boss週末レポートは『9月上旬から円高相場に転換する前提は生きている』。**為替観とポートフォリオの通貨構成が逆を向いている**。2243・1655 の為替ヘッジ有無は未確認"
+
+  lookthrough_ref: "logs/weekly/2026/2026-8-21_wk03/charts/etf_lookthrough_2026-08-23.md"
+
+  cfd_note: "★CFD建玉は証券口座外のため本ブロックには入らない。XAUUSD 残1.0 Lot（加重平均4,404.50）の purpose: capital と撤退条件は trade_results.md 側に記録済。★**金の総エクスポージャーを見るときは両方を足す必要がある／ただし処し方は別**（425A=hedge はドローダウンを通す前提・原則持たない撤退条件／CFD=capital は撤退条件を持つ）。片方だけ見て判断しないこと"
+
+  unset_followup:
+    note: "★以下は Boss に確認すべき項目。空欄を放置せず可視化する（note.md 末尾にも転記）"
+    items:
+      - "GDX ヴァンエック金鉱株ETF（245,295円）— ★『ポートフォリオのゴールド』に含まれるか不明。金鉱株は地金と別物"
+      - "2243 GX半導体（777,780円）"
+      - "6954 ファナック（603,500円）"
+      - "2638 GXロボ&AI日株（513,187円）"
+      - "7011 三菱重（393,200円）"
+      - "SPCX（283,170円・削減検討中）"
+      - "2847 GX成長インフラ日株（240,640円）"
+      - "1655 iS S&P500（236,547円）"
+      - "513A GX防衛テック日株（84,000円）"
+      - "586A NF日経エンタメ（12,235円）"
+      - "★2243・1655 の為替ヘッジ有無（USD30.7% と『9月から円高』観の不一致に直結）"
+      - "★2243 の最新組入（現在の参照は2026-06-30時点で約2か月古い）"
+
 signals:
   - bessent_long_bond_buyback_decayed_in_one_day: "★**今週の骨格**。8/20 ベセント財務長官『**長期国債の買い入れを倍のペースに**』。木曜午前は長期金利低下→ドル安・円高・株高に振れたが、**効果が1日で剥落**した。Boss の整理は『低金利→借入増→インフレ再燃→FRBが結局利上げ圧力→長期金利が戻る』という**連立方程式の破綻**で、**ドル円・US10Y・ゴールドの矛盾したシグナルの震源**。★X側は**調達側の構造**を足している——@vkrollup『長期買い入れを少なくとも倍増（1オペ$4B以上）、オフザラン10-30年、**財源は短期債＝疑似ツイスト**』、@steve_hanke『この手法は愚か者のゲーム、**結局は短期債の増発で賄っている**』。同じ現象を負債側から見た形で Boss の連立方程式と方向は一致する。★Rex追記§D は『FIMAレポで調達＝長期金利を上げられない』という**8月上旬に推定していた制約が、8/20 に当事者の口から明言された**＝推定が確認に変わった、と位置づけている。**政策は自己打ち消し的**で、長期金利を下げる手段が、その手段自体によってインフレ期待を押し上げ金利を戻す。→『**発表効果は数営業日で剥落する**』という一般則になりうる（事前登録案 P9・Boss承認待ち）"
   - ai_semis_growth_to_shareholder_return_phase: "★**もう一つの軸**。8/20 のウォルマート決算ショック（米消費減速懸念）で NYダウ **-1.32%** / ナス **-1.0%** / S&P **-0.87%** と急落した中、**SOX指数は -0.53% に留まった**。理由は**サムスンが SKハイニクスに続き FCF の50%（100兆ウォン）を株主還元に回すと発表**したこと。→ **AI半導体スーパーサイクルは『成長』から『還元』フェーズに軸足が移りつつある**（Boss）。村田製作所の資料では**2030年頃からさらに需要拡大**の読みもあり、**押し目は拾う地合い**という整理。★口座側でも **GX半導体（2243）が +311,460円で単独最大の牽引役**として同じ方向に効いている"

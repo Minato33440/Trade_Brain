@@ -1,0 +1,119 @@
+# 2026_08_23_snapshot.yaml
+
+date:
+  start: 2026-07-24
+  end: 2026-08-23
+
+panel:
+  Risk: [US100, JP225, BTC/USD]
+  Fear: [VIX]
+  Inflation: [WTI, XAU/USD]
+  Rates: [US3M, US5Y, US10Y, US30Y]
+
+regime:
+  label: "Gold Bid"
+  equities: up
+  volatility: normal
+  oil: range
+  gold: bid
+  crypto: strong
+  yields: rising
+
+curve_spreads:
+  # renamed 2026-08-09: curve_2s10s → curve_spreads / change_bp → change_bp_30d / change_3m10s_bp → change_3m10s_bp_30d
+  #   旧名は 2026-08-09 以前の distilled・週次アーカイブに残っている。同名の別指標ではなく同一指標の旧名。
+  #   （旧 curve_2s10s は中身が 5s10s/3m10s/belly/10s30s で 2s10s を1つも含まなかったための改名）
+  spread_bp: 31.4            # 5s10s（US10Y − US5Y=^FVX）※符号は市場慣行の【長期−短期】
+  change_bp_30d: 6.1
+  shape: bull_steepening            # 5s10s の質
+  inverted: false
+  spread_3m10s_bp: 102.8      # 3m10s（US10Y − US3M=^IRX）=Fed重視の景気後退カーブ・逆イールド主ゲージ
+  change_3m10s_bp_30d: 15.4
+  shape_3m10s: bull_steepening
+  spread_3m5s_bp: 71.4
+  belly_premium_bp: 21.3      # 5Yの直線補間からの突出度（+=belly elevated/hump）
+  structure: belly_elevated      # front=政策(3M)/belly=5Y/long=growth(10Y) の形
+  recession_3m10s: positive      # positive/near_inversion(<25bp)/inverted
+  points_pct: {m3: 3.71, y5: 4.424, y10: 4.738, y30: 5.276}
+  spread_10s30s_bp: 53.8      # 10s30s（US30Y=^TYX − US10Y）=超長期のタームプレミアム
+  change_10s30s_bp_1w: -3.1      # 週次Δ（7暦日前以前の最後の終値が基準）
+  change_10s30s_bp_30d: 5.5      # 30日Δ（構造的ドリフト）
+  direction_10s30s_1w: narrowing      # 【週次Δ】の符号のみ（widening/narrowing/flat）。閾値は未設定＝判定はしない
+  note: "スプレッドの符号はすべて市場慣行の【長期−短期】（2s10sが+45bpなら10Yが2Yより45bp上）。5s10s（US10Y−US5Y=^FVX）は5年がカーブ中腹のため、front=政策(3M)が belly(5Y) より低い順イールド環境では最もフラットな区間＝5s10sのbear_flatteningは逆イールド接近を過大評価しうる。景気後退の主ゲージは 3m10s（spread_3m10s_bp）で読む。structure=belly_elevated は政策ターミナル織り込みの瘤＝front低・belly突出・long growth。shape*は短期↑/長期↓のフラット化の質、recession_3m10s が near_inversion/inverted に入ったら本格警戒。10s30s は【水準・Δ(週次/30日の2窓)・方向(週次Δの符号のみ)】を出すだけでレジームラベル・複合スコアには混ぜない。閾値を置かないのはサンプルが4営業日分しかないため。8〜12週ためてから閾値の検討を行う。同じスプレッドでも窓が違えば符号が逆になりうる（30日では拡大・直近1週では縮小 等）ので、必ず窓を明示して引用すること。★本欄（機械のclose-to-close系列）が 10s30s の正本。手読みの値と1本の時系列に混ぜない。理由は【時刻とベンダーの二重の不一致】。手読みはスクショを撮った時刻に依存し（NY引け/ロンドン午後が混在しうる）、ベンダーも異なる。日次変動が1〜3bpの指標では、変化の大半が時刻差になりうる。※この2つの誤差源はまだ分離できていない（純粋なベンダー差の比較は同一時刻同士の n=1 のみ）。分離できれば併用可能になる余地は残る。機械側は毎日同じ時刻・同じベンダーで自動的に積み上がるため、8〜12週の計数はこちらで数える。読み筋（人間側・★未検証）: 拡大=タームプレミアム／ソブリン信用の象限で金に追い風、縮小=純粋なディスインフレで金には何も来ない。2026-08-09時点で機械系列による裏づけは無い（7営業日で符号一致5/7だが、金が週で最も上げた8/5に10s30sは縮小）。機構の仮説として保持し、実測の主張はしない。★本欄は【事後の記録】であって当日の判定には使えない。CPI等の当日反応は【同一日・同一チャートのセッション内前後比較】で見る（発表直前に 30Y−10Y を読み、反応が落ち着いた頃に同じチャートで再度読み、その2点の差を取る）。同じ日・同じ時間帯・同じベンダーなので時刻差もベンダー差も入らない。求めているのは当日の変化であって水準ではない。"
+
+intervention_watch:
+  pair: USD/JPY
+  level: 158.94
+  zone: calm            # >=watch_zone(161.0) で watch
+  upper_alert: false   # >=upper_alert_level(162.674) で true
+  imf_ammo_remaining: 0
+  imf_window_note: "エピソード3は7/30(木)起点で3営業日=7/31(金)・8/3(月)まで同一回。8/4(火)以降の新規介入は4回目=free-floating分類を逸脱。1回目が6ヶ月ルックバックから外れるのは10月末"
+  us_participation: "2026-07-31 米財務省が複数行に『介入の可能性、今後の行動に備えよ』と通告（ロイター）。NY連銀が財務省に代わりGS/MS経由で【ユーロを売って円を買う】直接介入（FT、2011年3月以来）。IMF3エピソード枠が縛るのは日本の分類であって米財務省の行動ではない"
+  last_meeting: "2026-07-30/31 協調介入実施（三村財務官『米国から心理的支援を超える支援』／ベッセント財務長官『円は非常に過小評価』）"
+  coord_stage: executed   # 予兆→秒読み→着弾の4段（手動更新）
+  coord_stage_idx: 3            # 0=unconfirmed..3=executed
+  coord_ladder: [unconfirmed, meeting_held, rate_check_detected, executed]
+  coord_stage_note: "予兆(meeting_held)→秒読み(rate_check_detected)→着弾(executed)。2026-07-30にmeeting_held→executedへ2段跳躍。次の焦点は『撃てない期間に市場がどこまで戻すか』"
+  down_target: 153.9
+  asymmetry: "IMF残弾は0だが、FIMAにより火力制約は消え、米国は『躊躇しない』と明言。加えて日米2年金利差は自律的に縮小中（2026-08-03時点 米2Y 4.262% / 日2Y 1.508% = 275.4bp、前週比-4.7bp）。⇒『枠切れ＝無防備』も『8/4以降はドル買い復帰』も前提が弱い。日付でなく『当局が撃たないことを価格が証明した後』（161回復して叩かれない）を待つ"
+  history: "2026-01 協調rate check=10営業日で2,100pips急落 / 2026-07-30 協調介入=163→158（-3.3%、ドルは2023年1月以来最大の日次下落）"
+  judgment_note: "単独/協調はNY連銀rate check確認で判定（毎朝チェック）。介入は経験則上24:30以降に入ったことがなく円安は深夜帯。財務省の介入実績公表は8月末"
+
+relative_strength:
+  jp225_jpy_30d: 2.17
+  jp225_usd_30d: 5.32        # JP225/USDJPY のΔ（通貨効果を除去）
+  currency_effect_pt: -3.14   # 通貨効果（+=円安が嵩上げ / -=円高が押し下げ）
+  us100_30d: 4.2
+  jp_vs_us_nominal_pt: -2.02
+  jp_vs_us_fx_adj_pt: 1.12   # 本物の相対強度（FX調整後）
+  verdict: mixed   # structure_led=割安リレーティング主導 / currency_led=円安主導 / mixed
+
+inflation_compensation:
+  # FRED（Yahooとは別フィード）。公表ラグがあるため as_of を必ず確認すること。
+  # 他ブロックの価格は当日、ここは as_of の日付。同日として比較しないこと。
+  us5y_be_as_of: 2026-08-21        # ★必須。他ブロックと不一致でも異常ではない
+  us5y_be_pct: 2.34                 # 5年BE＝近期インフレ補償（T5YIE）。水準は%表記（bpではない）
+  change_5ybe_bp_1w: 10.0           # 週次Δ（bp）
+  change_5ybe_bp_30d: 4.0          # 30日Δ（bp）
+  direction_5ybe_1w: widening      # 週次Δの符号のみ。閾値は未設定＝判定はしない
+  us5y5y_be_as_of: 2026-08-21
+  us5y5y_be_pct: 2.34               # 5年5年先フォワード＝長期インフレ期待アンカー（T5YIFR）
+  change_5y5ybe_bp_1w: 4.0
+  change_5y5ybe_bp_30d: 8.0
+  direction_5y5ybe_1w: widening
+  note: "年輪候補8-2の第二条件（金の上昇には ドル安 かつ BEが崩れないこと）を、代理でなく本体で測るブロック。代理は2回失敗している——10s30s（反例2件で棄却）と原油（8/19公表の7/28-29 FOMC議事録が「インフレ補償は原油高にほとんど動かず／近期のインフレ補償は6月FOMC後に大きく低下し、その後原油の急騰にもかかわらず小幅にしか戻らなかった」と明示して否定）。★判定はしない: レジームラベルにも他のどの合成指標にも混ぜず、閾値も置かない（「BEが崩れた」の水準を今決めない）。サンプルがゼロの指標に判定させると判定が実測より先に固まる＝8-2で2回やった失敗そのもの。8〜12週ためてから検討する。★原油との相関は自動計算しない。議事録の観測は1期間分の1事例で、まだ自分で確かめていない。機械が相関を出すと検証済みの事実として扱われる。まず生の系列をためる。★2本ある理由: 近期(5Y BE)はエネルギー価格の影響を受けやすく、5y5yフォワードはそれを剥いだアンカー。差が診断になる——5Y BEだけ動いて5y5yが動かない=市場は原油の影響を一時的と見ている / 両方動く=インフレ期待そのものが動いた。8-2が問いたいのは後者なので1本だけでは判別できない。★as_of は Yahoo 側より1日古いことが常にありうる（FREDの公表ラグ）。同日として比較しないこと。"
+
+snapshot_30d:
+  "USD/JPY":
+    latest: 158.940
+    change_pct: -2.99
+  "US100":
+    latest: 29308.859
+    change_pct: 4.20
+  "JP225":
+    latest: 66016.359
+    change_pct: 2.17
+  "XAU/USD":
+    latest: 4624.100
+    change_pct: 13.68
+  "WTI":
+    latest: 87.060
+    change_pct: -2.52
+  "US3M":
+    latest: 3.710
+    change_pct: -2.50
+  "US5Y":
+    latest: 4.424
+    change_pct: -0.05
+  "VIX":
+    latest: 15.130
+    change_pct: -18.57
+  "US10Y":
+    latest: 4.738
+    change_pct: 1.26
+  "US30Y":
+    latest: 5.276
+    change_pct: 2.21
+  "BTC/USD":
+    latest: 78335.188
+    change_pct: 22.21

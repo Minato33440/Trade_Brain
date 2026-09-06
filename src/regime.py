@@ -620,7 +620,10 @@ def build_regime_snapshot(
     _ALWAYS_OFF_CALENDAR = {"BTC/USD"}
     _as_ofs: Dict[str, str] = {}
     _off_cal: Dict[str, str] = {}
-    for _n, _i in (snapshots or {}).items():
+    # ★ "_" 始まりはペアではなくメタ情報（_value_revisions 等）。走査対象から外す。
+    _pairs_only = {k: v for k, v in (snapshots or {}).items()
+                   if not k.startswith("_") and isinstance(v, dict)}
+    for _n, _i in _pairs_only.items():
         _a = (_i or {}).get("as_of")
         if not _a:
             continue
@@ -640,9 +643,22 @@ def build_regime_snapshot(
         lines.append("  note: \"★★日付が割れた週は、ペアをまたぐ差分（カーブ・スプレッド・相対強度）が【異なる時点の引き算】になる。2026-08-28 は金利4本だけが講演前の 8/27 で、機械のカーブは当週最大のイベントを1本も織り込んでいなかった。割れているときは、どのペアがどの日付かを明示せずに差分を引用しないこと。\"")
     for _d in sorted(_off_cal, reverse=True):
         lines.append(f"  off_calendar_{_d}: [{', '.join(_off_cal[_d])}]   # 24/7銘柄。他と日付が違うのは既知・異常ではない")
-    _missing = [n for n, i in (snapshots or {}).items() if _num((i or {}).get("latest")) is None]
+    _missing = [n for n, i in _pairs_only.items() if _num((i or {}).get("latest")) is None]
     if _missing:
         lines.append(f"  missing: [{', '.join(_missing)}]            # ★取得失敗またはNaN。判定は unknown に落ちる")
+    # ★2026-09-06: 【日付は正しいのに値が変わった】ケース。H-4 では捕まえられない層。
+    #   台帳（data/observed_values.json）との照合で出た差分をそのまま載せる。
+    _revs = (snapshots or {}).get("_value_revisions") or []
+    if _revs:
+        lines.append("  value_revisions:            # ★★確定済みの日付の値が、前回取得時から変わっている")
+        for _r in _revs:
+            lines.append(
+                f"    - {{pair: {_r['pair']}, date: {_r['date']}, "
+                f"first: {_r['first']}, now: {_r['now']}, "
+                f"delta: {_r['delta']}, delta_pct: {_r['delta_pct']}, "
+                f"first_seen: {_r.get('first_seen')}}}"
+            )
+        lines.append("    note: \"★日付は正しいのに値が変わった＝H-4（per-pair as_of）では捕まえられない層。初回値は台帳側で保持しており上書きしていない。ライブ気配による最終バーの上書き、あるいは継続限月のロールが疑われる（2026-09-06 の GC=F が初例）。値を使う前に、どちらの観測を採るかを決めること。\"")
     lines.append("")
 
     lines.append("date:")

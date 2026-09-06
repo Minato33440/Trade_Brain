@@ -7,8 +7,10 @@ from __future__ import annotations
 
 import csv
 import io
+import json
 import urllib.request
 from datetime import date, datetime, timedelta
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
@@ -119,6 +121,101 @@ def format_snapshot(snapshot: Dict[str, Dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
+# ── 確定値の改訂検出（★2026-09-06 追加 / Rex提案・Boss 2026-09-06）──────────
+#
+# ★これまでに塞いだ層と、塞げていなかった層:
+#
+#   | 故障 | 症状 | 検出手段 |
+#   |---|---|---|
+#   | 2026-08-28 | 日付が割れる | H-4（per-pair as_of） |
+#   | 2026-08-28 | NaN が誤ラベル化 | H-3（build_regime_snapshot._num()） |
+#   | **2026-09-06** | ★**日付は正しいが値が変わる** | ★**本ブロック** |
+#
+# 2026-09-06、`GC=F` が同じ 2026-09-04 の終値として1時間以内に
+#   4,429.800 → 4,476.600（+46.80 / +1.06%）
+# を返した。**日付は両方とも正しい。値だけが変わった。**
+# `fast_info.lastPrice` が 4,476.60 と一致していたため、
+# **ライブ気配が最終バーを上書きしている**のが濃厚
+# （★ロールなら価格差はもっと不規則になるはずで、+46.80 が当日の値動きの範囲に
+#   収まっているのが傍証。⚠️ただし断定はしない）。
+#
+# ★**確定した値が後から変わるので、一度取った値と後で取った値を照合しないと分からない。**
+# → (ticker, date) をキーに初回観測値を台帳へ持ち、次回取得時に突き合わせる。
+#
+# ★設計上の要点:
+#   1) **初回値は絶対に上書きしない。** 改訂は revisions に積む（遡及編集の禁止と同じ扱い）。
+#   2) ★**未確定の足は台帳に入れない。** 当日（および将来日）のバーは動いて当たり前で、
+#      入れると毎回改訂が出る——**常時点灯する条件は警告にしない**（H-4 で 24/7 銘柄を
+#      off_calendar に分けたのと同じ一般則。Boss 2026-09-06）。
+#   3) 浮動小数の表現ゆらぎで誤検知しないよう相対許容差を置く。
+
+_VALUE_LEDGER_PATH = Path(__file__).resolve().parents[1] / "data" / "observed_values.json"
+_REVISION_RTOL = 1e-6
+
+
+def _load_value_ledger() -> Dict[str, Any]:
+    try:
+        return json.loads(_VALUE_LEDGER_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+    except Exception:
+        # ★壊れていても取得は止めない。台帳は安全網であって取得の前提ではない。
+        return {}
+
+
+def _save_value_ledger(ledger: Dict[str, Any]) -> None:
+    try:
+        _VALUE_LEDGER_PATH.parent.mkdir(parents=True, exist_ok=True)
+        body = json.dumps(ledger, ensure_ascii=False, indent=1, sort_keys=True)
+        _VALUE_LEDGER_PATH.write_text(body + chr(10), encoding="utf-8")
+    except Exception:
+        pass
+
+
+def record_and_check_values(
+    name: str, series: pd.Series, ledger: Dict[str, Any], seen_at: str
+) -> List[Dict[str, Any]]:
+    """(name, date) ごとの終値を台帳と突き合わせ、変わっていたら改訂として返す。
+
+    ★確定済みの足（当日より前）だけを対象にする。当日の足は動いて当たり前なので、
+      入れると毎回改訂が出て **警告が常時点灯し、読まれなくなる**。
+    """
+    today = date.today()
+    revisions: List[Dict[str, Any]] = []
+    for ts, val in series.items():
+        d = ts.date()
+        if d >= today:
+            continue                      # ★未確定の足は台帳に入れない
+        v = float(val)
+        if v != v:                        # NaN は値ではない
+            continue
+        key = name + "|" + d.isoformat()
+        rec = ledger.get(key)
+        if rec is None:
+            ledger[key] = {"value": v, "first_seen": seen_at}
+            continue
+        base = float(rec["value"])
+        if abs(v - base) <= max(_REVISION_RTOL * abs(base), 1e-9):
+            continue
+        rev = {
+            "seen": seen_at,
+            "value": v,
+            "delta": round(v - base, 6),
+            "delta_pct": round((v / base - 1.0) * 100.0, 4) if base else None,
+        }
+        rec.setdefault("revisions", []).append(rev)   # ★初回値は上書きしない
+        revisions.append({
+            "pair": name,
+            "date": d.isoformat(),
+            "first": base,
+            "first_seen": rec.get("first_seen"),
+            "now": v,
+            "delta": rev["delta"],
+            "delta_pct": rev["delta_pct"],
+        })
+    return revisions
+
+
 def fetch_trade_data(
     days: int = 30,
 ) -> Tuple[pd.DataFrame, Dict[str, Dict[str, float]], str]:
@@ -131,6 +228,9 @@ def fetch_trade_data(
 
     df_all = pd.DataFrame()
     pair_snapshots: Dict[str, Dict[str, float]] = {}
+    ledger = _load_value_ledger()
+    seen_at = datetime.now().isoformat(timespec="minutes")
+    all_revisions: List[Dict[str, Any]] = []
     output_lines = [
         f"取得期間: {start_date} 〜 {end_date} (JST基準)",
         "",
@@ -166,6 +266,9 @@ def fetch_trade_data(
             output_lines.append(
                 f"{name}: 最新 {latest:.3f} (30日変化: {change_30d:+.2f}%) [as_of {as_of}]"
             )
+            all_revisions.extend(
+                record_and_check_values(name, data, ledger, seen_at)
+            )
             df_all[name] = data
             pair_snapshots[name] = {
                 "latest": latest,
@@ -179,6 +282,19 @@ def fetch_trade_data(
             }
         else:
             output_lines.append(f"{name}: データ取得失敗")
+
+    _save_value_ledger(ledger)
+    if all_revisions:
+        # ★黙って直さない。確定済みの日付の値が変わったこと自体を出力に出す。
+        output_lines.append("")
+        output_lines.append("★★ 確定済みの値が変わった（台帳との照合）:")
+        for r in all_revisions:
+            output_lines.append(
+                f"  {r['pair']} {r['date']}: {r['first']} -> {r['now']}"
+                f" ({r['delta']:+} / {r['delta_pct']:+}%)"
+                f"  初回観測 {r['first_seen']}"
+            )
+        pair_snapshots["_value_revisions"] = all_revisions  # type: ignore[assignment]
 
     return df_all, pair_snapshots, "\n".join(output_lines)
 

@@ -145,15 +145,26 @@ def fetch_trade_data(
             # 週次基準点: 最新営業日から7暦日前【以前】の最後の終値。
             # 位置指定(-6)ではなく日付基準にするのは、祝日で営業日数が週により変わるため。
             prev_1w: Optional[float] = None
+            prev_1w_as_of: Optional[str] = None
             try:
                 cutoff = data.index[-1] - pd.Timedelta(days=7)
                 prior = data.loc[:cutoff]
                 if not prior.empty:
                     prev_1w = float(prior.iloc[-1])
+                    prev_1w_as_of = str(prior.index[-1].date())
             except Exception:
                 prev_1w = None
+                prev_1w_as_of = None
+            # ★2026-09-06 追加（H-4 / Boss 2026-09-06「実装推奨」）— per-pair の as_of。
+            #   2026-08-28 は Yahoo の欠測で金利4本だけが 8/27、US100 は NaN という
+            #   【ペアごとに日付が割れた】snapshot になったが、snapshot 側に per-pair の
+            #   日付が無かったため、その事実は目視で個別に取りに行くまで見えなかった。
+            #   ★実害が出たのは「発見が遅れた」ことであって、値が間違っていたことではない。
+            #   日付を値と一緒に持てば、割れたその週に機械の出力だけで気づける。
+            as_of = str(data.index[-1].date())
+            first_as_of = str(data.index[0].date())
             output_lines.append(
-                f"{name}: 最新 {latest:.3f} (30日変化: {change_30d:+.2f}%)"
+                f"{name}: 最新 {latest:.3f} (30日変化: {change_30d:+.2f}%) [as_of {as_of}]"
             )
             df_all[name] = data
             pair_snapshots[name] = {
@@ -161,6 +172,10 @@ def fetch_trade_data(
                 "first": first,        # 30日前の始値（カーブの30日Δ算出に使用）
                 "prev_1w": prev_1w,    # 7暦日前以前の最後の終値（カーブの週次Δ算出に使用）
                 "change_30d": change_30d,
+                # ★以下3つが H-4。値と測定日を必ず一緒に持ち回る。
+                "as_of": as_of,                 # latest の実日付
+                "first_as_of": first_as_of,     # 30日Δの基準日
+                "prev_1w_as_of": prev_1w_as_of, # ★週次Δの基準日。7暦日前【以前】なので週により動く
             }
         else:
             output_lines.append(f"{name}: データ取得失敗")
@@ -244,12 +259,25 @@ def fetch_fred_snapshots(days: int = 30) -> Dict[str, Any]:
                 prior = ser.loc[ser.index <= last_ts - pd.Timedelta(days=delta_days)]
                 return float(prior.iloc[-1]) if not prior.empty else None
 
+            def _date_at_or_before(delta_days: int) -> Optional[str]:
+                """★2026-09-06 追加（Boss「次の一手」）— Δの【基準日そのもの】を返す。
+
+                7暦日ルックバックが実際にどの営業日に落ちるかは、祝日・欠測・公表ラグで動く。
+                2026-09-03 基準の DGS2/DGS10 では窓が 8/28 を跨がず 8/27 に落ち、
+                **2s10s が -8.0bp フラット化した 8/28 の1日が外れただけで週次Δの符号が反転した**。
+                値の隣に日付を置いておけば、符号を読む前に窓を確認できる。
+                """
+                prior = ser.loc[ser.index <= last_ts - pd.Timedelta(days=delta_days)]
+                return prior.index[-1].date().isoformat() if not prior.empty else None
+
             out[name] = {
                 "series_id": series_id,
                 "latest": float(ser.iloc[-1]),
                 "as_of": last_ts.date().isoformat(),   # ★公表ラグがあるので必ず添える
                 "prev_1w": _at_or_before(7),
+                "prev_1w_as_of": _date_at_or_before(7),     # ★週次Δの基準日
                 "prev_30d": _at_or_before(days),
+                "prev_30d_as_of": _date_at_or_before(days), # 30日Δの基準日
             }
     except Exception as e:  # noqa: BLE001 - 分類のためにクラス名を残して伝播させる
         return {"_error": f"{type(e).__name__}: {e}"}

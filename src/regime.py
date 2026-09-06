@@ -34,18 +34,44 @@ def build_regime_snapshot(
         (label, summary_text, yaml_text)
     """
 
+    def _num(v: object) -> Optional[float]:
+        """★2026-09-06 追加（Boss訂正 2026-08-29 / H-3）— NaN を「欠損」として入口で潰す。
+
+        NaN は比較演算がすべて False になるため、`if x is None` だけを見ている判定関数は
+        NaN を素通しし、**分岐を全部すり抜けて末尾の無条件 return に落ちる**。
+        2026-08-28 の実例: US100 が NaN だったため
+          _equities_regime() → "flat"（unknown ではなく）
+          _relative_strength().verdict → "mixed"
+        が出た。どちらも【欠損】ではなく【誤ったラベル】で、
+        settings.py 冒頭の「欠損は気づかれるが、間違った値は気づかれない」そのものの事故。
+
+        ★是正は関数ごとに if を足すことではない。末尾に無条件 return を持つ判定関数は
+          すべて同じ穴を持つので、**値の入口を1箇所に絞って NaN を None に落とす**。
+          これで既存の `is None` ガードが全関数で正しく効き、新しい判定関数を足しても
+          同じ穴が開かない。回帰は tests/test_regime_nan.py が固定する。
+        """
+        if v is None:
+            return None
+        try:
+            f = float(v)
+        except (TypeError, ValueError):
+            return None
+        if f != f:          # NaN は自分自身と等しくない
+            return None
+        return f
+
     def _get_pair(name: str) -> Tuple[Optional[float], Optional[float]]:
         info = snapshots.get(name) or {}
-        return info.get("latest"), info.get("change_30d")
+        return _num(info.get("latest")), _num(info.get("change_30d"))
 
     def _get_first(name: str) -> Optional[float]:
         info = snapshots.get(name) or {}
-        return info.get("first")
+        return _num(info.get("first"))
 
     def _get_prev_1w(name: str) -> Optional[float]:
         """7暦日前以前の最後の終値（週次Δの基準点）。"""
         info = snapshots.get(name) or {}
-        return info.get("prev_1w")
+        return _num(info.get("prev_1w"))
 
     latest_us100, ch_us100 = _get_pair("US100")
     latest_jp225, ch_jp225 = _get_pair("JP225")
@@ -106,6 +132,10 @@ def build_regime_snapshot(
 
     def _yields_regime() -> str:
         # 2026-08-09: US30Y は意図的に混ぜない（10s30s は判定に使わず、水準/Δ/方向だけ出す）
+        # ⚠️ 2026-09-06 注記（是正B）: このラベルは US5Y と US10Y の30日変化率の平均符号でしか
+        #   判定していない。**2年ゾーン（＝利上げ確率の織り込みが出る位置）を見ていない**ため、
+        #   フロント主導の局面では Boss 実測と正面から食い違いうる（2026-08-28 が実例）。
+        #   政策期待の判断には使わないこと。FRED 由来の curve_fred(2s10s) を併読する。
         changes = [c for c in (ch_us5y, ch_us10y) if c is not None]
         if not changes:
             return "unknown"
@@ -115,6 +145,24 @@ def build_regime_snapshot(
         if avg >= 0.5:
             return "rising"
         return "flat"
+
+    def _window_of(*names: str) -> Optional[str]:
+        """週次Δが実際に引き算した2日を "YYYY-MM-DD -> YYYY-MM-DD" で返す。
+
+        ★2026-09-06 追加（Boss「注記だけでなく、窓の定義を明示するフィールドを持たせるのが次の一手」）。
+        7暦日ルックバックは祝日・欠測で落ちる日が動くため、同じ「週次Δ」でも週によって
+        跨ぐ営業日が変わる。**その1日の出入りだけで符号が反転しうる**（2026-09-03 の 2s10s が実例）。
+        構成ペアで基準日が食い違う場合は両方を出す——**揃っていないことを隠さない。**
+        """
+        bases = {(snapshots.get(n) or {}).get("prev_1w_as_of") for n in names}
+        nows = {(snapshots.get(n) or {}).get("as_of") for n in names}
+        bases.discard(None)
+        nows.discard(None)
+        if not bases or not nows:
+            return None
+        b = sorted(bases)[0] if len(bases) == 1 else "/".join(sorted(bases)) + "(★不揃い)"
+        n = sorted(nows)[0] if len(nows) == 1 else "/".join(sorted(nows)) + "(★不揃い)"
+        return f"{b} -> {n}"
 
     def _classify_shape(delta_bp: Optional[float], short_up: bool) -> str:
         """スプレッドのΔと短期側の方向からフラット/スティープの質を判定。"""
@@ -390,6 +438,68 @@ def build_regime_snapshot(
             return None
         return {"us5y_be": be5, "us5y5y_be": be5y5y}
 
+    def _curve_fred() -> Optional[Dict[str, object]]:
+        """★2026-09-06 追加（是正A / Boss決定 2026-08-29）— FRED 単一フィードの 2s10s。
+
+        既存の curve_spreads は front に 3M(^IRX) を使っている。3M は政策金利そのものに
+        貼り付いており、利上げ確率の織り込みという情報を構造的に持たない。FF金利が実際に
+        動くまで 3M はほとんど動かないので、**利上げ観測でフロントが売られる局面では
+        3M は必ず「動かない側」に回り、機械は必ず bull_flattening を出し続ける**。
+        これは front の選び方の好みではなく、指標設計に由来する系統的バイアス。
+
+        → front に 2Y を置いたカーブを別に持つ。Yahoo に2年債指数が無いので FRED から取る。
+
+        ★このブロックは curve_spreads と【統合しない】。
+          - curve_spreads = Yahoo（^IRX/^FVX/^TNX/^TYX・実行時取得）
+          - curve_fred    = FRED（DGS2/DGS10・NY引け基準・公表ラグあり）
+          フィードも時刻も違う。1本の系列に混ぜた瞬間、変化の大半が時刻差になる（年輪§8(e)）。
+          2つ同時に出るのは重複ではなく、**フィード差を測れる状態を意図的に作っている**。
+
+        ★速報性は解決しない。H.15 は1営業日遅れる（2026-08-28 がまさにその事例）。
+          「速い系列（Boss実測・Yahoo）」と「揃った系列（FRED）」を別レイヤーで持つ設計。
+
+        ★判定はしない。水準とΔを出すだけで、label にも _yields_regime() にも混ぜない。
+          （US30Y・inflation_compensation と同じ扱い。サンプルがゼロの指標に判定させない）
+        """
+        if not fred_snapshots or "_error" in fred_snapshots:
+            return None
+        two = fred_snapshots.get("US2YNOM")
+        ten = fred_snapshots.get("US10YNOM")
+        if not isinstance(two, dict) or not isinstance(ten, dict):
+            return None
+        y2, y10 = _num(two.get("latest")), _num(ten.get("latest"))
+        if y2 is None or y10 is None:
+            return None
+        as_of_2, as_of_10 = two.get("as_of"), ten.get("as_of")
+        if as_of_2 != as_of_10:
+            # 同一フィードでも年限ごとに最終行がずれることがある。ずれたまま引き算しない。
+            return {"_date_mismatch": f"DGS2 as_of={as_of_2} / DGS10 as_of={as_of_10}"}
+
+        def _spread_at(k2: str, k10: str) -> Optional[float]:
+            b2, b10 = _num(two.get(k2)), _num(ten.get(k10))
+            if b2 is None or b10 is None:
+                return None
+            return (b10 - b2) * 100.0
+
+        now_bp = (y10 - y2) * 100.0
+        d_1w = _spread_at("prev_1w", "prev_1w")
+        d_30d = _spread_at("prev_30d", "prev_30d")
+        # ★週次Δの窓を明示する（Boss「次の一手」2026-09-06）。
+        #   7暦日ルックバックは落ちる日が動く。2026-09-03 基準では窓が 8/28 を跨がず 8/27 に落ち、
+        #   2s10s が -8.0bp フラット化した 8/28 の1日が窓から外れただけで符号が反転した
+        #   （機械 -4.0bp / Boss 窓 +4.0bp）。**符号を読む前に窓を見る**ための欄。
+        base_1w = two.get("prev_1w_as_of") or ten.get("prev_1w_as_of")
+        window_1w = f"{base_1w} -> {as_of_2}" if base_1w else None
+        return {
+            "as_of": as_of_2,
+            "us2y_pct": round(y2, 3),
+            "us10y_pct": round(y10, 3),
+            "spread_2s10s_bp": round(now_bp, 1),
+            "change_2s10s_bp_1w": None if d_1w is None else round(now_bp - d_1w, 1),
+            "change_2s10s_bp_1w_window": window_1w,
+            "change_2s10s_bp_30d": None if d_30d is None else round(now_bp - d_30d, 1),
+        }
+
     equities = _equities_regime()
     vol = _vol_regime()
     oil = _oil_regime()
@@ -400,6 +510,7 @@ def build_regime_snapshot(
     intervention = _intervention_flag()
     relative = _relative_strength()
     inflation_comp = _inflation_compensation()
+    curve_fred = _curve_fred()
 
     if vol == "spike" and oil == "surge":
         label = "Geopolitical Risk-Off + Energy Shock"
@@ -442,6 +553,17 @@ def build_regime_snapshot(
                 f"/{curve['direction_10s30s_1w']}"
             )
         summary += ")"
+    # ★curve_fred（FRED単一フィードの2s10s）は【表示のみ】。ラベル判定には使わない。
+    #   as_of を必ず併記する（H.15 は1営業日遅れる＝Yahoo側と同日ではない）。
+    if curve_fred is not None and "_date_mismatch" not in curve_fred:
+        _f1w = curve_fred["change_2s10s_bp_1w"]
+        _f1w_str = (f"Δ1w{_f1w:+.1f}bp" if _f1w is not None else "Δ1w n/a")
+        summary += (
+            f", curve_fred[as_of {curve_fred['as_of']}]"
+            f"(2s10s={curve_fred['spread_2s10s_bp']:+.1f}bp,{_f1w_str})"
+        )
+    elif curve_fred is not None:
+        summary += f", curve_fred=DATE_MISMATCH({curve_fred['_date_mismatch']})"
     if intervention is not None:
         summary += (
             f", intervention={intervention['zone']}"
@@ -490,6 +612,39 @@ def build_regime_snapshot(
     lines: List[str] = []
     lines.append(f"# {end_date:%Y_%m_%d}_snapshot.yaml")
     lines.append("")
+    # ★2026-09-06（H-4）: ペア間で as_of が割れていないかを snapshot 自身に書く。
+    #   人間が気づくのを待たない。割れた週は snapshot を開いた瞬間に分かる形にする。
+    #   ★24/7 で動く銘柄（暗号資産）は【常に】他と日付が違う。これを SPLIT に数えると
+    #     毎週 SPLIT が点灯し、**常時点灯する警告は読まれなくなる**（wk04 の欠測のような
+    #     本当に割れた週を見落とす）。既知の別カレンダーは分けて出す。
+    _ALWAYS_OFF_CALENDAR = {"BTC/USD"}
+    _as_ofs: Dict[str, str] = {}
+    _off_cal: Dict[str, str] = {}
+    for _n, _i in (snapshots or {}).items():
+        _a = (_i or {}).get("as_of")
+        if not _a:
+            continue
+        (_off_cal if _n in _ALWAYS_OFF_CALENDAR else _as_ofs).setdefault(str(_a), []).append(_n)
+
+    lines.append("snapshot_date_integrity:")
+    if not _as_ofs:
+        lines.append("  status: unknown            # per-pair の as_of が無い（旧形式の snapshot）")
+    elif len(_as_ofs) == 1:
+        _only = next(iter(_as_ofs))
+        lines.append(f"  status: aligned            # ★全ペアの latest が {_only} で揃っている")
+        lines.append(f"  as_of: {_only}")
+    else:
+        lines.append("  status: SPLIT            # ★★ペアごとに latest の日付が割れている。読む前にここを見る")
+        for _d in sorted(_as_ofs, reverse=True):
+            lines.append(f"  \"{_d}\": [{', '.join(_as_ofs[_d])}]")
+        lines.append("  note: \"★★日付が割れた週は、ペアをまたぐ差分（カーブ・スプレッド・相対強度）が【異なる時点の引き算】になる。2026-08-28 は金利4本だけが講演前の 8/27 で、機械のカーブは当週最大のイベントを1本も織り込んでいなかった。割れているときは、どのペアがどの日付かを明示せずに差分を引用しないこと。\"")
+    for _d in sorted(_off_cal, reverse=True):
+        lines.append(f"  off_calendar_{_d}: [{', '.join(_off_cal[_d])}]   # 24/7銘柄。他と日付が違うのは既知・異常ではない")
+    _missing = [n for n, i in (snapshots or {}).items() if _num((i or {}).get("latest")) is None]
+    if _missing:
+        lines.append(f"  missing: [{', '.join(_missing)}]            # ★取得失敗またはNaN。判定は unknown に落ちる")
+    lines.append("")
+
     lines.append("date:")
     lines.append(f"  start: {start_date.isoformat()}")
     lines.append(f"  end: {end_date.isoformat()}")
@@ -526,7 +681,7 @@ def build_regime_snapshot(
             lines.append(f"  spread_3m10s_bp: {curve['spread_3m10s_bp']}      # 3m10s（US10Y − US3M=^IRX）=Fed重視の景気後退カーブ・逆イールド主ゲージ")
             if curve.get("change_3m10s_bp_30d") is not None:
                 lines.append(f"  change_3m10s_bp_30d: {curve['change_3m10s_bp_30d']}")
-            lines.append(f"  shape_3m10s: {curve['shape_3m10s']}")
+            lines.append(f"  shape_3m10s: {curve['shape_3m10s']}      # ⚠️【政策期待の判断には使えない】front=3M は利上げ確率の織り込みを構造的に持たない（→ curve_fred）")
             lines.append(f"  spread_3m5s_bp: {curve['spread_3m5s_bp']}")
             lines.append(f"  belly_premium_bp: {curve['belly_premium_bp']}      # 5Yの直線補間からの突出度（+=belly elevated/hump）")
             lines.append(f"  structure: {curve['structure']}      # front=政策(3M)/belly=5Y/long=growth(10Y) の形")
@@ -538,6 +693,14 @@ def build_regime_snapshot(
         if "spread_10s30s_bp" in curve:
             lines.append(f"  spread_10s30s_bp: {curve['spread_10s30s_bp']}      # 10s30s（US30Y=^TYX − US10Y）=超長期のタームプレミアム")
             lines.append(f"  change_10s30s_bp_1w: {curve['change_10s30s_bp_1w']}      # 週次Δ（7暦日前以前の最後の終値が基準）")
+            # ★2026-09-06（Boss「次の一手」2026-09-06）: 注記だけでなく【窓そのもの】をフィールドで出す。
+            #   7暦日ルックバックは祝日や欠測で落ちる日が動くため、同じ「週次Δ」でも週によって
+            #   跨ぐ営業日が変わる。2026-09-03 基準の curve_fred では窓が 8/28 を跨がず 8/27 に落ち、
+            #   その1日（2s10s が -8.0bp フラット化した日）の出入りだけで符号が反転した。
+            #   ★窓を書いておけば、符号を読む前に窓を確認できる。
+            _w10 = _window_of("US30Y", "US10Y")
+            if _w10:
+                lines.append(f"  change_10s30s_bp_1w_window: {_w10}   # ★実際に引き算した2日。符号を読む前にここを見る")
             lines.append(f"  change_10s30s_bp_30d: {curve['change_10s30s_bp_30d']}      # 30日Δ（構造的ドリフト）")
             lines.append(f"  direction_10s30s_1w: {curve['direction_10s30s_1w']}      # 【週次Δ】の符号のみ（widening/narrowing/flat）。閾値は未設定＝判定はしない")
         lines.append(
@@ -594,6 +757,28 @@ def build_regime_snapshot(
         lines.append(f"  judgment_note: {_yv(intervention['judgment_note'])}")
         lines.append("")
 
+    # ── ★FRED 単一フィードの 2s10s（2026-09-06 追加・是正A）──
+    #    front に 2Y を置いたカーブ。curve_spreads（Yahoo・front=3M）とは【別ブロック】で、統合しない。
+    #    3M は政策金利に貼り付いており利上げ確率の織り込みを構造的に持たないため、
+    #    フロント主導の局面では curve_spreads の shape_3m10s が一方向に誤り続ける。
+    if curve_fred is not None:
+        lines.append("curve_fred:")
+        lines.append("  # FRED DGS2/DGS10（NY引け基準・公表ラグあり）。★curve_spreads（Yahoo系）と統合しないこと。")
+        lines.append("  # 2つ同時に出るのは重複ではなく、フィード差を測れる状態を意図的に作っている（年輪§8(e)）。")
+        if "_date_mismatch" in curve_fred:
+            lines.append(f"  _date_mismatch: {_yv(curve_fred['_date_mismatch'])}   # 年限で最終行がずれたため引き算しない")
+        else:
+            lines.append(f"  as_of: {curve_fred['as_of']}        # ★必須。Yahoo側より1営業日古いことが常にありうる")
+            lines.append(f"  us2y_pct: {curve_fred['us2y_pct']}          # DGS2＝政策期待を見る位置のフロント")
+            lines.append(f"  us10y_pct: {curve_fred['us10y_pct']}")
+            lines.append(f"  spread_2s10s_bp: {curve_fred['spread_2s10s_bp']}      # 符号は市場慣行の【長期−短期】")
+            lines.append(f"  change_2s10s_bp_1w: {curve_fred['change_2s10s_bp_1w']}")
+            if curve_fred.get("change_2s10s_bp_1w_window"):
+                lines.append(f"  change_2s10s_bp_1w_window: {curve_fred['change_2s10s_bp_1w_window']}   # ★実際に引き算した2日。符号を読む前にここを見る")
+            lines.append(f"  change_2s10s_bp_30d: {curve_fred['change_2s10s_bp_30d']}")
+        lines.append("  note: \"★判定はしない（レジームラベル・複合スコアに混ぜない。閾値も未設定）。curve_spreads の front は 3M で、3M は政策金利そのものに貼り付いており【利上げ確率の織り込みを構造的に持たない】。FF金利が実際に動くまで 3M はほとんど動かないため、利上げ観測でフロントが売られる局面では 3M は必ず『動かない側』に回り、機械は必ず bull_flattening を出し続ける（2026-08-28 が実例: 機械 bull_flattening vs Boss ベアフラットニング）。これは front の選び方の好みではなく指標設計に由来する系統的バイアスであり、shape_3m10s / shape / yields は【政策期待の判断には使えない】。本ブロックがその位置を埋める。⚠️ただし H.15 は1営業日遅れるので速報性は解決しない——『速い系列（Boss実測・Yahoo）』と『揃った系列（FRED）』を別レイヤーで持つ設計。\"")
+        lines.append("")
+
     # ── 相対強度（JP225 vs US100 を共通通貨で分解：構造 vs 通貨）──
     if relative is not None:
         lines.append("relative_strength:")
@@ -647,18 +832,30 @@ def build_regime_snapshot(
             )
         lines.append("")
 
+    # ★2026-09-06（H-4）: 値と一緒に per-pair の as_of を出す。
+    #   2026-08-28 はペアごとに日付が割れていた（金利4本=8/27 / US100=NaN / 他=8/28）が、
+    #   snapshot に日付が無かったため目視で個別に取りに行くまで見えなかった。
     lines.append("snapshot_30d:")
     for name in order:
         info = snapshots.get(name)
         if not info:
             continue
-        latest = info.get("latest")
-        change = info.get("change_30d")
+        latest = _num(info.get("latest"))
+        change = _num(info.get("change_30d"))
         if latest is None or change is None:
+            # ★取得失敗/NaN でも【行は残す】。黙って消えると欠測が見えなくなる。
+            lines.append(f'  "{name}":')
+            lines.append("    latest: null            # ★未取得または NaN（値が無いことを明示）")
+            lines.append(f"    as_of: {info.get('as_of') or 'null'}")
             continue
         lines.append(f'  "{name}":')
         lines.append(f"    latest: {latest:.3f}")
         lines.append(f"    change_pct: {change:.2f}")
+        lines.append(f"    as_of: {info.get('as_of') or 'null'}            # ★latest の実日付")
+        if info.get("first_as_of"):
+            lines.append(f"    change_pct_window: {info['first_as_of']} -> {info.get('as_of')}   # 30日Δの窓")
+        if info.get("prev_1w_as_of"):
+            lines.append(f"    prev_1w_as_of: {info['prev_1w_as_of']}   # ★週次Δの基準日（7暦日前【以前】なので週により動く）")
 
     yaml_text = "\n".join(lines) + "\n"
     return label, summary, yaml_text

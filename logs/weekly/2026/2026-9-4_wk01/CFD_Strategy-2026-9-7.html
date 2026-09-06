@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFD戦略 | 9/7週 (2026-9-4_wk01)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1117; --card:#161b22; --line:#30363d; --txt:#e6edf3; --mut:#8b949e;
+    --up:#3fb950; --down:#f85149; --warn:#d29922; --info:#58a6ff; --accent:#bc8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.65;padding:24px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:1.7rem;margin-bottom:4px}
+  h2{font-size:1.2rem;margin:30px 0 12px;border-left:4px solid var(--accent);padding-left:10px}
+  .sub{color:var(--mut);font-size:.9rem;margin-bottom:18px}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:800px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .banner{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:linear-gradient(90deg,#1f2937,#161b22);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0 8px}
+  .pill{padding:3px 11px;border-radius:999px;font-size:.8rem;font-weight:700}
+  .pill.bad{background:#5a2b2b;color:#ffb3b3}
+  .pill.open{background:#1d4d2b;color:#9bffb0}
+  .pill.trig{background:#3b2f10;color:#ffd479}
+  .pill.exec{background:#3a2b5f;color:#d0b3ff}
+  .pill.gold{background:#4a3b12;color:#ffd479}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--mut);font-weight:600}
+  .up{color:var(--up)}.down{color:var(--down)}.warn{color:var(--warn)}.info{color:var(--info)}.mut{color:var(--mut)}
+  .tag{display:inline-block;font-size:.72rem;padding:1px 7px;border-radius:5px;background:#21262d;color:var(--mut);margin-right:5px}
+  .inst{border-left:3px solid var(--info)}
+  .inst.sell{border-color:var(--down)}.inst.buy{border-color:var(--up)}.inst.wait{border-color:var(--warn)}
+  .inst h3{font-size:1rem;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .inst .lv{font-size:.83rem;color:var(--mut);margin-top:6px}
+  .tl{position:relative;padding-left:22px}
+  .tl li{list-style:none;margin-bottom:14px;position:relative}
+  .tl li::before{content:"";position:absolute;left:-22px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .tl li::after{content:"";position:absolute;left:-17px;top:15px;bottom:-14px;width:1px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .day{font-weight:700;color:var(--accent)}
+  .note{font-size:.8rem;color:var(--mut);border-top:1px dashed var(--line);margin-top:26px;padding-top:12px}
+  canvas{max-height:300px}
+  img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:8px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;padding:3px 0;border-bottom:1px solid #21262d}
+  .big{font-size:1.4rem;font-weight:800}
+  .lv{font-size:.83rem;color:var(--mut)}
+  .flag{background:#3a2b5f;border:1px solid #5a44a0;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:.85rem}
+  .flag.warnbox{background:#3b2f10;border-color:#5c4410}
+  .flag.goldbox{background:#3d2f0d;border-color:#6b5410}
+  .flag.okbox{background:#12331d;border-color:#1f6b34}
+  .flag.badbox{background:#3d1717;border-color:#7a2b2b}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>💴 CFD戦略ブリーフ — 9/7週</h1>
+  <div class="sub">対象週: 2026-9-4_wk01（データ期間 2026-08-31→09-04 / snapshot 2026-09-06） ｜ ソース: review・meta・snapshot・boss(<b>wr-2026-9-4 本体 9/5 ＋ Rex追記§A-I 9/5</b>)・<b>週末終値チャート13枚</b>・口座3枚・--trade --news・X実データ ｜ CFD: <b>残 0.5 Lot（@4,311・ゼロ点 4,015.00）</b><br>
+  ★ <b>本週は snapshot の日付が揃っている</b>（全ペア 2026-09-04・BTCのみ週末値）。<b>機械 US10Y 4.784 = Boss TVC 週足終値 4.784（完全一致）</b>。wk04 の特例は当週には適用しない。</div>
+
+  <div class="banner">
+    <span class="pill gold">Regime: Gold Bid（equities=flat / vol=normal / oil=range / gold=bid / crypto=strong / yields=rising）</span>
+    <span class="pill open">Add risk gate: 開放（VIX 14.53&lt;18）</span>
+    <span class="pill trig">Reduce: caution</span>
+    <span class="pill exec">介入 calm / watch_zone 161.0→160.50</span>
+  </div>
+
+  <div class="flag badbox">
+    ★★ <b>今週の骨格 — 9/4 21:30 の NFP が +16.2万人（予想5.5万人の3倍近く）。しかも二重の上方修正。</b>
+    7月が <b>-2.3万人 → +2.1万人</b>、6月も <b>+3.1万人</b> へ改定。失業率 4.1% 据え置き、平均時給 前年比 <b>+3.1%</b>
+    （前月3.2%から鈍化＝<b>インフレ再燃の決定打にはならない</b>）。<br>
+    → <b>「雇用は冷えているが崩壊していない」から「雇用は底堅い」への解釈転換。</b>
+    教科書通りの <b>グッドニュース・イズ・バッドニュース</b>で、<b>9月FOMC利上げ織り込みが 52-54% → 59-61%</b>、
+    米金利は全年限で上昇、ドル指数も上昇、<b>株は逆に売られた</b>
+    （ダウ -0.51% / S&P -0.38% / NASDAQ -0.29%。★<b>小型株ラッセル2000のみ +0.25%</b>）。<br>
+    ★★ <b>Boss の短期予想（NFPが5.5万人を超えたら円安に巻き戻る）は的中したが、
+    中期予想（水曜まで円高）の前提だった「弱い雇用統計→FRBは動けない」が崩れた。</b>
+    → <b>来週前半は円高シナリオの再検証が必要</b>（Boss 総括）。
+  </div>
+
+  <div class="flag warnbox">
+    ★★ <b>米はスティープ化、日はフラット化。逆方向。</b>（Rex§A・本体に項目なし）
+    <b>米 2s10s 37.0 → 41.0bp（+4.0bp）</b>は US2Y +1.4bp / US10Y <b>+5.4bp</b> の<b>長期主導</b>、
+    <b>日 2s10s 121.9 → 108.5bp（-13.4bp）</b>は JP2Y <b>+12.7bp</b> / JP10Y -0.7bp の<b>短期主導</b>。<br>
+    ★ <b>JP2Y +12.7bp が当週で最も動いた金利。</b>日銀9/17-18 の織り込みが2年に集中し、10年は <b>GPIF の国内債回帰</b>で頭打ち。<br>
+    ⚠️ Boss は「<b>日銀が短期を利上げしても長期がブル・フラットニング的に頭打ちになるリスク</b>」を警戒し、
+    <b>日本国債はスティープ化（2年上昇・10年頭打ち）のポジションが妥当</b>としている。
+  </div>
+
+  <div class="flag">
+    ★★ <b>円高を駆動しているのは「短期の金利差」。</b>（Rex§B）
+    <b>2年 日米差 266.0 → 254.7bp（-11.3bp 縮小）／10年 日米差 181.1 → 187.2bp（+6.1bp 拡大）／USDJPY -2.43%</b>。<br>
+    → ★ <b>円高は短期の金利差縮小と同方向、長期の拡大とは逆方向＝当週の円高は2年ゾーンが駆動している。</b>
+    ★ Boss の中期テーゼ「<b>介入せずとも金利差縮小だけで20円規模の円高</b>（2024年7月末の日銀利上げ後と同型）」の
+    <b>内訳を初めて測れた週</b>。<br>
+    ⚠️ <b>サンプルは当週1件のみ。機構は閉じない。</b> → 事前登録 <b>P11</b>（承認済み・<b>判定材料としてのみ使用、レジームスコアには入れない</b>）。
+    ★ <b>10年差でも同じ表を作り、どちらが説明力を持つかを併走させる。</b>
+  </div>
+
+  <div class="flag okbox">
+    ★★ <b>JH のタカ派効果は1週間で一部剥落していた。</b>（Rex§C）
+    9月利上げ確率の経路は <b>35%（8/28 JH直前）→ 57-60%（JH直後）→ ★52-54%（9/4 NFP直前）→ 59-61%（NFP直後）</b>。<br>
+    → ★★ <b>NFPはそれを元の水準に戻しただけで、JH直後を大きく超えてはいない。</b>
+    <b>wk04 §E で「事前登録した非対称が低確率側で的中」と記録したが、その効果の持続性は1週だった</b>という追記になる。<br>
+    → <b>イベント由来の織り込みは減衰する</b>という観測。
+    ⚠️ <b>P9（政府の長期金利抑制策は5営業日以内に剥落）と同型の現象だが、主体も対象も違うので同じ機構とは扱わない。別の観測として記録する。</b>
+  </div>
+
+  <h2>1. 11ペア スナップショット（wk04 → wk01）</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="barChg"></canvas></div>
+    <div class="card">
+      <table>
+        <thead><tr><th>銘柄</th><th>最新（機械）</th><th>30日%</th><th>wk04→wk01</th></tr></thead>
+        <tbody>
+          <tr><td>USD/JPY <span class="mut">9/4</span></td><td><b>156.221</b> <span class="mut">/ Boss 156.195</span></td><td class="mut">-1.38%</td><td class="up">★<b>-3.817 (-2.38%)</b></td></tr>
+          <tr><td><b>US100</b> <span class="mut">9/4</span></td><td><b>29,544.150</b> <span class="mut">/ Boss CFD 29,493.3</span></td><td class="mut">-0.60%</td><td class="up">★<b>wk04 は nan だった</b></td></tr>
+          <tr><td>JP225 <span class="mut">9/4</span></td><td>65,020.941 <span class="mut">/ Boss CFD 65,813</span></td><td class="mut">-0.89%</td><td class="down">-1,111.0 (-1.68%)</td></tr>
+          <tr><td>XAU/USD <span class="mut">9/4</span></td><td class="warn"><b>4,429.800 / 4,476.600</b> <span class="mut">/ Boss 4,431.07</span></td><td class="mut">+2.05%</td><td class="warn">⚠️★<b>同一日付で2値</b>（§3）</td></tr>
+          <tr><td><b>WTI</b> <span class="mut">9/4</span></td><td><b>91.480</b> <span class="mut">/ Boss 91.784</span></td><td class="down">+17.01%</td><td class="down">★<b>+8.08 (+9.69%)</b></td></tr>
+          <tr><td>US3M <span class="mut">9/4</span></td><td>3.757</td><td class="mut">+1.27%</td><td class="warn">+7.9bp</td></tr>
+          <tr><td>US5Y <span class="mut">9/4</span></td><td>4.550</td><td class="warn">+4.31%</td><td class="warn">★+15.4bp</td></tr>
+          <tr><td>US10Y <span class="mut">9/4</span></td><td><b>4.784</b> <span class="mut">/ Boss 4.784</span></td><td class="warn">+2.66%</td><td class="warn">+11.2bp ★<b>完全一致</b></td></tr>
+          <tr><td>US30Y <span class="mut">9/4</span></td><td>5.246</td><td class="mut">+0.67%</td><td class="warn">+5.5bp</td></tr>
+          <tr><td>US2Y <span class="mut">(Boss実測のみ)</span></td><td class="warn"><b>4.374</b></td><td class="warn">週間 +1.4bp</td><td class="info">★<b>FRED DGS2 で裏取り開始</b></td></tr>
+          <tr><td>VIX <span class="mut">9/4</span></td><td><b>14.530</b></td><td class="up">-2.48%</td><td class="mut">+0.020 <b>18割れ継続</b></td></tr>
+          <tr><td>BTC/USD <span class="mut">⚠️週末値</span></td><td>79,671.969</td><td class="up">+22.80%</td><td class="mut">-585.6 ⚠️<b>水準は未確定</b></td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">Boss実測（9/4 週足終値）: <b>XAUUSD 4,431.07</b>（週足 -0.52% / 日足 -0.94%。O4,436.90 H4,510.90 <b>L4,282.45</b>）／ <b>USDJPY 156.195（-2.43%）</b> ／ <b>EURUSD 1.16130（-0.11%）</b> ／ <b>WTI 91.784（+9.19%）</b> ／ <b>JP2Y 1.827%（★+12.7bp）/ JP10Y 2.912%（-0.7bp）</b><br>
+      ⚠️ <b>wk04→wk01 の金利差は 8/27→9/4（6営業日）</b>で週次ではない。他ペアは 8/28→9/4（5営業日）。<b>週間騰落は Boss 実測が正本。</b></p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <strong>11ペア30日 正規化プロット（snapshot 2026-09-06）</strong>
+    <img src="charts/Portforio-2026-09-06.png" alt="11ペア30日プロット">
+  </div>
+
+  <h2>2. ★★ 金は下げたのに、執行で +173.27 pt·Lot 積んだ週</h2>
+  <div class="grid g2">
+    <div class="card">
+      <table>
+        <thead><tr><th></th><th>週初(8/28)</th><th>週末(9/4)</th><th>差</th></tr></thead>
+        <tbody>
+          <tr><td><b>XAUUSD</b></td><td>4,454.26</td><td><b>4,431.07</b></td><td class="down"><b>-23.19 (-0.52%)</b></td></tr>
+          <tr><td>建玉</td><td>1.0 Lot @4,404.50</td><td><b>0.5 Lot @4,311</b></td><td class="mut">—</td></tr>
+          <tr><td><b>通算 pt·Lot</b></td><td>+163.26</td><td class="up">★<b>+336.53</b></td><td class="up">★★<b>+173.27</b></td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:10px">★★ <b>金は下げたのに通算は +173.27。</b> 内訳は実現 <b>+163.00</b> ＋ 含み増 +10.27。
+      <b>確定5件・4勝1敗（勝率80.0%）</b>で、前2週（wk03=2件、wk04=0件）から執行が一気に増えた。</p>
+      <table style="margin-top:10px">
+        <thead><tr><th>効いた操作</th><th>効果</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left"><b>旧キャンペーンのラダー</b><br><span class="mut">4,460半値 → 4,380全決済</span></td><td>1.0 を 4,380 一括なら +89.00 に対し <b class="up">+129.00</b><br><span class="mut">差 +40.00</span></td></tr>
+          <tr><td style="text-align:left"><b>9/2 の再エントリー</b><br><span class="mut">4,309 / 4,313</span></td><td>再参入しなければ +129.00 止まり<br><b class="up">差 +207.53</b></td></tr>
+          <tr><td style="text-align:left"><b>NFPの往復</b><br><span class="mut">4,394決済 → 4,374再入</span></td><td><b class="up">+10.00</b>。建値は上がったが<br><b>ゼロ点は 4,232 → 4,222 に低下</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="flag okbox" style="margin:0">
+        ★★ <b>wk04 で記録した「設計の欠落」が翌週に執行として閉じた。</b><br>
+        wk04 §4-3:「事前登録されていたのは<b>配置の認識</b>と 8/6 の前例だけで、<b>行動が書かれていなかった</b>。
+        パターン認識が正しくても、行動ルールが対になっていなければ結果には接続しない。<b>判断の誤りではなく設計の欠落。</b>」
+        （4,660.71 で半値決済していれば +266.49 / 実際 +163.26 → 差 +103.22）
+      </div>
+      <table style="margin-top:12px">
+        <thead><tr><th>trigger（2026-08-29 登録）</th><th>action</th><th>結果</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left">月曜の寄りが 4,500水準を上回る</td><td>継続</td><td class="mut">—</td></tr>
+          <tr><td style="text-align:left"><b>上回らない</b></td><td><b>半値決済</b></td><td class="up">★<b>8/31 09:30 @4,460 で執行</b></td></tr>
+          <tr><td style="text-align:left"><b>4,400 を割る</b></td><td><b>全決済</b></td><td class="up">★<b>9/1 20:00 @4,380 で執行</b><br><span class="mut">4H実体下抜け</span></td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:10px">★★ <b>登録どおりに2件とも執行され、旧キャンペーンは +129.00 pt·Lot で完結した。</b>
+      → <b><code>trigger</code> / <code>action</code> / <code>invalidation</code> の3欄必須化の提案は、実効性が確認された。</b></p>
+    </div>
+  </div>
+
+  <h2>3. ⚠️★★ 新しい故障モード — GC=F が同じ日付で値を変えた</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>実行</th><th>latest</th><th>30日変化</th><th>Boss現物 4,431.07 との差</th></tr></thead>
+      <tbody>
+        <tr><td><b>12:32 JST</b><br><span class="mut">本アーカイブの本文はこの実行に基づく</span></td><td><b>4,429.800</b></td><td>+2.05%</td><td class="mut"><b>-1.27</b></td></tr>
+        <tr><td><b>約1時間後の再実行</b><br><span class="mut">H-4 実装後・charts/ の snapshot yaml はこちら</span></td><td><b>4,476.600</b></td><td>+3.13%</td><td class="down">★<b>+45.53</b></td></tr>
+        <tr><td><b>差</b></td><td class="down">★<b>+46.80（+1.06%）</b></td><td class="mut">—</td><td class="mut">—</td></tr>
+      </tbody>
+    </table>
+    <p class="lv" style="margin-top:10px">★ <b><code>GC=F</code> の <code>fast_info.lastPrice</code> は 4,476.60 で、返ってきた「9/4 の終値」と一致していた。</b>
+    → <b>最終バーがライブ気配で上書きされているか、継続限月がロールした（GCU26 → GCZ26）可能性。</b>
+    ⚠️ <b>どちらか確定していない。</b>3ヶ月コンタンゴとして +1.06% は短期金利 ~4.3%年率と整合的だが、<b>当方では検証していない。</b></p>
+    <div class="flag badbox">
+      ⚠️★★ <b>これは wk04 の「日付が割れる」とは別の故障モード——日付は正しいのに、同じ日付の値が変わる。</b>
+      <b>H-4（per-pair as_of）は前者を捕まえるが、後者は捕まえられない。</b><br>
+      → ★★ <b>機械の XAU/USD は本週の判断には使わない</b>（★<b>Boss 現物 4,431.07 が正本なので、本週の結論は変わらない</b>）。<br>
+      → ★ <b>要Boss判断: 機械側の XAU ティッカーを現物系に変えるか、限月を固定するか。</b><br>
+      ⚠️ <b>wk04 の 4,478.100（8/28・Boss現物との差 +23.8）が同じ現象の影響を受けていたかは未確認。遡及編集の禁止により wk04 は書き換えない。</b>
+    </div>
+  </div>
+
+  <h2>4. ★★ 機械側の宿題が4件まとめて閉じた</h2>
+  <div class="grid g2">
+    <div class="card">
+      <strong>① §D（実質金利チャネル）の事前登録が決着</strong>
+      <table style="margin-top:8px">
+        <thead><tr><th>日</th><th>DGS5</th><th>DFII5</th><th>T5YIE</th><th>identity</th><th>ΔDFII5</th></tr></thead>
+        <tbody>
+          <tr><td>8/27</td><td>4.38</td><td>2.07</td><td>2.31</td><td class="up">0.00</td><td class="mut">+1.0</td></tr>
+          <tr><td><b>8/28</b></td><td><b>4.48</b></td><td><b>2.18</b></td><td><b>2.30</b></td><td class="up"><b>0.00</b></td><td class="down">★<b>+11.0</b></td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">★ <b>該当行は「+5bp 以上」</b>＝「<b>実質金利チャネルが働いている。8-2/8-3 とは別に『実質金利↑→金↓』を新規候補として立てる</b>」。<br>
+      ⚠️ <b>本アーカイブは判定文を書かない</b>（handoff §5-5「数値と§3の該当行までで止める」）。<b>新規候補の定式化は Boss/Rex 側。</b></p>
+      <div class="flag okbox" style="margin-top:8px">
+        ★★ <b>wk04 で立てた範囲制約が実測で当たった。</b> Boss は他年限（US2Y +12.6bp / US10Y +5.4bp）で挟んで
+        <b>ΔDGS5 ≈ +5〜+13bp → ΔDFII5 ≈ +6〜+14bp、符号は正、分岐は「+5bp以上」の公算</b>と予測した。<br>
+        <b>実測 +10.0 / +11.0 でいずれも範囲内、符号も分岐も的中、関係式 ΔDFII5 = ΔDGS5 + 1.0bp も 11.0 = 10.0 + 1.0 で厳密に成立。</b><br>
+        ★ <b>これは代理指標ではない</b>——<b>恒等式と他年限による範囲の制約</b>であって、DFII5 の代わりに何かを使ったのではない。<b>8-2 で2回失敗した代理立てとは別物。</b>
+      </div>
+      <p class="lv" style="margin-top:8px">★ <b>公表タイミング差も再現（n=2）</b>——当週も T5YIE は 9/4（2.37）まで、DGS5/DFII5 は 9/3（4.52 / 2.15）まで。
+      <b>1回限りではなく構造。</b> → <b>§D 型の検定は「判定日の DGS5/DFII5 は翌週に取る」前提で設計する。</b></p>
+    </div>
+    <div class="card">
+      <strong>② 是正A（front を 2Y へ）— 初回で2つ分かった</strong>
+      <table style="margin-top:8px">
+        <thead><tr><th></th><th>起点</th><th>終点</th><th>Δ</th></tr></thead>
+        <tbody>
+          <tr><td><b>FRED（DGS2/DGS10）</b></td><td>8/28 39.0bp</td><td>9/3 <b>43.0bp</b></td><td class="up">★<b>+4.0bp</b></td></tr>
+          <tr><td><b>Boss（TVC 週足）</b></td><td>8/28 37.0bp</td><td>9/4 <b>41.0bp</b></td><td class="up">★<b>+4.0bp</b></td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">★★ <b>別フィードでも週次Δが完全一致。水準だけ 2.0bp ずれる。</b>
+      → <b>ベンダーが違っても、同じ窓を取れば変化量は一致した。ずれているのは水準（オフセット）であって傾きではない。</b>
+      ★ <b>Boss 実測の 2s10s に、単一ベンダー・NY引け基準の裏取りが1本ついた。</b>⚠️<b>n=1。</b></p>
+      <div class="flag warnbox" style="margin-top:8px">
+        ★★ <b>機械の Δ1w が符号ごと逆に出た。窓が1日ずれたため。</b>
+        週次Δは「7暦日前<b>以前</b>の最後の終値」基準で、<b>9/3 の7日前は 8/27 に落ち、8/28 を跨がない</b>。<br>
+        <code>8/27 47.0 → 9/3 43.0 = <b>-4.0bp</b></code>（機械）／<code>8/28 39.0 → 9/3 43.0 = <b>+4.0bp</b></code>（Boss と同じ窓）<br>
+        ★ <b>8/28（ウォーシュ当日）1日で 2s10s は -8.0bp フラット化しており、この1日を窓に入れるか外すかだけで符号が反転する。</b><br>
+        → ★ <b>Boss の「次の一手」に従い <code>change_*_bp_1w_window</code> を実装</b>。当週は <code>2026-08-27 -&gt; 2026-09-03</code> と出るので、<b>8/28 を跨がないことが一目で分かる。</b>
+      </div>
+      <p class="lv">★ <b>是正B も併せて実装</b>: <code>shape_3m10s</code> の出力に「⚠️【政策期待の判断には使えない】front=3M は利上げ確率の織り込みを構造的に持たない（→ curve_fred）」を明記。</p>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <strong>③ NaN → unknown の悉皆是正（H-3）</strong>
+      <p class="lv" style="margin-top:8px">Boss訂正「<b>関数ごとに if を足すのではなく、テストが穴の一覧を出す形にする</b>」に従い、
+      <b><code>build_regime_snapshot._num()</code> を新設して値の入口で NaN を None に落とす</b>。
+      1箇所に絞ったので既存の <code>is None</code> ガードが<b>全判定関数で正しく効き、新しい判定関数を足しても同じ穴が開かない</b>。</p>
+      <table style="margin-top:8px">
+        <thead><tr><th>#</th><th>表明</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:left">欠損入力（None / NaN）が<b>終端フォールバックのラベルに落ちない</b></td></tr>
+          <tr><td>2</td><td style="text-align:left"><code>relative_strength</code> は算出不能なら<b>出さない</b>（<code>verdict: mixed</code> を出さない）</td></tr>
+          <tr><td><b>3</b></td><td style="text-align:left">★★<b>NaN と None で regime ブロックが完全一致する</b></td></tr>
+          <tr><td>4</td><td style="text-align:left">1ペアだけ NaN のとき<b>健全な軸は正しく判定され続ける</b></td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">★ <b>本丸は3本目。</b>個別に if を足す是正では<b>直し忘れた関数だけ差分が残る</b>が、
+      <b>ブロック全体の一致で縛れば、新しい判定関数を足したときに穴が開いた瞬間に落ちる。</b>
+      （4本目は「全部 unknown を返すだけの関数」でも通ってしまう抜けを塞ぐため。）<br>
+      <code>tests/test_regime_nan.py</code> ・ <b>pytest 不要で単体実行可</b> ・ <b>4/4 pass</b></p>
+    </div>
+    <div class="card">
+      <strong>④ H-4（per-pair の as_of）＋ 窓の定義フィールド</strong>
+      <p class="lv" style="margin-top:8px"><code>fetch_trade_data</code> が <b><code>as_of</code> / <code>first_as_of</code> / <code>prev_1w_as_of</code></b> を値と一緒に持ち回り、
+      snapshot 冒頭に ★<b><code>snapshot_date_integrity</code>（aligned / SPLIT / missing）</b>を出す。</p>
+      <div class="flag" style="margin-top:8px">
+        ★ <b>24/7 銘柄（BTC/USD）は <code>off_calendar_*</code> として別枠にした。</b><br>
+        <b>常に日付が違うので SPLIT に数えると毎週点灯し、常時点灯する警告は読まれなくなる</b>——
+        <b>wk04 のような本当に割れた週を見落とす。</b>
+      </div>
+      <p class="lv">当週の出力: <code>status: aligned（全ペアの latest が 2026-09-04 で揃っている）</code> ／ <code>off_calendar_2026-09-05: [BTC/USD]</code></p>
+      <div class="flag okbox">
+        ★ <b>⑤ watch_zone 161.0 → 160.50</b>（H-5）。Boss の口先介入リスクゾーンは <b>160.50〜160.55</b>で、
+        161.0 では機械が calm を出したまま Boss の警戒線を 0.42〜0.47 円下に置き去りにしていた。<br>
+        ⚠️ <b>当週終値 156.195 でこの線は当面まったく無関係な水準</b>だが、
+        <b>「今は遠いから直さない」ではなく、次に近づいたときに機械が黙らないよう先に直した。</b>
+      </div>
+    </div>
+  </div>
+
+  <h2>5. レジーム &amp; ゲート状況</h2>
+  <div class="grid g3">
+    <div class="card"><div class="mut">機械レジーム</div><div class="big warn">Gold Bid</div><div class="lv">equities=flat / vol=normal / <b class="mut">oil=range</b> / <b class="warn">gold=bid</b> / <b class="up">crypto=strong</b> / <b class="warn">yields=rising</b><br>★<b>relative_strength の mixed は wk04 と同じラベルだが中身が違う</b>（wk04 は NaN の産物、当週は実際の値）</div></div>
+    <div class="card"><div class="mut">Add risk ゲート</div><div class="big up">開放</div><div class="lv">VIX <b>14.51 → 14.53 &lt; 18</b>。⚠️ただし骨格は<b>「FRBのタカ派再評価」と「日銀・GPIF由来の構造的円高圧力」の綱引き</b>で、★★<b>9/10 PPI・9/11 CPI が決着点</b></div></div>
+    <div class="card"><div class="mut">Reduce risk ゲート</div><div class="big warn">caution</div><div class="lv">★<b>US2Y 4.416 上抜け</b> / <b>US10Y 4.810 超え</b> / <b>Gold 4,400 割れ → 4,280 で撤退</b> / <b>US100 29,157</b> / <b>JP225 ★9/18 会合</b> / <b>USDJPY 155.30-155.70</b> / <b>WTI 89.599</b> / <b>BTC 77,588</b></div></div>
+  </div>
+
+  <h2>6. シナリオ（★主要リスクごとに反対方向の分岐を明示）</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="scn"></canvas></div>
+    <div class="card">
+      <table>
+        <thead><tr><th>項目</th><th>悪化側</th><th>改善側</th></tr></thead>
+        <tbody>
+          <tr><td><b>米金利</b></td><td style="text-align:left"><b>US2Y 4.416%（チャネル上限）を上抜け</b> → 4.42-4.43%台。<b>US10Y 4.810 超えで 4.85% 方向</b></td><td style="text-align:left">US2Y が 3.672%（チャネル下限）方向へ巻き戻し。<b>US10Y 4.745% 割れは金利低下トレード</b></td></tr>
+          <tr><td><b>ゴールド</b></td><td style="text-align:left"><b>4,400 を守れない</b> → 4,367.10 → 4,337.74（200日線近辺）→ <b>4,282</b>。★<b>4,280 の4H実体下抜けで撤退</b></td><td style="text-align:left"><b>CPI/PPI が鈍化</b> → <b>4,490.32 → 4,519.97 → 4,573.95</b> までショートカバー。<b>再エントリーは 4,367-4,408 の反発待ち</b></td></tr>
+          <tr><td><b>米国株</b></td><td style="text-align:left"><b>29,157 割れ</b> → ★<b>押し目待ちより下値警戒優先</b></td><td style="text-align:left"><b>29,541-29,754 のレンジ上限</b>は利食い目線。9/16 FOMC まで高ボラのレンジ想定</td></tr>
+          <tr><td><b>日本株</b></td><td style="text-align:left">★★<b>9/17-18 日銀会合＝2024年8月型の急落リスク（日経-20%規模）</b>。<b>9/18 接近での新規ロング積み増しは避ける</b></td><td style="text-align:left"><b>65,400-65,800 が次のターゲット</b>。GPIF国内回帰＋キオクシア材料が下支え。直近抵抗 67,385</td></tr>
+          <tr><td><b>ドル円</b></td><td style="text-align:left"><b>9/10 PPI・9/11 CPI が強い</b> → <b>158円台回復・円安再加速</b></td><td style="text-align:left"><b>弱い</b> → <b>155円割れから円高トレンド再開</b>（155.30-155.70 割れで 154.40-154.90）</td></tr>
+          <tr><td><b>ユーロドル</b></td><td style="text-align:left"><b>1.1580 割れ</b></td><td style="text-align:left"><b>1.1660 上抜け</b>。★<b>ECB（9/10）が先、米CPI（9/11）が後</b>という時間差がトリガー</td></tr>
+          <tr><td><b>WTI</b></td><td style="text-align:left"><b>89.599-88.320 を割る</b> → 中期 86.167。<b>86.2 割れは中期トレンド転換のシグナル</b></td><td style="text-align:left"><b>92.404-92.685 を上抜け</b>。★<b>封鎖・施設攻撃の確証で 95-100 超え</b></td></tr>
+          <tr><td><b>BTC</b></td><td style="text-align:left"><b>77,588 割れ</b> → ポジション縮小</td><td style="text-align:left"><b>80,415-81,375 奪回 → 83,795 試し</b>。⚠️<b>水準そのものが未確定</b></td></tr>
+          <tr><td><b>日本金利</b></td><td style="text-align:left">JP2Y <b>1.848%（直近高値）超えは加速のサイン</b> → 9/18 利上げ → 円高転換</td><td style="text-align:left">JP10Y が <b>2.90-2.92% のレジスタンス帯</b>で頭打ちのまま → <b>スティープ化のポジションが妥当</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>7. CFD 銘柄別アクションプラン</h2>
+  <div class="grid g2">
+    <div class="card inst wait">
+      <h3>XAU/USD（CFDゴールド） <span class="tag">残 0.5 Lot @4,311</span></h3>
+      <div class="kv"><span>週足終値</span><span class="down"><b>4,431.07（週足 -0.52% / 日足 -0.94%）</b></span></div>
+      <div class="kv"><span>週足OHLC</span><span>O4,436.90 H4,510.90 <b>L4,282.45</b>（レンジ 228.45pt）</span></div>
+      <div class="kv"><span>確定</span><span class="up"><b>5件・4勝1敗（勝率80.0%）／+163.00 pt·Lot</b></span></div>
+      <div class="kv"><span>含み</span><span class="up"><b>+60.03 pt·Lot</b></span></div>
+      <div class="kv"><span>新キャンペーン計 / 通算</span><span class="up"><b>+207.53 / +336.53</b></span></div>
+      <div class="kv"><span><b>ゼロ点</b></span><span><b>4,015.00</b>（週足終値から -416.07pt 下）</span></div>
+      <p class="lv" style="margin-top:8px"><b>撤退設計（★Boss確定 2026-09-05）</b>: <b>週足最終防衛ライン 4,280水準の4H実体下抜け確定 → 撤退</b>。
+      4,280 は <b>9/2 の安値（4,282.97 / 4,282.59）＝このキャンペーンの起点</b>で、<b>起点を割れば、この上昇の前提そのものが消える</b>という形。</p>
+      <div class="flag okbox">
+        ★ <b>撤退しても +132.00 が残る</b>（旧キャンペーンは撤退水準でほぼゼロだった）。<br>
+        <b>週足終値から撤退水準まで 151.07pt（-3.41%）。</b>
+        ★ <b>9/7(月) の米国休場を挟む3連休の窓に対しても、この幅は十分な余裕がある</b>——
+        窓が一段で 4,280 を飛び越えるには <b>-3.41%</b> が必要で、<b>8/28（-3.21%）に匹敵する規模</b>。
+      </div>
+      <p class="lv">⚠️ <b>4,400 圏は3本が10pt以内に固まった帯</b>（短期波Fibo50 <b>4,397.93</b> / 日足波Fibo38.2 <b>4,409.24</b> / キリ番 <b>4,400</b>）。
+      <b>現時点では区別する実益がないが、上昇が続くと分かれる。★可動の線は再計算してから使う</b>（trade_results §15）。</p>
+    </div>
+    <div class="card inst sell">
+      <h3>US2Y / US10Y（金利） <span class="tag">Boss実測が正本</span></h3>
+      <div class="kv"><span><b>US2Y</b></span><span class="warn"><b>4.374%（+1.4bp）</b> O4.339 H4.423 L4.331</span></div>
+      <div class="kv"><span>US10Y</span><span class="warn"><b>4.784%（+5.4bp）</b> O4.762 H4.810 L4.748</span></div>
+      <div class="kv"><span>米 2s10s</span><span class="warn"><b>41.0bp（+4.0bp・スティープ化）</b></span></div>
+      <p class="lv" style="margin-top:8px">★★ <b>US2Y の上昇チャネル上限 4.416% は終値 4.374% の 4.2bp 上。</b>
+      NFPで一時 <b>4.423</b> まで上抜けたが <b>4.374</b> へ戻した。<b>実体で定着するかが次の分岐。</b><br>
+      ★ <b>PPI/CPI が強含めば 4.416% 上抜け・4.42-4.43%台への追随上昇、鈍化すれば 3.672%（チャネル下限）方向への巻き戻し。</b>
+      <b>FOMCまでは金利先物・2年債が最もイベントドリブン——ポジションは短期回転中心。</b></p>
+      <p class="lv">★ <b>US10Y はサポート 4.745%（割れは金利低下トレード）／4.810 超えは上昇継続のブレイク → 次の節目 4.85%。</b>
+      ⚠️ <b>財政プレミアム（ロング枠の需給）も絡むため2年債ほど素直にFOMC確率と連動しない</b>（Boss）。</p>
+      <p class="lv">★ <b>当週から FRED <code>DGS2</code> で US2Y の裏取りが入った</b>（curve_fred）。<b>Yahoo には2年債指数が無いので、この空欄が埋まったのは当週から。</b></p>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card inst wait"><h3>US100 <span class="tag">CFD 29,493.3</span></h3><div class="lv">+0.14%。⚠️<b>現物のマイナス（ダウ-0.51%/S&P-0.38%/NASDAQ-0.29%）とねじれるのは日足切替(23:00 JST)が現物引け後の戻りを拾うため</b>。<b>29,157-29,271 が直近サポート</b>（★<b>割れは押し目待ちより下値警戒優先</b>）／<b>29,541-29,754 は利食い目線</b>。9/7 は米国休場で手掛かりが薄い</div></div>
+    <div class="card inst wait"><h3>JP225 <span class="tag">CFD 65,813</span></h3><div class="lv"><b>+1.77%</b>。金曜は 64,287→65,951 まで駆け上がった。★<b>押し上げ役は円安ではなく GPIF の国内回帰方針＋キオクシア新型BiCSフラッシュ材料</b>（200A・2243保有と整合）。★★<b>最大の警戒点は 9/17-18 の日銀会合そのもの</b></div></div>
+    <div class="card inst sell"><h3>USD/JPY <span class="tag">156.195</span></h3><div class="lv"><b>-2.43%</b>（H156.750 L155.289）。155円台前半のサポートを死守。戻り売り一次 <b>156.50-157.20</b>・二次 <b>158.10-158.60</b>／下値 <b>155.30-155.70</b> → <b>154.40-154.90</b>。★<b>9/9(水)引けが P12 の判定日</b></div></div>
+    <div class="card inst wait"><h3>EUR/USD <span class="tag">1.16130</span></h3><div class="lv">-0.11%。★<b>ドル指数+0.3%なのにほぼ変わらず＝ドル円が円独自要因だったことの裏づけ</b>。下値 <b>1.15759-1.15599</b>／上値 <b>1.16494-1.16603</b>。<b>1.1660 上抜けか 1.1580 割れのブレイク待ち</b></div></div>
+    <div class="card inst buy"><h3>WTI <span class="tag">91.784</span></h3><div class="lv">★<b>+9.19%・当週最大の変化</b>（H92.685 L89.237）。<b>92ドル手前でダブル/トリプルトップ</b>。サポート <b>89.599-88.320</b>／中期 <b>86.167</b>／抵抗 <b>92.404-92.685</b>。⚠️<b>レンジ上限での新規ロングは避け、サイズは小さめ・逆指値必須</b></div></div>
+    <div class="card inst wait"><h3>BTC <span class="tag">⚠️未確定</span></h3><div class="lv">本体本文 <b>79,540.37</b> ／ 出典タイトル <b>$81,000超</b>で<b>約1,500ドルの差</b>（Rex§F）。★<b>片方を採用して確定値にしない</b>。<b>77,588 を守っている間は押し目買い目線、割ればポジション縮小</b></div></div>
+  </div>
+
+  <h2>8. 金利カーブ &amp; インフレ補償</h2>
+  <div class="grid g2">
+    <div class="card"><canvas id="curve"></canvas>
+      <p class="lv" style="margin-top:8px"><code>points_pct</code> {3M 3.757, 5Y 4.550, 10Y 4.784, 30Y 5.246}（すべて 9/4）。
+      5s10s <b>+23.4bp</b>（bear_flattening）／3m10s <b>+102.7bp</b>（bear_steepening・positive）／
+      <b>belly_premium +29.3bp</b>（★<b>wk03 +21.3 → wk04 +23.4 → wk01 +29.3 の3週連続拡大</b>＝政策ターミナル織り込みの瘤）／
+      10s30s <b>+46.2bp</b>（Δ1w -2.4bp・narrowing。窓 <code>2026-08-28 -&gt; 2026-09-04</code>）。<br>
+      ⚠️★ <b><code>shape_3m10s</code> は【政策期待の判断には使えない】</b>（是正B）。<b>政策期待は下の curve_fred の 2s10s で読む。</b></p>
+    </div>
+    <div class="card">
+      <strong>curve_fred（新設・FRED DGS2/DGS10・NY引け基準）</strong>
+      <div class="kv" style="margin-top:8px"><span>as_of</span><span><b>2026-09-03</b>（Yahoo側より1営業日古い）</span></div>
+      <div class="kv"><span>US2Y / US10Y</span><span>4.34% / 4.77%</span></div>
+      <div class="kv"><span><b>2s10s</b></span><span class="warn"><b>+43.0bp</b></span></div>
+      <div class="kv"><span>change_1w</span><span class="mut"><b>-4.0bp</b> ⚠️<b>窓が 8/28 を跨がない</b></span></div>
+      <div class="kv"><span><b>change_1w_window</b></span><span class="info"><b>2026-08-27 -&gt; 2026-09-03</b></span></div>
+      <p class="lv" style="margin-top:8px">★ <b>curve_spreads（Yahoo・front=3M）とは別ブロック。統合しない。</b>
+      2つ同時に出るのは重複ではなく、<b>フィード差を測れる状態を意図的に作っている</b>（年輪§8(e)）。
+      ⚠️<b>H.15 は1営業日遅れるので速報性は解決しない</b>——「速い系列（Boss実測・Yahoo）」と「揃った系列（FRED）」を別レイヤーで持つ設計。</p>
+      <strong style="display:block;margin-top:14px">インフレ補償（FRED・as_of 2026-09-04）</strong>
+      <table style="margin-top:8px">
+        <thead><tr><th></th><th>水準</th><th>Δ1w</th><th>Δ30d</th><th>direction</th></tr></thead>
+        <tbody>
+          <tr><td>5Y BE（T5YIE）</td><td><b>2.37%</b></td><td class="down">★<b>+7.0bp</b></td><td class="down">+19.0bp</td><td class="warn"><b>widening</b></td></tr>
+          <tr><td>5y5y BE（T5YIFR）</td><td><b>2.33%</b></td><td class="down"><b>+1.0bp</b></td><td class="down">+7.0bp</td><td class="warn">widening</td></tr>
+        </tbody>
+      </table>
+      <p class="lv" style="margin-top:8px">★★ <b>wk04 は両方 narrowing（-4.0 / -2.0bp）。当週は両方 widening で方向が反転。</b>
+      ★★ <b>近期が長期の7倍動いた（+7.0 vs +1.0bp）</b>——<b>2本持っている理由がそのまま出た形</b>で、
+      <b>5Y BE だけ大きく動いて 5y5y がほとんど動かない＝市場は当週のインフレ材料を「一時的」と見ている</b>と読める配置。<br>
+      ⚠️ <b>ただし判定はしない</b>（閾値未設定・レジームラベルにも複合指標にも混ぜていない）。
+      ⚠️ <b>原油との相関は自動計算しない</b>——当週 WTI +9.19% と方向は揃うが<b>機構として結ばない</b>
+      （7/28-29 FOMC 議事録が「<b>インフレ補償は原油高にほとんど動かず</b>」と明示）。</p>
+    </div>
+  </div>
+
+  <h2>9. 週内タイムライン</h2>
+  <div class="card">
+    <ul class="tl">
+      <li><span class="day">8/31</span> — ★<b>金が 4,500水準を日足で割り、事前登録の「半値決済」が発火</b>（09:30 @4,460）。</li>
+      <li><span class="day">9/1</span> — ★<b>4,400水準を4H実体で下抜け、事前登録の「全決済」が発火</b>（20:00 @4,380）。旧キャンペーン <b>+129.00 で完結</b>。<br>
+        ★ 同日 <b>証券口座のリバランス</b>: 513A 売100口@847.2 ／ 200A 売1口・買24口 ＝ <b>差引 -13,814</b>（<b>スィープ減少額と完全一致</b>）。<b>513A 実現損 -17,780＝損出し執行済み</b>。</li>
+      <li><span class="day">9/2</span> — ★<b>日足節目 4,280 で反発 → 新キャンペーン開始</b>（4,309 / 4,313）。<b>ADP 下方修正</b>で急騰し 22:40 @4,390 で 1.0 Lot 決済。</li>
+      <li><span class="day">9/3</span> — <b>PMI非製造業 確報 56.8 → 56.5</b>／<b>コンポジット 56.0 → 55.0（★-1.0 大幅下方修正）</b>／<b>ISM非製造業 55.4（+1.2 上振れ）</b>。NY大幅反発（ダウ +1.18% / ナスダック +1.40%）。<br>
+        ★ <b>8/21 に「ソフトデータ1本で機構は閉じない」と記録した判断が、確報で裏づけられた。</b></li>
+      <li><span class="day">9/4 21:30</span> — ★★<b>NFP +16.2万人＋二重の上方修正。</b>金は 4,374 まで急落後にV字回復し <b>Fibo50(4,397.93) を守って4H確定</b>。</li>
+      <li><span class="day">9/4</span> — ★<b>米軍がイランのタンカー3隻を攻撃・破壊</b>（--news ①）／⚠️<b>トランプ大統領が戦争を「取るに足らないことだ」と矮小化</b>（--news ②）。<b>方向が逆の材料が同時に出ている。</b></li>
+      <li><span class="day">9/7 月（行動週の起点）</span> — <b>米国休場（レイバーデー・株式のみ休場／為替とBTCは平常通り）。</b>★★<b>3連休で窓が通常より1日長い。</b></li>
+      <li><span class="day">9/9 火</span> — <b>EIA月報</b>。★<b>P12 の判定日</b>（休場明け最初のフルセッション。<b>156.195 より円高なら時間軸維持／円安なら前倒しで崩れたと確定</b>）。</li>
+      <li><span class="day">9/10 木</span> — <b>米PPI ＋ ECB理事会</b>（ECBが先・米CPIが後の時間差がユーロドルのトリガー）。</li>
+      <li><span class="day">9/11 金</span> — ★★<b>米CPI（今週の最重要指標）。当週の原油 +9.19% が数字に出るかの最初の確認。</b></li>
+      <li><span class="day">9/15-16</span> — <b>FOMC</b>（誘導目標 3.50-3.75%、利上げ確率 59-61%）。</li>
+      <li><span class="day">9/17-18</span> — ★★<b>日銀会合</b>（利上げ確率約8割、0.25%が基本線・<b>0.5%の可能性も</b>）。</li>
+    </ul>
+  </div>
+
+  <h2>10. 監視トリガー（毎朝チェック）</h2>
+  <div class="card">
+    <div class="kv"><span>★★ <b>US2Y 4.416%</b>（上昇チャネル上限）</span><span class="down">上抜けで 4.42-4.43%台 ／ 鈍化なら 3.672% 方向（終値 4.374 は 4.2bp 下）</span></div>
+    <div class="kv"><span>★ <b>US10Y 4.745 / 4.810 / 4.85</b></span><span class="warn">4.745 割れは金利低下トレード ／ 4.810 超えは上昇継続のブレイク</span></div>
+    <div class="kv"><span>★★ <b>Gold 4,400</b>（第一関門）</span><span class="down">割れ → 4,367.10 → 4,337.74 → 4,282 ／ ★<b>4,280 の4H実体下抜け確定で撤退</b></span></div>
+    <div class="kv"><span><b>Gold 4,490.32 / 4,519.97 / 4,573.95</b></span><span class="mut">CPI/PPI 鈍化ならショートカバーの目標</span></div>
+    <div class="kv"><span><b>US100 29,157-29,271 / 29,541-29,754</b></span><span class="down">割れは下値警戒優先 ／ 上限は利食い目線</span></div>
+    <div class="kv"><span>★★ <b>JP225 は 9/17-18 の日銀会合そのもの</b></span><span class="down">2024年8月型の急落リスク。<b>9/18 接近での新規ロング積み増しは避ける</b></span></div>
+    <div class="kv"><span><b>USDJPY 156.50-157.20 / 158.10-158.60 / 155.30-155.70</b></span><span class="warn">戻り売り一次・二次 ／ 下値サポート（割れで 154.40-154.90）</span></div>
+    <div class="kv"><span><b>EURUSD 1.1660 / 1.1580</b> ・ <b>WTI 89.599 / 92.685 / 86.167</b></span><span class="mut">ブレイク待ち ／ 各サポート・抵抗</span></div>
+    <div class="kv"><span><b>BTC 77,588</b></span><span class="mut">守っている間は押し目買い目線（⚠️水準そのものが未確定）</span></div>
+    <div class="kv"><span>★ <b>日本金利 JP2Y 1.848 / JP10Y 2.90-2.92</b></span><span class="warn">1.848 超えは加速のサイン ／ JP10Y が頭打ちならスティープ化のポジション</span></div>
+  </div>
+
+  <h2>11. Boss提供チャート（週足確定 / 2026-09-04 close・13枚）</h2>
+  <div class="grid g2">
+    <div class="card"><strong>XAU/USD — 4,431.07（週足 -0.52% / 日足 -0.94%）。O4,436.90 H4,510.90 L4,282.45</strong><img src="charts/XAUUSD-2026-09-05.png" alt="XAUUSD"></div>
+    <div class="card"><strong>US2Y — 4.374%（+1.4bp）。★上昇チャネル上限 4.416% に接近（NFPで一時4.423）</strong><img src="charts/US2Y-2026-09-05.png" alt="US2Y"></div>
+    <div class="card"><strong>US10Y — 4.784%（+5.4bp）。サイクル高値圏。★機械と完全一致</strong><img src="charts/US10Y-2026-09-05.png" alt="US10Y"></div>
+    <div class="card"><strong>US30Y — 本体に週足終値の記載なし（NFP直後は +0.5bp・ニュース由来）</strong><img src="charts/US30Y-2026-09-05.png" alt="US30Y"></div>
+    <div class="card"><strong>★ JP2Y — 1.827%（+12.7bp）。当週で最も動いた金利・歴史的高水準</strong><img src="charts/JP2Y-2026-09-05.png" alt="JP2Y"></div>
+    <div class="card"><strong>JP10Y — 2.912%（-0.7bp）。3.0%に接近しつつ反落。GPIF の国内債回帰が需給を支える可能性</strong><img src="charts/JP10Y-2026-09-05.png" alt="JP10Y"></div>
+    <div class="card"><strong>USD/JPY — 156.195（-2.43%）。H156.750 L155.289。155円台前半のサポート死守</strong><img src="charts/USDJPY-2026-09-05.png" alt="USDJPY"></div>
+    <div class="card"><strong>EUR/USD — 1.16130（-0.11%）。★ドル指数+0.3%なのにほぼ変わらず＝円独自要因の裏づけ</strong><img src="charts/EURUSD-2026-09-05.png" alt="EURUSD"></div>
+    <div class="card"><strong>DXY — NFP直後 +0.3%（ニュース由来。本体に週足終値の記載なし）</strong><img src="charts/DXY-2026-09-05.png" alt="DXY"></div>
+    <div class="card"><strong>WTI — 91.784（★+9.19%・当週最大の変化）。H92.685 L89.237。92手前でダブル/トリプルトップ</strong><img src="charts/WTI-2026-09-05.png" alt="WTI"></div>
+    <div class="card"><strong>US100 — CFD 29,493.3（+0.14%）。⚠️現物のマイナスとねじれるのは日足切替(23:00 JST)のため</strong><img src="charts/US100-2026-09-05.png" alt="US100"></div>
+    <div class="card"><strong>JP225 — CFD 65,813（+1.77%）。★押し上げ役は円安ではなく GPIF国内回帰＋キオクシア材料</strong><img src="charts/JP225-2026-09-05.png" alt="JP225"></div>
+    <div class="card"><strong>⚠️ BTC — 未確定（本体本文 79,540.37 / 出典タイトル $81,000超で約1,500ドルの差）</strong><img src="charts/BTCUSD-2026-09-05.png" alt="BTCUSD"></div>
+  </div>
+
+  <h2>12. GMポートフォリオ（2026-09-06 12:10）</h2>
+  <div class="grid g3">
+    <div class="card"><div class="mut">総資産</div><div class="big down">4,906,965円</div><div class="lv">wk04 5,053,619円 → ★<b class="down">-146,654円（-2.90%）</b></div></div>
+    <div class="card"><div class="mut">評価損益</div><div class="big up">+321,241円 / +7.00%</div><div class="lv">wk04 +450,101 / +9.77% → <b class="down">-128,860 / -2.77pt</b></div></div>
+    <div class="card"><div class="mut">スィープ</div><div class="big" style="color:#d0b3ff">251,782円</div><div class="lv">wk04 265,596円 → <b>-13,814円</b>（★<b>9/1 のリバランスと完全一致</b>）</div></div>
+  </div>
+
+  <div class="flag okbox" style="margin-top:14px">
+    ★★ <b>513A は 9/1 のリバランスで売却済み — 3つの疑問が1件で説明された。</b>
+    関所で「保有一覧から消えている／trade_results §10 の『当週の売買なし』と矛盾／スィープが売却の向きと逆」の3点を上げたが、
+    <b>Boss報告（2026-09-06）により1件のリバランスで全部説明がついた</b>（§10 訂正版）。<br>
+    <b>513A 売100口@847.2 = 84,720 ／ 200A 売1口@4,282 ／ 200A 買24口@4,284 = 102,816 ＝ 差引 <span class="down">-13,814</span></b>
+    → ★★<b>スィープの減少額と完全一致。「売却なのに現金が減っている」のは、売却代金を上回る額を 200A に投じたから。矛盾ではなく整合だった。</b><br>
+    ★ <b>513A 実現損 -17,780円</b>（100口 @1,025 → @847.2）＝<b>損出しは執行済み</b>（<b>6954 ファナックは未執行のまま</b>）。
+    <b>200A は 68口@4,327 → 91口@4,316</b>（買24 − 売1 の純増・画面表示と一致）。<br>
+    ★ <b>8/23以降「自律反発を待つ」として保留していた判断が 9/1 に決着した</b>（8/22 @839 → 8/28 @860 → 9/1 @847.2）。
+    <b>待って +8.2円/口＝+820円</b>、税効果込みで約 +650円の改善。
+    → ★ <b>当時出した「税は急ぐ理由にならない」という判断は、結果としても正しかった。</b><br>
+    ⚠️ <b>§10 初版の「当週の売買なし」は Rex側が執行報告を受けていなかったための欠落。当週は証券口座の売買が「あった」週である。</b>
+  </div>
+
+  <div class="flag warnbox" style="margin-top:14px">
+    ★★ <b>当週の主役は「為替の素通し」。</b>
+    <b>米国株は外貨建てで +155.26 → +233.26 USD（+78.00 USD / +2.46pt）と改善したのに、円換算では +20,021 → +21,411円（+1,390円）しか増えていない。</b><br>
+    ★ <b>最も明快な実例は SPCX</b>: 外貨建は <b>-73.19 → +10.66 USD でプラス転換</b>したのに、<b>円換算は -9,418円のマイナス</b>。
+    <span class="mut">（★口座表示からの逆算: 取得 310,076円 ÷ 1,912.69 USD = <b>162.11</b> → 現在 300,658円 ÷ 1,923.35 USD = <b>156.32</b>）</span><br>
+    → <b>trade_results §17「2243・1655 はほぼ確実にヘッジ無し」で予告された為替の素通しが、当週から口座の数字に出始めた</b>（⚠️目論見書での確定は未実施）。
+  </div>
+
+  <div class="flag" style="margin-top:14px">
+    ★ <b>評価損益の比較は構成が変わっている。</b>
+    wk04 の <b>+450,101</b> には <b>513A の含み損 -16,500</b> が含まれていた。
+    513A を除いた比較可能ベースは <b>+466,601</b> で、当週の <b>+321,241</b> との差は ★<b>-145,360</b>。
+    → <b>ヘッドラインの -128,860 より約16,500 大きい</b>（含み損が実現に移った分だけ、見かけ上は改善方向に働いている）。
+    ⚠️ <b>200A を24口買い増しているため厳密な同一構成比較ではない。概算として読む。</b>
+  </div>
+
+  <div class="flag badbox" style="margin-top:14px">
+    ★★ <b>425A の騰落を「金の週足」と比べてはいけない — 窓の不一致</b>（trade_results §10-5）。<br>
+    <b>425A 週間 -4.48%</b>（390.9 → 373.4）に対し、金の週足 -0.52% ＋ 円 -2.43% の合成は <b>-2.93%</b> で ★<b>1.54pt 合わない</b>。<br>
+    <b>原因は、東証ETFが「東証引け 15:00 JST」時点の原資産を反映すること。</b>
+    ★★ <b>8/28 15:00 JST はウォーシュ講演（23:00 JST）の前</b>で、その時点の金は約 4,600圏。
+    <b>15:00 基準で再計算すると -4.90%</b> となり、<b>実測 -4.48% とほぼ一致する。</b><br>
+    → ★★ <b>東証上場の外貨建てETF（425A・2243・1655）を、CFD/FX の週足終値（土 06:00 JST）と突き合わせるのは窓の不一致。年輪§8(e) の同型。</b>
+    <b>東証銘柄の週次比較には「東証引けの原資産」を使う。</b><br>
+    ⚠️ <b>§17 の為替ヘッジ検証も、この窓ずれを含んだ概算</b>である。
+    ★ <b>ただし結論は変わらない</b>——<b>1655 と US100 の乖離 2.0% は、窓ずれで説明できる幅を超えている。</b>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><strong>総合ポートフォリオ</strong><img src="charts/Portfolio-Total-2026-09-06.png" alt="総合"></div>
+    <div class="card"><strong>国内株</strong><img src="charts/Portfolio-JP-Stocks-2026-09-06.png" alt="国内株"></div>
+  </div>
+  <div class="card" style="margin-top:14px"><strong>米国株</strong><img src="charts/Portfolio-US-Stocks-2026-09-06.png" alt="米国株"></div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="kv"><span>国内株式(現物)</span><span class="up"><b>4,121,781円 / +299,830円 / +7.84%</b>（wk04 +430,080 / +11.24%）</span></div>
+    <div class="kv"><span>米国株式</span><span class="up"><b>533,402円 / +21,411円 / +4.18%</b>（外貨建 <b>+233.26 USD / +7.34%</b>）</span></div>
+    <p class="lv" style="margin-top:10px"><b>特定</b>（1,653,319円 / <b class="down">-30,937</b>）: 200A <b>-637</b>（wk04 -3,196）／425A特定 <b class="up">+7,800</b>（+20,925・★-13,125）／586A <b class="up">+1,900</b>／
+    <b class="down">6954 -27,400</b>（-15,300・★-12,100 と悪化）／<b class="down">7011 -12,600</b>（+14,500・★★<b>-27,100 で符号反転＝個別最大の悪化</b>）<br>
+    <b>NISA</b>（2,468,462円 / <b class="up">+330,767</b>）: 1655 <b class="up">+26,622</b>／<b class="up">2243 +272,136</b>（-33,060 だが<b>単独最大の牽引役は維持</b>）／2638 <b class="up">+44,969</b>／2847 <b class="up">+28,240</b>／
+    <b class="down">425A NISA -41,200</b>（-6,200・★★<b>-35,000 で大幅悪化</b>）<br>
+    ★ <b>425A は特定 +7,800 ／ NISA -41,200 で符号が分かれたまま</b>（取得単価 363 vs 394）。<b>金の下落と円高が同時に効いた。</b><br>
+    <b>米国株</b>: GDX <b>+222.60 USD / +30,829円</b>（wk04 +228.45 USD / +36,587円）／ SPCX <b>+10.66 USD / -9,418円</b>（wk04 -73.19 USD）／ 預り金 <b>0.00 USD</b></p>
+  </div>
+
+  <div class="note">
+    ⚠️ 本資料は 2026-9-4_wk01 の確定データ（snapshot <b>2026-09-06</b> / review / meta / Boss市況 <b>wr-2026-9-4＝本体 2026-09-05 ＋ Rex追記§A-I 2026-09-05</b> / 週末終値チャート13枚 / 口座3枚 / --trade --news / X実データ）に基づく整理であり、創作・ソース外情報は含まない。<br>
+    ★ <b>本週は snapshot の日付が揃っている</b>（全ペア 2026-09-04・BTCのみ週末値）。<b>機械 US10Y 4.784 = Boss TVC 週足終値 4.784（完全一致）。</b>⚠️ただし <b>wk04→wk01 の機械の金利差は 8/27→9/4（6営業日）</b>で週次ではなく、<b>週間騰落は Boss 実測が正本</b>。<br>
+    ⚠️ <b>ベンダー混在</b>（Rex§I）: XAUUSD=Pepperstone / US2Y・US10Y・JP2Y・JP10Y=TVC / USDJPY=FXCM / WTI=BlackBull / US100=Capital.com / JP225=FOREX.com。<b>1本の系列に混ぜない</b>（年輪§8(e)）。<br>
+    ⚠️ <b>ニュース由来の数値とチャート実測を混ぜない</b>（Rex§E）: 本体の <b>US2Y +5.3bp</b> は<b>発表直後の反応の大きさ</b>、TVC日足実測 <b>+3.4bp</b> は<b>日足の確定値</b>。<b>1.9bp の差はどちらも誤りではない。</b><br>
+    ⚠️ <b>ゴールドの騰落率は2つとも正しい</b>——<b>日足 -0.94%</b>（本体）／<b>週足 -0.52%</b>。<b>週次に置くなら週足。</b><br>
+    ⚠️ <b>X上の数値はすべて未突合</b>（FOMC 58-60% / 日銀 75%→97% / NFPの内訳が狭い〈飲食・バー ~59k ＋ 地方政府の教育 ~42k〉/ 高田委員「機動的に」/ ホルムズ通航隻数）。★<b>日銀確率は Boss 約8割 vs X 最大97% で 17pt の開き。単一の数字で語らない。</b>
+    X の「ゴールドが ~4,700 圏に接近」は当方記録（当週高値 4,510.90）と合わないため<b>採用していない</b>。⚠️ <b>X の取得は5項目で打ち切られている</b>（日経/GPIF・BTC は返らず）。<br>
+    ★ <b>関所の決着（Boss 2026-09-06）</b>: ①<b>513A は 9/1 のリバランスで売却済み</b>（§10 訂正版）②<b>P11 / P12 を承認</b> ③<b>P9 は継続、P10 は「発言日」の定義が決まるまで登録しない</b> ④<b>H-4 は実装推奨</b>（→実装済み）⑤<b>BTC は未確定のままで正しい</b> ⑥<b>private_trades.csv は当週5件のみで正しい。過去週の遡及追記はやるなら別コミット＋理由の明記</b> ⑦<b>是正分（settings.py / regime.py / market.py / tests/）は週次とは別コミット</b>。<br>
+    ⚠️ <b>未確認の持ち越し</b>: <b>2243・1655 の為替ヘッジ</b>（★価格検証でほぼ確実にヘッジ無し／目論見書での確定は未実施）／<b>5/11 に 1627 を売却した理由</b>（4週連続）／<b>8-2/8-3 棄却後の立て直し</b>／⚠️★<b>GC=F が同一日付で2値を返した件</b>（→ 要Boss判断）。<br>
+    投資助言ではなく GM運用の作戦整理。最終判断はミナト。 生成: ClaudeCode / 2026-09-06。
+  </div>
+
+</div>
+
+<script>
+const C={up:'#3fb950',down:'#f85149',warn:'#d29922',info:'#58a6ff',mut:'#8b949e',grid:'#30363d',txt:'#e6edf3'};
+Chart.defaults.color=C.txt;Chart.defaults.borderColor=C.grid;Chart.defaults.font.family='Segoe UI';
+
+new Chart(document.getElementById('barChg'),{
+  type:'bar',
+  data:{labels:['VIX','WTI','US30Y','US10Y','US5Y','US3M','USDJPY','JP225','US100','XAU','BTC'],
+    datasets:[{label:'30日変化率 (%)',
+      data:[-2.48,17.01,0.67,2.66,4.31,1.27,-1.38,-0.89,-0.60,2.05,22.80],
+      backgroundColor:['#3fb950','#f85149','#8b949e','#d29922','#d29922','#8b949e','#3fb950','#8b949e','#8b949e','#d29922','#3fb950']}]},
+  options:{plugins:{legend:{display:false},title:{display:true,text:'30日変化率（2026-08-07→09-06）★WTI +17.01% が突出'}},
+    scales:{y:{grid:{color:C.grid},title:{display:true,text:'%'}},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('curve'),{
+  type:'line',
+  data:{labels:['3M','5Y','10Y','30Y'],
+    datasets:[
+      {label:'wk01 実測 9/4 (%)',data:[3.757,4.550,4.784,5.246],borderColor:C.info,backgroundColor:C.info,tension:0.25,pointRadius:5},
+      {label:'wk04 実測 ★8/27 (%)',data:[3.678,4.396,4.672,5.191],borderColor:C.mut,borderDash:[5,4],tension:0.25,pointRadius:4},
+      {label:'3M→10Y 直線補間 (wk01)',data:[3.757,4.257,4.784,null],borderColor:C.warn,borderDash:[2,3],pointRadius:0,tension:0}
+    ]},
+  options:{plugins:{legend:{position:'bottom'},title:{display:true,text:'belly(5Y)の瘤が3週連続で膨らんだ（premium 21.3→23.4→29.3bp）'}},
+    scales:{y:{grid:{color:C.grid},title:{display:true,text:'%'},suggestedMin:3.5,suggestedMax:5.5},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('scn'),{
+  type:'doughnut',
+  data:{labels:['A CPI/PPI 強い → 円安再加速・株の上値重い','B CPI/PPI 鈍化 → 155円割れ・金はショートカバー','C レンジ（FOMCまで様子見・高ボラ）','D 9/18 日銀0.5%で2024年8月型の急落'],
+    datasets:[{data:[30,30,25,15],backgroundColor:[C.down,C.up,C.warn,'#bc8cff'],borderColor:'#161b22',borderWidth:2}]},
+  options:{plugins:{legend:{position:'bottom'},title:{display:true,text:'シナリオ比重（boss市況ベースの目安）'}}}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+{
+  "status": "pass",
+  "count": 23,
+  "checks": [
+    {
+      "check": "meta_no_duplicate_keys",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "prior_prices_positions_and_execution_rules_unchanged",
+      "passed": true,
+      "detail": [
+        "snapshot",
+        "snapshot_30d",
+        "snapshot_date_integrity",
+        "market_charts_same_vendor",
+        "portfolio",
+        "portfolio_snapshot_20260911",
+        "trade_summary",
+        "gates",
+        "regime",
+        "approval",
+        "revisions_and_windows"
+      ]
+    },
+    {
+      "check": "pre_addendum_generated_versions_byte_preserved",
+      "passed": true,
+      "detail": 14
+    },
+    {
+      "check": "initial_input_hashes_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "only_two_authorized_input_revisions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current_input_sources_and_archived_copies_match",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "reference_session_original_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "initial_pilot_usage_measurement_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "p11_rule_history_and_current_count",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "p11_counterexample_computed_from_source_values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "oil_two_week_compounding",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "old_campaign_count_from_actual_exit_rows",
+      "passed": true,
+      "detail": {
+        "ids": [
+          "X1",
+          "X2",
+          "X3",
+          "X4"
+        ],
+        "dates": [
+          "08-19",
+          "08-21",
+          "08-31 09:30",
+          "09-01 20:00"
+        ]
+      }
+    },
+    {
+      "check": "cumulative_count_csv_plus_documented_missing_exits",
+      "passed": true,
+      "detail": {
+        "csv_count": 8,
+        "missing_pt_lot": [
+          "44.0",
+          "69.5"
+        ],
+        "total_pt_lot": "372.8850000000"
+      }
+    },
+    {
+      "check": "cumulative_pnl_independent_reconstruction",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "campaign_metadata_reconciles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "marked_pnl_bridge_independent_reconstruction",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all_carry_forward_ids_present_once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_carry_forward.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_next_update_handoff.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_rex_addendum_integration.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "workflow_update_is_append_only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gold_revision_matches_real_ledger",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "git_gate_still_pending",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "scope": "Rex-addendum source integrity, factual reconciliation, old-rule retention, carry-forward completeness and unchanged execution/data. External reviewer did not review these new edits."
+}

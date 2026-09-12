@@ -1,0 +1,30 @@
+[
+  {
+    "path": "distilled/2026/distilled-gm-2026-9.md",
+    "before_sha256": "191c18b8a41ea41309cc394a54af39a020434e27f57934e8d7ae0e57e4b382f1",
+    "after_sha256": "d8ec99077321917631e7284085527688e964fc76e1c64e1de493ccb9cc3aa916",
+    "previous_bytes_preserved": true,
+    "mode": "append_only"
+  },
+  {
+    "path": "docs/STATUS.md",
+    "before_sha256": "6524c8fd7cfc1006ede5745ec28a45009c8c0fd4e378adcaf21277e73b675242",
+    "after_sha256": "10e43e6f1f0abf2e1cdb1f598c7bdb3437824717042d62d888dc8bfc45a20c61",
+    "previous_bytes_preserved": true,
+    "mode": "append_only"
+  },
+  {
+    "path": "logs/weekly/2026/_index.md",
+    "before_sha256": "aad1a477d41d9e77a66002b0a30f5c0fd9e145f61cd5135db4b5d47ba6da5bcb",
+    "after_sha256": "1d91a346ba4956cd209ddb5a6536b44bbe7d6d196582a65413d36295d0c5c676",
+    "previous_bytes_preserved": true,
+    "mode": "append_only"
+  },
+  {
+    "path": "docs/Trade-Main.md",
+    "before_sha256": "a63b7b93a6f439c2e462a2d0b9b074fc9a00a72bc00fcba7037779d2441d554e",
+    "after_sha256": "06900f078253c6ab630cc9d65d607fc0af0c31e9904cba807cd3b061b84a5724",
+    "mode": "new_week_index_insertion_and_brief_append",
+    "existing_text_preserved": true
+  }
+]

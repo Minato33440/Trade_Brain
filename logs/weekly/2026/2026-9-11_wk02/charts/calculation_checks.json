@@ -1,0 +1,23 @@
+{
+  "portfolio_delta": -156336,
+  "external_transfer": -50000,
+  "comparable_change": -106336,
+  "simple_start_ratio_pct": -2.167042153347334,
+  "jp_delta": -100538,
+  "us_delta": -5798,
+  "usd_underlying_change": 9.980000000000018,
+  "previous_implied_fx": 156.31973038317827,
+  "current_implied_fx": 154.1696496144327,
+  "usd_asset_effect_jpy": 1560.070909224122,
+  "fx_effect_jpy": -7358.070909224144,
+  "known_usd_assets_pct": 31.514647849789995,
+  "gold_related_pct": 25.45606066059884,
+  "semiconductor_pct": 23.64074315211733,
+  "cfd_week_pct": {
+    "US100": -0.41399233046149464,
+    "JP225": -1.7124276358774102,
+    "USDJPY": -1.745894554883319,
+    "XAUUSD": -1.8672690794774174,
+    "WTI": 9.358929660943083
+  }
+}

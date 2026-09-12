@@ -1,0 +1,4 @@
+opened_at,closed_at,symbol,direction,size,entry_price,exit_price,pnl_pct,pnl_amount,tag,notes
+2026-09-02,2026-09-07 15:00,XAUUSD,long,0.5000,4311.000000,4396.000000,1.9717,0.0000,"gold_long,final_exit,new_campaign,rule_change","Candidate only: opening time unknown; allocated blended surviving E1/E2 lot at 4311.00; 9/7 4H-below-4400 rule change/execution. Do not serialize date-only opening time as 00:00."
+2026-09-09,2026-09-09 16:30,XAUUSD,long,1.0000,4315.000000,4345.000000,0.6952,0.0000,"gold_long,partial_tp,newnew_campaign","Candidate only: opening time unknown; E1 allocation confirmed by weekly ledger. Do not serialize date-only opening time as 00:00."
+2026-09-09,2026-09-11 23:17,XAUUSD,long,0.5000,4330.230000,4378.000000,1.1032,0.0000,"gold_long,partial_tp,newnew_campaign,event_cpi","Candidate only: opening time unknown; remaining E2 allocation per weekly ledger. Do not serialize date-only opening time as 00:00."

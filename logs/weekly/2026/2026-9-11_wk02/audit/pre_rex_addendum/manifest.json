@@ -1,0 +1,76 @@
+{
+  "captured_at_jst": "2026-09-12T18:28:59+09:00",
+  "meaning": "Astra generated draft before incorporation of the Rex addendum. User source files are archived separately in their already amended state.",
+  "files": [
+    {
+      "path": "review.md",
+      "archive": "audit/pre_rex_addendum/review.md",
+      "sha256": "e829cc16af146da195db98495e634e9a13c6b08d8822b149bbaa3b31599b24fc"
+    },
+    {
+      "path": "note.md",
+      "archive": "audit/pre_rex_addendum/note.md",
+      "sha256": "f7e9d0beaad0f2f71f3810df0b3718e6f7c232725be4d0fe99ae4378d2b69caf"
+    },
+    {
+      "path": "meta.yaml",
+      "archive": "audit/pre_rex_addendum/meta.yaml",
+      "sha256": "6205f57475b102bbb720fb26d08a512d38a114227ba59b6c6c59d184bc8ba325"
+    },
+    {
+      "path": "charts.md",
+      "archive": "audit/pre_rex_addendum/charts.md",
+      "sha256": "7460dcf699e3b6c6c4e8b4baaa343833514b9db9adda1e4d2732538d40754858"
+    },
+    {
+      "path": "CFD戦略-2026-9-14.md",
+      "archive": "audit/pre_rex_addendum/CFD戦略-2026-9-14.md",
+      "sha256": "e90b0c5451f10400bc7edf4e5d690bba788a08f2acada1cb2d8ee41bbf271fd4"
+    },
+    {
+      "path": "CFD_Strategy-2026-9-14.html",
+      "archive": "audit/pre_rex_addendum/CFD_Strategy-2026-9-14.html",
+      "sha256": "a354c2f96c0c073a08e179e4d6ad4414205e909631936753808e328c8c8f5079"
+    },
+    {
+      "path": "sources.md",
+      "archive": "audit/pre_rex_addendum/sources.md",
+      "sha256": "118022289a1f1f1330f27a3c2e25fd81b09707fec60197b8eea21f96f45da77a"
+    },
+    {
+      "path": "quality_gate.md",
+      "archive": "audit/pre_rex_addendum/quality_gate.md",
+      "sha256": "d165b88a97a6071a19ede502584437f22c36193bc70663fc8c79e6daa86174c2"
+    },
+    {
+      "path": "pilot_run.md",
+      "archive": "audit/pre_rex_addendum/pilot_run.md",
+      "sha256": "e03c108cfe88f88f8a3c5c7a4053ed02b3dbdb3d83b068c1208af61b363c1e7f"
+    },
+    {
+      "path": "pilot_usage.json",
+      "archive": "audit/pre_rex_addendum/pilot_usage.json",
+      "sha256": "43e1d8c5a638be0642f670fb741654b55b8e89833c1fe20f20ab214b779d6520"
+    },
+    {
+      "path": "validation.json",
+      "archive": "audit/pre_rex_addendum/validation.json",
+      "sha256": "1406935e157c577314da1f7833ad70220be2cfd8abe128e79b78e22be87a64fd"
+    },
+    {
+      "path": "charts/input_manifest.json",
+      "archive": "audit/pre_rex_addendum/charts/input_manifest.json",
+      "sha256": "05bb76006f50cedede62e5c772fba122dffa329c4088492b242008dd0e87037f"
+    },
+    {
+      "path": "charts/GM Strategy-2026-9-11.txt",
+      "archive": "audit/pre_rex_addendum/charts/GM Strategy-2026-9-11.txt",
+      "sha256": "08c233e4802c6173b90b5a423f4792d5796ea038df96c2e75ca7f5142b16ced2"
+    },
+    {
+      "path": "charts/Market conditions -2026-9-11~.txt",
+      "archive": "audit/pre_rex_addendum/charts/Market conditions -2026-9-11~.txt",
+      "sha256": "5355305b53b3712af0320a02fe217834a7b998a54ea8a3ffb65b7a54aa40645b"
+    }
+  ]
+}

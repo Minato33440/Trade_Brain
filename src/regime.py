@@ -651,6 +651,9 @@ def build_regime_snapshot(
     _revs = (snapshots or {}).get("_value_revisions") or []
     if _revs:
         lines.append("  value_revisions:            # ★★確定済みの日付の値が、前回取得時から変わっている")
+        # value_revisions は sequence として保つ。sequence直下に note mapping を
+        # 混在させると、改訂が1件でも YAML が ParserError になるため、説明文は
+        # snapshot_date_integrity の兄弟キーへ置く。
         for _r in _revs:
             lines.append(
                 f"    - {{pair: {_r['pair']}, date: {_r['date']}, "
@@ -658,7 +661,7 @@ def build_regime_snapshot(
                 f"delta: {_r['delta']}, delta_pct: {_r['delta_pct']}, "
                 f"first_seen: {_r.get('first_seen')}}}"
             )
-        lines.append("    note: \"★日付は正しいのに値が変わった＝H-4（per-pair as_of）では捕まえられない層。初回値は台帳側で保持しており上書きしていない。ライブ気配による最終バーの上書き、あるいは継続限月のロールが疑われる（2026-09-06 の GC=F が初例）。値を使う前に、どちらの観測を採るかを決めること。\"")
+        lines.append("  value_revisions_note: \"★日付は正しいのに値が変わった＝H-4（per-pair as_of）では捕まえられない層。初回値は台帳側で保持しており上書きしていない。ライブ気配による最終バーの上書き、あるいは継続限月のロールが疑われる（2026-09-06 の GC=F が初例）。値を使う前に、どちらの観測を採るかを決めること。\"")
     lines.append("")
 
     lines.append("date:")

@@ -1,0 +1,196 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "check": "required_files",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "provided_inputs_unchanged",
+      "passed": true,
+      "detail": 20
+    },
+    {
+      "check": "archive_hash_matches",
+      "passed": true,
+      "detail": 20
+    },
+    {
+      "check": "derived_snapshot_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "provided_and_generated_png_count",
+      "passed": true,
+      "detail": 19
+    },
+    {
+      "check": "yaml_required_fields",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "snapshot_preserves_two_revisions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "snapshot_values_match_meta",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_review.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_note.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_CFD戦略-2026-9-14.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frontmatter_sources.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "human_hub_canonical_tags",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "portfolio_value_reconciles",
+      "passed": true,
+      "detail": 4750629
+    },
+    {
+      "check": "portfolio_unrealized_reconciles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "portfolio_cashflow_reconciles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "portfolio_all_12_positions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "closed_trade_math",
+      "passed": true,
+      "detail": {
+        "count": 3,
+        "pt_lot": "96.3850000000"
+      }
+    },
+    {
+      "check": "cumulative_trade_math",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all_previous_ledger_observations_preserved",
+      "passed": true,
+      "detail": {
+        "previous": 239,
+        "current": 287,
+        "policy": "first values, first_seen and any existing revision prefix are immutable; new revisions may append"
+      }
+    },
+    {
+      "check": "append_only_distilled/2026/distilled-gm-2026-9.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "append_only_docs/STATUS.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "append_only_logs/weekly/2026/_index.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "append_only_data/private_trades.csv",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "trade_main_existing_text_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tracked_changes_scoped",
+      "passed": true,
+      "detail": [
+        "data/observed_values.json",
+        "data/private_trades.csv",
+        "distilled/2026/distilled-gm-2026-9.md",
+        "docs/STATUS.md",
+        "docs/Trade-Main.md",
+        "logs/weekly/2026/_index.md",
+        "src/regime.py"
+      ]
+    },
+    {
+      "check": "remote_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no_staged_or_committed_changes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "git_diff_check",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "html_has_no_network_assets",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "new_document_relative_links_exist",
+      "passed": true,
+      "detail": {
+        "links_checked": 122,
+        "broken": []
+      }
+    },
+    {
+      "check": "gm_strategy_required_sections",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "distilled_eight_required_instruments",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "distilled_required_sections",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "count": 34,
+  "raw_snapshot_expected_invalid": true,
+  "external_link_revalidation": "not performed by this local checker; provenance in sources.md"
+}

@@ -1,0 +1,35 @@
+{
+  "engine": "codex",
+  "started_utc": "2026-09-12T06:16:01.854785+00:00",
+  "command": [
+    ".venv/Scripts/python.exe",
+    "main.py",
+    "--trade",
+    "--news"
+  ],
+  "inputs_sha256": {
+    "logs\\boss's-weeken-Report\\2026\\wr-2026-9-11.md": "9e3e66702d44602831b7af8befd7fd555b2d5e278afa82e922a081a9617479d7",
+    "logs\\weekly\\2026\\2026-9-11_wk02\\trade_results.md": "81c2cc97060249d4b46a245349c76625bf92a9375eb7fd45f88524335c30be40",
+    "png_data\\BTC-USD-2026-09-12.png": "f007309a8b0e93d7c9d1e593155dbc493201b13df106175c8fce7314a66e47e1",
+    "png_data\\DXY-2026-09-12.png": "49e39d794fbc9a53700b863389a9dfd8fd5c59cebc01b6bb02c9023ae82f0656",
+    "png_data\\JP10Y-2026-09-12.png": "f80bcdf6b1a61c2323bd3217e17358457e0977edff3efe493ca361087432ce9f",
+    "png_data\\JP225-2026-09-12.png": "f54b1318eeb4e9c92929a429fd549219617becdc6707ccc121b8210b9b271219",
+    "png_data\\JP2Y-2026-09-12.png": "6a395d70c7bed0c3be2884a02aacc0ed00baef989e6f1b2a3984e4e27f78e2af",
+    "png_data\\US100-2026-09-12.png": "2bf3741d0a1e2fa1be3955392a6b4eea43391b9ea1b85212ad93987e9d1c5bf2",
+    "png_data\\US10Y-2026-09-12.png": "f1fd159e6106412f7debe2803f1ba42713aa4a555c82e91e5e44fb3c82c12a0e",
+    "png_data\\US2Y-2026-09-12.png": "dd3c5cc842e4c0c613700d4a3e8749f8b81c1b092da3b04e0c7f8f5d6ae44ef4",
+    "png_data\\US30Y-2026-09-12.png": "ca0f39be06feacd060bbdc37e6ae434056e0bdfdd6625038016da0c4d7b9d2b4",
+    "png_data\\USDJPY-2026-09-12.png": "69151fc950202daf9c01d1ade3c788ea0b7619302c5712b1e7017863dca2dd7c",
+    "png_data\\VIX-2026-09-12.png": "46019fb6b0f47fb0598b4d958bd0ff08209b0a9c40da6f5aafe4ea02c532b39a",
+    "png_data\\WTI-2026-09-12.png": "35d7ff5dc58aa80432729ed695edd4e6346746279cf85fb68e3dc1201c5ea1fb",
+    "png_data\\XAUUSD-2026-09-12.png": "76b4f93571e9574c76d93a13ca40b37b4aa4c5ffee5253766c644ee9eb829b4d",
+    "png_data\\XAUUSD-H1-2026-09-12.png": "5e92d4a46e247b8d867f97eb5193b9e43a83c05bb082ea9aa42b083eb461c857",
+    "png_data\\ポートフォリオ-2026-09-12..png": "af5b9890fefb712fd2acb7ca350ebde7c54930d70fa5d8bfe0ab8594bc792344",
+    "png_data\\指標結果-2026-09-12.png": "444836918653e782f1a7b0a36b240bea957982b3e4d0b826b5976e0eefbda029",
+    "png_data\\東証株-2026-09-12..png": "75b0ad50e161680c748a4944666517bdab674540ba02770531157ce721a65393",
+    "png_data\\米国株-2026-09-12..png": "6492030fcdeb599b05ba04798d0acec7d1958843edf3570a451e36c1d54495df"
+  },
+  "exit_code": 0,
+  "finished_utc": "2026-09-12T06:16:14.586540+00:00",
+  "elapsed_seconds": 12.691
+}

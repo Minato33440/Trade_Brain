@@ -1,0 +1,27 @@
+[--trade] 8ペア30日データ取得中: 2026-08-13 〜 2026-09-12
+[--trade] レジームスナップショット保存: C:\Python\REX_AI\Trade_Brain\png_data\2026_09_12_snapshot.yaml
+[--trade] プロット保存: C:\Python\REX_AI\Trade_Brain\png_data\multi_pairs_plot_8.png
+取得期間: 2026-08-13 〜 2026-09-12 (JST基準)
+
+USD/JPY: 最新 153.554 (30日変化: -3.62%) [as_of 2026-09-11]
+US100: 最新 29368.439 (30日変化: -2.38%) [as_of 2026-09-11]
+JP225: 最新 64011.340 (30日変化: -6.29%) [as_of 2026-09-11]
+XAU/USD: 最新 4366.200 (30日変化: +0.06%) [as_of 2026-09-11]
+WTI: 最新 100.050 (30日変化: +23.14%) [as_of 2026-09-11]
+US3M: 最新 3.913 (30日変化: +5.61%) [as_of 2026-09-11]
+US5Y: 最新 4.791 (30日変化: +11.08%) [as_of 2026-09-11]
+VIX: 最新 15.840 (30日変化: +8.27%) [as_of 2026-09-11]
+US10Y: 最新 4.975 (30日変化: +7.20%) [as_of 2026-09-11]
+US30Y: 最新 5.354 (30日変化: +2.70%) [as_of 2026-09-11]
+BTC/USD: 最新 76568.125 (30日変化: +20.77%) [as_of 2026-09-10]
+
+★★ 確定済みの値が変わった（台帳との照合）:
+  USD/JPY 2026-09-04: 156.2209930419922 -> 155.66000366210938 (-0.560989 / -0.3591%)  初回観測 2026-09-06T17:48
+  XAU/USD 2026-09-04: 4476.60009765625 -> 4429.7998046875 (-46.800293 / -1.0454%)  初回観測 2026-09-06T17:48
+
+[regime] Equities Down / Oil Surge (label=Equities Down / Oil Surge, equities=down, volatility=normal, oil=surge, gold=range, crypto=strong, yields=rising, curve=bear_flattening(5s10s=+18.4bp,Δ30d-14.4bp; 3m10s=+106.2bp/positive; belly_elevated; 10s30s=+37.9bp,Δ1w-8.3bp,Δ30d-19.3bp/narrowing), curve_fred[as_of 2026-09-10](2s10s=+39.0bp,Δ1w-4.0bp), intervention=calm(imf_ammo=0,stage=executed), jp_rs=mixed(fx_adj-0.4pt), inflation_comp[as_of 2026-09-11](5yBE=2.40%,Δ1w+3.0bp/widening; 5y5yBE=2.32%,Δ1w-1.0bp/narrowing))
+
+[完了] データ/ニュース挿入！ Rexに戦略相談しよう！
+Grok Assistant ready (model=grok-4). 空行で終了します。
+（8ペア30日データ＋プロットを使うには: python main.py --trade で起動）
+> 

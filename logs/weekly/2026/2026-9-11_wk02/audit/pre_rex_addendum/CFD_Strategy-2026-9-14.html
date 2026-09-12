@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFD戦略ブリーフ — 9/14週（関所7.5承認待ち）</title>
+<style>
+:root{--bg:#0d1623;--panel:#142235;--ink:#eaf1f8;--mut:#afc0d0;--line:#2b425d;--gold:#f2bd5b;--red:#ff7782;--green:#62d3a2;--blue:#79b9ff;--orange:#f6a85b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1200px;margin:auto;padding:24px}h1,h2,h3{line-height:1.28}h1{margin:.2rem 0;font-size:2rem}h2{margin:36px 0 12px;border-left:5px solid var(--gold);padding-left:10px}h3{margin:18px 0 6px}.sub,.mut{color:var(--mut)}.warning{border:1px solid #a87d2d;background:#362a12;padding:14px;border-radius:10px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px}.kpi{font-size:1.65rem;font-weight:700}.good{color:var(--green)}.bad{color:var(--red)}.gold{color:var(--gold)}a{color:#9dccff}table{width:100%;border-collapse:collapse;margin:10px 0 16px;background:var(--panel)}th,td{padding:8px 9px;border:1px solid var(--line);text-align:right;vertical-align:top}th{text-align:center;background:#1b3048}td:first-child,td:nth-child(2){text-align:left}.wide{overflow-x:auto}.note{padding:10px 12px;border-left:3px solid var(--blue);background:#112034}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--mut);font-size:.85rem}svg{width:100%;height:auto;background:#101d2c;border:1px solid var(--line);border-radius:8px}.legend{font-size:.9rem;color:var(--mut)}footer{margin:35px 0 5px;color:var(--mut);font-size:.9rem}@media(max-width:700px){main{padding:15px}h1{font-size:1.55rem}th,td{padding:6px;font-size:.86rem}}
+</style>
+</head>
+<body><main>
+<header>
+  <div class="pill">2026-09-14週 / 人間用草案</div>
+  <h1>CFD戦略ブリーフ</h1>
+  <p class="sub">9/11週の確定情報を閲覧用に整理。正本は distilled と週次一次資料。</p>
+  <div class="warning"><strong>関所7.5承認待ち。発注指示ではありません。</strong><br>発注・自動執行は承認対象外です。<strong>Gitへの記録・公開は関所7.5承認後</strong>とします。</div>
+  <p class="sub"><a href="./review.md">週次レビュー</a> / <a href="./note.md">note</a> / <a href="./meta.yaml">meta</a> / <a href="./trade_results.md">執行正本</a> / <a href="./sources.md">一次資料と採否</a> / <a href="./quality_gate.md">品質確認</a> / <a href="./pilot_run.md">初回運用計測</a> / <a href="./charts/2026_09_12_snapshot.yaml">30日スナップショット</a> / <a href="../../../../distilled/2026/distilled-gm-2026-9.md">distilled正本</a> / <a href="../2026-9-4_wk01/CFD戦略-2026-9-7.md">前週ハブ</a></p>
+</header>
+
+<section><h2>今週の判断枠</h2><div class="grid">
+ <div class="card"><h3>レジーム</h3><div class="kpi gold">Gold Bid →<br>Equities Down / Oil Surge</div><p>金曜の米株反発とVIX低下は、30日観測と矛盾せず、反証材料として併記する。</p></div>
+ <div class="card"><h3>既存Gold残玉</h3><div class="kpi">0.5 Lot @4,330.23</div><p>4,348.33評価で <span class="good">+9.050 pt·Lot</span>。貨幣換算単位は未確認。</p></div>
+ <div class="card"><h3>予定（JST）</h3><div class="kpi">9/17 03:00</div><p>FOMC声明、03:30会見。日銀会合は9/17–18、結果9/18（時刻は未確認）。</p></div>
+</div></section>
+
+<section><h2>Gold CFD — 確定3件と現在の撤退条件</h2>
+<div class="wide"><table><thead><tr><th>決済</th><th>内容</th><th>pt·Lot</th></tr></thead><tbody>
+<tr><td>9/7 15:00</td><td>0.5 @4,311 → 4,396</td><td class="good">+42.500</td></tr><tr><td>9/9 16:30</td><td>1.0 @4,315 → 4,345</td><td class="good">+30.000</td></tr><tr><td>9/11 23:17</td><td>0.5 @4,330.23 → 4,378</td><td class="good">+23.885</td></tr><tr><th colspan="2">当週確定：3勝0敗</th><th class="good">+96.385</th></tr>
+</tbody></table></div>
+<div class="note"><strong>現行ルール（発注指示ではない）:</strong> 4H実体が4,319.13–4,306.50帯と週足下降ラインを下抜けて確定した時に撤退。9/14寄りで4,280.10以下なら待たずに即時撤退。4H未確定の下ヒゲだけでは常時撤退しない。4,280.10は判断水準、4,260.00は逆指値の置き場所。撤退後の自動再エントリー/増し玉は未承認。</div>
+<div class="wide"><table><thead><tr><th>仮定約定</th><th>残玉PnL</th><th>9/9キャンペーン計</th><th>全通算</th></tr></thead><tbody>
+<tr><td>4,348.33</td><td class="good">+9.050</td><td>+62.935</td><td>+381.935</td></tr><tr><td>4,319.13</td><td>-5.550</td><td>+48.335</td><td>+367.335</td></tr><tr><td>4,306.50</td><td>-11.865</td><td>+42.020</td><td>+361.020</td></tr><tr><td>4,280.10</td><td>-25.065</td><td>+28.820</td><td>+347.820</td></tr><tr><td>4,260.00</td><td>-35.115</td><td>+18.770</td><td>+337.770</td></tr>
+</tbody></table></div>
+<p class="mut">上表はその価格で約定した場合のpt·Lot算術（手数料等除く）であり、保証額ではない。旧129.000 + 9/2キャンペーン190.000 + 新々確定53.885 + 残玉評価9.050 = 通算381.935。</p>
+</section>
+
+<section><h2>主要8系列と日経の30日観測 <span class="mut">（重要情報はネットなしで表示）</span></h2>
+<div class="wide"><table><thead><tr><th>系列</th><th>30日終値</th><th>30日変化</th><th>読み方</th></tr></thead><tbody>
+<tr><td>USDJPY</td><td>153.554</td><td class="bad">-3.62%</td><td>機械値。FXCM執行終値153.468と混用しない。</td></tr><tr><td>US100</td><td>29,368.439</td><td class="bad">-2.38%</td><td>機械値。CFD終値29,371.2は別表示。</td></tr><tr><td>JP225</td><td>64,011.340</td><td class="bad">-6.29%</td><td>9/11現物公式値。CFD64,686を月曜ギャップ幅にしない。</td></tr><tr><td>Gold proxy</td><td>4,366.200</td><td class="good">+0.06%</td><td>機械proxy。Pepperstone終値4,348.33を執行優先。</td></tr><tr><td>WTI</td><td>100.050</td><td class="good">+23.14%</td><td>機械futures。原油急騰の観測。</td></tr><tr><td>US2Y</td><td>30日値未提示</td><td>—</td><td>TVC週次4.630%、前週4.374%で+25.6bp。<strong>^FVX代用なし。</strong></td></tr><tr><td>US10Y</td><td>4.975</td><td class="good">+7.20%*</td><td>*利回り水準の相対変化。TVC週次4.969%、+18.5bp。</td></tr><tr><td>VIX</td><td>15.840</td><td class="good">+8.27%</td><td>前週別ソース14.530と混ぜて週差を作らない。</td></tr><tr><td>BTCUSD</td><td>76,568.125</td><td>+20.77%</td><td>8/13→9/10の別窓。画像77,262.47は9/12進行バーで金曜終値ではない。</td></tr>
+</tbody></table></div>
+<svg viewBox="0 0 760 300" role="img" aria-label="30日変化率のインライン棒グラフ。WTIはプラス23.14パーセント、JP225はマイナス6.29パーセント。">
+ <text x="24" y="25" fill="#eaf1f8" font-size="16">30日変化率（%）— US2Y欠測、BTCは9/10までの別窓</text><line x1="360" y1="45" x2="360" y2="235" stroke="#afc0d0"/><g fill="#afc0d0" font-size="12"><text x="325" y="55">0</text><text x="520" y="55">+15</text><text x="150" y="55">-15</text></g>
+ <g font-size="13" fill="#eaf1f8"><text x="25" y="82">USDJPY</text><text x="25" y="110">US100</text><text x="25" y="138">JP225</text><text x="25" y="166">Gold proxy</text><text x="25" y="194">WTI</text><text x="25" y="222">US10Y*</text><text x="25" y="250">VIX</text></g>
+ <g><rect x="313" y="68" width="47" height="16" fill="#ff7782"/><rect x="329" y="96" width="31" height="16" fill="#ff7782"/><rect x="278" y="124" width="82" height="16" fill="#ff7782"/><rect x="360" y="152" width="1" height="16" fill="#62d3a2"/><rect x="360" y="180" width="301" height="16" fill="#f2bd5b"/><rect x="360" y="208" width="94" height="16" fill="#79b9ff"/><rect x="360" y="236" width="108" height="16" fill="#79b9ff"/></g>
+ <g fill="#eaf1f8" font-size="12"><text x="267" y="81">-3.62</text><text x="283" y="109">-2.38</text><text x="232" y="137">-6.29</text><text x="365" y="165">+0.06</text><text x="666" y="193">+23.14</text><text x="459" y="221">+7.20</text><text x="473" y="249">+8.27</text></g>
+<text x="25" y="278" fill="#eaf1f8" font-size="13">BTCUSD*</text><rect x="360" y="264" width="270" height="16" fill="#afc0d0"/><text x="635" y="277" fill="#eaf1f8" font-size="12">+20.77</text></svg>
+<p class="legend">米2s10sは41.0→33.9bp（ベアフラット）、日本2s10sは108.5→114.5bp（スティープ）。日米2年差拡大と円高の同居は、金利差だけで為替を説明する仮説への反例方向の観測であり、因果の確定ではない。</p>
+</section>
+
+<section><h2>ポートフォリオ — 12行と資金移動</h2>
+<p>表示総資産は4,750,629円（前週4,906,965円、-156,336円）。50,000円をスィープ専用銀行口座から銀行口座へ移動済み。これを戻す比較可能額4,800,629円は <strong>-106,336円</strong>で、国内株-100,538円と米国株-5,798円に一致する（正式TWRではない）。</p>
+<div class="wide"><table><thead><tr><th>区分</th><th>銘柄</th><th>数量</th><th>現在単価</th><th>評価額円</th><th>評価損益円</th><th>前週差円</th></tr></thead><tbody>
+<tr><td>特定</td><td>200A</td><td>91</td><td>4,198</td><td>382,018</td><td>-10,738</td><td>-10,101</td></tr><tr><td>特定</td><td>425A</td><td>750</td><td>358.1</td><td>268,575</td><td>-3,675</td><td>-11,475</td></tr><tr><td>特定</td><td>586A</td><td>50</td><td>245.5</td><td>12,275</td><td>+1,525</td><td>-375</td></tr><tr><td>特定</td><td>6954</td><td>100</td><td>5,735</td><td>573,500</td><td>-47,000</td><td>-19,600</td></tr><tr><td>特定</td><td>7011</td><td>100</td><td>3,705</td><td>370,500</td><td>-17,500</td><td>-4,900</td></tr>
+<tr><td>NISA</td><td>1655</td><td>270</td><td>846.2</td><td>228,474</td><td>+19,494</td><td>-7,128</td></tr><tr><td>NISA</td><td>2243</td><td>174</td><td>4,259</td><td>741,066</td><td>+274,746</td><td>+2,610</td></tr><tr><td>NISA</td><td>2638</td><td>193</td><td>2,555</td><td>493,115</td><td>+30,880</td><td>-14,089</td></tr><tr><td>NISA</td><td>2847</td><td>80</td><td>2,944</td><td>235,520</td><td>+23,360</td><td>-4,880</td></tr><tr><td>NISA</td><td>425A</td><td>2,000</td><td>358.1</td><td>716,200</td><td>-71,800</td><td>-30,600</td></tr>
+<tr><td>US</td><td>GDX</td><td>15</td><td>97.10 USD</td><td>224,548</td><td>+22,633</td><td>-8,196</td></tr><tr><td>US</td><td>SPCX</td><td>13</td><td>151.21 USD</td><td>303,056</td><td>-7,020</td><td>+2,398</td></tr>
+</tbody></table></div>
+<p class="mut">425Aは特定750口とNISA2,000口を合算しないまま保持。米国2銘柄は外貨3,412.25→3,422.23 USD（+9.98 USD）だが円評価は-5,798円。表示評価額から逆算した換算率156.3197→154.1696の差では、原資産寄与約+1,560円、FX換算寄与約-7,358円。これは二時点の機械分解であり、全外貨リスクの総額ではない。</p>
+</section>
+
+<section><h2>対立シナリオ、未確認、ソース</h2><div class="grid">
+<div class="card"><h3>対立シナリオ</h3><p><strong>株反発/VIX低下</strong>は懸念緩和とも、イベント通過後の調整とも読める。<strong>原油反落</strong>だけで地政学解消としない。<strong>日銀</strong>は利鞘改善と債券損失・景気悪化が競合する。</p></div>
+<div class="card"><h3>未確認</h3><p>Fiboラベル、全約定の開始時刻、MAE実測、地政学の公式一次本文。<strong>FOMC 85%超・日銀98%</strong>はそれぞれBoss原本の市場推定で、独立確認していない。</p></div>
+<div class="card"><h3>ソース分離</h3><p><strong>執行:</strong> Boss確定、提供CFD/FXチャート、口座画像。<br><strong>機械:</strong> 9/12 15:16 JSTの一回取得。BTCは9/10別窓。<br><strong>一次資料:</strong> BLS、Michigan、日経、Fed、日銀の日程。</p></div>
+</div></section>
+<footer>関所7.5承認待ちの草案。Gitへの記録・公開は関所7.5承認後。ネットワーク、外部CDN、外部JavaScriptに依存せず、重要表・図はこのHTML内に保持。</footer>
+</main></body></html>

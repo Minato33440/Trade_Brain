@@ -1,0 +1,72 @@
+# Charts — 2026-9-11_wk02
+
+提供18PNG（個別14・口座3・指標1）と生成プロット1PNG。通常機械系列は9/11、BTC機械は9/10、BTC画像は9/12進行バー。原本raw YAMLと、説明行のみ補正した読み込み用YAMLを併存させ、価格は変更していない。
+
+## 画像・プロット
+
+- [BTC-USD-2026-09-12.png](<charts/BTC-USD-2026-09-12.png>)
+- [DXY-2026-09-12.png](<charts/DXY-2026-09-12.png>)
+- [JP10Y-2026-09-12.png](<charts/JP10Y-2026-09-12.png>)
+- [JP225-2026-09-12.png](<charts/JP225-2026-09-12.png>)
+- [JP2Y-2026-09-12.png](<charts/JP2Y-2026-09-12.png>)
+- [Portforio-2026-09-12.png](<charts/Portforio-2026-09-12.png>)
+- [US100-2026-09-12.png](<charts/US100-2026-09-12.png>)
+- [US10Y-2026-09-12.png](<charts/US10Y-2026-09-12.png>)
+- [US2Y-2026-09-12.png](<charts/US2Y-2026-09-12.png>)
+- [US30Y-2026-09-12.png](<charts/US30Y-2026-09-12.png>)
+- [USDJPY-2026-09-12.png](<charts/USDJPY-2026-09-12.png>)
+- [VIX-2026-09-12.png](<charts/VIX-2026-09-12.png>)
+- [WTI-2026-09-12.png](<charts/WTI-2026-09-12.png>)
+- [XAUUSD-2026-09-12.png](<charts/XAUUSD-2026-09-12.png>)
+- [XAUUSD-H1-2026-09-12.png](<charts/XAUUSD-H1-2026-09-12.png>)
+- [ポートフォリオ-2026-09-12..png](<charts/ポートフォリオ-2026-09-12..png>)
+- [指標結果-2026-09-12.png](<charts/指標結果-2026-09-12.png>)
+- [東証株-2026-09-12..png](<charts/東証株-2026-09-12..png>)
+- [米国株-2026-09-12..png](<charts/米国株-2026-09-12..png>)
+
+## データ・照合・取得記録
+
+- [2026-08-13 〜 2026-09-12.txt](<charts/2026-08-13 〜 2026-09-12.txt>)
+- [2026_09_12_snapshot.raw.yaml](<charts/2026_09_12_snapshot.raw.yaml>)
+- [2026_09_12_snapshot.yaml](<charts/2026_09_12_snapshot.yaml>)
+- [calculation_checks.json](<charts/calculation_checks.json>)
+- [csv_append_manifest.json](<charts/csv_append_manifest.json>)
+- [fetch_run.json](<charts/fetch_run.json>)
+- [fetch_stderr.txt](<charts/fetch_stderr.txt>)
+- [fetch_stdout.txt](<charts/fetch_stdout.txt>)
+- [FRED_DFII5_2026-08-28_2026-09-11.csv](<charts/FRED_DFII5_2026-08-28_2026-09-11.csv>)
+- [FRED_DGS5_2026-08-28_2026-09-11.csv](<charts/FRED_DGS5_2026-08-28_2026-09-11.csv>)
+- [fred_supplement.json](<charts/fred_supplement.json>)
+- [FRED_T5YIE_2026-08-28_2026-09-11.csv](<charts/FRED_T5YIE_2026-08-28_2026-09-11.csv>)
+- [GM Strategy-2026-9-11.txt](<charts/GM Strategy-2026-9-11.txt>)
+- [grok_prompt.txt](<charts/grok_prompt.txt>)
+- [grok_run.json](<charts/grok_run.json>)
+- [grok_stderr.txt](<charts/grok_stderr.txt>)
+- [grok_usage.json](<charts/grok_usage.json>)
+- [index_append_manifest.json](<charts/index_append_manifest.json>)
+- [input_manifest.json](<charts/input_manifest.json>)
+- [Market conditions -2026-9-11~.txt](<charts/Market conditions -2026-9-11~.txt>)
+- [news_output_2026-09-12.txt](<charts/news_output_2026-09-12.txt>)
+- [observed_values_excerpt.json](<charts/observed_values_excerpt.json>)
+- [trade_summary_closed_at.json](<charts/trade_summary_closed_at.json>)
+- [trade_summary_opened_at_2026-09-07_2026-09-11.md](<charts/trade_summary_opened_at_2026-09-07_2026-09-11.md>)
+- [x_headlines_raw_2026-9-11.txt](<charts/x_headlines_raw_2026-9-11.txt>)
+- [x_headlines_selected_2026-9-11.txt](<charts/x_headlines_selected_2026-9-11.txt>)
+
+- [一次資料・確認範囲](sources.md)
+- [入力・数値・構造の検証結果](validation.json)
+- [関所7.5](quality_gate.md)
+- [初稿と訂正の監査記録](audit/README.md)
+- [初回運用と利用量](pilot_run.md)
+
+## Rex追記の受領・反映履歴
+
+- [入力初回/受領版のハッシュ](charts/input_manifest.json)
+- [追記前生成物とハッシュ一覧](audit/pre_rex_addendum/manifest.json)
+- [Rex追記を含む受領レポート](audit/rex_addendum_inputs/wr-2026-9-11.md)
+- [受領時のtrade_results](audit/rex_addendum_inputs/trade_results.md)
+- [参考セッション](audit/rex_addendum_inputs/claude-session-2026-9-12.txt)
+- [反映・訂正記録](rex_addendum_integration.md)
+- [全持ち越しID](carry_forward.md)
+- [次回指示書](next_update_handoff.md)
+- [追記反映の検証](rex_addendum_validation.json)

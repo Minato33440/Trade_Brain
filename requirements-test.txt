@@ -1,0 +1,2 @@
+# YAML syntax regression test only; the market-data runtime does not require it.
+PyYAML==6.0.3

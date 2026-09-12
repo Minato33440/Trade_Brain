@@ -1,0 +1,804 @@
+week: 2026-9-11_wk02
+date_range: 2026-09-07 -> 2026-09-11
+created: 2026-09-12
+status: draft_gate_7_5_approval_pending
+engine: gpt-6-astra
+tags:
+- gm_weekly
+- macro
+- cpi
+- fomc
+- boj
+- oil
+- yen
+- gold
+- revisions
+- draft
+approval:
+  gate_7_5: pending
+  instruction: This is a review draft. Do not commit, push, or treat proposed interpretations as approved strategy.
+  basis: logs/weekly/2026/2026-9-11_wk02/audit/astra_verified_basis.md
+sources:
+  boss_report: logs/boss's-weeken-Report/2026/wr-2026-9-11.md
+  trade_results: logs/weekly/2026/2026-9-11_wk02/trade_results.md
+  snapshot: logs/weekly/2026/2026-9-11_wk02/charts/2026_09_12_snapshot.yaml
+  fetch_record: logs/weekly/2026/2026-9-11_wk02/charts/fetch_run.json
+  market_audit: logs/weekly/2026/2026-9-11_wk02/audit/terra_market_audit.md
+  market_corrections: logs/weekly/2026/2026-9-11_wk02/audit/terra_market_audit_corrections.md
+  portfolio_audit: logs/weekly/2026/2026-9-11_wk02/audit/terra_portfolio_audit.md
+  verified_basis: logs/weekly/2026/2026-9-11_wk02/audit/astra_verified_basis.md
+  raw_snapshot: logs/weekly/2026/2026-9-11_wk02/charts/2026_09_12_snapshot.raw.yaml
+source_status:
+  boss_confirmed:
+  - Gold position, exits, portfolio screenshots, and the 50,000 JPY bank transfer.
+  - Provided CFD/FX charts are the execution-price authority; snapshot proxies are not substitutes.
+  fetched_observations:
+  - Snapshot was fetched once at 2026-09-12 15:16 JST and exited successfully.
+  - FRED supplement has DGS5/DFII5 through 2026-09-10 and T5YIE through 2026-09-11.
+  astra_proposals:
+  - Do not reduce the weekly market to a single rate-differential explanation; retain competing explanations.
+  - Keep long-term GM holdings separate from short-term CFD event decisions.
+  unverified_or_not_decided:
+  - Market-implied FOMC and BOJ probabilities in the Boss report were not independently rechecked in this run.
+  - No same-feed, same-cutoff P12 comparison was supplied; its formal status remains pending.
+  - No session-level evidence establishes a CPI-to-real-yield causal path on 2026-09-11.
+snapshot_date_integrity:
+  fetched_at_jst: 2026-09-12 15:16:00+09:00
+  normal_series_status: aligned
+  normal_series_as_of: 2026-09-11
+  btc_usd_as_of: 2026-09-10
+  btc_status: off-calendar asset, but its 9/11 close was not obtained; do not call it current with the 9/11 normal-series
+    panel
+  fred_curve_as_of: 2026-09-10
+  fred_breakeven_as_of: 2026-09-11
+  format_normalization: Original output contained invalid indentation at line 10. Raw preserved; canonical archive moves explanatory
+    note to sibling value_revisions_note only. Prices and dates unchanged.
+regime:
+  label_30d: Equities Down / Oil Surge
+  prior_label_30d: Gold Bid
+  factual_panel:
+    equities: down
+    volatility: normal
+    oil: surge
+    gold: range
+    crypto: strong
+    yields: rising
+  review_interpretation: Friday equity rebound and lower VIX do not negate the 30-day label. They are shorter-horizon observations.
+  limitations:
+  - Do not infer geopolitical resolution from one-day oil weakness.
+  - Do not infer an equity direction mechanically from the level of long rates.
+market_charts_same_vendor:
+  period: 2026-09-04 -> 2026-09-11
+  us100_cfd:
+    start: 29493.3
+    end: 29371.2
+    change_pct: -0.414
+  jp225_cfd:
+    start: 65813
+    end: 64686
+    change_pct: -1.7124
+  usdjpy_fxcm:
+    start: 156.195
+    end: 153.468
+    change_jpy: -2.727
+    change_pct: -1.7459
+  gold_pepperstone:
+    start: 4431.07
+    end: 4348.33
+    change_pct: -1.8673
+  wti_cash:
+    start: 91.784
+    end: 100.374
+    change_pct: 9.359
+  us2y_tvc:
+    start_pct: 4.374
+    end_pct: 4.63
+    change_bp: 25.6
+  us10y_tvc:
+    start_pct: 4.784
+    end_pct: 4.969
+    change_bp: 18.5
+  jp2y_tvc:
+    start_pct: 1.827
+    end_pct: 1.842
+    change_bp: 1.5
+  jp10y_tvc:
+    start_pct: 2.912
+    end_pct: 2.987
+    change_bp: 7.5
+  derived_spreads:
+    us_2s10s_bp:
+      prior: 41.0
+      current: 33.9
+      change_bp: -7.1
+    jp_2s10s_bp:
+      prior: 108.5
+      current: 114.5
+      change_bp: 6.0
+    us_jp_2y_bp:
+      prior: 254.7
+      current: 278.8
+      change_bp: 24.1
+    us_jp_10y_bp:
+      prior: 187.2
+      current: 198.2
+      change_bp: 11.0
+snapshot_30d:
+  window_normal: 2026-08-13 -> 2026-09-11
+  window_btc: 2026-08-13 -> 2026-09-10
+  values:
+    usdjpy:
+      latest: 153.554
+      change_pct_30d: -3.62
+    us100:
+      latest: 29368.439
+      change_pct_30d: -2.38
+    jp225:
+      latest: 64011.34
+      change_pct_30d: -6.29
+    xau_proxy:
+      latest: 4366.2
+      change_pct_30d: 0.06
+      note: GC=F proxy; not the Pepperstone execution price
+    wti_futures:
+      latest: 100.05
+      change_pct_30d: 23.14
+    us3m_pct:
+      latest: 3.913
+      change_pct_30d: 5.61
+    us5y_pct:
+      latest: 4.791
+      change_pct_30d: 11.08
+    us10y_pct:
+      latest: 4.975
+      change_pct_30d: 7.2
+    us30y_pct:
+      latest: 5.354
+      change_pct_30d: 2.7
+    vix:
+      latest: 15.84
+      change_pct_30d: 8.27
+    btc_usd:
+      latest: 76568.125
+      change_pct_30d: 20.77
+      as_of: 2026-09-10
+revisions_and_windows:
+  value_revisions:
+    usdjpy_2026_09_04:
+      first: 156.2209930419922
+      current: 155.66000366210938
+      change: -0.560989
+      change_pct: -0.3591
+    xau_proxy_2026_09_04:
+      first: 4476.60009765625
+      current: 4429.7998046875
+      change: -46.800293
+      change_pct: -1.0454
+  handling: Preserved archive values and current-feed values are separate records. The machine does not choose the correct
+    9/4 value.
+  current_feed_weekly_change:
+    usdjpy:
+      window: 2026-09-04 -> 2026-09-11
+      start: 155.66000366210938
+      end: 153.5540008544922
+      change_pct: -1.35
+    xau_proxy:
+      window: 2026-09-04 -> 2026-09-11
+      start: 4429.7998046875
+      end: 4366.2001953125
+      change_pct: -1.44
+    btc_usd:
+      window: 2026-09-03 -> 2026-09-10
+      start: 81271.7421875
+      end: 76568.125
+      change_pct: -5.7875
+  archive_comparison_only:
+    btc_usd:
+      window: 2026-09-05 -> 2026-09-10
+      change_pct: -4.0787
+      note: five-day archive comparison, not the current snapshot weekly window
+  curve_yahoo:
+    window: 2026-09-04 -> 2026-09-11
+    five_s_ten_s_bp:
+      prior: 23.4
+      current: 18.4
+      change_bp: -5.0
+    three_m_ten_s_bp:
+      prior: 102.7
+      current: 106.2
+      change_bp: 3.5
+    ten_s_thirty_s_bp:
+      prior: 46.2
+      current: 37.9
+      change_bp: -8.3
+    belly_premium_bp:
+      prior: 29.3
+      current: 36.1
+      change_bp: 6.8
+  curve_fred:
+    as_of: 2026-09-10
+    window: 2026-09-03 -> 2026-09-10
+    us2y_pct: 4.56
+    us10y_pct: 4.95
+    two_s_ten_s_bp: 39.0
+    change_bp_1w: -4.0
+  inflation_compensation:
+    dgs5_dfii5_window: 2026-09-04 -> 2026-09-10
+    dgs5_change_bp: 21.0
+    dfii5_change_bp: 12.0
+    t5yie_change_bp_to_2026_09_10: 9.0
+    t5yie_change_bp_2026_09_10_to_2026_09_11: -6.0
+    t5yie_change_bp_2026_09_04_to_2026_09_11: 3.0
+    five_y_five_y_be_pct: 2.32
+    five_y_five_y_be_change_bp_1w: -1.0
+    limitation: DGS5 and DFII5 were not published for 9/11; do not claim a CPI-day real-yield change.
+relative_strength_30d:
+  window: rolling 30-day values; not a one-week return
+  jp225_jpy_pct: -6.29
+  jp225_usd_pct: -2.77
+  currency_effect_pt: -3.52
+  us100_pct: -2.38
+  jp_vs_us_nominal_pt: -3.91
+  jp_vs_us_fx_adjusted_pt: -0.39
+  verdict: mixed
+gates:
+  event_window:
+    fomc_statement_jst: 2026-09-17 03:00
+    fomc_press_conference_jst: 2026-09-17 03:30
+    boj_meeting: 2026-09-17 -> 2026-09-18
+    rule: Do not add new directional event risk before separating the decision, guidance, and price response.
+  volatility:
+    vix_tvc: 15.85
+    vix_snapshot: 15.84
+    threshold: 18
+    status: below threshold; permission condition only, not an instruction to add risk
+  gold_position:
+    remaining_lot: 0.5
+    entry: 4330.23
+    exit_band: 4319.13 -> 4306.50 plus confirmed 4H close below weekly descending line
+    gap_exit_below: 4280.1
+    final_judgment_level: 4280.1
+    stop_placement_reference: 4260
+    prohibition: No automatic re-entry or add-on after exit without approval.
+    gap_exit_operator: less_than_or_equal
+    gap_exception_date: 2026-09-14
+signals:
+- id: rate_differential_counterexample
+  type: observed
+  evidence: US-JP 2Y spread widened 24.1bp while FXCM USDJPY fell 1.7459%.
+  implication: Rate differentials alone are not adopted as the explanation for this week's yen move.
+- id: near_term_be_widen_then_reverse
+  type: observed
+  evidence: T5YIE rose 9bp through 9/10 then fell 6bp on 9/11; net weekly change was +3bp.
+  implication: Keep date windows visible; no causal CPI-to-real-yield inference.
+- id: oil_geopolitics_competing_explanations
+  type: observed_and_unresolved
+  evidence: WTI cash was +9.3590% week-on-week despite the Friday pullback.
+  implication: Event passage, profit-taking, and geopolitical change remain competing explanations.
+- id: real_yield_gold_candidate
+  type: astra_proposal
+  evidence: DGS5 and DFII5 rose together through 9/10, while exact same-window gold confirmation is not yet registered.
+  implication: Candidate hypothesis only; do not revive rejected 8-2/8-3 or add it to a regime score.
+hypotheses:
+  p9:
+    status: carry_forward_no_count_update
+    reason: No precisely defined event window in the current evidence.
+  p10:
+    status: definition_pending
+    blocking_definition: Define statement date, source, event timestamp and observation cutoff before registration.
+    action: Register trigger, action and invalidation before updating counts.
+  p11:
+    status: symmetric_rule_adopted_counterexample_1
+    registered_direction: US-JP 2Y spread narrowing with USDJPY falling; widening with USDJPY rising.
+    registered_invalidation: Two weekly observations opposite to the registered direction, counting both narrowing/rising and widening/falling.
+    trigger: Compare weekly changes in TVC US-JP 2Y spread and FXCM USDJPY using the registered consistent source/window.
+    action: Count either opposite direction; invalidate at two qualifying observations; do not use the hypothesis as a sufficient FX explanation now.
+    counterexample_count: 1
+    counterexamples:
+    - week: 2026-9-11_wk02
+      period: 2026-09-04 -> 2026-09-11
+      spread_change_bp: 24.1
+      usdjpy_change_pct: -1.7459
+    rule_change:
+      applied_at_jst: '2026-09-12'
+      source_document_label: '2026-09-13'
+      authority: Boss explicitly requested incorporation of the Rex addendum in this thread.
+      old_registered_invalidation: Two instances of 2Y spread narrowing with USDJPY rising.
+      old_verdict: This week's widening/falling pair did not count under the old asymmetric wording.
+      effect: Apply the corrected rule to 2026-9-11_wk02 as counterexample 1; no automatic retrospective recount of earlier weeks.
+      archive: audit/pre_rex_addendum/meta.yaml
+  p12:
+    status: reference_met_formal_judgment_pending
+    evidence: Yahoo USDJPY on 9/9 was 153.4779968, below the FXCM reference 156.195.
+    limitation: Different feed and cutoff from the registered FXCM reference.
+portfolio:
+  account_assets_jpy:
+    prior: 4906965
+    current: 4750629
+    change: -156336
+  bank_transfer_jpy: 50000
+  comparable_assets_jpy:
+    current_including_transfer: 4800629
+    change_from_prior: -106336
+  components_jpy:
+    japanese_equities:
+      prior: 4121781
+      current: 4021243
+      change: -100538
+    us_equities:
+      prior: 533402
+      current: 527604
+      change: -5798
+    sweep:
+      prior: 251782
+      current: 201782
+      change: -50000
+  unrealized_pnl_jpy:
+    prior: 321241
+    current: 214905
+    change: -106336
+  major_weekly_contributors_jpy:
+    425a_total: -42075
+    6954: -19600
+    2638: -14089
+    2243: 2610
+    spcx: 2398
+  us_equity_translation:
+    usd_value:
+      prior: 3412.25
+      current: 3422.23
+      change: 9.98
+    implied_jpy_usd:
+      prior: 156.3197
+      current: 154.1696
+    underlying_effect_jpy: 1560.07
+    fx_translation_effect_jpy: -7358.07
+    net_jpy: -5798
+    limitation: Mechanical two-screenshot decomposition; not a portfolio forecast.
+  composition_notes:
+    usd_stock_exposure_jpy: 527604
+    direct_usd_stock_share_pct: 11.11
+    425a_and_gdx_jpy: 1209323
+    425a_and_gdx_share_pct: 25.46
+    semiconductor_200a_and_2243_jpy: 1123084
+    semiconductor_share_pct: 23.64
+    warning: Categories overlap and do not sum to a portfolio allocation.
+corrections_from_source_record:
+  nikkei_cash_2026_09_11:
+    adopted: 64011.34
+    source: official Nikkei
+    correction: Boss report value 63405 and -2.86% is not used
+  tvc_us10y_daily_change:
+    adopted: +0.008 points / +0.8bp
+    correction: Do not confuse with the final 4H -0.006-point movement
+  gold_position:
+    adopted: 0.5 lot at 4330.23
+    correction: Do not use old 8/19 entry or old 4400 exit as current position rules
+  gdx:
+    adopted: VanEck Gold Miners ETF
+    correction: Use the corrected name and positive current PnL from the verified basis
+  etf_2243_current_unit_price:
+    ticker: 2243
+    adopted: 4259
+    correction: Do not use the earlier 4299 transcription
+updated: 2026-09-12
+contributors:
+- 'gpt-5.6-terra: market and portfolio audits; meta/note/human-view drafts'
+- 'gpt-5.6-luna: initial image extraction'
+- 'grok-4.5: xai-oauth one-shot research'
+snapshot:
+  source: logs/weekly/2026/2026-9-11_wk02/charts/2026_09_12_snapshot.yaml
+  date_start: 2026-08-13
+  date_end: 2026-09-12
+  regime_label: Equities Down / Oil Surge
+  regime:
+    label: Equities Down / Oil Surge
+    equities: down
+    volatility: normal
+    oil: surge
+    gold: range
+    crypto: strong
+    yields: rising
+  pairs:
+    USD/JPY:
+      latest: 153.554
+      change_pct: -3.62
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    US100:
+      latest: 29368.439
+      change_pct: -2.38
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    JP225:
+      latest: 64011.34
+      change_pct: -6.29
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    XAU/USD:
+      latest: 4366.2
+      change_pct: 0.06
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    WTI:
+      latest: 100.05
+      change_pct: 23.14
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    US3M:
+      latest: 3.913
+      change_pct: 5.61
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    US5Y:
+      latest: 4.791
+      change_pct: 11.08
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    VIX:
+      latest: 15.84
+      change_pct: 8.27
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    US10Y:
+      latest: 4.975
+      change_pct: 7.2
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    US30Y:
+      latest: 5.354
+      change_pct: 2.7
+      as_of: 2026-09-11
+      change_pct_window: 2026-08-13 -> 2026-09-11
+      prev_1w_as_of: 2026-09-04
+    BTC/USD:
+      latest: 76568.125
+      change_pct: 20.77
+      as_of: 2026-09-10
+      change_pct_window: 2026-08-13 -> 2026-09-10
+      prev_1w_as_of: 2026-09-03
+decision_bias:
+  risk: Existing positions first; conditional new risk after FOMC/BOJ price confirmation.
+  gold: Boss-confirmed residual 0.5 @4330.23; registered 4H exit and Monday gap exception.
+  fx: Interest-rate differential is not a sufficient explanation; retain competing causes.
+  portfolio: Separate long-term GM from CFD, bank transfer from valuation change, and underlying from currency effect.
+add_risk_gate: open
+reduce_risk_gate: caution
+portfolio_snapshot_20260911:
+  source: provided account screenshots captured 2026-09-12
+  total_assets_jpy: 4750629
+  unrealized_pnl_jpy: 214905
+  japanese_equity_value_jpy: 4021243
+  us_equity_value_jpy: 527604
+  sweep_jpy: 201782
+  external_flow_jpy: -50000
+  external_flow_description: Bank transfer confirmed by Boss in this thread; timing unspecified
+  week_change_adjusted_jpy: -106336
+  positions:
+  - account: taxable
+    symbol: 200A
+    quantity: 91
+    display_price: 4198
+    price_currency: JPY
+    value_jpy: 382018
+    unrealized_pnl_jpy: -10738
+    week_value_change_jpy: -10101
+  - account: taxable
+    symbol: 425A
+    quantity: 750
+    display_price: 358.1
+    price_currency: JPY
+    value_jpy: 268575
+    unrealized_pnl_jpy: -3675
+    week_value_change_jpy: -11475
+  - account: taxable
+    symbol: 586A
+    quantity: 50
+    display_price: 245.5
+    price_currency: JPY
+    value_jpy: 12275
+    unrealized_pnl_jpy: 1525
+    week_value_change_jpy: -375
+  - account: taxable
+    symbol: '6954'
+    quantity: 100
+    display_price: 5735
+    price_currency: JPY
+    value_jpy: 573500
+    unrealized_pnl_jpy: -47000
+    week_value_change_jpy: -19600
+  - account: taxable
+    symbol: '7011'
+    quantity: 100
+    display_price: 3705
+    price_currency: JPY
+    value_jpy: 370500
+    unrealized_pnl_jpy: -17500
+    week_value_change_jpy: -4900
+  - account: nisa
+    symbol: '1655'
+    quantity: 270
+    display_price: 846.2
+    price_currency: JPY
+    value_jpy: 228474
+    unrealized_pnl_jpy: 19494
+    week_value_change_jpy: -7128
+  - account: nisa
+    symbol: '2243'
+    quantity: 174
+    display_price: 4259
+    price_currency: JPY
+    value_jpy: 741066
+    unrealized_pnl_jpy: 274746
+    week_value_change_jpy: 2610
+  - account: nisa
+    symbol: '2638'
+    quantity: 193
+    display_price: 2555
+    price_currency: JPY
+    value_jpy: 493115
+    unrealized_pnl_jpy: 30880
+    week_value_change_jpy: -14089
+  - account: nisa
+    symbol: '2847'
+    quantity: 80
+    display_price: 2944
+    price_currency: JPY
+    value_jpy: 235520
+    unrealized_pnl_jpy: 23360
+    week_value_change_jpy: -4880
+  - account: nisa
+    symbol: 425A
+    quantity: 2000
+    display_price: 358.1
+    price_currency: JPY
+    value_jpy: 716200
+    unrealized_pnl_jpy: -71800
+    week_value_change_jpy: -30600
+  - account: us
+    symbol: GDX
+    quantity: 15
+    display_price: 97.1
+    price_currency: USD
+    value_jpy: 224548
+    unrealized_pnl_jpy: 22633
+    week_value_change_jpy: -8196
+  - account: us
+    symbol: SPCX
+    quantity: 13
+    display_price: 151.21
+    price_currency: USD
+    value_jpy: 303056
+    unrealized_pnl_jpy: -7020
+    week_value_change_jpy: 2398
+trade_summary:
+  week: 2026-9-11_wk02
+  filter: closed_at date 2026-09-07 through 2026-09-11 inclusive
+  count: 3
+  wins: 3
+  losses: 0
+  win_rate_pct: 100
+  realized_pt_lot: '96.3850000000'
+  open_lot: '0.5'
+  open_entry: '4330.23'
+  mark: '4348.33'
+  open_pnl_pt_lot: '9.050'
+  campaign_total_pt_lot: '62.935'
+  cumulative_realized_pt_lot: '372.885'
+  cumulative_marked_pt_lot: '381.935'
+  prior_week_exact_marked_pt_lot: '336.535'
+  marked_week_delta_pt_lot: '45.400'
+  rows:
+  - opened_at: 2026-09-02 20:10
+    closed_at: 2026-09-07 15:00
+    symbol: XAUUSD
+    direction: long
+    size: '0.5000'
+    entry_price: '4311.000000'
+    exit_price: '4396.000000'
+    pnl_pct: '1.9717'
+    pnl_amount: '0.0000'
+    tag: gold_long,final_exit,new_campaign,rule_change
+    notes: 新X4。entry4311はE1/E2の加重平均。opened_atは既存CSVと同じE2時刻であり合成玉の代表値。9/7に事前変更した4400の4H実体割れ後、5分足20MAを根拠に4396退出。+42.500 pt-Lot。9/2キャンペーン確定+190.000。
+      出典2026-9-11_wk02/trade_results.md（Boss週末確定）。pnl_amount=0は既存形式の未入力値で、円貨実現額0を意味しない。
+  - opened_at: '2026-09-09'
+    closed_at: 2026-09-09 16:30
+    symbol: XAUUSD
+    direction: long
+    size: '1.0000'
+    entry_price: '4315.000000'
+    exit_price: '4345.000000'
+    pnl_pct: '0.6952'
+    pnl_amount: '0.0000'
+    tag: gold_long,partial_tp,new_new_campaign
+    notes: 新新X1。9/9建て1Lotを4345で利確。+30.000 pt-Lot。約定開始時刻は原本未記載のため日付精度。 出典2026-9-11_wk02/trade_results.md（Boss週末確定）。pnl_amount=0は既存形式の未入力値で、円貨実現額0を意味しない。
+  - opened_at: '2026-09-09'
+    closed_at: 2026-09-11 23:17
+    symbol: XAUUSD
+    direction: long
+    size: '0.5000'
+    entry_price: '4330.230000'
+    exit_price: '4378.000000'
+    pnl_pct: '1.1032'
+    pnl_amount: '0.0000'
+    tag: gold_long,partial_tp,new_new_campaign,event_cpi
+    notes: 新新X2。4330.23玉1Lotのうち0.5Lotを4378で利確。+23.885 pt-Lot。残0.5Lotは未決済。約定開始時刻は原本未記載のため日付精度。 出典2026-9-11_wk02/trade_results.md（Boss週末確定）。pnl_amount=0は既存形式の未入力値で、円貨実現額0を意味しない。
+
+rex_addendum_integration:
+  applied_at_jst: '2026-09-12T18:28:59+09:00'
+  source_document_label: '2026-09-13'
+  source_label_note: Future-dated source label preserved; not the actual execution date.
+  report: rex_addendum_integration.md
+  carry_forward: carry_forward.md
+  next_update_instructions: next_update_handoff.md
+  opus_review_scope:
+  - quality_gate.md
+  - note.md
+  - meta.yaml
+  not_reviewed_by_opus:
+  - review.md
+  - audit/*
+  - charts/*
+  - CFD_Strategy-2026-9-14.html
+  scope_note: External review of the pre-addendum draft; not approval of this new revision or of Git push.
+  market_fetches_added: 0
+  grok_calls_added: 0
+oil_level_context:
+  vendor: BlackBull
+  instrument: WTI cash
+  period: 2026-08-28 -> 2026-09-11
+  start: 84.059
+  mid_20260904: 91.784
+  end: 100.374
+  change_pct: 19.408986545164705
+  display_change_pct: 19.41
+  separate_futures_30d_change_pct: 23.14
+  interpretation: Oil above 100 may pressure inflation, consumption and input costs; contribution to yields is not identified.
+  curve_counterevidence: US2Y +25.6bp exceeds US10Y +18.5bp; US2s10s flattened 7.1bp.
+  machine_threshold_status: Undecided; no added absolute-level regime threshold.
+campaign_history:
+- campaign: old
+  period: 2026-08-19 -> 2026-09-01
+  closed_count: 4
+  wins: 3
+  losses: 1
+  realized_pt_lot: '129.000'
+  status: closed
+- campaign: new
+  period: 2026-09-02 -> 2026-09-07
+  closed_count: 4
+  wins: 4
+  losses: 0
+  realized_pt_lot: '190.000'
+  status: closed
+- campaign: new_new
+  period: 2026-09-09 -> open
+  closed_count: 2
+  wins: 2
+  losses: 0
+  realized_pt_lot: '53.885'
+  unrealized_pt_lot: '9.050'
+  status: open
+cumulative_close_count_reconciliation:
+  unit: Each documented partial or final exit row, not entry rows or whole campaigns
+  closed_count: 10
+  wins: 9
+  losses: 1
+  csv_recorded_count: 8
+  csv_missing_old_wk03_count: 2
+  rejected_source_counts:
+  - old summary 6 exits
+  - current trade_results 13 exits / 12 wins
+  - Rex appendix 16 exits / 15 wins
+  audit: audit/rex_addendum_trade_audit.md
+weekly_pnl_bridge:
+  realized_pt_lot: '96.385'
+  prior_unrealized_pt_lot: '60.035'
+  current_unrealized_pt_lot: '9.050'
+  change_unrealized_pt_lot: '-50.985'
+  change_marked_total_pt_lot: '45.400'
+  identity: 96.385 + (9.050 - 60.035) = 45.400
+  note: 50.985 is the net decline in unrealized PnL, not solely PnL realized from last week.
+carry_forward:
+- id: 9-1
+  status: complete
+  detail: Other asset weekly closes supplied and reconciled.
+- id: 9-2
+  status: complete
+  detail: Account images reconciled; JPY 50000 bank transfer confirmed.
+- id: 9-3
+  status: operationally_resolved_label_pending
+  detail: Use exact registered levels; Fibo label reconciliation remains pending.
+- id: 9-4
+  status: withdrawn
+  detail: early_exit withdrawn; preserve dated rule change.
+- id: 9-5
+  status: complete
+  detail: CPI result verified; event timestamps separated.
+- id: 9-6
+  status: partial_exact_mae_pending
+  detail: Daily low 4291.8 is not entry-specific MAE; entry-to-exit intraday path missing.
+- id: 9-7
+  status: current_week_complete_backfill_pending
+  detail: Three closes appended; wk03 old X1/X2 CSV backfill remains pending.
+- id: 9-8
+  status: unverified
+  detail: Contract multiplier $100 per point per lot unverified; 4280.10 minus 4260 is a 20.10 price difference, not contract
+    proof.
+- id: 9-9
+  status: tracking_cause_unresolved
+  detail: GC=F two-value return pattern in dated records; cause and actual contract unverified.
+- id: 9-10
+  status: pending_boss_reason
+  detail: Reason for 1627 sale on 2026-05-11 not supplied; differing five/six-week counts not reconciled.
+- id: 9-11
+  status: rebuild_not_started
+  detail: Rejected 8-2/8-3 remain rejected; new measurement design needed.
+- id: P9
+  status: no_count_update
+  detail: Retain previous record; exact event window missing.
+- id: P10
+  status: definition_pending
+  detail: Statement date definition missing.
+- id: P11
+  status: counterexample_1
+  detail: Symmetric rule adopted with dated history.
+- id: P12
+  status: reference_support_formal_pending
+  detail: Same-feed/same-cutoff test missing.
+- id: 1655/2243
+  status: complete
+  detail: '2026-09-06 primary-source confirmation: S&P500/SOX, both generally unhedged.'
+vendor_cutoff_policy:
+  register:
+  - instrument
+  - actual_ticker_if_available
+  - vendor
+  - bar_interval
+  - as_of
+  - comparison_start
+  - comparison_end
+  - cutoff_timezone_or_unknown
+  tse_close_jst: '15:30'
+  tse_hours_source: https://www.jpx.co.jp/equities/trading/domestic/01.html
+  nikkei_value_source: https://indexes.nikkei.co.jp/nkave/archives/summary?dt=20260911&idx=nk225
+  cfd_fx_cutoff: Exact server bar cutoff not independently verified; do not apply a blanket Saturday 06:00 JST.
+  fred_as_of:
+    DGS5: '2026-09-10'
+    DFII5: '2026-09-10'
+    T5YIE: '2026-09-11'
+  etf_note: Exchange close and underlying market close differ; ETF price is not a mechanically synchronized underlying value.
+revision_diagnostics:
+  gold_series: GC=F
+  close_date: '2026-09-04'
+  reported_transition_1:
+    event_date: '2026-09-06'
+    from: 4429.8
+    to: 4476.6
+    evidence_type: Dated wk01 record and regression-test description; not an independent first value in current ledger.
+    rex_date_claim: '2026-09-05'
+  ledger_transition_2:
+    first_seen: '2026-09-06'
+    seen_date: '2026-09-12'
+    from: 4476.60009765625
+    to: 4429.7998046875
+  classification: Approximate two-value return pattern across dated records; cause unresolved.
+  hypotheses:
+  - Contract selection/roll
+  - Cache/backfill or historical-bar revision
+  - Other provider behavior
+  independent_causal_confirmations: 0
+  usdjpy: Single observed revision 156.220993 to 155.660004; cause separately unresolved.
+  existing_detection: src/market.py compares (logical name,date) against first observation; this is not actual-ticker hashing.
+  known_detection_gap: Returning to the first value is not emitted; unchanged revised values can be appended repeatedly.
+  next_work: Evaluate chronological previous-observation comparison and retain actual ticker/contract response evidence.
+  ticker_switch: Undecided; no proxy source change performed.

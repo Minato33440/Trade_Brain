@@ -1,0 +1,36 @@
+{
+  "measurement": "quality_first_weekly_2026-9-11_wk02_review_ready",
+  "started_utc": "2026-09-12 06:15:02 UTC",
+  "ended_utc": "2026-09-12 07:02:12 UTC",
+  "elapsed_seconds": 2830,
+  "elapsed_minutes": 47.166666666666664,
+  "start": {
+    "plan_type": "prolite",
+    "primary": {
+      "usedPercent": 17,
+      "windowDurationMins": 10080,
+      "resetsAt": 1789541675
+    },
+    "secondary": null,
+    "rate_limit_reached_type": null
+  },
+  "end": {
+    "plan_type": "prolite",
+    "primary": {
+      "usedPercent": 24,
+      "windowDurationMins": 10080,
+      "resetsAt": 1789541675
+    },
+    "secondary": null,
+    "rate_limit_reached_type": null
+  },
+  "limitations": [
+    "Account-wide rounded usage; other activity and reporting lag not isolated.",
+    "This run's plan_type is prolite; not a Plus entitlement benchmark.",
+    "No comparable daily/short-window data or per-native-agent token counts.",
+    "Pre-update consultation, approval wait, and post-approval Git publishing excluded."
+  ],
+  "rate_limit_interruptions_observed": 0,
+  "usage_resets_used": 0,
+  "observed_primary_percentage_point_change": 7
+}

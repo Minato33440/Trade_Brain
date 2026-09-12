@@ -61,3 +61,51 @@
 - tags: [gm, monthly_distilled, 2026-09, 2026-9-4_wk01, signal:nfp_upside_surprise_flipped_the_yen_thesis, signal:us_steepens_while_japan_flattens, signal:yen_strength_is_driven_by_the_2y_spread, signal:jh_hawkish_effect_decayed_within_a_week, signal:execution_not_price_made_the_week, signal:preregistration_with_action_actually_fired, signal:dfii5_preregistration_resolved_at_plus_5bp_row, signal:curve_fred_implemented_two_findings_on_first_run, signal:nan_audit_closed_with_a_single_choke_point, signal:inflation_compensation_reversed_and_near_term_led, signal:oil_geopolitics_two_directional_again, signal:portfolio_turned_and_fx_passthrough_appeared, signal:holding_513a_disappeared_contradicts_the_record, signal:jp225_rose_on_domestic_material_not_the_yen, signal:soft_data_downgrade_vindicated_the_august_caution, event:nfp_162k_with_double_upward_revision_9_4, event:fed_sep_hike_prob_52_54_to_59_61, event:us_strikes_iranian_tankers_9_4, event:trump_downplays_iran_war, event:pmi_composite_revised_down_9_3, event:ism_services_55_4_upside_9_3, event:us_labor_day_holiday_9_7, event:eia_monthly_9_9, event:us_ppi_ecb_9_10, event:us_cpi_9_11, event:fomc_9_15_16, event:boj_meeting_9_17_18, pattern:good_news_is_bad_news, pattern:us_steepens_japan_flattens, pattern:front_end_spread_drives_the_yen, pattern:event_pricing_decays_within_a_week, pattern:execution_beats_direction, pattern:trigger_action_pair_actually_fires, pattern:range_constraint_from_identity_is_not_a_proxy, pattern:same_delta_across_vendors_different_level, pattern:weekly_delta_sign_flips_on_window_boundary, pattern:single_choke_point_beats_per_function_ifs, pattern:fx_passthrough_eats_usd_gains, pattern:two_directional_geopolitics, risk:us2y_breaks_4416, risk:gold_loses_4400, risk:boj_9_18_2024_august_style_crash, risk:usdjpy_reverses_to_158, risk:wti_breaks_89599, risk:holding_513a_unexplained]
 
 ---
+
+
+---
+
+## 2026-9-11_wk02（2026-09-07 → 2026-09-11）
+> 作成2026-09-12 JST / Astra統合。関所7.5承認待ち。執行正本はBossが週末確定と指定した当週trade_results。過去エントリは維持し、以下で当週の更新と訂正を追記する。
+- regime: **Equities Down / Oil Surge**（equities=down / volatility=normal / oil=surge / gold=range / crypto=strong / yields=rising）← wk01「Gold Bid」から転換。金曜の米株反発/VIX低下とは観測窓が異なる。
+- decision:
+  - vix_add_risk_gate_open=on（TVC15.85、機械15.840<18。ただしVIX単独の許可で新規積み増しを指示しない）
+  - fomc_boj_event_caution=watch（FOMC日本9/17 03:00、会見03:30。日銀9/17–18、結果9/18。原本の85%超/98%は独立未確認の市場推定）
+  - gold_residual_exit_registered=watch（旧4311玉は9/7に終了。現行0.5Lot@4330.23。4319.13–4306.50帯＋週足下降線の4H実体下抜け、9/14下窓4280.10以下なら即時撤退。最終判断4280.10と逆指値置き4260を区別）
+  - us_jp_2y_single_driver=off（日米2年差+24.1bpの拡大とUSDJPY-1.7459%円高が同居。P11の旧登録を変更せず、単独原因としての採用を停止）
+  - p12_same_feed_validation=watch（判定日9/9、Yahoo153.477997で円高方向の参考証拠。FXCM閾値156.195との正式比較は同feed・同cutoff不足で保留）
+  - oil_geopolitical_resolution=off（週WTI+9.3589%、金曜-3.76%。RSSに東西PL停止等の報道、Xに需要/利確仮説。単純な危機解消を採用しない）
+  - portfolio_bank_transfer_reconciled=on（スィープ-50000円はBoss確認済みの銀行移動。比較可能な評価変化-106336円と国内/米国の合計が一致）
+- evidence (close / 2026-09-12 snapshot):
+  - US100: 29368.439（-2.38% / 30d、8/13→9/11）。提供CFD29371.2、同feed週-0.4140%。
+  - USDJPY: 153.554（-3.62% / 30d、8/13→9/11）。FXCM153.468、9/4→9/11 -1.7459%。9/4機械基準値の改訂あり。
+  - WTI: 100.050（+23.14% / 30d、8/13→9/11、先物）。cash100.374、同feed週+9.3589%。
+  - XAUUSD: proxy4366.200（+0.06% / 30d、8/13→9/11）。執行参照はPepperstone4348.33、同feed週-1.8673%。GC=Fの9/4改訂値を過去へ上書きしない。
+  - US2Y: TVC4.630%（30d同系列値は未取得、9/4→9/11 +25.6bp）。FRED DGS2は9/10時点4.56%。^FVXは5Yなので代用しない。
+  - VIX: 15.840（+8.27% / 30d、8/13→9/11）。TVC15.85と別表示。
+  - US10Y: 4.975%（利回り水準+7.20% / 30d、8/13→9/11）。TVC4.969%、週+18.5bp、金曜日足+0.8bp。
+  - BTC/USD: 76568.125（+20.77% / 30d、8/13→9/10）。機械週差9/3→9/10 -5.7875%、前週保存対比9/5→9/10 -4.0787%。画像77262.47は9/12進行バーで金曜確定値ではない。
+  - Regime (system): Equities Down / Oil Surge
+  - 曲線: TVC米2s10s41.0→33.9bp、日本108.5→114.5bp。日米2年差254.7→278.8bp。FRED2s10s39bp、週-4bpの実窓は9/3→9/10。3M系のshapeを2Y政策期待に代用しない。
+  - FRED補完: 9/4→9/10 DGS5+21/DFII5+12/BE+9bp、残差0。9/11BE2.40%は前日比-6bp。9/11名目/実質5Yは取得時欠測で、CPI後実質上昇を断定しない。5y5y2.32%、週-1bp。
+  - CPI: 総合MoM0.4/YoY3.4、コアMoM0.3/YoY2.4。Michigan47.8（画像予想51.1）、CPI21:30/Michigan23:00JST。日経現物は公式64011.34/-1.93%へ原本の63405/-2.86%を訂正。東証引けは現行15:30。
+  - 口座: 総資産4750629円、評価損益214905円。総資産差-156336=運用表示差-106336＋銀行移動-50000。425A合算寄与-42075円。US外貨+9.98USD/円-5798円、画像換算分解は原資産約+1560円/FX約-7358円。
+  - CFD: 当週closed_at3件3勝、確定+96.385 pt・Lot。CSVのopened_at集計2件とは対象が違う。全通算実現372.885＋含み9.050=381.935、前週未丸め336.535から+45.400。9/9キャンペーンのみでは62.935。原本維持。
+- implication:
+  - Gold残0.5Lotは上記登録出口で管理。4H通常条件と9/14下窓の即時例外を分け、旧8/19/9/2建玉の出口へ戻さない。可動線再計算前に追加・自動再エントリーを設定しない。
+  - FOMCは日本9/17早朝、日銀は9/18の反応が分岐。決定内容とUS100（28869支持/29935抵抗）・USDJPYの実際の反応を確認してから新規候補を再評価する。
+  - USDJPY戻り154.120/154.747–155.692、下152.850/152.103、DXY98.687/99.430を観測。金利差が拡大すれば円安という単独説明を使わず、反例を残す。
+  - WTI98.143支持と供給経路の一次情報を併読。金曜反落から危機解消を確定しない。日経現物とCFDの差674.66を月曜の確定窓にしない。
+  - GM長期保有は短期CFDと分離。1655/2243は原則ヘッジなし（S&P500/SOX）。把握済みUSD原資産31.51%、金関連25.46%、半導体23.64%は重複分類で合算しない。銀行移動を運用損に含めない。
+  - P12同feed判定、9/11実質5Y、BTC確定足、Gold可動線/MAEを未決として継承。P9/P10や棄却済み8-2/8-3を追加値だけで再定義しない。Xは補助、未取得本文を創作しない。
+- tags: [gm, monthly_distilled, 2026-09, 2026-9-11_wk02, signal:vix_add_risk_gate_open, signal:gold_residual_exit_registered, event:fomc_20260916, event:boj_20260918, risk:fx, risk:oil, hypothesis:p11, hypothesis:p12, pattern:cashflow_adjusted_return]
+- links: [review](../../logs/weekly/2026/2026-9-11_wk02/review.md) / [sources](../../logs/weekly/2026/2026-9-11_wk02/sources.md) / [trade_results](../../logs/weekly/2026/2026-9-11_wk02/trade_results.md) / [quality](../../logs/weekly/2026/2026-9-11_wk02/quality_gate.md)
+
+### 2026-9-11_wk02 Rex追記反映 — 2026-09-12（原文ラベル9/13）
+
+- decision: Bossの本体反映依頼によりP11を「登録と逆の週次観測2回で棄却」へ訂正。縮小＋円安/拡大＋円高を両方数える。当週は**反例1**。上の初稿判断と過去週の規則は履歴として保持し、この追記を現在の状態とする。
+- evidence: BlackBull WTI cash84.059（8/28）→100.374（9/11）、**2週+19.41%**。Yahoo先物30日+23.14%とは別系列/窓。米2Y+25.6bp>10Y+18.5bpで2s10s−7.1bp、油高からスティープ化を単純外挿しない。
+- implication: 100ドル超はインフレ・購買力・投入費用の監視材料。機械の絶対水準閾値やGC=Fの現物系列差替えは未決。GC二値往復は記録上認めるが原因未確認、前半9/6文書と後半9/12台帳を分ける。
+- campaign: 旧4決済129.000/新4決済190.000/新々2決済53.885＋含み9.050。確認済み**10件9勝1敗**、CSV8件＋旧wk03未登録2件。実現96.385＋含み変化−50.985＝評価込み週間増分45.400。Rexの16件と50.985全額実現化の説明は訂正。
+- carry_forward: **9-8契約仕様、9-10 1627売却理由、P10発言日定義**を明示。正確なMAE・旧wk03 CSV・GC原因・P12同feedも残す。P9回数据置、8-2/8-3棄却維持。東証15:30、日経値は日経指数公式、他系列の実cutoff不明を固定時刻で埋めない。
+- links: [採否と履歴](../../logs/weekly/2026/2026-9-11_wk02/rex_addendum_integration.md) / [全ID](../../logs/weekly/2026/2026-9-11_wk02/carry_forward.md) / [次回指示書](../../logs/weekly/2026/2026-9-11_wk02/next_update_handoff.md)

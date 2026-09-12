@@ -430,3 +430,18 @@ updated: 2026-01-19 (JST)
   - [review](./2026-9-4_wk01/review.md)
   - [charts](./2026-9-4_wk01/charts.md)
   - [trade_results](./2026-9-4_wk01/trade_results.md)（★2026-09-05 Boss/Rex 作成・§1〜17）
+
+
+### 2026-9-11_wk02（2026-09-07 → 2026-09-11）
+- Regime: **Equities Down / Oil Surge** ← Gold Bid。関所7.5承認待ち。
+- 今週: 米2年差拡大と円高が同居。30日原油高と金曜反落を分離。金の既存0.5Lot管理、FOMC日本9/17早朝・日銀9/18の反応確認を優先。
+- Gates: Add=open（VIX15.85<18の許可条件）、Reduce=caution。Gold通常4319.13–4306.50帯＋下降線4H実体割れ、月曜下窓4280.10以下は即時撤退。
+- 実績: 確定3件+96.385 pt・Lot、通算381.935。銀行移動5万円を除く証券口座の評価変化-106336円。
+- 補正: 日経現物64011.34/-1.93%、FOMC日本9/17 03:00、旧建玉条件置換、機械値改訂とBTC/FREDの窓を分離。P12同feed判定保留。
+- Links: [review](2026-9-11_wk02/review.md) / [note](2026-9-11_wk02/note.md) / [meta](2026-9-11_wk02/meta.yaml) / [charts](2026-9-11_wk02/charts.md) / [trade_results](2026-9-11_wk02/trade_results.md) / [CFDハブ](2026-9-11_wk02/CFD戦略-2026-9-14.md) / [HTML](2026-9-11_wk02/CFD_Strategy-2026-9-14.html) / [quality](2026-9-11_wk02/quality_gate.md)
+
+### 2026-09-12 — 2026-9-11_wk02 Rex追記反映
+
+P11を双方向の逆観測2回へ訂正し当週反例1。原油cash2週+19.41%・100ドル超、全持ち越しID、3キャンペーンと損益接続を本体に追加。決済件数は根拠行から10件9勝1敗へ訂正。原本と初稿は保存、Git承認は別途pending。
+
+[反映・訂正記録](2026-9-11_wk02/rex_addendum_integration.md) / [持ち越し表](2026-9-11_wk02/carry_forward.md) / [次回指示書](2026-9-11_wk02/next_update_handoff.md)

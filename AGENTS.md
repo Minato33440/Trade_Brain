@@ -1,4 +1,15 @@
 # AGENTS.md — Trade_Brain
+
+## 現行の週次Broker運用（Boss合意 2026-09-12）
+
+通常の司令塔はAstra。BrokerはProvider非固定で、制限や適性に応じOpus-5等へ交代できる。旧Opusの担当固定・作業制限・機械的な停止/再承認は教訓として柔軟に適用する。週次制作に関して下記の旧記述と衝突する場合は、この最新合意と[共通Broker運用方針](docs/WEEKLY_BROKER_OPERATIONS.md)を優先する。
+
+品質確認、原資料・訂正履歴・比較窓の保持を継続する。可逆的な修正はBroker判断で進め、既存の承認を取り直さない。通常の週次Git更新依頼は対象範囲のcommit/pushを含む。RTKが利用できなければ通常コマンドで進める。現在の建玉や仮説条件の変更は、制作手順の柔軟化と区別して理由・適用時点を残す。
+
+週次開始時は [WEEKLY_UPDATE_WORKFLOW](docs/WEEKLY_UPDATE_WORKFLOW.md) と最新の持ち越し・受け渡し記録を読む。Skillはプロジェクトの`gm-weekly`（旧呼出し`gm-weekly-update`も対応）を入口とする。
+
+---
+
 # このファイルは Codex が Trade_Brain リポジトリで作業する際に自動で読み込まれる
 # Trade_System の AGENTS.md とは別運用
 # 更新: 2026-07-09（外部リソースに Rex 記憶層ポインタ追加）/ 2026-07-05（coordination Provider3分岐・指示書置き場 / 2026-07-04 両利きレーン例外 / 2026-04-25 役割別編集経路）

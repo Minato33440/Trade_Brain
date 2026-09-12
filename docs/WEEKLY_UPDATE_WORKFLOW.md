@@ -1,5 +1,19 @@
 # 週末 Git データ更新工程（REX 参照用）
 
+## 現行運用 — 2026-09-12 Boss合意
+
+2026-9-11_wk02の試行はBoss確認により成功。次週から通常はAstra統括、利用制限等ではOpus-5を含む別Providerへ交代する。**Brokerは役割でありProvider固定ではない。** [共通運用方針](WEEKLY_BROKER_OPERATIONS.md)に品質の継続、柔軟な工程、受け渡し方法を集約した。
+
+本書の旧ClaudeCode担当表記・静的モデル対応・一律停止・再承認・回数制限は過去の運用知見であり、現在の実行可能性とBossの意図に合わせる。以下のStep 7.5と共通方針が現行。RTKは利用可能なら優先し、不在で作業を止めない。Grok ProfileはX検索を行う際の経路であり、Broker全体のProvider指定ではない。
+
+```text
+python scripts/validate_weekly_artifacts.py --week YYYY-M-D_wkNN
+```
+
+再利用検証器は読取専用。取込原本の正しさ・市況判断・画面表示はBrokerが別途確認する。旧週の「承認待ち」はその時点の履歴であり、後続のBoss確認・Git状態・受け渡し記録を優先する。
+
+---
+
 **毎週金曜日終値時点（実質土曜）で市況を更新する定期ルーチンワーク。**
 
 ## ルーチン概要
@@ -47,7 +61,7 @@
 
 ## 🦀 RTK（Rust Token Killer）使用ルール（ClaudeCode 必読・全工程共通）
 
-**すべてのターミナルコマンドは `rtk` プレフィックスを必須とする。**
+**RTKは利用可能なら優先する。不在時は通常コマンドを使い、出力を絞って進める（2026-09-12合意）。**
 
 ```bash
 # ❌ 間違い
@@ -88,7 +102,7 @@ python main.py --trade --news   # ← python は rtk 対象外（パススルー
   - 内容: 資産残高・評価損益・内訳（国内株/米国株/預り金等）
   - パス例: `png_data/portfolio_snapshot_2026-05-24.png` または `.yaml`
 
-- [ ] **#5 当週トレード結果**: 
+- [ ] **#5 当週トレード結果**:
   - あれば: `private_trades.csv` に記録済み（追加エントリ）
   - なければ: Boss が「保有継続のみ」等を明示
 
@@ -625,7 +639,7 @@ hermes -p grok -z $query -t x_search,web,vision --accept-hooks
       # 統合実行（Boss市況ファイルを指定）
       # 例: 2026-5-22_wk04 の場合
       $WeekFolder = "2026-5-22_wk04"
-      
+
       python src/integration/merge_weekly_sources.py `
         --boss-file "logs/boss's-weeken-Report/2026/wr-2026-5-22.md" `
         --news-output "logs/weekly/news_output.txt" `
@@ -675,24 +689,16 @@ hermes -p grok -z $query -t x_search,web,vision --accept-hooks
     - **週をまたいで新ファイルを作ってはいけない**（月内で -4, -5 のように分割しない）
     - 書式: regime / decision（判断変更点のみ） / evidence (close) / implication / tags
 
-- [ ] **7.5. GM Strategy 品質確認（Git push 前・必須）**
+- [ ] **7.5. GM Strategy 品質レビューと確定判断**（2026-09-12更新）
 
-  ### GM Strategy 品質基準
-  作成後、以下2点をミナトが確認してからNLM投入候補とする：
-  ① ミナト1次テキストとの方向性矛盾がないこと
-  ② --trade/--newsの実測値にない情報が追加されていないこと
+  Brokerが、Bossの意図・入力原本・補完資料との整合、数値/日付/単位/ベンダー、損益接続、反対材料、未決事項を確認する。補完データには出典と採否を付け、原資料に無い解釈を観測事実へすり替えない。[共通方針](WEEKLY_BROKER_OPERATIONS.md)を参照。
 
-  > **注記**: 「おそらく」「と思われる」等の不確実性表現はチェック対象外。
-  > GMマクロ戦略の性質上、特に地政学リスクが高い局面ではミナトの1次市況自体にこれらの表現が含まれる。
-  > 不確実性の排除ではなく、**ソース外情報の混入**を検出することが本チェックの目的。
+  - quality_gate等に根拠・検証結果・未解決・今回の依頼範囲を短く記録する。
+  - 修正可能な不整合は原資料へ戻って修正する。Brokerでは確定できず結果を左右する不明点だけをBossへ確認し、独立して進められる工程は続ける。
+  - 既存の指示・承認で進められる作業について、旧手順を理由に同じ承認を再要求しない。通常の週次Git更新依頼は対象成果物のcommit/pushまで含み、確認だけの依頼ならそこまでとする。
+  - Provider交代時には入力manifest・成果物・未決/採否・検証結果・Git/実行状態・承認済み範囲を受け渡す。モデル名や実行回数を固定の合格条件にしない。
 
-  **⚠️ 矛盾・エラー検出時の対応（ClaudeCode 必読）**：
-  - 上記①②いずれかに該当する場合、`rtk git commit` を保留すること
-  - 矛盾箇所を具体的に明示してミナトに確認を取る
-  - ミナトの承認・修正指示を受けてから手順8へ進む
-  - 承認なしに push しない
-
-- [ ] **7.6. 人間ビュー3レイヤー生成（関所7.5承認後・必須 / 2026-05-16〜）**
+- [ ] **7.6. 人間ビュー生成（品質確認と並行してレビュー可能な状態へ）**
   - `CFD戦略-YYYY-M-D.md`（ハブ）: frontmatter(week/regime/add_risk_gate/reduce_risk_gate/tags) ＋ 概念 wikilink ＋ Mermaid(pie/timeline) ＋ リンク表（HTML詳細・[[distilled-gm-YYYY-M]]・review・meta・note・前後週ハブ）＋ 要点3行＋トリガー要点
   - `CFD_Strategy-YYYY-M-D.html`（詳細）: 8ペアグラフ・レジーム/ゲート・シナリオ・銘柄別アクション・タイムライン・トリガー・ポートフォリオ
   - 概念 wikilink canonical 表記（表記揺れ禁止）: `リスクオン/リスクオフ/FOMC/日銀政策金利/日銀利上げ/ブラックマンデー/為替介入/レートチェック/債券パニック/Add risk gate/Reduce risk gate/レジーム/押し目買い/戻り売り/NVDA決算/米中首脳会談/ベッセント来日/GW介入` ＋銘柄 `US100/USDJPY/BTC/Gold/WTI/US10Y/VIX`

@@ -1369,3 +1369,9 @@ FOMCは**日本9/17 03:00声明/03:30会見**、日銀9/17–18（結果9/18）�
 P11を双方向の逆観測2回へ訂正し当週反例1。原油cash2週+19.41%・100ドル超、全持ち越しID、3キャンペーンと損益接続を本体に追加。決済件数は根拠行から10件9勝1敗へ訂正。原本と初稿は保存、Git承認は別途pending。
 
 [反映・訂正記録](../logs/weekly/2026/2026-9-11_wk02/rex_addendum_integration.md) / [持ち越し表](../logs/weekly/2026/2026-9-11_wk02/carry_forward.md) / [次回指示書](../logs/weekly/2026/2026-9-11_wk02/next_update_handoff.md)
+
+### 2026-09-12 — 週次Broker試行の採用（運用メモ）
+
+Bossが2026-9-11_wk02の生成結果を確認し、テスト成功と判断。次週から通常Astra統括、Broker Providerは非固定でOpus-5等へ交代可能。旧作業制限は教訓として柔軟に運用し、品質・出典・訂正履歴を継承する。以前の承認待ちはこの後続確認で解消。週次本体はcommit 378fa85で記録済み。
+
+[共通Broker方針](WEEKLY_BROKER_OPERATIONS.md) / [週次手順](WEEKLY_UPDATE_WORKFLOW.md)。市場値や建玉条件の更新は本運用メモに含まない。

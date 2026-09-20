@@ -1,0 +1,16 @@
+{
+  "engine": "gpt-6-astra",
+  "browser": "installed Chrome headless",
+  "desktop": {
+    "body": 1440,
+    "viewport": 1440
+  },
+  "mobile": {
+    "body": 390,
+    "viewport": 390
+  },
+  "h2_count": 18,
+  "page_errors": [],
+  "status": "pass",
+  "scope": "Layout and JavaScript errors; image text and strategy reviewed separately"
+}

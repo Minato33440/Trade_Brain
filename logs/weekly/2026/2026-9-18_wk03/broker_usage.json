@@ -1,0 +1,29 @@
+{
+  "engine": "gpt-6-astra",
+  "gpt_token_total": null,
+  "allowance_observation": {
+    "shared_week_window_minutes": 10080,
+    "first_observed_used_percent": 7,
+    "later_observed_used_percent": 10,
+    "five_hour_window": null,
+    "exclusive_task_attribution": false
+  },
+  "grok_usage": {
+    "estimated_cost_usd": 0.0,
+    "cost_status": "unknown",
+    "cost_source": "none",
+    "input_tokens": 140295,
+    "output_tokens": 6067,
+    "cache_read_tokens": 73088,
+    "cache_write_tokens": 0,
+    "reasoning_tokens": 1484,
+    "total_tokens": 219450,
+    "api_calls": 8,
+    "model": "grok-4.5",
+    "provider": "xai-oauth",
+    "session_id": "20260920_115229_c3ac02",
+    "completed": true,
+    "failed": false,
+    "service_tier": null
+  }
+}

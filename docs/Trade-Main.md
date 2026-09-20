@@ -193,6 +193,10 @@ updated: 2026-01-03 (JST)
 - Equities Down / Oil Surge。Gold残0.5@4330.23、確定3件+96.385 pt・Lot。銀行移動調整後-106336円。関所7.5承認待ち。
 - [review](../logs/weekly/2026/2026-9-11_wk02/review.md) / [meta](../logs/weekly/2026/2026-9-11_wk02/meta.yaml) / [CFDハブ](../logs/weekly/2026/2026-9-11_wk02/CFD戦略-2026-9-14.md)
 
+### 2026-9-18_wk03（2026-09-14 → 2026-09-18）
+- Neutral。反発支持と原油/金利再加速を分けて管理。Gold1 Lot・stop4,230、GM評価差+116,761円。
+- [review](../logs/weekly/2026/2026-9-18_wk03/review.md) / [meta](../logs/weekly/2026/2026-9-18_wk03/meta.yaml) / [CFDハブ](../logs/weekly/2026/2026-9-18_wk03/CFD戦略-2026-9-21.md)
+
 ## Distilled Logs (monthly)
 - 2026-01: distilled/2026/distilled-gm-2026-1.md
 - 2026-02: distilled/2026/distilled-gm-2026-2.md
@@ -1358,3 +1362,32 @@ P11を双方向の逆観測2回へ訂正し当週反例1。原油cash2週+19.41%
 Bossが2026-9-11_wk02の生成結果を確認し、テスト成功と判断。次週から通常Astra統括、Broker Providerは非固定でOpus-5等へ交代可能。旧作業制限は教訓として柔軟に運用し、品質・出典・訂正履歴を継承する。以前の承認待ちはこの後続確認で解消。週次本体はcommit 378fa85で記録済み。
 
 [共通Broker方針](WEEKLY_BROKER_OPERATIONS.md) / [週次手順](WEEKLY_UPDATE_WORKFLOW.md)。市場値や建玉条件の更新は本運用メモに含まない。
+
+
+## Weekly Brief | 2026-9-18_wk03（2026-09-14 → 2026-09-18）
+created: 2026-09-20 (JST) / Astra統合
+
+### Macro / Regime
+**Neutral** ← 前週Equities Down / Oil Surge。30日窓の移動・過去値改訂を含む機械ラベルで、安全判定ではない。株・BTC反発/VIX低下と米金利高止まりを両立して読む。TVC米2s10sは33.9→24.4bp（−9.5bp）、日2s10s114.5→114.4bp（−0.1bp）。日米2年差+12.8bpとUSDJPY+2.21%は方向一致の参考観測、P11反例1維持。
+
+### Position / Orders
+Gold残1 Lot＝0.5@4,330.23＋0.5@4,279、実stop4,230。旧4,260はBossが4H下降ライン交差を根拠に解除しPA判断へ変更。今週実現1件+50、含み73.835、通算評価496.720、週次評価増分114.785 pt・Lot。11決済10勝1敗。GM口座4,868,308円、保有評価差+116,761円、現金差+918円。数量変更なし。1655 NISA配当918円（9/17受渡）はBoss明細と現金差で照合済み。新規発注なし。
+
+### Key Levels (close-based)
+XAUUSD4,378.45（4,335–4,319支持／4,404突破、実stopとは別）、US100 CFD29,656.7（29,241／29,935）、JP225 CFD65,086（64,288／65,800）、USDJPY156.854（156.42–156.59／157.11–157.22）、WTI cash100.026（99.611／102.75）、BTC80,911.10（撮影基準、80,000／81,376）。TVC US2Y4.756%、US10Y5.000%、US30Y5.327%、JP2Y1.840%、JP10Y2.984%、VIX14.82。
+
+### Gates（最重要：終値で判定）
+Add=open_permission_only（VIX<18のみで追加しない）、Reduce=caution。WTI105–107、米2Y4.760超・10Y5.05超、VIX20超・US10028,869割れの重なりなら防御を優先。原油沈静化・株支持・金利高値更新停止なら押し目を検討。Goldの市場支持と実stop4,230を分離、前週9/14限定例外を再利用しない。
+
+### This Week Focus
+FRB9/16+25bpで3.75–4.00%、日銀9/18決定1.25%は9/24適用。9/21–23日本現物休場、対象デリバティブ祝日取引。9/24会談は報道ベース予定、9/30 21:30 JSTはPCE・年次改定。週末サウジ報道は価格cutoff後の補足で供給損害は未確認。FRED9/11→9/17の実質5Y+8bp/BE−8bp/名目横ばい、9/18BE−9bpと遠期+3bpは別窓。機械USDJPY9/19/他9/18 SPLIT・改訂16件を保持。
+
+### Signals (weekly, fixed keys)
+- us10y_breakout: watch（TVC5.000%、5.04–5.05超の定着を警戒）
+- dxy_breakout: watch（TVC100.215、100.33–100.56上抜け／99.43割れ）
+- hy_oas_widening: unknown（当週のHY OAS実測なし）
+- vix_spike: off（TVC14.82、追加は許可条件のみ）
+- wti_shock: watch（cash週−0.35%でも100ドル台。週末供給ニュースを別層で確認）
+- eps_revision_chain: unknown（当週のEPS連鎖改訂実測なし）
+
+詳細: [review](../logs/weekly/2026/2026-9-18_wk03/review.md) / [note](../logs/weekly/2026/2026-9-18_wk03/note.md) / [meta](../logs/weekly/2026/2026-9-18_wk03/meta.yaml) / [HTML](../logs/weekly/2026/2026-9-18_wk03/CFD_Strategy-2026-9-21.html) / [持ち越し](../logs/weekly/2026/2026-9-18_wk03/carry_forward.md)

@@ -1,0 +1,353 @@
+{
+  "week": "2026-9-18_wk03",
+  "status": "pass",
+  "checks": [
+    {
+      "check": "required_artifacts",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "meta_yaml",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "meta_week",
+      "status": "pass",
+      "detail": "2026-9-18_wk03"
+    },
+    {
+      "check": "yaml:2026_09_20_snapshot.yaml",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/BTC-USD-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/DXY-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/EURUSD-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/JP10Y-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/JP225-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/JP2Y-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/Portforio-2026-09-20.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/US100-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/US10Y-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/US2Y-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/US30Y-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/USDJPY-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/VIX-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/WTI-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/XAUUSD-2026-09-19.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/ポートフォリオ.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/東証株.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/米国株.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/boss_report_original.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:audit/trade_results_pre_weekly.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/2026_09_20_snapshot.yaml",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:audit/wk03_image_extraction.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:audit/wk03_image_extraction_corrected.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:audit/wk03_market_source_audit.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:audit/wk03_trade_hypothesis_audit.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/XAUUSD-15M-2026-09-20.png",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/fred_public_csv_2026-09-20.txt",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/fred_weekly_summary.json",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/fred_weekly_summary.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:audit/terra_final_audit.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "archive:charts/dividend_1655_2026-09-17.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "derived:charts/GM Strategy-2026-9-21.txt",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "source_revision:logs/weekly/2026/2026-9-18_wk03/trade_results.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "initial_hash_history:logs/weekly/2026/2026-9-18_wk03/trade_results.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "input_checksums_present",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "input:logs/boss's-weeken-Report/2026/wr-2026-9-18.md",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:logs/weekly/2026/2026-9-18_wk03/trade_results.md",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/BTC-USD-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/DXY-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/EURUSD-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/JP10Y-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/JP225-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/JP2Y-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/US100-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/US10Y-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/US2Y-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/US30Y-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/USDJPY-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/VIX-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/WTI-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/XAUUSD-2026-09-19.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/ポートフォリオ.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/東証株.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "input:png_data/米国株.png",
+      "status": "pass",
+      "detail": "Mismatch requires source/version review, never silent hash replacement."
+    },
+    {
+      "check": "portfolio_evidence",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "portfolio_total:0",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "portfolio_pnl:0",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "portfolio_week_change:0",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "weekly_pnl_bridge_present",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "unrealized_change",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "weekly_pnl_bridge",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "carry_forward_unique_ids",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "html_remote_assets:CFD_Strategy-2026-9-21.html",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "local_links",
+      "status": "pass",
+      "detail": []
+    },
+    {
+      "check": "human_html_present",
+      "status": "pass",
+      "detail": null
+    }
+  ],
+  "warnings": 0,
+  "scope": "Local integrity and arithmetic only; source extraction, market interpretation and visual review remain Broker work."
+}

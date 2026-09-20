@@ -1,0 +1,219 @@
+{
+  "engine": "gpt-6-astra",
+  "created_utc": "2026-09-20T02:57:24.275109+00:00",
+  "input_checksums": {
+    "logs/boss's-weeken-Report/2026/wr-2026-9-18.md": "05943d62c23767a7f36dcdc5e0112363307a2e042eda53ffcdfc33a8e1a91d5d",
+    "logs/weekly/2026/2026-9-18_wk03/trade_results.md": "e0c18085ba2c8c47d4861f525f5716592180a4bd79b3c27cfeaa556d64ca83f1",
+    "png_data/BTC-USD-2026-09-19.png": "541d7e9305a44e2f642bb5fd7de785d877c934cd37537ef01e0bbb9bc083d9dd",
+    "png_data/DXY-2026-09-19.png": "6318e3a5fba2a0213a341e2c1dbd4cea00db7c2db8b430593a0fffcd278aff01",
+    "png_data/EURUSD-2026-09-19.png": "d2086d78c26a4853577b2461f39ee918ad916e4bd3d8eb207e5c3d3b8c693ffa",
+    "png_data/JP10Y-2026-09-19.png": "8ba9ecc76816ba39c2760aac5f4171a8b0fadbca1eadc5a91b308ff647be8bb5",
+    "png_data/JP225-2026-09-19.png": "861233d3ac254bbb69dca7fc29c623d1d3cf0b201230d3dcf3b3fb0d4a909117",
+    "png_data/JP2Y-2026-09-19.png": "aa59e620a07e5c1fa16fef6f52adf3949503db68308b9f23d45342b0108343ae",
+    "png_data/US100-2026-09-19.png": "8063dd84ed61de2db41be3311655db1e88dc91d37d055cfa273b512413d31cd3",
+    "png_data/US10Y-2026-09-19.png": "bc235a73c2744d2ec11ae3185d5d16aff0c78d5104e0c90aa26823a95d51474f",
+    "png_data/US2Y-2026-09-19.png": "162f8f050a761bcf08f4d8e7102226b6cb43e62d0030d474db935e1e7ce4ecad",
+    "png_data/US30Y-2026-09-19.png": "f558756d006ccd65d7954b7f0c5251d1cf7f02d467d87e862b40386ecf11e0df",
+    "png_data/USDJPY-2026-09-19.png": "fe8858a38c41e36bb9db7004fbfdc2ab9d489f2425ce0fd97b2a9710571a93c0",
+    "png_data/VIX-2026-09-19.png": "a08a16466afcbf87acac739e57017aa8a65b4db14ad369f322c7087d0c06f13c",
+    "png_data/WTI-2026-09-19.png": "baccb7e975f2bf37f98cf5d7ce1bece5bb444fbf848e64ed7e5835ea169e5cac",
+    "png_data/XAUUSD-2026-09-19.png": "5598f7732a0af98108112ca247abd5b2d606199d7b49ddc7c03fdf5bcb1c76d5",
+    "png_data/ポートフォリオ.png": "f4adcedaccd1e80e07e4b5f3e37f8ef8411e2788e104d32a1d0599fdaf587992",
+    "png_data/東証株.png": "6e9bde68f7791df1911ab3de4578840fd98fb7be754630bb0156fbd9800b33b0",
+    "png_data/米国株.png": "5ae12c2837a3834cd44ed5cb279bc10a40e4a4e8695cdf8e02b47ee094e94d51"
+  },
+  "archives": [
+    {
+      "source": "png_data/BTC-USD-2026-09-19.png",
+      "archive": "charts/BTC-USD-2026-09-19.png",
+      "sha256": "541d7e9305a44e2f642bb5fd7de785d877c934cd37537ef01e0bbb9bc083d9dd"
+    },
+    {
+      "source": "png_data/DXY-2026-09-19.png",
+      "archive": "charts/DXY-2026-09-19.png",
+      "sha256": "6318e3a5fba2a0213a341e2c1dbd4cea00db7c2db8b430593a0fffcd278aff01"
+    },
+    {
+      "source": "png_data/EURUSD-2026-09-19.png",
+      "archive": "charts/EURUSD-2026-09-19.png",
+      "sha256": "d2086d78c26a4853577b2461f39ee918ad916e4bd3d8eb207e5c3d3b8c693ffa"
+    },
+    {
+      "source": "png_data/JP10Y-2026-09-19.png",
+      "archive": "charts/JP10Y-2026-09-19.png",
+      "sha256": "8ba9ecc76816ba39c2760aac5f4171a8b0fadbca1eadc5a91b308ff647be8bb5"
+    },
+    {
+      "source": "png_data/JP225-2026-09-19.png",
+      "archive": "charts/JP225-2026-09-19.png",
+      "sha256": "861233d3ac254bbb69dca7fc29c623d1d3cf0b201230d3dcf3b3fb0d4a909117"
+    },
+    {
+      "source": "png_data/JP2Y-2026-09-19.png",
+      "archive": "charts/JP2Y-2026-09-19.png",
+      "sha256": "aa59e620a07e5c1fa16fef6f52adf3949503db68308b9f23d45342b0108343ae"
+    },
+    {
+      "source": "png_data/multi_pairs_plot_8.png",
+      "archive": "charts/Portforio-2026-09-20.png",
+      "sha256": "552b744378daf830b3b68b0a8040f63477034e7e59d08c427c7a32beb41f5332"
+    },
+    {
+      "source": "png_data/US100-2026-09-19.png",
+      "archive": "charts/US100-2026-09-19.png",
+      "sha256": "8063dd84ed61de2db41be3311655db1e88dc91d37d055cfa273b512413d31cd3"
+    },
+    {
+      "source": "png_data/US10Y-2026-09-19.png",
+      "archive": "charts/US10Y-2026-09-19.png",
+      "sha256": "bc235a73c2744d2ec11ae3185d5d16aff0c78d5104e0c90aa26823a95d51474f"
+    },
+    {
+      "source": "png_data/US2Y-2026-09-19.png",
+      "archive": "charts/US2Y-2026-09-19.png",
+      "sha256": "162f8f050a761bcf08f4d8e7102226b6cb43e62d0030d474db935e1e7ce4ecad"
+    },
+    {
+      "source": "png_data/US30Y-2026-09-19.png",
+      "archive": "charts/US30Y-2026-09-19.png",
+      "sha256": "f558756d006ccd65d7954b7f0c5251d1cf7f02d467d87e862b40386ecf11e0df"
+    },
+    {
+      "source": "png_data/USDJPY-2026-09-19.png",
+      "archive": "charts/USDJPY-2026-09-19.png",
+      "sha256": "fe8858a38c41e36bb9db7004fbfdc2ab9d489f2425ce0fd97b2a9710571a93c0"
+    },
+    {
+      "source": "png_data/VIX-2026-09-19.png",
+      "archive": "charts/VIX-2026-09-19.png",
+      "sha256": "a08a16466afcbf87acac739e57017aa8a65b4db14ad369f322c7087d0c06f13c"
+    },
+    {
+      "source": "png_data/WTI-2026-09-19.png",
+      "archive": "charts/WTI-2026-09-19.png",
+      "sha256": "baccb7e975f2bf37f98cf5d7ce1bece5bb444fbf848e64ed7e5835ea169e5cac"
+    },
+    {
+      "source": "png_data/XAUUSD-2026-09-19.png",
+      "archive": "charts/XAUUSD-2026-09-19.png",
+      "sha256": "5598f7732a0af98108112ca247abd5b2d606199d7b49ddc7c03fdf5bcb1c76d5"
+    },
+    {
+      "source": "png_data/ポートフォリオ.png",
+      "archive": "charts/ポートフォリオ.png",
+      "sha256": "f4adcedaccd1e80e07e4b5f3e37f8ef8411e2788e104d32a1d0599fdaf587992"
+    },
+    {
+      "source": "png_data/東証株.png",
+      "archive": "charts/東証株.png",
+      "sha256": "6e9bde68f7791df1911ab3de4578840fd98fb7be754630bb0156fbd9800b33b0"
+    },
+    {
+      "source": "png_data/米国株.png",
+      "archive": "charts/米国株.png",
+      "sha256": "5ae12c2837a3834cd44ed5cb279bc10a40e4a4e8695cdf8e02b47ee094e94d51"
+    },
+    {
+      "source": "logs/boss's-weeken-Report/2026/wr-2026-9-18.md",
+      "archive": "charts/boss_report_original.md",
+      "sha256": "05943d62c23767a7f36dcdc5e0112363307a2e042eda53ffcdfc33a8e1a91d5d"
+    },
+    {
+      "source": "logs/weekly/2026/2026-9-18_wk03/trade_results.md",
+      "archive": "audit/trade_results_pre_weekly.md",
+      "sha256": "e0c18085ba2c8c47d4861f525f5716592180a4bd79b3c27cfeaa556d64ca83f1"
+    },
+    {
+      "source": "png_data/2026_09_20_snapshot.yaml",
+      "archive": "charts/2026_09_20_snapshot.yaml",
+      "sha256": "11c59cce7c86b68e692b845207409fd20dc07d35d8e0ded86d7f44187d9c9810"
+    },
+    {
+      "source": "scratch/codex/wk03_image_extraction.md",
+      "archive": "audit/wk03_image_extraction.md",
+      "sha256": "a5f8f494ffa0619ce018cb88c66bcb9527e5ba2e39982f293f2c083c9ff8d550"
+    },
+    {
+      "source": "scratch/codex/wk03_image_extraction_corrected.md",
+      "archive": "audit/wk03_image_extraction_corrected.md",
+      "sha256": "b22bfdfdd276a6091e97cbdc2246e31393b252ef1adf511e5244d8b1968a0bbb"
+    },
+    {
+      "source": "scratch/codex/wk03_market_source_audit.md",
+      "archive": "audit/wk03_market_source_audit.md",
+      "sha256": "b774c221a3ef7934938fc44aedbd403d8633fcdc9000aa24d01ca6dac76c3ae7"
+    },
+    {
+      "source": "scratch/codex/wk03_trade_hypothesis_audit.md",
+      "archive": "audit/wk03_trade_hypothesis_audit.md",
+      "sha256": "362cbce4825507c38b0350395e5a02e56175bdee19badda7569e09801b69e0cd"
+    },
+    {
+      "archive": "charts/XAUUSD-15M-2026-09-20.png",
+      "sha256": "ea804ed8936b9365ef5c0ae8bab759f0d906832ab270b1d95dc6826aea145843",
+      "source": "preserved or derived artifact, see source records"
+    },
+    {
+      "archive": "charts/fred_public_csv_2026-09-20.txt",
+      "sha256": "ff486d865e2292e218b8387da0ce57a5c619aa65475799b09eb6d98090ade23d",
+      "source": "preserved or derived artifact, see source records"
+    },
+    {
+      "archive": "charts/fred_weekly_summary.json",
+      "sha256": "631ca0dd55dd6dda07767be7e90572ea1e626c81bf8910ccb752c02cea1bb3ca",
+      "source": "preserved or derived artifact, see source records"
+    },
+    {
+      "archive": "charts/fred_weekly_summary.md",
+      "sha256": "34871c10f4f99db20b319a57c5fc87dacccef9c7da8a09fc09f5fc0992678bae",
+      "source": "preserved or derived artifact, see source records"
+    },
+    {
+      "archive": "audit/terra_final_audit.md",
+      "sha256": "e4eedbde0b857ee60739e2b27ea4d489efa3a34f34e0216b874411947f2327b5",
+      "source": "preserved or derived artifact, see source records"
+    },
+    {
+      "archive": "charts/dividend_1655_2026-09-17.md",
+      "sha256": "deb3a52c953e828fdf7388b39f03b2465f30530dbbf3d7cc99d42829f1f6e1ef",
+      "source": "Boss pasted text in this chat; archived by Astra"
+    }
+  ],
+  "note": "Image extraction initial draft is rejected; corrected extraction and Astra visual inspection are adopted. Extra 15M original is preserved by trade_evidence_manifest.json.",
+  "current_input_checksums": {
+    "logs/boss's-weeken-Report/2026/wr-2026-9-18.md": "05943d62c23767a7f36dcdc5e0112363307a2e042eda53ffcdfc33a8e1a91d5d",
+    "logs/weekly/2026/2026-9-18_wk03/trade_results.md": "832317681f331578a953da3226fa2e5a1880fed8cb436618d18f40e1d12ce8a0",
+    "png_data/BTC-USD-2026-09-19.png": "541d7e9305a44e2f642bb5fd7de785d877c934cd37537ef01e0bbb9bc083d9dd",
+    "png_data/DXY-2026-09-19.png": "6318e3a5fba2a0213a341e2c1dbd4cea00db7c2db8b430593a0fffcd278aff01",
+    "png_data/EURUSD-2026-09-19.png": "d2086d78c26a4853577b2461f39ee918ad916e4bd3d8eb207e5c3d3b8c693ffa",
+    "png_data/JP10Y-2026-09-19.png": "8ba9ecc76816ba39c2760aac5f4171a8b0fadbca1eadc5a91b308ff647be8bb5",
+    "png_data/JP225-2026-09-19.png": "861233d3ac254bbb69dca7fc29c623d1d3cf0b201230d3dcf3b3fb0d4a909117",
+    "png_data/JP2Y-2026-09-19.png": "aa59e620a07e5c1fa16fef6f52adf3949503db68308b9f23d45342b0108343ae",
+    "png_data/US100-2026-09-19.png": "8063dd84ed61de2db41be3311655db1e88dc91d37d055cfa273b512413d31cd3",
+    "png_data/US10Y-2026-09-19.png": "bc235a73c2744d2ec11ae3185d5d16aff0c78d5104e0c90aa26823a95d51474f",
+    "png_data/US2Y-2026-09-19.png": "162f8f050a761bcf08f4d8e7102226b6cb43e62d0030d474db935e1e7ce4ecad",
+    "png_data/US30Y-2026-09-19.png": "f558756d006ccd65d7954b7f0c5251d1cf7f02d467d87e862b40386ecf11e0df",
+    "png_data/USDJPY-2026-09-19.png": "fe8858a38c41e36bb9db7004fbfdc2ab9d489f2425ce0fd97b2a9710571a93c0",
+    "png_data/VIX-2026-09-19.png": "a08a16466afcbf87acac739e57017aa8a65b4db14ad369f322c7087d0c06f13c",
+    "png_data/WTI-2026-09-19.png": "baccb7e975f2bf37f98cf5d7ce1bece5bb444fbf848e64ed7e5835ea169e5cac",
+    "png_data/XAUUSD-2026-09-19.png": "5598f7732a0af98108112ca247abd5b2d606199d7b49ddc7c03fdf5bcb1c76d5",
+    "png_data/ポートフォリオ.png": "f4adcedaccd1e80e07e4b5f3e37f8ef8411e2788e104d32a1d0599fdaf587992",
+    "png_data/東証株.png": "6e9bde68f7791df1911ab3de4578840fd98fb7be754630bb0156fbd9800b33b0",
+    "png_data/米国株.png": "5ae12c2837a3834cd44ed5cb279bc10a40e4a4e8695cdf8e02b47ee094e94d51"
+  },
+  "source_revisions": [
+    {
+      "path": "logs/weekly/2026/2026-9-18_wk03/trade_results.md",
+      "archive": "audit/trade_results_after_weekly.md",
+      "initial_sha256": "e0c18085ba2c8c47d4861f525f5716592180a4bd79b3c27cfeaa556d64ca83f1",
+      "current_sha256": "832317681f331578a953da3226fa2e5a1880fed8cb436618d18f40e1d12ce8a0",
+      "reason": "Append-only weekly CSV completion note; original preserved under audit/trade_results_pre_weekly.md"
+    }
+  ],
+  "derived_files": [
+    {
+      "path": "charts/GM Strategy-2026-9-21.txt",
+      "sha256": "3c0c5a52cff505d4ebd0ee24a08341c0f1dd2824c316683f13a34e0546349f42"
+    }
+  ]
+}

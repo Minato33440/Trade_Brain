@@ -1,0 +1,118 @@
+Research-only from live x_search (2026-09-16 through 2026-09-20). No local edits. Engagement counts were not returned by the tool — not invented.
+
+Weekly price cutoff used here: **Fri 2026-09-18 16:00 America/New_York = 20:00 UTC** (EDT). Posts at/after that instant are labeled **AFTER cutoff**.
+
+---
+
+## 1) Fed Sep16 hike + higher-for-longer US rates
+
+**Primary original post (BEFORE cutoff)**  
+- **URL:** https://x.com/mbhullar/status/2100286233742368893  
+- **Author:** Mandeep Bhullar (@mbhullar)  
+- **UTC:** 2026-09-16 18:10:34 UTC  
+- **Short paraphrase:** Unanimous 12–0 FOMC hike of 25 bp; funds target now 3.75%–4.00%; statement framed as supporting a timelier return to 2% inflation amid still-elevated prices, solid activity, and resilient spending.  
+- **Factual claim (from post / linked decision framing):** Vote 12–0; +25 bp to 3.75–4.00%; statement language on elevated inflation and dual mandate.  
+- **Market interpretation (not in this post’s core bullets; common same-day reading elsewhere):** “Higher for longer” / not one-and-done — that is interpretation of dots and Warsh PC, not the statement bullets alone.
+
+**Supporting same-day interpretation post (BEFORE cutoff)**  
+- **URL:** https://x.com/InvestGrit/status/2100373683319832943  
+- **Author:** The equity investor (@InvestGrit)  
+- **UTC:** 2026-09-16 23:58:03 UTC  
+- **Paraphrase:** First hike in ~3 years to 3.75–4.00% with signals of more hikes; equities reversed and closed lower; 10Y near multi-year highs.  
+- **Factual vs interpretation:** Hike size/range = fact claim; “cycle back on,” positioning question, and yield “highest in years” = market interpretation / secondary price claims.
+
+**Official thin primary (BEFORE cutoff)**  
+- **URL:** https://x.com/federalreserve/status/2100283838094086213  
+- **Author:** @federalreserve  
+- **UTC:** 2026-09-16 18:01:03 UTC  
+- **Text essence:** Announces #FOMC statement + link to federalreserve.gov release (not full statement body on X).
+
+**Counterevidence / pushback (not pure “higher-for-longer forever”)**  
+- https://x.com/business/status/2100547835280199847 — @business — **2026-09-17 11:30:04 UTC** (BEFORE cutoff): US stock futures up after first hike since 2023 as oil fell a second day; primed to rebound from Fed-day slump → **fact-ish wire framing of next-day futures + oil down**; **interpretation:** absorption/rebound.  
+- https://x.com/thangfuji/status/2101495684411400524 — @thangfuji — **2026-09-20 02:16:29 UTC** (**AFTER cutoff**): lists “Fed still dovish / possible later cuts” and buy-rumor-sell-fact style crypto resilience → **interpretation**, weak as counter to the actual hike/dots; treat as sentiment, not policy fact.  
+- Tool-surface narrative also had BTC recovery / risk absorption posts after the hike; those are **price interpretation**, not a denial that the hike occurred.
+
+---
+
+## 2) BOJ Sep18 hike and yen reversal
+
+**Primary original post (BEFORE cutoff)**  
+- **URL:** https://x.com/GlobalMktObserv/status/2100863145648525360  
+- **Author:** Global Markets Investor (@GlobalMktObserv)  
+- **UTC:** 2026-09-18 08:23:00 UTC  
+- **Short paraphrase:** BOJ +25 bp to 1.25% (31-year high), 6th Ueda hike, short gap vs prior hike; **2 dissents**; after briefing USDJPY +~1.1% toward ~157.7; door left open to further hikes (~85% Dec priced in post’s claim) but guidance seen insufficient to lift JPY.  
+- **Factual claim:** +25 bp to 1.25%; split vote with 2 against; hike under Ueda.  
+- **Market interpretation:** “Looks more dovish than headline”; yen needs “more hawkish and decisive” path; Bessent pressure narrative; Dec probability figure.
+
+**Primary yen-reversal micro post (AT/AFTER cutoff)**  
+- **URL:** https://x.com/TheQuantt/status/2101038562926002495  
+- **Author:** Quant Capital (@TheQuantt)  
+- **UTC:** 2026-09-18 20:00:03 UTC → **AT/AFTER Sep18 NY close (20:00 UTC)**  
+- **Paraphrase:** Hike 25 bp to 1.25%, 7–2, effective Sep 24; yen sold off anyway (USDJPY 156.17 pre → 157.17 ~3h post).  
+- **Factual claim:** Decision size, vote 7–2, effective date; cited spot prints (post cites BoJ guideline + Yahoo JPY archive).  
+- **Interpretation:** “A hike that fails to lift its own currency is a pressure reading.”
+
+**Counterevidence / alternate yen narrative (BEFORE cutoff)**  
+- **URL:** https://x.com/acrossthespread/status/2100796500356084094  
+- **Author:** Weston Nakamura (@acrossthespread)  
+- **UTC:** 2026-09-18 03:58:11 UTC  
+- **Paraphrase:** Rejects “2 dissents weakened JPY”; argues JPY moves are not BOJ-hike driven; BOJ hikes historically fail to sustain JPY strength; MOF intervention matters more.  
+- **Factual vs interpretation:** Hike +25 bp to 1.25% accepted as fact; almost all causal claims about why JPY fell = **interpretation**. This is direct counter to “dissent-caused yen reversal.”
+
+**Additional AFTER-cutoff weekly wrap (counter to simple hawkish-JPY story)**  
+- https://x.com/GlobalMktObserv/status/2101252966023889185 — @GlobalMktObserv — **2026-09-19 10:12:01 UTC** (**AFTER cutoff**): recap that BOJ hiked but yen sold off on less-hawkish guidance; oil spiked then faded — **mixed fact recap + interpretation**.
+
+---
+
+## 3) Saudi/Iran weekend oil supply risk vs de-escalation
+
+**Primary escalation / supply-risk post (AFTER cutoff)**  
+- **URL:** https://x.com/MarioNawfal/status/2101365705128255755  
+- **Author:** Mario Nawfal (@MarioNawfal)  
+- **UTC:** 2026-09-19 17:40:00 UTC → **AFTER Sep18 NY close**  
+- **Paraphrase:** Houthis claim strikes on sensitive Riyadh sites and Aramco facilities in Yanbu with ballistic/cruise/drones; claim large fires; Saudi capital alerts after reported explosions.  
+- **Factual claim (ascribed):** Houthi claim + alert/explosion reports (secondary; writer credit in post).  
+- **Interpretation:** “Tensions already pretty high” — soft; oil-supply implication is reader inference unless damage is verified.
+
+**Balanced update / partial counter on damage (AFTER cutoff)**  
+- **URL:** https://x.com/FrontierSigHQ/status/2101461242913370492  
+- **Author:** Frontier Signal (@FrontierSigHQ)  
+- **UTC:** 2026-09-19 23:59:38 UTC → **AFTER cutoff**  
+- **Paraphrase:** Coalition: intercepted ballistic missile on Riyadh (first on capital in months). Houthis: claimed hits + “massive fires.” No casualties; airport fuel-depot fire cause still formally unconfirmed (cites WSJ/AP).  
+- **Factual claim:** Competing official/claim narratives; no casualties; fire cause unconfirmed.  
+- **Interpretation:** Leaves supply-damage severity open — **counterweight** to maximalist “Aramco smashed” oil-shock reads.
+
+**De-escalation / diplomacy counterposts**  
+- https://x.com/aarondmiller2/status/2100648786263491000 — @aarondmiller2 — **2026-09-17 18:11:13 UTC** (BEFORE cutoff): Gulf not trending to escalation; diplomacy to reopen straits — **interpretation / political analysis**.  
+- https://x.com/FinSec_com/status/2101458400156823666 — @FinSec_com — **2026-09-19 23:48:20 UTC** (**AFTER cutoff**): Turkey FM warns economic danger (energy/food); new conditions to end war sent to US and Iran; “diplomacy active — but oil & Hormuz risks remain elevated” — **mix:** diplomatic-channel claim + **explicit residual supply-risk interpretation**.  
+- https://x.com/growth_edge_/status/2101498603445665835 — @growth_edge_ — **2026-09-20 02:28:05 UTC** (**AFTER cutoff**): Iran sent conditions via Qatar to restart talks; could reopen diplomacy path — **diplomatic rumor/claim**, not confirmed production restart.  
+- https://x.com/yvessmith/status/2100539498363052265 — @yvessmith — **2026-09-17 10:56:57 UTC** (BEFORE cutoff): link post — Saudi Hormuz transits up markedly but diesel crunch acute / US export-ban weigh — **headline claim via Naked Capitalism**, mixed ease-of-transit vs product-tightness.
+
+**Note:** Pre-weekend oil/Hormuz posts (e.g. constrained flows, pipeline/outage narratives) exist in search summaries but several high-impact “outage” claims were secondary aggregation; the **weekend Houthi/Saudi claim set above is the cleanest original-window pair** for risk vs unverified damage / diplomacy.
+
+---
+
+## Cutoff separation (quick)
+
+| Theme | BEFORE Sep18 20:00 UTC | AT/AFTER Sep18 20:00 UTC |
+|---|---|---|
+| Fed hike / H4L | @federalreserve 18:01 UTC Sep16; @mbhullar 18:10 UTC Sep16; @InvestGrit 23:58 UTC Sep16; @business rebound Sep17 | Later digests/crypto “absorbed hike” (e.g. @thangfuji Sep20) — not the decision itself |
+| BOJ + yen | @acrossthespread 03:58 UTC Sep18; @GlobalMktObserv 08:23 UTC Sep18 | **@TheQuantt 20:00:03 UTC Sep18**; @GlobalMktObserv weekly 10:12 UTC Sep19 |
+| Oil Saudi/Iran | @yvessmith Sep17; @aarondmiller2 Sep17 diplomacy | **@MarioNawfal Sep19 17:40**; **@FrontierSigHQ Sep19 23:59**; @FinSec_com Sep19 23:48; @growth_edge_ Sep20 talks |
+
+---
+
+## Cross-check discipline (what is solid vs soft)
+
+| Item | Status on X sample |
+|---|---|
+| Fed +25 bp to 3.75–4.00%, unanimous | Strongly consistent across official + market posts |
+| “Higher for longer” | **Interpretation** of dots/PC/Warsh tone; not a single magic phrase in the official one-line X blast |
+| BOJ +25 bp to 1.25%, split (~7–2 / 2 dissents) | Strongly consistent |
+| Yen weaker post-hike (USDJPY up) | Consistent **price claim** in multiple posts; causes disputed |
+| Houthi claims on Riyadh/Yanbu + fires | Claim-based; coalition intercept + unconfirmed depot fire = **material counterevidence on verified oil loss** |
+| De-escalation | Diplomatic-condition / Gulf-lead narratives present; coexist with “Hormuz/oil risk still elevated” |
+
+**Unavailable / not fabricated:** per-post like/repost/view counts (tool did not return them); full verbatim FOMC statement body inside the @federalreserve X post (link-only); BOJ_official posts in the official-handle search window (none matched in that query).
+
+**Sources:** all URLs above were returned by live x_search in this session; no repo inspection.

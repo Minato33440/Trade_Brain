@@ -1,0 +1,46 @@
+{
+  "engine": "gpt-5.6-terra",
+  "fetched_at_jst": "2026-09-20T11:55:32+09:00",
+  "source_base": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=",
+  "requested_window": ["2026-09-04", "2026-09-18"],
+  "comparison_window": ["2026-09-11", "2026-09-17"],
+  "comparison_rule": "Use the latest date common to all six requested series; do not synthesize a 2026-09-18 nominal or real yield.",
+  "publication_status": {
+    "DGS5": "latest nonblank 2026-09-17",
+    "DFII5": "latest nonblank 2026-09-17",
+    "T5YIE": "latest nonblank 2026-09-18",
+    "T5YIFR": "latest nonblank 2026-09-18",
+    "DGS2": "latest nonblank 2026-09-17",
+    "DGS10": "latest nonblank 2026-09-17"
+  },
+  "common_date_check": {
+    "all_six_available_on_2026-09-11": true,
+    "all_six_available_on_2026-09-18": false,
+    "latest_common_date": "2026-09-17"
+  },
+  "values_pct": {
+    "2026-09-11": {"DGS5": 4.78, "DFII5": 2.38, "T5YIE": 2.40, "T5YIFR": 2.32, "DGS2": 4.63, "DGS10": 4.96},
+    "2026-09-17": {"DGS5": 4.78, "DFII5": 2.46, "T5YIE": 2.32, "T5YIFR": 2.34, "DGS2": 4.67, "DGS10": 4.94},
+    "2026-09-18_partial": {"T5YIE": 2.31, "T5YIFR": 2.35}
+  },
+  "weekly_change_bp_2026-09-11_to_2026-09-17": {
+    "DGS5_nominal_5y": 0,
+    "DFII5_real_5y": 8,
+    "T5YIE_5y_breakeven": -8,
+    "T5YIFR_5y5y_forward": 2,
+    "DGS2": 4,
+    "DGS10": -2,
+    "DGS10_minus_DGS2_curve": -6
+  },
+  "identity_check": {
+    "formula": "DGS5 - DFII5 - T5YIE",
+    "2026-09-11_residual_bp": 0,
+    "2026-09-17_residual_bp": 0,
+    "weekly_change_residual_bp": 0,
+    "result": "pass"
+  },
+  "do_not_infer": [
+    "Do not subtract 2026-09-18 breakeven from 2026-09-17 nominal or real yield.",
+    "Do not use 2026-09-18 T5YIE or T5YIFR to characterize a same-day real yield before DGS5 and DFII5 publish."
+  ]
+}

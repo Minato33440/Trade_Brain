@@ -445,3 +445,11 @@ updated: 2026-01-19 (JST)
 P11を双方向の逆観測2回へ訂正し当週反例1。原油cash2週+19.41%・100ドル超、全持ち越しID、3キャンペーンと損益接続を本体に追加。決済件数は根拠行から10件9勝1敗へ訂正。原本と初稿は保存、Git承認は別途pending。
 
 [反映・訂正記録](2026-9-11_wk02/rex_addendum_integration.md) / [持ち越し表](2026-9-11_wk02/carry_forward.md) / [次回指示書](2026-9-11_wk02/next_update_handoff.md)
+
+
+### 2026-9-18_wk03（2026-09-14 → 2026-09-18）
+- Regime: **Neutral** ← Equities Down / Oil Surge。窓の移動と改訂込みで解釈。
+- 今週: 日米政策通過、米短期主導上昇と株反発。原油の週末供給リスクは別層。Gold残1 Lot、stop4,230。
+- Gates: Add=open_permission_only、Reduce=caution。WTI105–107/米金利再加速と株支持割れを監視。
+- 実績: 1決済+50、通算評価496.720、週次+114.785 pt・Lot。口座4,868,308円、週次増加117,679円＝保有評価差116,761＋1655配当918。
+- Links: [review](2026-9-18_wk03/review.md) / [note](2026-9-18_wk03/note.md) / [meta](2026-9-18_wk03/meta.yaml) / [trade_results](2026-9-18_wk03/trade_results.md) / [CFDハブ](2026-9-18_wk03/CFD戦略-2026-9-21.md) / [HTML](2026-9-18_wk03/CFD_Strategy-2026-9-21.html) / [quality](2026-9-18_wk03/quality_gate.md)

@@ -109,3 +109,38 @@
 - campaign: 旧4決済129.000/新4決済190.000/新々2決済53.885＋含み9.050。確認済み**10件9勝1敗**、CSV8件＋旧wk03未登録2件。実現96.385＋含み変化−50.985＝評価込み週間増分45.400。Rexの16件と50.985全額実現化の説明は訂正。
 - carry_forward: **9-8契約仕様、9-10 1627売却理由、P10発言日定義**を明示。正確なMAE・旧wk03 CSV・GC原因・P12同feedも残す。P9回数据置、8-2/8-3棄却維持。東証15:30、日経値は日経指数公式、他系列の実cutoff不明を固定時刻で埋めない。
 - links: [採否と履歴](../../logs/weekly/2026/2026-9-11_wk02/rex_addendum_integration.md) / [全ID](../../logs/weekly/2026/2026-9-11_wk02/carry_forward.md) / [次回指示書](../../logs/weekly/2026/2026-9-11_wk02/next_update_handoff.md)
+
+
+---
+
+## 2026-9-18_wk03（2026-09-14 → 2026-09-18）
+- regime: Neutral ← wk02「Equities Down / Oil Surge」から機械ラベル転換。短期反発と高金利が共存し、rolling30日窓の起点変更と過去値改訂を含む。
+- decision:
+  - vix_add_risk_gate=on（TVC14.82<18。許可条件のみで新規追加指示ではない）
+  - oil_rates_joint_pressure=watch（WTI105–107＋US2Y4.760超/US10Y5.05超と株支持割れなら防御）
+  - gold_existing_stop_4230=on（Boss報告の1 Lot残玉、旧4260は解除。市場支持4319と混同しない）
+  - p11_counterexample_threshold=watch（双方向逆観測2回で棄却。今週2Y差+12.8bp/FX+2.21%は参考上整合、反例1維持）
+- evidence (close / 2026-09-18 chart-labelled snapshot; machine fetched 2026-09-20):
+  - US100: 29,656.7（Capital.com CFD、前週+0.97%）。機械29,644.170・+1.14% / 30d（8/21→9/18）。
+  - JP225: 65,086（FOREX.com CFD、前週+0.62%）。機械^N22565,018.949・−1.51% / 30d。現物寄り値へ変換しない。
+  - USDJPY: 156.854（FXCM、前週+2.2063%）。機械156.855・−1.28% / 30d（8/21→9/19）、他市場と日付SPLIT。
+  - WTI: 100.026（BlackBull cash CFD、前週−0.3467%）。機械先物100.300・+15.21% / 30d（8/21→9/18）。
+  - XAUUSD: 4,378.45（Pepperstone、前週+0.6927%）。機械GC=F4,424.900・−5.46% / 30d、過去改訂あり。CFD評価に代入しない。
+  - US2Y: 4.756%（TVC、9/11→9/18+12.6bp）。FRED DGS2は9/17 4.67%、別窓。30日比は画像から算出していない。
+  - VIX: 14.82（TVC、前週−6.50%）。機械14.810・−2.12% / 30d。
+  - US10Y: 5.000%（TVC、前週+3.1bp）。機械4.998%・+5.49% / 30d。TVC US30Y5.327%、JP2Y1.840%、JP10Y2.984%。
+  - BTC/USD: 80,911.10（Binance撮影時点・確定週足でない、前撮影比+4.72%）。機械80,901.461・+3.28% / 30d（8/21→9/18）。
+  - Regime (system): Neutral（equities flat / volatility normal / oil range / gold off / crypto range / yields rising）。
+  - Curve: TVC9/11→9/18の米2s10s−9.5bp。Yahoo10s30s9/11→9/18は−4.6bp、FRED2s10s機械9/10→9/17は−12bp、固定前週金曜9/11→9/17は−6bp。窓を統合しない。
+  - Real / BE: FRED9/11→9/17は名目5Y0bp＝実質+8bp＋BE−8bp、恒等式0。9/18BEのみ取得で5Y−9bp、5y5y+3bp。原油から一様な期待インフレ上昇を結論化しない。
+  - Account: 4,868,308円、評価損益331,666円。数量不変、保有評価差+116,761円とsweep差+918円。米株USD−4.80だが円+10,025（原資産−740.01＋換算+10,765.01）。918円は1655 NISA配当（3.4×270、税0、9/17受渡）とBoss明細で照合済み。
+  - CFD: 今週1決済+50、残1 Lot、実現累計422.885＋含み73.835＝496.720。週次+114.785 pt・Lot。文書化済み11決済10勝1敗。CSV今週1行追記、過去未収録2件は別管理。
+- implication:
+  - US10029,442–29,241支持＋原油99.611以下への沈静化＋金利高値更新停止なら押し目参加を検討。29,241割れ、28,869割れとVIX上昇なら防御を優先。
+  - Gold4,335–4,319反発／4,404支持化を観測し、実stop4,230とは分離。4,260解除はBoss理由付き履歴で保存。9/14限定例外を次週注文へ自動継承しない。
+  - USDJPY156.42–156.59支持と157.11–157.22失速を両方向で準備。P11は今週で因果証明せず、P9/P10/P12の保留も維持する。
+  - 9/21–23現物休場中の海外変動は9/24寄り後に再評価。FRB3.75–4.00%、日銀1.25%（9/24適用）、9/30 21:30 JSTのPCE・年次改定は公式確認。9/24会談は報道予定に留める。
+  - 週末攻撃主張・迎撃発表・供給損失・価格反応を分離。X原投稿の独立取得403のため市場解釈に限定。snapshot手動介入設定・FX/金の16改訂・SPLITを現在の確定事実へすり替えない。
+- tags: [gm, monthly_distilled, 2026-09, 2026-9-18_wk03, signal:oil_rates_joint_pressure, event:fomc_2026_09, event:boj_2026_09, risk:weekend_oil_gap, hypothesis:p11]
+
+出典と検証: [review](../../logs/weekly/2026/2026-9-18_wk03/review.md) / [sources](../../logs/weekly/2026/2026-9-18_wk03/sources.md) / [meta](../../logs/weekly/2026/2026-9-18_wk03/meta.yaml) / [quality](../../logs/weekly/2026/2026-9-18_wk03/quality_gate.md)。過去週は書換えず、当週取得とBossの現在指示を記録した。

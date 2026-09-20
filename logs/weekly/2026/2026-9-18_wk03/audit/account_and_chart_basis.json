@@ -1,0 +1,238 @@
+{
+  "positions": [
+    {
+      "account": "taxable",
+      "symbol": "200A",
+      "quantity": 91,
+      "display_price": 4289,
+      "price_currency": "JPY",
+      "value_jpy": 390299,
+      "unrealized_pnl_jpy": -2457,
+      "week_value_change_jpy": 8281,
+      "prior_value_jpy": 382018
+    },
+    {
+      "account": "taxable",
+      "symbol": "425A",
+      "quantity": 750,
+      "display_price": 368.8,
+      "price_currency": "JPY",
+      "value_jpy": 276600,
+      "unrealized_pnl_jpy": 4350,
+      "week_value_change_jpy": 8025,
+      "prior_value_jpy": 268575
+    },
+    {
+      "account": "taxable",
+      "symbol": "586A",
+      "quantity": 50,
+      "display_price": 252,
+      "price_currency": "JPY",
+      "value_jpy": 12600,
+      "unrealized_pnl_jpy": 1850,
+      "week_value_change_jpy": 325,
+      "prior_value_jpy": 12275
+    },
+    {
+      "account": "taxable",
+      "symbol": "6954",
+      "quantity": 100,
+      "display_price": 5852,
+      "price_currency": "JPY",
+      "value_jpy": 585200,
+      "unrealized_pnl_jpy": -35300,
+      "week_value_change_jpy": 11700,
+      "prior_value_jpy": 573500
+    },
+    {
+      "account": "taxable",
+      "symbol": "7011",
+      "quantity": 100,
+      "display_price": 3879,
+      "price_currency": "JPY",
+      "value_jpy": 387900,
+      "unrealized_pnl_jpy": -100,
+      "week_value_change_jpy": 17400,
+      "prior_value_jpy": 370500
+    },
+    {
+      "account": "nisa",
+      "symbol": "1655",
+      "quantity": 270,
+      "display_price": 868,
+      "price_currency": "JPY",
+      "value_jpy": 234360,
+      "unrealized_pnl_jpy": 25380,
+      "week_value_change_jpy": 5886,
+      "prior_value_jpy": 228474
+    },
+    {
+      "account": "nisa",
+      "symbol": "2243",
+      "quantity": 174,
+      "display_price": 4354,
+      "price_currency": "JPY",
+      "value_jpy": 757596,
+      "unrealized_pnl_jpy": 291276,
+      "week_value_change_jpy": 16530,
+      "prior_value_jpy": 741066
+    },
+    {
+      "account": "nisa",
+      "symbol": "2638",
+      "quantity": 193,
+      "display_price": 2608,
+      "price_currency": "JPY",
+      "value_jpy": 503344,
+      "unrealized_pnl_jpy": 41109,
+      "week_value_change_jpy": 10229,
+      "prior_value_jpy": 493115
+    },
+    {
+      "account": "nisa",
+      "symbol": "2847",
+      "quantity": 80,
+      "display_price": 3031,
+      "price_currency": "JPY",
+      "value_jpy": 242480,
+      "unrealized_pnl_jpy": 30320,
+      "week_value_change_jpy": 6960,
+      "prior_value_jpy": 235520
+    },
+    {
+      "account": "nisa",
+      "symbol": "425A",
+      "quantity": 2000,
+      "display_price": 368.8,
+      "price_currency": "JPY",
+      "value_jpy": 737600,
+      "unrealized_pnl_jpy": -50400,
+      "week_value_change_jpy": 21400,
+      "prior_value_jpy": 716200
+    },
+    {
+      "account": "us",
+      "symbol": "GDX",
+      "quantity": 15,
+      "display_price": 95.48,
+      "price_currency": "USD",
+      "value_jpy": 225313,
+      "unrealized_pnl_jpy": 23398,
+      "week_value_change_jpy": 765,
+      "prior_value_jpy": 224548
+    },
+    {
+      "account": "us",
+      "symbol": "SPCX",
+      "quantity": 13,
+      "display_price": 152.71,
+      "price_currency": "USD",
+      "value_jpy": 312316,
+      "unrealized_pnl_jpy": 2240,
+      "week_value_change_jpy": 9260,
+      "prior_value_jpy": 303056
+    }
+  ],
+  "fx": {
+    "prior_value_usd": "3422.23",
+    "current_value_usd": "3417.43",
+    "change_usd": "-4.80",
+    "implied_prior_jpy_usd": "154.1696496144326944711489292",
+    "implied_current_jpy_usd": "157.3196817491506775559411605",
+    "underlying_effect_jpy": "-740.0143181492769334615148602",
+    "fx_effect_jpy": "10765.01431814927693346151501",
+    "net_jpy": 10025,
+    "limitation": "Accounting decomposition from screenshot aggregate implied FX; not tradeable FX quotes or causal proof."
+  },
+  "charts": {
+    "US100": {
+      "vendor": "Capital.com CFD",
+      "prior": 29371.2,
+      "current": 29656.7,
+      "change_pct": 0.9720406384485483,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "JP225": {
+      "vendor": "FOREX.com CFD",
+      "prior": 64686,
+      "current": 65086,
+      "change_pct": 0.6183718269795628,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "USDJPY": {
+      "vendor": "FXCM",
+      "prior": 153.468,
+      "current": 156.854,
+      "change_pct": 2.2063231422837335,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "XAUUSD": {
+      "vendor": "Pepperstone",
+      "prior": 4348.33,
+      "current": 4378.45,
+      "change_pct": 0.692679718420635,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "WTI": {
+      "vendor": "BlackBull cash CFD",
+      "prior": 100.374,
+      "current": 100.026,
+      "change_pct": -0.3467033295474924,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "BTC/USD": {
+      "vendor": "Binance snapshot",
+      "prior": 77262.47,
+      "current": 80911.1,
+      "change_pct": 4.7223833253065814,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "DXY": {
+      "vendor": "TVC",
+      "prior": 99.094,
+      "current": 100.215,
+      "change_pct": 1.1312491170000203,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "VIX": {
+      "vendor": "TVC",
+      "prior": 15.85,
+      "current": 14.82,
+      "change_pct": -6.4984227129337535,
+      "comparison": "9/11-labelled to 9/18-labelled chart endpoints; BTC capture-to-capture, exact server cutoff not independently verified"
+    },
+    "US2Y": {
+      "vendor": "TVC",
+      "prior_pct": 4.63,
+      "current_pct": 4.756,
+      "change_bp": 12.6
+    },
+    "US10Y": {
+      "vendor": "TVC",
+      "prior_pct": 4.969,
+      "current_pct": 5.0,
+      "change_bp": 3.1
+    },
+    "JP2Y": {
+      "vendor": "TVC",
+      "prior_pct": 1.842,
+      "current_pct": 1.84,
+      "change_bp": -0.2
+    },
+    "JP10Y": {
+      "vendor": "TVC",
+      "prior_pct": 2.987,
+      "current_pct": 2.984,
+      "change_bp": -0.3
+    },
+    "US30Y": {
+      "vendor": "TVC",
+      "current_pct": 5.327
+    },
+    "EURUSD": {
+      "vendor": "FXCM",
+      "current": 1.14856
+    }
+  },
+  "cash_clarification": "Boss: ポジションの変化はないので配当金の可能性が高いが未確認"
+}

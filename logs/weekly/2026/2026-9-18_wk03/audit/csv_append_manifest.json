@@ -1,0 +1,21 @@
+{
+  "engine": "gpt-6-astra",
+  "before_sha256": "6b64357e94d37173878df208a6fbae3fb90edab6b64bd0ce4288e67bdb1e418b",
+  "after_sha256": "d81e45d7a1308fae221872d26bfd232d21be07359b951f6a76498a5ffa487e8a",
+  "before_rows": 15,
+  "added_rows": 1,
+  "row": {
+    "opened_at": "2026-09-17",
+    "closed_at": "2026-09-17 21:30",
+    "symbol": "XAUUSD",
+    "direction": "long",
+    "size": "0.5000",
+    "entry_price": "4279.000000",
+    "exit_price": "4379.000000",
+    "pnl_pct": "2.3370",
+    "pnl_amount": "0.0000",
+    "tag": "gold_long,partial_tp,new_new_campaign,event_fomc",
+    "notes": "新新X3。9/17追加1Lot@4279のうち0.5Lotを同日21:30 JSTに4379で利確。+50.000 pt-Lot。開始時刻は未提示のため日付精度。旧0.5Lot@4330.23と追加残0.5Lotを持越し。旧4260逆指値は4H下落ライン交差を根拠に解除しPA判断へ変更、現stop4230。出典2026-9-18_wk03/trade_results.md。pnl_amount=0は従来形式の未入力値で円貨実現額0ではない。"
+  },
+  "old_bytes_preserved": true
+}

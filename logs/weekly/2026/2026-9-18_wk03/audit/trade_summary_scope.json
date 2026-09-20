@@ -1,0 +1,9 @@
+{
+  "engine": "gpt-6-astra",
+  "cli_basis": "opened_at date",
+  "weekly_basis": "closed_at JST",
+  "count": 1,
+  "realized_pt_lot": "50.000",
+  "date_precision_note": "CLI renders missing entry time as 00:00, a formatter default; original CSV date-only and Boss execution record govern.",
+  "recovery": "Initial cp932 stdout error; read-only summary retried with -X utf8, no repeated CSV append."
+}

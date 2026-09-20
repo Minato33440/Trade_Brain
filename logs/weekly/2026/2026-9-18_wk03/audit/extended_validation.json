@@ -1,0 +1,86 @@
+{
+  "engine": "gpt-6-astra",
+  "checks": [
+    {
+      "check": "holdings_quantities_unchanged",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "portfolio_values_bridge",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "portfolio_unrealized_bridge",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "csv_only_one_new_row",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "csv_realized_decimal",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "csv_no_invented_open_time",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "marked_pnl_bridge",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "fred_identity_2026-09-11",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "fred_identity_2026-09-17",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "old_observation_values_and_first_seen_preserved",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "old_revisions_preserved",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "history_preserved:docs/STATUS.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "history_preserved:logs/weekly/2026/_index.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "history_preserved:distilled/2026/distilled-gm-2026-9.md",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "trade_main_history_preserved_except_new_index_entry",
+      "status": "pass",
+      "detail": null
+    },
+    {
+      "check": "dividend_1655_sweep_reconciliation",
+      "status": "pass",
+      "detail": "NISA tax0, net918; Boss detail 2026-09-17 settlement"
+    }
+  ],
+  "status": "pass"
+}

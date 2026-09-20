@@ -1,0 +1,26 @@
+{
+  "week": "2026-9-18_wk03",
+  "recorded_at_jst": "2026-09-20T11:45:24+09:00",
+  "engine": "gpt-6-astra",
+  "source_authority": "Boss execution report, subsequent clarification of stop cancellation, and supplied images; no independent broker account query.",
+  "archives": [
+    {
+      "source": "C:\\Python\\REX_AI\\Trade_Brain\\png_data\\XAUUSD-2026-09-19.png",
+      "archive": "charts/XAUUSD-2026-09-19.png",
+      "sha256": "5598f7732a0af98108112ca247abd5b2d606199d7b49ddc7c03fdf5bcb1c76d5",
+      "vendor": "Pepperstone",
+      "interpretation": "Daily and 4H, latest displayed close 4378.45; last-bar lows are not weekly lows."
+    },
+    {
+      "source": "C:\\Users\\Setona\\Pictures\\Screenshots\\スクリーンショット 2026-09-20 114316.png",
+      "archive": "charts/XAUUSD-15M-2026-09-20.png",
+      "sha256": "ea804ed8936b9365ef5c0ae8bab759f0d906832ab270b1d95dc6826aea145843",
+      "vendor": "Pepperstone",
+      "interpretation": "15M: right-edge value 4378.45; header OHLC is selected 2026-09-18 11:30 bar, not weekly close."
+    }
+  ],
+  "selected_close": "4378.45",
+  "as_of": "2026-09-18 weekend per user-provided chart context",
+  "closed_position_assignment": "0.5 Lot of the 1.0 Lot added at 4279; old 0.5 Lot at 4330.23 continues.",
+  "stop_change": "4260 stop canceled in favor of price-action judgment at 4H descending trendline confluence; exact cancellation timestamp not supplied. Subsequently all-position stop set to 4230."
+}

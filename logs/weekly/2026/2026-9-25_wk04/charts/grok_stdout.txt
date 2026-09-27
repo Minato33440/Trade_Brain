@@ -1,0 +1,78 @@
+X search (Sep 25–27 2026) — at most 3 original posts
+======================================================
+
+Source note: Details come from xAI X Search summaries of public posts in that window. Full engagement counts (likes/reposts/views) were not consistently returned. Timestamps below are as reported by the tool (mostly calendar date; exact clock times not always given). No future events inferred.
+
+----------------------------------------------------------------------
+POST 1 — Iran ceasefire / Strait of Hormuz oil supply
+----------------------------------------------------------------------
+URL:       https://x.com/PATRIOTNEW1/status/2103997681278558338
+Timestamp: Sep 26, 2026 (as reported)
+Author:    @PATRIOTNEW1
+Quoted claim (as reconstructed in search):
+  "PRESIDENT TRUMP JUST REJECTED IRAN'S SEVEN-DAY CEASEFIRE DEAL.
+   Tehran wants the Strait of Hormuz reopened if they keep their end of the bargain.
+   Trump said there is no trust left, and he called their bluff on the way to Knoxville."
+  (Search noted an attached video clip.)
+Engagement: Not visible in tool output.
+
+Related same-day post (optional cross-check, not counted as one of the 3 if you want only three total):
+  https://x.com/JGB00780685/status/2103997908349526209
+  Claim includes: Trump rejected Iran proposal (via Qatari mediators at UNGA) to reopen Hormuz and pause fighting within 7 days; cites Reuters/WaPo; Fri settle Brent ~$104.32, WTI ~$92.41 on earlier truce hopes.
+
+Reported claims vs other material
+- Reported claims (from these posts / their cited outlets): Trump rejected a short Iran-linked ceasefire/Hormuz-reopen proposal; lack of trust cited; oil had pulled back on earlier truce hopes then faced renewed chokepoint risk narrative.
+- Not independently verified here: Whether a formal 7-day deal text existed; actual tanker transit counts; unconfirmed overnight kinetic/OSINT strike claims mentioned in broader Hormuz thread summaries. Official maritime/military confirmation was described in search context as lagging social reports.
+
+----------------------------------------------------------------------
+POST 2 — US Treasury yield rise
+----------------------------------------------------------------------
+URL:       https://x.com/kurtsaltrichter/status/2103969368136646701
+Timestamp: Sep 26, 2026 (as reported)
+Author:    @kurtsaltrichter
+Quoted claim (as reconstructed in search):
+  "The 10-year Treasury yield just hit 5.23%, the highest since 2007.
+   The 5% level that capped it for years is now the floor under it.
+   Foreign buyers are backing away… This week’s 5-year auction cleared at 5.03%
+   with foreign and indirect bidders taking just 54% versus their usual 65%.
+   Fewer buyers for a record pile of debt means higher yields, and that keeps
+   the pressure on stocks and mortgages."
+  (Search noted a chart.)
+Engagement: Not visible in tool output.
+
+Companion same-theme post:
+  https://x.com/AIGOLDOfficial/status/2103994116594147337
+  Claim: 30y ~5.48% (highest since 2004 per post); 10y ~5.20%; mortgages ~7%; large US debt stock; “bond market warning” framing + chart.
+
+Reported claims vs other material
+- Reported claims: 10y printed around 5.20–5.23% in this window; multi-year/decade highs per posters; weak foreign/indirect bid share at a recent auction; higher mortgage/borrowing-cost commentary.
+- Not verified in this pass against primary tape (Treasury.gov / Bloomberg print): Exact print, auction stats, or “highest since 2007/2004” labels. Those remain claims as stated on X.
+
+----------------------------------------------------------------------
+POST 3 — USDJPY intervention rhetoric
+----------------------------------------------------------------------
+URL:       https://x.com/thecurrentfeed/status/2103935135808737791
+Timestamp: Sep 26, 2026 (as reported; rhetoric tied to Sep 25 comments)
+Author:    @thecurrentfeed
+Quoted claim (as reconstructed in search):
+  Finance Minister Katayama revived intervention-era language:
+  “the principles since the previous joint intervention remain alive.”
+  Context in post/summary: USD/JPY had pushed toward/above the mid-high 157s despite a BOJ hike to 1.25%; call with U.S. Treasury Secretary Bessent; yen undervaluation framed as a problem; markets reading verbal intervention / coordination risk.
+Engagement: Not visible in tool output.
+
+Related post:
+  https://x.com/KenLomba/status/2103895928876962033
+  Notes Katayama–Bessent coordination signal, USD/JPY sold off (low cited ~156.94 after higher prints), carry-trade watch levels discussed by that author.
+
+Reported claims vs other material
+- Reported claims: Katayama used joint-intervention “principles remain alive” language; U.S.–Japan contact on yen; verbal jawboning / rate-check style warnings circulating; pair reversed from higher levels on the talk.
+- Not verified here: Whether actual MOFA/MOF intervention dollars were spent in this window; exact USD/JPY tick path; full transcript of Katayama remarks beyond the quoted line in search summaries. Search context framed action as verbal, not confirmed executed intervention.
+
+----------------------------------------------------------------------
+Separation rule (as requested)
+----------------------------------------------------------------------
+- Above “Quoted claim” blocks = what accounts posted or what search attributed to them.
+- “Not independently verified here” = items that need primary sources (official statements, exchange prints, UKMTO/CENTCOM, Treasury auction results) before treating as fact.
+- No forecasts or “what happens next” added.
+
+Limit: 3 primary originals chosen (one per theme). Additional URLs are cross-checks only.

@@ -1,0 +1,24 @@
+{
+  "week": "2026-9-25_wk04",
+  "status": "pass",
+  "checks": {
+    "ledger_existing_initial_observations_preserved": true,
+    "ledger_no_removed_keys": true,
+    "ledger_revisions_append_only": true,
+    "historic_bytes_preserved:docs/STATUS.md": true,
+    "historic_bytes_preserved:docs/Trade-Main.md": true,
+    "historic_bytes_preserved:logs/weekly/2026/_index.md": true,
+    "historic_bytes_preserved:distilled/2026/distilled-gm-2026-9.md": true,
+    "portfolio_total": true,
+    "assets_change": true,
+    "valuation_and_cash": true,
+    "position_count": true
+  },
+  "ledger": {
+    "new_keys": 55,
+    "existing_keys_with_appended_revisions": 11,
+    "removed_keys": 0,
+    "new_dates_include_2026_09_25": true
+  },
+  "scope": "Ledger provenance, byte preservation of prior index/brief/distilled content, and portfolio arithmetic. Does not establish market causality or broker execution."
+}

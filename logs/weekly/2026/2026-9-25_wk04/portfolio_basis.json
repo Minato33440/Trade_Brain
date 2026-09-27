@@ -1,0 +1,143 @@
+{
+  "week": "2026-9-25_wk04",
+  "source_images": [
+    "charts/ポートフォリオ.png",
+    "charts/東証株.png",
+    "charts/米国株.png"
+  ],
+  "image_time_jst": "2026-09-26 20:42-20:43",
+  "prior_week": "2026-9-18_wk03",
+  "prior_total_assets_jpy": 4868308,
+  "current_total_assets_jpy": 4953356,
+  "assets_change_jpy": 85048,
+  "prior_unrealized_pnl_jpy": 331666,
+  "current_unrealized_pnl_jpy": 416651,
+  "unrealized_pnl_change_jpy": 84985,
+  "prior_sweep_jpy": 202700,
+  "current_sweep_jpy": 202763,
+  "sweep_change_jpy": 63,
+  "sweep_change_cause": "unconfirmed",
+  "current_domestic_jpy": 4224538,
+  "domestic_change_jpy": 96559,
+  "current_us_jpy": 526055,
+  "us_change_jpy": -11574,
+  "current_usd": "3325.89",
+  "prior_usd": "3417.43",
+  "usd_change": "-91.54",
+  "implied_current_fx_jpy_per_usd": "158.1696929242999618147322972",
+  "implied_prior_fx_jpy_per_usd": "157.3196817491506775559411605",
+  "us_underlying_effect_jpy": "-14401.04366731725302347085383",
+  "us_fx_effect_jpy": "2827.043667317253023470853639",
+  "fx_decomposition_limit": "Derived from rounded account display; not an FX quote or causal proof.",
+  "all_12_quantities_unchanged": true,
+  "positions": [
+    {
+      "account": "taxable",
+      "symbol": "200A",
+      "quantity": 91,
+      "current_value_jpy": 405496,
+      "prior_value_jpy": 390299,
+      "value_change_jpy": 15197,
+      "current_unrealized_pnl_jpy": 12740
+    },
+    {
+      "account": "taxable",
+      "symbol": "425A",
+      "quantity": 750,
+      "current_value_jpy": 271200,
+      "prior_value_jpy": 276600,
+      "value_change_jpy": -5400,
+      "current_unrealized_pnl_jpy": -1050
+    },
+    {
+      "account": "taxable",
+      "symbol": "586A",
+      "quantity": 50,
+      "current_value_jpy": 12385,
+      "prior_value_jpy": 12600,
+      "value_change_jpy": -215,
+      "current_unrealized_pnl_jpy": 1635
+    },
+    {
+      "account": "taxable",
+      "symbol": "6954",
+      "quantity": 100,
+      "current_value_jpy": 598500,
+      "prior_value_jpy": 585200,
+      "value_change_jpy": 13300,
+      "current_unrealized_pnl_jpy": -22000
+    },
+    {
+      "account": "taxable",
+      "symbol": "7011",
+      "quantity": 100,
+      "current_value_jpy": 389700,
+      "prior_value_jpy": 387900,
+      "value_change_jpy": 1800,
+      "current_unrealized_pnl_jpy": 1700
+    },
+    {
+      "account": "nisa",
+      "symbol": "1655",
+      "quantity": 270,
+      "current_value_jpy": 237060,
+      "prior_value_jpy": 234360,
+      "value_change_jpy": 2700,
+      "current_unrealized_pnl_jpy": 28080
+    },
+    {
+      "account": "nisa",
+      "symbol": "2243",
+      "quantity": 174,
+      "current_value_jpy": 825804,
+      "prior_value_jpy": 757596,
+      "value_change_jpy": 68208,
+      "current_unrealized_pnl_jpy": 359484
+    },
+    {
+      "account": "nisa",
+      "symbol": "2638",
+      "quantity": 193,
+      "current_value_jpy": 517433,
+      "prior_value_jpy": 503344,
+      "value_change_jpy": 14089,
+      "current_unrealized_pnl_jpy": 55198
+    },
+    {
+      "account": "nisa",
+      "symbol": "2847",
+      "quantity": 80,
+      "current_value_jpy": 243760,
+      "prior_value_jpy": 242480,
+      "value_change_jpy": 1280,
+      "current_unrealized_pnl_jpy": 31600
+    },
+    {
+      "account": "nisa",
+      "symbol": "425A",
+      "quantity": 2000,
+      "current_value_jpy": 723200,
+      "prior_value_jpy": 737600,
+      "value_change_jpy": -14400,
+      "current_unrealized_pnl_jpy": -64800
+    },
+    {
+      "account": "us",
+      "symbol": "GDX",
+      "quantity": 15,
+      "current_value_jpy": 220338,
+      "prior_value_jpy": 225313,
+      "value_change_jpy": -4975,
+      "current_unrealized_pnl_jpy": 18423
+    },
+    {
+      "account": "us",
+      "symbol": "SPCX",
+      "quantity": 13,
+      "current_value_jpy": 305717,
+      "prior_value_jpy": 312316,
+      "value_change_jpy": -6599,
+      "current_unrealized_pnl_jpy": -4359
+    }
+  ]
+}

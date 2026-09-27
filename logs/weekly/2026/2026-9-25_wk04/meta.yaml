@@ -1,0 +1,320 @@
+week: 2026-9-25_wk04
+created: '2026-09-27'
+engine: gpt-6
+status: integrated_weekly_review
+date_range:
+  start: '2026-09-21'
+  end: '2026-09-25'
+  action_week_start: '2026-09-28'
+source_refs:
+  boss: charts/boss_report_original.md
+  trade: trade_results.md
+  inputs: charts/input_manifest.json
+  snapshot: charts/2026_09_27_snapshot.yaml
+  account_basis: portfolio_basis.json
+  x_search: charts/grok_stdout.txt
+primary_market_chart:
+  US100:
+    close: 30635.2
+    previous: 29656.7
+    vendor: Capital.com
+    product: cash CFD
+  JP225:
+    close: 66642
+    previous: 65086
+    vendor: FOREX.com
+    product: CFD
+  USDJPY:
+    close: 157.281
+    previous: 156.854
+    vendor: FXCM
+    product: FX
+  EURUSD:
+    close: 1.13902
+    previous: 1.14856
+    vendor: FXCM
+    product: FX
+  WTI:
+    close: 95.915
+    previous: 100.026
+    vendor: BlackBull Markets
+    product: cash CFD
+  XAUUSD:
+    close: 4284.99
+    previous: 4378.45
+    vendor: Pepperstone
+    product: gold spot-style
+  DXY:
+    close: 101.034
+    previous: 100.215
+    vendor: TVC
+    product: index
+  US2Y:
+    close: 4.86
+    previous: 4.756
+    vendor: TVC
+    product: yield percent
+  US10Y:
+    close: 5.167
+    previous: 5.0
+    vendor: TVC
+    product: yield percent
+  US30Y:
+    close: 5.49
+    previous: 5.327
+    vendor: TVC
+    product: yield percent
+  JP2Y:
+    close: 1.925
+    previous: 1.84
+    vendor: TVC
+    product: yield percent
+  JP10Y:
+    close: 3.075
+    previous: 2.984
+    vendor: TVC
+    product: yield percent
+  BTCUSD:
+    captured_value: 84153.73
+    vendor: Binance
+    product: 24/7 spot chart
+    capture_date: '2026-09-26'
+    display_clock: '14:14:08'
+    time_zone: null
+    weekly_close_confirmed: false
+market_week_reference:
+  us_2s10s_previous_bp: 24.4
+  us_2s10s_current_bp: 30.7
+  us_2s10s_change_bp: 6.3
+  jp_2s10s_previous_bp: 114.4
+  jp_2s10s_current_bp: 115.0
+  us_jp_2y_spread_change_bp: 1.9
+  comparison_limit: Previous-week report vs current TVC charts; vendor within pair largely aligned, server
+    cutoff not independently synchronized.
+snapshot:
+  file_date_end: '2026-09-27'
+  regime:
+    label: Neutral
+    equities: up
+    volatility: normal
+    oil: range
+    gold: false
+    crypto: strong
+    yields: rising
+  date_integrity_status: SPLIT
+  usd_jpy_as_of: '2026-09-26'
+  other_regular_markets_as_of: '2026-09-25'
+  btc_off_calendar: true
+  value_revisions_current_window_count: 11
+  curve_yahoo_5s10s_bp: 17.7
+  curve_yahoo_5s10s_change_bp_30d: -6.2
+  curve_fred_as_of: '2026-09-24'
+  curve_fred_2s10s_bp: 31.0
+  curve_fred_change_bp_1w: 4.0
+  be_as_of: '2026-09-25'
+  be_5y_pct: 2.34
+  be_5y_change_bp_1w: 3.0
+  be_5y5y_pct: 2.34
+  be_5y5y_change_bp_1w: -1.0
+  vix_as_of: '2026-09-25'
+  vix: 14.87
+  interpretation_limit: Futures vs spot/cash and split as_of. FRED publication lag. Do not merge into
+    Boss chart time series.
+gates:
+  add_risk: open_permission_only
+  vix_threshold: 18
+  reduce_risk: caution
+  us100_support: 29935.5
+  jp225_support_band:
+  - 66277
+  - 66042
+  wti_recovery: 99.303
+  us10y_breakout_pct: 5.228
+  us30y_breakout_pct: 5.532
+  gold_market_recovery:
+  - 4288.55
+  - 4319.13
+  gold_position_stop_basis: 4230
+  gold_reported_order_level: 4220
+  btc_capture_support: 83795.61
+  btc_capture_resistance: 85732
+portfolio_snapshot_20260925:
+  source: png_data account screenshots captured 2026-09-26 20:42-20:43
+  total_assets_jpy: 4953356
+  unrealized_pnl_jpy: 416651
+  japanese_equity_value_jpy: 4224538
+  us_equity_value_jpy: 526055
+  sweep_jpy: 202763
+  week_change_adjusted_jpy: 84985
+  positions:
+  - account: taxable
+    symbol: 200A
+    quantity: 91
+    value_jpy: 405496
+    unrealized_pnl_jpy: 12740
+    week_value_change_jpy: 15197
+  - account: taxable
+    symbol: 425A
+    quantity: 750
+    value_jpy: 271200
+    unrealized_pnl_jpy: -1050
+    week_value_change_jpy: -5400
+  - account: taxable
+    symbol: 586A
+    quantity: 50
+    value_jpy: 12385
+    unrealized_pnl_jpy: 1635
+    week_value_change_jpy: -215
+  - account: taxable
+    symbol: '6954'
+    quantity: 100
+    value_jpy: 598500
+    unrealized_pnl_jpy: -22000
+    week_value_change_jpy: 13300
+  - account: taxable
+    symbol: '7011'
+    quantity: 100
+    value_jpy: 389700
+    unrealized_pnl_jpy: 1700
+    week_value_change_jpy: 1800
+  - account: nisa
+    symbol: '1655'
+    quantity: 270
+    value_jpy: 237060
+    unrealized_pnl_jpy: 28080
+    week_value_change_jpy: 2700
+  - account: nisa
+    symbol: '2243'
+    quantity: 174
+    value_jpy: 825804
+    unrealized_pnl_jpy: 359484
+    week_value_change_jpy: 68208
+  - account: nisa
+    symbol: '2638'
+    quantity: 193
+    value_jpy: 517433
+    unrealized_pnl_jpy: 55198
+    week_value_change_jpy: 14089
+  - account: nisa
+    symbol: '2847'
+    quantity: 80
+    value_jpy: 243760
+    unrealized_pnl_jpy: 31600
+    week_value_change_jpy: 1280
+  - account: nisa
+    symbol: 425A
+    quantity: 2000
+    value_jpy: 723200
+    unrealized_pnl_jpy: -64800
+    week_value_change_jpy: -14400
+  - account: us
+    symbol: GDX
+    quantity: 15
+    value_jpy: 220338
+    unrealized_pnl_jpy: 18423
+    week_value_change_jpy: -4975
+  - account: us
+    symbol: SPCX
+    quantity: 13
+    value_jpy: 305717
+    unrealized_pnl_jpy: -4359
+    week_value_change_jpy: -6599
+portfolio_bridge:
+  prior_assets_jpy: 4868308
+  assets_change_jpy: 85048
+  holding_value_change_jpy: 84985
+  domestic_change_jpy: 96559
+  us_change_jpy: -11574
+  sweep_change_jpy: 63
+  sweep_change_cause: null
+  quantity_status: 12 positions unchanged vs previous week; round trips cannot be excluded without trades
+    ledger
+  us_translation:
+    prior_usd: '3417.43'
+    current_usd: '3325.89'
+    underlying_effect_jpy_approx: -14401
+    fx_effect_jpy_approx: 2827
+    method_limit: Derived from rounded account display; not an FX quote or causal proof.
+gold_position:
+  status: held_1_lot
+  lots:
+  - origin: 2026-09-09 E2
+    size_lot: 0.5
+    entry: 4330.23
+  - origin: 2026-09-17 E3
+    size_lot: 0.5
+    entry: 4279.0
+  reference_close: 4284.99
+  stop_basis: 4230
+  reported_order_level: 4220
+  order_setting_verified: false
+  contract_multiplier_verified: false
+  boss_thesis: weekly downtrend-line retest, inverse H&S and 1H wave-3 expectation; chart recovery unconfirmed
+    at 4284.99
+weekly_pnl_bridge:
+  realized_pt_lot: '0.000'
+  prior_unrealized_pt_lot: '73.835'
+  current_unrealized_pt_lot: '-19.625'
+  change_unrealized_pt_lot: '-93.460'
+  change_marked_total_pt_lot: '-93.460'
+gold_cumulative:
+  realized_pt_lot: '422.885'
+  marked_total_pt_lot: '403.260'
+  closed_count: 11
+  wins: 10
+  losses: 1
+  unit: pt-Lot
+hypotheses:
+  p9: count_unchanged
+  p10: definition_pending
+  p11:
+    counterexample_count: 1
+    this_week: weekly direction aligned but cutoff not synchronized
+  p12: formal_pending_same_FXCM_window
+  gold_8_2_8_3: rejected_not_revived
+signals:
+  us10y_breakout: watch_above_5_228
+  dxy_breakout: above_100_335
+  hy_oas_widening: unknown_no_fresh_measurement
+  vix_spike: off_machine_14_870
+  wti_shock: watch_after_cutoff_news
+  eps_revision_chain: unknown_no_fresh_measurement
+carry_forward:
+- id: 9-1
+  status: updated
+- id: 9-2
+  status: cash_cause_pending
+- id: 9-3
+  status: pending
+- id: 9-4
+  status: stop_basis_reconciled
+- id: 9-5
+  status: historical
+- id: 9-6
+  status: pending
+- id: 9-7
+  status: no_new_exit
+- id: 9-8
+  status: pending
+- id: 9-9
+  status: revisions_observed
+- id: 9-10
+  status: pending
+- id: 9-11
+  status: rejected_maintained
+- id: P9
+  status: count_unchanged
+- id: P10
+  status: definition_pending
+- id: P11
+  status: counterexample_1_maintained
+- id: P12
+  status: formal_pending
+- id: 1655/2243
+  status: specification_carried
+- id: W4-BTC
+  status: late_chart_added
+- id: W4-news
+  status: post_cutoff_watch
+- id: W4-intervention
+  status: not_confirmed_current_week

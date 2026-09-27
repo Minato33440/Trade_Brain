@@ -1,0 +1,21 @@
+{
+  "week": "2026-9-25_wk04",
+  "recorded": "2026-09-26",
+  "files": [
+    {
+      "source": "C:/Python/REX_AI/Trade_Brain/png_data/XAUUSD-2026-09-26.png",
+      "archive": "charts/XAUUSD-2026-09-26.png",
+      "sha256": "B48E2024AE459F047B75DA60919E9993E8A85837D2012BA0220541C90D6D021C"
+    },
+    {
+      "source": "C:/Users/Setona/Pictures/Screenshots/xauusd-1H.png",
+      "archive": "charts/XAUUSD-1H-2026-09-26.png",
+      "sha256": "1D4E9F017926DD9B7E664B2277B5943CD24E3468771926A258A7A15BE7F67123"
+    },
+    {
+      "source": "C:/Users/Setona/Pictures/Screenshots/Michigan.png",
+      "archive": "charts/Michigan-2026-09-26.png",
+      "sha256": "7626FE12B68A61411157044CD65722C8F3D1B1D9B0BE3F5D131D213154735CB6"
+    }
+  ]
+}

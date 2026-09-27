@@ -1,0 +1,7 @@
+Profile: grok
+Toolset: x_search,web,vision
+Run date: 2026-09-27 JST
+
+Search X posts dated Sep 25-27 2026 on Iran ceasefire/Strait of Hormuz oil supply, US Treasury yield rise, and USDJPY intervention rhetoric. Return at most 3 original posts with URL, timestamp, author, quoted claim and engagement if visible. Separate reported claims from verified facts. Do not infer future events.
+
+The search result is lead material, not evidence of official policy, supply damage, auction statistics, or executed FX intervention. Original post pages returned HTTP 403 in the independent check.

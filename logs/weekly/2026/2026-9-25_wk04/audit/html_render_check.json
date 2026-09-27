@@ -1,0 +1,45 @@
+{
+  "week": "2026-9-25_wk04",
+  "html": "CFD_Strategy-2026-9-28.html",
+  "status": "pass",
+  "results": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "body_width": 1440,
+      "chart_complete": true,
+      "chart_natural_width": 1400,
+      "headings": [
+        "9/28週 CFD・GM 戦略",
+        "概況とゲート",
+        "シナリオ：観測 → 行動候補 → 撤回",
+        "市場別の観測点",
+        "口座とGold残玉",
+        "9/28週の確認順"
+      ],
+      "missing_required_text": [],
+      "page_errors": [],
+      "screenshot": "audit/human_view_desktop.png",
+      "status": "pass"
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "body_width": 390,
+      "chart_complete": true,
+      "chart_natural_width": 1400,
+      "headings": [
+        "9/28週 CFD・GM 戦略",
+        "概況とゲート",
+        "シナリオ：観測 → 行動候補 → 撤回",
+        "市場別の観測点",
+        "口座とGold残玉",
+        "9/28週の確認順"
+      ],
+      "missing_required_text": [],
+      "page_errors": [],
+      "screenshot": "audit/human_view_mobile.png",
+      "status": "pass"
+    }
+  ]
+}

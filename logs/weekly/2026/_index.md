@@ -453,3 +453,10 @@ P11を双方向の逆観測2回へ訂正し当週反例1。原油cash2週+19.41%
 - Gates: Add=open_permission_only、Reduce=caution。WTI105–107/米金利再加速と株支持割れを監視。
 - 実績: 1決済+50、通算評価496.720、週次+114.785 pt・Lot。口座4,868,308円、週次増加117,679円＝保有評価差116,761＋1655配当918。
 - Links: [review](2026-9-18_wk03/review.md) / [note](2026-9-18_wk03/note.md) / [meta](2026-9-18_wk03/meta.yaml) / [trade_results](2026-9-18_wk03/trade_results.md) / [CFDハブ](2026-9-18_wk03/CFD戦略-2026-9-21.md) / [HTML](2026-9-18_wk03/CFD_Strategy-2026-9-21.html) / [quality](2026-9-18_wk03/quality_gate.md)
+
+### 2026-9-25_wk04（2026-09-21 → 2026-09-25）
+- Regime: **Neutral** 継続。Boss終値チャートは株高・WTI下落・米金利上昇、TVC米2s10s +6.3bp。機械はUSDJPYだけ9/26でSPLIT、FRED2s10sは9/24。
+- 今週: US100 CFD30,635.2（参考週比+3.30%）、JP225 CFD66,642（+2.39%）、WTI cash95.915（−4.11%）。9/25引け後の停戦案拒否報道は週明け材料として分離。
+- Gates: Add=open_permission_only（機械VIX14.870<18）、Reduce=caution。US100 29,935.5／JP225 66,277–66,042支持、WTI99.303・米10Y5.228の再上昇を同時確認。
+- 口座/CFD: GM4,953,356円、前週比+85,048＝保有評価+84,985＋sweep+63（原因不明）。Gold1 Lot継続、当週決済0、累計実現+422.885／含み−19.625／評価込み+403.260 pt・Lot。判断基準4,230／報告注文4,220。
+- Links: [review](2026-9-25_wk04/review.md) / [note](2026-9-25_wk04/note.md) / [meta](2026-9-25_wk04/meta.yaml) / [trade_results](2026-9-25_wk04/trade_results.md) / [CFDハブ](2026-9-25_wk04/CFD戦略-2026-9-28.md) / [HTML](2026-9-25_wk04/CFD_Strategy-2026-9-28.html) / [quality](2026-9-25_wk04/quality_gate.md)

@@ -144,3 +144,30 @@
 - tags: [gm, monthly_distilled, 2026-09, 2026-9-18_wk03, signal:oil_rates_joint_pressure, event:fomc_2026_09, event:boj_2026_09, risk:weekend_oil_gap, hypothesis:p11]
 
 出典と検証: [review](../../logs/weekly/2026/2026-9-18_wk03/review.md) / [sources](../../logs/weekly/2026/2026-9-18_wk03/sources.md) / [meta](../../logs/weekly/2026/2026-9-18_wk03/meta.yaml) / [quality](../../logs/weekly/2026/2026-9-18_wk03/quality_gate.md)。過去週は書換えず、当週取得とBossの現在指示を記録した。
+
+---
+
+## 2026-9-25_wk04（2026-09-21 → 2026-09-25）
+- regime: **Neutral** 継続。機械30日ラベルは equities=up / volatility=normal / oil=range / gold=off / crypto=strong / yields=rising。Boss終値チャートでは株高・原油下落・米金利上昇が共存。VIXは当週Boss画像なし、機械9/25 14.870。
+- decision:
+  - vix_add_risk_gate=open_permission_only（14.870<18。ただし株支持・原油・金利確認後に限る）
+  - oil_rates_joint_pressure=watch（WTI cash99.303支持化＋TVC米10Y5.228超＋US100 CFD29,935.5割れが重なれば防御。9/25引け後の報道を同日下落へ遡及しない）
+  - gold_existing_stop_4230=on（Boss報告1.0 Lotを継続。4,230は判断基準、4,220はスプレッド考慮後の報告注文水準。市場の4,288.55→4,319.13回復仮説とは別）
+  - p11_counterexample_threshold=watch（双方向逆観測2回で棄却、反例1維持。週差は日米2Y差+1.9bp、FX+0.27%で方向一致参考値だがcutoff未同期）
+- evidence (Boss chart-labelled values / 2026-09-25; machine run 2026-09-27):
+  - US100: 30,635.2（Capital.com CFD、前週記載29,656.7から参考+3.30%）。機械^NDX30,608.131は現物指数系で別商品。
+  - JP225: 66,642（FOREX.com CFD、前週65,086から参考+2.39%）。機械^N22566,364.203と混ぜない。
+  - USDJPY: 157.281（FXCM、参考前週156.854から+0.27%）。機械157.185は9/26 as_of、他の通常市場9/25とのSPLIT。
+  - WTI: 95.915（BlackBull cash、前週100.026から参考−4.11%）。機械CL=F92.410とは商品が違う。
+  - XAUUSD: 4,284.99（Pepperstone、前週4,378.45から参考−2.13%）。機械GC=F4,321.200をCFD評価に使わない。
+  - US2Y: 4.860%（TVC、前週4.756%から+10.4bp）。US10Y: 5.167%（前週5.000%から+16.7bp）。US30Y: 5.490%（前週5.327%から+16.3bp）。TVC2s10sは24.4→30.7bp（+6.3bp）。Yahoo5s10s30日差−6.2bpは別年限・窓・feed。
+  - VIX: 当週Boss画像なし。機械9/25 14.870のみ。BTC/USD: Binance9/26撮影中84,153.73（9/25確定週足ではない）。
+  - FRED: 真の2s10sは9/24 as_of +31bp、9/17→9/24 +4bp。BEは9/25 as_of、5Y2.34%（1w+3bp）／5y5y2.34%（1w−1bp）。金曜のBossカーブへ継ぎ足さない。
+  - Account: 総資産4,953,356円／評価損益+416,651円。前週比+85,048＝保有評価+84,985＋sweep+63（原因未確認）。12保有数量一致は往復取引なしの証明ではない。
+  - CFD: Gold新規・決済0。0.5 Lot@4,330.23＋0.5 Lot@4,279、含み−19.625、累計実現+422.885、評価込み+403.260 pt・Lot。週次評価差−93.460は確定損失ではない。
+- implication:
+  - US100 29,935.5／JP225 66,277–66,042維持とWTI・長期金利の高値更新停止なら押し目を検討。原油・金利の同時上昇と株支持割れなら防御。金利低下と株下落が共存すれば景気・利益不安を別分岐で調べる。
+  - 9/26 Bossレポート以後に追加されたBTC画像、9/27ニュース、X投稿3件は取得時点と検証水準を分ける。X原投稿は独立取得HTTP403で入札統計・介入を公式事実にしない。P9回数据置、P10発言日定義待ち、P12同FXCM同窓待ち。棄却済み8-2/8-3を復活させない。
+  - 9/28中東続報、9/30 21:30 JST米PCE・年次改定、10/1日銀資料/短観/ISM/Micron、10/2米雇用統計は発表後の値と市場反応で判定する。
+- tags: [gm, monthly_distilled, 2026-09, 2026-9-25_wk04, signal:vix_add_risk_gate_open, signal:oil_rates_joint_pressure, risk:geopolitics, risk:yield, risk:fx, hypothesis:p11, hypothesis:p12]
+- links: [review](../../logs/weekly/2026/2026-9-25_wk04/review.md) / [sources](../../logs/weekly/2026/2026-9-25_wk04/sources.md) / [meta](../../logs/weekly/2026/2026-9-25_wk04/meta.yaml) / [quality](../../logs/weekly/2026/2026-9-25_wk04/quality_gate.md)

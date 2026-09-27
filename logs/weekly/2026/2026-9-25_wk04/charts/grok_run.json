@@ -1,0 +1,13 @@
+{
+  "week": "2026-9-25_wk04",
+  "engine": "hermes profile grok; underlying model version not verified",
+  "command": "hermes -p grok -z <charts/x_search_prompt.txt> -t x_search,web,vision --accept-hooks",
+  "exit_code": 0,
+  "finished_local": "2026-09-27T09:48:44.377457+09:00",
+  "stdout_sha256": "76318c500fd99a7adb560b5b39842d9c04ae891c17527285acabe92796a4d765",
+  "stderr_size": 0,
+  "independent_original_post_fetch": "HTTP 403 for each of three URLs",
+  "engagement_counts": null,
+  "usage": null,
+  "cost": null
+}

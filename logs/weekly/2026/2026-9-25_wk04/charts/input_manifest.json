@@ -1,0 +1,119 @@
+{
+  "week": "2026-9-25_wk04",
+  "engine": "gpt-6",
+  "input_checksums": {
+    "logs/boss's-weeken-Report/2026/wr-2026-9-25.md": "730488a598422a8da739b025a0e25186c94f07d3f642efdcbf1ea706246e14fc",
+    "logs/weekly/2026/2026-9-25_wk04/trade_results.md": "1a0ea10879becbe18e457a736cbfe5336c9409a26b72c4fa44edb054abc36f90",
+    "png_data/BTCUSF-2026-09-26.png": "d2ab4c6190f75ea8c15a52a1b30e2d3f49466366583168c326c27a9373022a1a",
+    "png_data/DXY-2026-09-26.png": "8685982041cff04cc90aed79fae3eb3b98253fa7d0f4e39dfa1b2a16aed6ac6c",
+    "png_data/EURUSD-2026-09-26.png": "190a5ac9ad6c591fdbb8b92a2a6dde70eed4f779569349815495889e0eb48007",
+    "png_data/JP10Y-2026-09-26.png": "47fe470cc31541923ca09e5abd3a02498471eaac424c106c40e73387acc8a663",
+    "png_data/JP225-2026-09-26.png": "4ddd1f2b88cd319ab1dd4da8c4c172c840531612805c4d963e15be05111d784a",
+    "png_data/JP2Y-2026-09-26.png": "0e1953d6a27efd2b9a75be6ac1564bbf508971e201ca96f4754bace3194f2347",
+    "png_data/Michigan.png": "7626fe12b68a61411157044cd65722c8f3d1b1d9b0be3f5d131d213154735cb6",
+    "png_data/US100-2026-09-26.png": "7e033423428d2f6e7e40bf04ae907cf9cfe32c0ebc848d7b37283875b96c5ae0",
+    "png_data/US10Y-2026-09-26.png": "c3350333011dd300f6abb755509a5c2e2f9ce22f190ccc93c87b892d92b5a21e",
+    "png_data/US2Y-2-2026-09-26.png": "cd4e9a86d5e6817455c4a6f6a3d98b457e963460056b1c1c8bbe7808ea134714",
+    "png_data/US2Y-2026-09-26.png": "dd6eb6f977e85d9708ccc31ccc47a21254909837249ce1459836aa9d75c11335",
+    "png_data/US30Y-2026-09-26.png": "b7ff8ca3e78ed82b1786897ed905a094a1c78b236e2f9dcba3f3e3c7504c0234",
+    "png_data/USDJPY-2026-09-26.png": "438e4d4b22a3fccff1263bdea82c86be9944495fd26f0b46aa0574a2830509ee",
+    "png_data/WTI-2026-09-26.png": "7fa7651c9d8c2f07a0a6cb6c64d28100e9ea2a95716346f5cc9200597f6cb820",
+    "png_data/XAUUSD-2026-09-26.png": "b48e2024ae459f047b75da60919e9993e8a85837d2012ba0220541c90d6d021c",
+    "png_data/ポートフォリオ.png": "5df0ad3dbe60541c90aba69a8acf5bd5c315a87ff053bf5257423d14f63c3a32",
+    "png_data/東証株.png": "013247ecd25610a720186b29a785f91f7734aadf2ffb6ddc9c4184e0ba689c25",
+    "png_data/米国株.png": "e797063ab80de5ba3da2fdd1933c2df71437979291b6d24986ede0a4a20a1014"
+  },
+  "archives": [
+    {
+      "source": "png_data/BTCUSF-2026-09-26.png",
+      "archive": "charts/BTCUSD-2026-09-26.png",
+      "sha256": "d2ab4c6190f75ea8c15a52a1b30e2d3f49466366583168c326c27a9373022a1a"
+    },
+    {
+      "source": "png_data/DXY-2026-09-26.png",
+      "archive": "charts/DXY-2026-09-26.png",
+      "sha256": "8685982041cff04cc90aed79fae3eb3b98253fa7d0f4e39dfa1b2a16aed6ac6c"
+    },
+    {
+      "source": "png_data/EURUSD-2026-09-26.png",
+      "archive": "charts/EURUSD-2026-09-26.png",
+      "sha256": "190a5ac9ad6c591fdbb8b92a2a6dde70eed4f779569349815495889e0eb48007"
+    },
+    {
+      "source": "png_data/JP10Y-2026-09-26.png",
+      "archive": "charts/JP10Y-2026-09-26.png",
+      "sha256": "47fe470cc31541923ca09e5abd3a02498471eaac424c106c40e73387acc8a663"
+    },
+    {
+      "source": "png_data/JP225-2026-09-26.png",
+      "archive": "charts/JP225-2026-09-26.png",
+      "sha256": "4ddd1f2b88cd319ab1dd4da8c4c172c840531612805c4d963e15be05111d784a"
+    },
+    {
+      "source": "png_data/JP2Y-2026-09-26.png",
+      "archive": "charts/JP2Y-2026-09-26.png",
+      "sha256": "0e1953d6a27efd2b9a75be6ac1564bbf508971e201ca96f4754bace3194f2347"
+    },
+    {
+      "source": "png_data/Michigan.png",
+      "archive": "charts/Michigan-2026-09-26.png",
+      "sha256": "7626fe12b68a61411157044cd65722c8f3d1b1d9b0be3f5d131d213154735cb6"
+    },
+    {
+      "source": "png_data/US100-2026-09-26.png",
+      "archive": "charts/US100-2026-09-26.png",
+      "sha256": "7e033423428d2f6e7e40bf04ae907cf9cfe32c0ebc848d7b37283875b96c5ae0"
+    },
+    {
+      "source": "png_data/US10Y-2026-09-26.png",
+      "archive": "charts/US10Y-2026-09-26.png",
+      "sha256": "c3350333011dd300f6abb755509a5c2e2f9ce22f190ccc93c87b892d92b5a21e"
+    },
+    {
+      "source": "png_data/US2Y-2-2026-09-26.png",
+      "archive": "charts/US2Y-2-2026-09-26.png",
+      "sha256": "cd4e9a86d5e6817455c4a6f6a3d98b457e963460056b1c1c8bbe7808ea134714"
+    },
+    {
+      "source": "png_data/US2Y-2026-09-26.png",
+      "archive": "charts/US2Y-2026-09-26.png",
+      "sha256": "dd6eb6f977e85d9708ccc31ccc47a21254909837249ce1459836aa9d75c11335"
+    },
+    {
+      "source": "png_data/US30Y-2026-09-26.png",
+      "archive": "charts/US30Y-2026-09-26.png",
+      "sha256": "b7ff8ca3e78ed82b1786897ed905a094a1c78b236e2f9dcba3f3e3c7504c0234"
+    },
+    {
+      "source": "png_data/USDJPY-2026-09-26.png",
+      "archive": "charts/USDJPY-2026-09-26.png",
+      "sha256": "438e4d4b22a3fccff1263bdea82c86be9944495fd26f0b46aa0574a2830509ee"
+    },
+    {
+      "source": "png_data/WTI-2026-09-26.png",
+      "archive": "charts/WTI-2026-09-26.png",
+      "sha256": "7fa7651c9d8c2f07a0a6cb6c64d28100e9ea2a95716346f5cc9200597f6cb820"
+    },
+    {
+      "source": "png_data/XAUUSD-2026-09-26.png",
+      "archive": "charts/XAUUSD-2026-09-26.png",
+      "sha256": "b48e2024ae459f047b75da60919e9993e8a85837d2012ba0220541c90d6d021c"
+    },
+    {
+      "source": "png_data/ポートフォリオ.png",
+      "archive": "charts/ポートフォリオ.png",
+      "sha256": "5df0ad3dbe60541c90aba69a8acf5bd5c315a87ff053bf5257423d14f63c3a32"
+    },
+    {
+      "source": "png_data/東証株.png",
+      "archive": "charts/東証株.png",
+      "sha256": "013247ecd25610a720186b29a785f91f7734aadf2ffb6ddc9c4184e0ba689c25"
+    },
+    {
+      "source": "png_data/米国株.png",
+      "archive": "charts/米国株.png",
+      "sha256": "e797063ab80de5ba3da2fdd1933c2df71437979291b6d24986ede0a4a20a1014"
+    }
+  ],
+  "note": "BTCUSF is the supplied filename; the chart's symbol is BTCUSD (Binance). Archive named BTCUSD. Michigan and Gold trade chart were already archived and hash-matched."
+}

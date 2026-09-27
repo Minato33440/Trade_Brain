@@ -1,0 +1,12 @@
+GM Strategy — action week 2026-09-28 to 2026-10-02
+Sources: Boss charts/report, 2026_09_27_snapshot.yaml, trade_results.md. Details and limitations: ../review.md, ../sources.md.
+
+① Regime: Machine Neutral, VIX 14.870 (9/25). This opens an add-risk permission only. USDJPY as_of 9/26 vs regular markets 9/25 = SPLIT; FRED 2s10s as_of 9/24.
+② Equities: US100 CFD 30,635.2 / JP225 CFD 66,642. Confirm US100 29,935.5 and JP225 66,277–66,042 support before considering pullbacks. US100 30,748.9 and JP225 67,385 are upside tests.
+③ Rates: Boss TVC US2Y 4.860%, US10Y 5.167%, US30Y 5.490%; weekly US 2s10s +6.3bp. US10Y 5.228 / US30Y 5.532 breakouts with oil rebound strengthen the defensive branch. Yahoo 5s10s flattening is a different curve/window/feed.
+④ Oil: WTI cash 95.915, reference −4.11% week. Post-close Iran proposal rejection is reported, not confirmed supply loss. WTI 99.303 reclaim vs 94.849 break is the first price branch.
+⑤ FX: USDJPY 157.281 after 158.899 daily high, DXY 101.034. Sell thesis only upon 157.521–158.285 return failure or 156.852 breakdown/retest; 158.285 support invalidates. Intervention remains unconfirmed for this week.
+⑥ Gold: Pepperstone 4,284.99, below 4,288.55 and 4,319.13. CFD 1 Lot held; 4,230 stop basis and reported 4,220 order level. Market-thesis invalidation and executed order are distinct. Realized 0; cumulative marked +403.260 pt-Lot.
+⑦ BTC: Later Binance screenshot 9/26 captured 84,153.73; not a 9/25 close. Watch 83,795.61 support and 85,732 resistance, then recheck after weekend trading.
+⑧ Portfolio: 4,953,356 JPY, +85,048 weekly = holding valuation +84,985 + cash +63. Twelve quantities match last week; cause of 63 JPY cash increase remains open.
+⑨ Events and adverse branch: 9/30 21:30 JST PCE + annual update, 10/1 BOJ/Micron/ISM, 10/2 NFP. If WTI >99.303, US10Y >5.228 and US100 <29,935.5, reduce new common-risk exposure. If yields fall while equities break support, inspect growth/credit rather than assuming relief.

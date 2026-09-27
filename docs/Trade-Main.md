@@ -197,6 +197,10 @@ updated: 2026-01-03 (JST)
 - Neutral。反発支持と原油/金利再加速を分けて管理。Gold1 Lot・stop4,230、GM評価差+116,761円。
 - [review](../logs/weekly/2026/2026-9-18_wk03/review.md) / [meta](../logs/weekly/2026/2026-9-18_wk03/meta.yaml) / [CFDハブ](../logs/weekly/2026/2026-9-18_wk03/CFD戦略-2026-9-21.md)
 
+### 2026-9-25_wk04（2026-09-21 → 2026-09-25）
+- Neutral。株高・WTI下落と米長期金利上昇を分け、原油と金利が再加速すれば防御。Gold残1 Lot／基準4,230、GM口座4,953,356円。
+- [review](../logs/weekly/2026/2026-9-25_wk04/review.md) / [meta](../logs/weekly/2026/2026-9-25_wk04/meta.yaml) / [CFDハブ](../logs/weekly/2026/2026-9-25_wk04/CFD戦略-2026-9-28.md)
+
 ## Distilled Logs (monthly)
 - 2026-01: distilled/2026/distilled-gm-2026-1.md
 - 2026-02: distilled/2026/distilled-gm-2026-2.md
@@ -1391,3 +1395,31 @@ FRB9/16+25bpで3.75–4.00%、日銀9/18決定1.25%は9/24適用。9/21–23日�
 - eps_revision_chain: unknown（当週のEPS連鎖改訂実測なし）
 
 詳細: [review](../logs/weekly/2026/2026-9-18_wk03/review.md) / [note](../logs/weekly/2026/2026-9-18_wk03/note.md) / [meta](../logs/weekly/2026/2026-9-18_wk03/meta.yaml) / [HTML](../logs/weekly/2026/2026-9-18_wk03/CFD_Strategy-2026-9-21.html) / [持ち越し](../logs/weekly/2026/2026-9-18_wk03/carry_forward.md)
+
+## Weekly Brief | 2026-9-25_wk04（2026-09-21 → 2026-09-25）
+created: 2026-09-27 (JST) / GM Broker統合
+
+### Macro / Regime
+**Neutral** 継続。BossチャートではUS100 CFD30,635.2（前週記載比+3.30%）・JP225 CFD66,642（+2.39%）に対しWTI cash95.915（−4.11%）、TVC米2Y4.860%・10Y5.167%（2s10s+6.3bp）。機械snapshotはUSDJPYのみ9/26でSPLIT、FRED2s10sは9/24公表値。9/25引け後の中東報道を同日の原油下落に遡及させない。
+
+### Position / Orders
+Gold 1 Lot＝0.5@4,330.23＋0.5@4,279。Boss報告の判断基準4,230／スプレッドを見た注文水準4,220を維持。当週決済0、実現0、含み−19.625、累計実現+422.885、評価込み+403.260 pt・Lot（前週評価込みから−93.460）。GM口座4,953,356円、前週+85,048＝保有評価+84,985＋sweep+63。現金差の原因と当週証券取引明細は未確認。
+
+### Key Levels (close-based)
+US100 CFD30,635.2（29,935.5支持／30,748.9突破）、JP225 CFD66,642（66,277–66,042支持／67,385突破）、USDJPY157.281（156.852割れ／158.285支持化）、WTI cash95.915（94.849割れ／99.303支持化）、Gold4,284.99（4,288.55→4,319.13回復確認。CFD基準4,230とは別）。BTCは9/26撮影途中84,153.73で9/25確定終値ではない。米10Y5.228・30Y5.532を警戒。
+
+### Gates（最重要：終値で判定）
+Add=open_permission_only（機械VIX14.870<18）、Reduce=caution。US10029,935.5／JP22566,277–66,042を維持し、原油と長期金利の高値更新が止まれば押し目を検討。WTI99.303支持化・米10Y5.228超・株支持割れが重なるなら防御。金利低下でも株支持割れとVIX上昇があれば景気・利益不安を疑う。
+
+### This Week Focus
+9/28中東続報・日銀7月議事要旨、9/30 21:30 JST米8月PCEと年次改定、10/1日銀「主な意見」・短観・ISM/Micron、10/2米雇用統計。P9回数不変、P10定義待ち、P11反例1維持、P12同FXCM同窓待ち。X検索3投稿は独立取得403で未検証の市場言説。機械過去値改訂11件を当週30日窓の表示として保存。
+
+### Signals (weekly, fixed keys)
+- us10y_breakout: watch（TVC5.167%、5.228超の定着を確認）
+- dxy_breakout: watch（TVC101.034、100.335を維持できるか）
+- hy_oas_widening: unknown（当週実測なし）
+- vix_spike: off（機械9/25 14.870、Boss当週画像なし）
+- wti_shock: watch（cash週参考−4.11%。引け後の中東報道と供給実害を分離）
+- eps_revision_chain: unknown（当週の連鎖改訂実測なし）
+
+詳細: [review](../logs/weekly/2026/2026-9-25_wk04/review.md) / [note](../logs/weekly/2026/2026-9-25_wk04/note.md) / [meta](../logs/weekly/2026/2026-9-25_wk04/meta.yaml) / [HTML](../logs/weekly/2026/2026-9-25_wk04/CFD_Strategy-2026-9-28.html) / [持ち越し](../logs/weekly/2026/2026-9-25_wk04/carry_forward.md)

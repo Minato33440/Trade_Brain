@@ -1,0 +1,19 @@
+{
+  "week": "2026-9-25_wk04",
+  "engine": "gpt-6",
+  "command": [
+    ".venv/Scripts/python.exe",
+    "main.py",
+    "--trade",
+    "--news"
+  ],
+  "exit_code": 0,
+  "finished_local": "2026-09-27T09:44:50.413209+09:00",
+  "stdout_sha256": "05b28447e11546fd02fcc61fea9df0fb1383c6f9ea5f19d8b1ab51ec766e940d",
+  "stderr_size": 0,
+  "snapshot_sha256": "fd128dfc33a3ba72b7983da03cca73d9c327418ae3cee8e651c3deb1a317f0d9",
+  "input_sha256": {
+    "boss_report": "730488a598422a8da739b025a0e25186c94f07d3f642efdcbf1ea706246e14fc",
+    "trade_results": "1a0ea10879becbe18e457a736cbfe5336c9409a26b72c4fa44edb054abc36f90"
+  }
+}
